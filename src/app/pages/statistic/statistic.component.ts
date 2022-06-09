@@ -6,11 +6,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./statistic.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StatisticComponent implements OnInit {
+export class StatisticComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

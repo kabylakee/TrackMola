@@ -6,11 +6,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./finance.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FinanceComponent implements OnInit {
+export class FinanceComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

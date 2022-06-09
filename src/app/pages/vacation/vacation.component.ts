@@ -6,11 +6,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./vacation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VacationComponent implements OnInit {
+export class VacationComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
