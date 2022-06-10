@@ -1,0 +1,17 @@
+nav {
+  ul {
+    li {
+      a {
+        color: rgb(0, 0, 0);
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          color: rgb(10, 188, 25);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
