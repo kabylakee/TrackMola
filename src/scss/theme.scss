@@ -1,1 +1,20 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
 @import './vars/colors.scss';
+
+$TrackMola-primary: mat.define-palette($primary-palette, 300);
+$TrackMola-accent: mat.define-palette($accent-palette, 200);
+
+$TrackMola-warn: mat.define-palette($red-palette);
+
+$TrackMola-theme: mat.define-light-theme((
+  color: (
+    primary: $TrackMola-primary,
+    accent: $TrackMola-accent,
+    warn: $TrackMola-warn,
+  )
+));
+
+@include mat.all-component-themes($TrackMola-theme);
