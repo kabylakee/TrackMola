@@ -25,7 +25,9 @@ $primary-palette: (
   500: $primary-500,
   700: $primary-700,
   contrast: (
-    A500: $white
+    300: $white,
+    500: $white,
+    700: $white
   )
 );
 
@@ -34,13 +36,22 @@ $accent-palette: (
   200: $accent-200,
   500: $accent-500,
   700: $accent-500,
-  contrast: ()
+  contrast: (
+    100: $white,
+    200: $white,
+    500: $white,
+    700: $white
+  )
 );
 
 $red-palette: (
   100: $red,
   500: $red,
   700: $red,
-  contrast: ()
+  contrast: (
+    100: $white,
+    500: $white,
+    700: $white
+  )
 );
 
