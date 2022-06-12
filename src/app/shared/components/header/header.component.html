@@ -1,10 +1,5 @@
 <nav>
-  <ul>
-    <li><a routerLink="/dashboard">dashboard</a></li>
-    <li><a routerLink="/finance">finance</a></li>
-    <li><a routerLink="/projects">projects</a></li>
-    <li><a routerLink="/reports">reports</a></li>
-    <li><a routerLink="/statistic">statistic</a></li>
-    <li><a routerLink="/vacation">vacation</a></li>
+  <ul *ngFor="let path of paths">
+    <li><a routerLink="/{{path}}">{{path}}</a></li>
   </ul>  
 </nav>
