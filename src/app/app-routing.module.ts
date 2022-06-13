@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
-import { VacationComponent } from './pages/vacation/vacation.component';
-import { StatisticComponent } from './pages/statistic/statistic.component';
-import { ReportsComponent } from './pages/reports/reports.component';
-import { ProjectsComponent } from './pages/projects/projects.component';
-import { FinanceComponent } from './pages/finance/finance.component';
 import { RouterPaths } from './entities/enums/router.enum';
 
 const routes: Routes = [
@@ -38,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
