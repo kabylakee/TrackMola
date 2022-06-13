@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VacationComponent } from './vacation.component';
+import { VacationRoutingModule } from './vacation-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { VacationComponent } from './vacation.component';
     VacationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    VacationRoutingModule,
   ]
 })
 export class VacationModule { }
