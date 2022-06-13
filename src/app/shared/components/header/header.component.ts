@@ -10,10 +10,6 @@ import { RouterPaths } from 'src/app/entities/enums/router.enum';
 })
 export class HeaderComponent {
 
-  public paths: string[] = [];
-
-  constructor() {
-    this.paths = Object.values(RouterPaths);
-  }
+  public paths = RouterPaths;
 
 }

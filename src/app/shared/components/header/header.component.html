@@ -1,5 +1,5 @@
 <nav>
-  <ul *ngFor="let path of paths">
-    <li><a routerLink="/{{path}}">{{path}}</a></li>
+  <ul *ngFor="let path of paths | keyvalue">
+    <li><a routerLink="/{{path.value}}">{{path.value}}</a></li>
   </ul>  
 </nav>
