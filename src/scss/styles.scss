@@ -1,1 +1,8 @@
 @import './theme';
+@import './vars/offsets.scss';
+
+:root {
+  @include variable(offset, $offset);
+  @include variable(border-radius, $border-radius);
+  @include variable(transition, $transition);
+}

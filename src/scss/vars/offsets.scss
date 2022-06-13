@@ -1,29 +1,15 @@
-// Offset
-$offset-xxxs: $offset * 0.125;
-$offset-xxs:  $offset * 0.25;
-$offset-xs:   $offset * 0.5;
-$offset-s:    $offset * 0.75;
+@mixin variable($property, $value) {
+  --#{$property}-xxxs: calc(#{$value} * 0.125);
+  --#{$property}-xxs: calc(#{$value} * 0.25);
+  --#{$property}-xs: calc(#{$value} * 0.5);
+  --#{$property}-s: calc(#{$value} * 0.75);
+  --#{$property}: #{$value};
+  --#{$property}-m: calc(#{$value} * 1.5);
+  --#{$property}-l: calc(#{$value} * 2);
+  --#{$property}-xl: calc(#{$value} * 4);
+}
+
+// Variables
 $offset:      1rem;
-$offset-m:    $offset * 1.5;
-$offset-l:    $offset * 2;
-$offset-xl:   $offset * 4;
-
-// Border-radius
-$border-radius-xxxs: $border-radius * 0.125;
-$border-radius-xxs:  $border-radius * 0.25;
-$border-radius-xs:   $border-radius * 0.5;
-$border-radius-s:    $border-radius * 0.75;
 $border-radius:      1rem;
-$border-radius-m:    $border-radius * 1.5;
-$border-radius-l:    $border-radius * 2;
-$border-radius-xl:   $border-radius * 4;
-
-// Transition
-$transition-xxxs: $transition * 0.125;
-$transition-xxs:  $transition * 0.25;
-$transition-xs:   $transition * 0.5;
-$transition-s:    $transition * 0.75;
 $transition:      1s;
-$transition-m:    $transition * 1.5;
-$transition-l:    $transition * 2;
-$transition-xl:   $transition * 4;
