@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-
 import { HeaderModule } from './shared/components/header/header.module';
 @NgModule({
   declarations: [
