@@ -7,33 +7,33 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: RouterPaths.Dashboard,
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: RouterPaths.Vacation,
-    loadChildren: () => import('./pages/vacation/vacation.module').then(m => m.VacationModule)
+    loadChildren: () => import('./pages/vacation/vacation.module').then((m) => m.VacationModule),
   },
   {
     path: RouterPaths.Statistic,
-    loadChildren: () => import('./pages/statistic/statistic.module').then(m => m.StatisticModule)
+    loadChildren: () => import('./pages/statistic/statistic.module').then((m) => m.StatisticModule),
   },
   {
     path: RouterPaths.Reports,
-    loadChildren: () => import('./pages/reports/reports.module').then(m => m.ReportsModule)
+    loadChildren: () => import('./pages/reports/reports.module').then((m) => m.ReportsModule),
   },
   {
     path: RouterPaths.Projects,
-    loadChildren: () => import('./pages/projects/projects.module').then(m => m.ProjectsModule)
+    loadChildren: () => import('./pages/projects/projects.module').then((m) => m.ProjectsModule),
   },
   {
     path: RouterPaths.Finance,
-    loadChildren: () => import('./pages/finance/finance.module').then(m => m.FinanceModule)
+    loadChildren: () => import('./pages/finance/finance.module').then((m) => m.FinanceModule),
   },
-  { path: '**', redirectTo: 'dashboard' } // route for 404 page in future
+  { path: '**', redirectTo: 'dashboard' }, // route for 404 page in future
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

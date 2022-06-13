@@ -3,16 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { StatisticComponent } from './statistic.component';
 
-
 const routes: Routes = [
   {
     path: '',
     component: StatisticComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class StatisticRoutingModule { }
+export class StatisticRoutingModule {}

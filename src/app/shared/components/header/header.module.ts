@@ -4,15 +4,8 @@ import { HeaderComponent } from './header.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
-  declarations: [
-    HeaderComponent
-  ],
-  imports: [
-    CommonModule,
-    AppRoutingModule
-  ],
-  exports: [
-    HeaderComponent
-  ]
+  declarations: [HeaderComponent],
+  imports: [CommonModule, AppRoutingModule],
+  exports: [HeaderComponent],
 })
-export class HeaderModule { }
+export class HeaderModule {}

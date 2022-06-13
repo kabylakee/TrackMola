@@ -3,16 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FinanceComponent } from './finance.component';
 
-
 const routes: Routes = [
   {
     path: '',
     component: FinanceComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class FinanceRoutingModule { }
+export class FinanceRoutingModule {}

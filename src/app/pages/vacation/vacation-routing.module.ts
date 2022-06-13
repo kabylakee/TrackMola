@@ -3,16 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { VacationComponent } from './vacation.component';
 
-
 const routes: Routes = [
   {
     path: '',
     component: VacationComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class VacationRoutingModule { }
+export class VacationRoutingModule {}
