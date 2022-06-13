@@ -4,10 +4,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-finance',
   templateUrl: './finance.component.html',
   styleUrls: ['./finance.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FinanceComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

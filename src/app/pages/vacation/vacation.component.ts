@@ -4,10 +4,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-vacation',
   templateUrl: './vacation.component.html',
   styleUrls: ['./vacation.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationComponent {
-
-  constructor() { }
-
+  constructor() {}
 }

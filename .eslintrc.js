@@ -6,13 +6,15 @@ module.exports = {
       parserOptions: {
         project: [
           "tsconfig.*?.json",
-          "e2e/tsconfig.json"
+          "tsconfig.json"
         ],
         createDefaultProgram: true
       },
       extends: [
         "plugin:@angular-eslint/recommended",
-        'airbnb-typescript/base'
+        'airbnb-typescript/base',
+        "plugin:import/recommended",
+        'plugin:prettier/recommended'
       ],
       rules: {
 

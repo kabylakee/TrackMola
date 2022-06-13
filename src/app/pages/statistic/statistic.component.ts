@@ -4,10 +4,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-statistic',
   templateUrl: './statistic.component.html',
   styleUrls: ['./statistic.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticComponent {
-
-  constructor() { }
-
+  constructor() {}
 }
