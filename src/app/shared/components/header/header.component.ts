@@ -10,15 +10,10 @@ import { RouterPaths } from 'src/app/entities/enums/router.enum';
 })
 export class HeaderComponent {
 
-  paths: string[] = [
-    RouterPaths.Dashboard,
-    RouterPaths.Vacation,
-    RouterPaths.Statistic,
-    RouterPaths.Reports,
-    RouterPaths.Projects,
-    RouterPaths.Finance
-  ];
+  paths: string[] = [];
 
-  constructor() { }
+  constructor() {
+    this.paths = Object.values(RouterPaths);
+  }
 
 }
