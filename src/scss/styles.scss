@@ -2,6 +2,7 @@
 @import './vars/offsets.scss';
 
 :root {
+  // Offsets
   @include variable(offset, $offset);
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
