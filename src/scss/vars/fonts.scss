@@ -1,0 +1,15 @@
+@mixin var-fonts($fonts) {
+  @each $name, $font in $fonts {
+    --#{$name}: #{$font};
+  }
+}
+
+// Fonts
+$base-fonts: (
+  font-size-xxs: 10px,
+  font-size-xs: 12px,
+  font-size-s: 14px,
+  font-size: 16px,
+  font-size-m: 20px,
+  font-size-l: 28px
+);
