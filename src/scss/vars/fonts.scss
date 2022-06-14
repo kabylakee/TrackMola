@@ -1,4 +1,4 @@
-@mixin font-vars($property, $value) {
+@mixin var-fonts($property, $value) {
   --#{$property}-xxs: calc(#{$value} * 0.625);
   --#{$property}-xs: calc(#{$value} * 0.75);
   --#{$property}-s: calc(#{$value} * 0.875);
