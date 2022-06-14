@@ -1,14 +1,4 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": ["angular.ng-template"],
-  
-  "eslint.validate": [ "javascript", "typescript", "html"],
-
-  "eslint.options": {
-    "extensions": [".js", ".ts", "html"]
-  },
-
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-  },
 }
