@@ -5,11 +5,13 @@
 }
 
 // Fonts
+$font-size: 16px;
+
 $base-fonts: (
-  font-size-xxs: 10px,
-  font-size-xs: 12px,
-  font-size-s: 14px,
-  font-size: 16px,
-  font-size-m: 20px,
-  font-size-l: 28px
+  font-size-xxs: calc($font-size * 0.625),
+  font-size-xs: calc($font-size * 0.75),
+  font-size-s: calc($font-size * 0.875),
+  font-size: $font-size,
+  font-size-m: calc($font-size * 1.25),
+  font-size-l: calc($font-size * 1.75)
 );
