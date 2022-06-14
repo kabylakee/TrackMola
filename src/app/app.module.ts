@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HeaderModule } from './shared/components/header/header.module';
+import { LeftPanelModule } from './shared/components/left-panel/left-panel.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -11,7 +11,7 @@ import { HeaderModule } from './shared/components/header/header.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderModule,
+    LeftPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

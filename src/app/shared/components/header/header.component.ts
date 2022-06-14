@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { RouterPaths } from 'src/app/entities/enums/router.enum';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +7,5 @@ import { RouterPaths } from 'src/app/entities/enums/router.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-
-  public paths = RouterPaths;
 
 }
