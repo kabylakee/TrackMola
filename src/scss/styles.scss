@@ -8,5 +8,5 @@
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
 
-  @include var-fonts($base-fonts);
+  @include font-vars($font-size);
 }

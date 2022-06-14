@@ -1,17 +1,11 @@
-@mixin var-fonts($fonts) {
-  @each $name, $font in $fonts {
-    --#{$name}: #{$font};
-  }
+@mixin font-vars($property, $value) {
+  --#{$property}-xxs: calc(#{$value} * 0.625);
+  --#{$property}-xs: calc(#{$value} * 0.75);
+  --#{$property}-s: calc(#{$value} * 0.875);
+  --#{$property}: #{$value};
+  --#{$property}-m: calc(#{$value} * 1.25);
+  --#{$property}-l: calc(#{$value} * 1.75);
 }
 
-// Fonts
-$font-size: 16px;
+$font-size: 1rem;
 
-$base-fonts: (
-  font-size-xxs: calc($font-size * 0.625),
-  font-size-xs: calc($font-size * 0.75),
-  font-size-s: calc($font-size * 0.875),
-  font-size: $font-size,
-  font-size-m: calc($font-size * 1.25),
-  font-size-l: calc($font-size * 1.75)
-);
