@@ -1,18 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { VacationComponent } from './vacation.component';
-
+import {VacationComponent} from './vacation.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: VacationComponent,
-  }
+	{
+		path: '',
+		component: VacationComponent,
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
-export class VacationRoutingModule { }
+export class VacationRoutingModule {}

@@ -1,13 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-  selector: 'app-finance',
-  templateUrl: './finance.component.html',
-  styleUrls: ['./finance.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-finance',
+	templateUrl: './finance.component.html',
+	styleUrls: ['./finance.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FinanceComponent {
-
-  constructor() { }
-
+	constructor() {}
 }
