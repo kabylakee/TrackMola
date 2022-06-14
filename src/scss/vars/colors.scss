@@ -41,10 +41,10 @@ $primary-palette: (
 );
 
 $accent-palette: (
-  100: map.get($base-colors, secondary-100),
+  100: map.get($base-colors, secondary-200),
   200: map.get($base-colors, secondary-200),
   500: map.get($base-colors, secondary-500),
-  700: map.get($base-colors, secondary-700),
+  700: map.get($base-colors, secondary-500),
   contrast: (
     100: map.get($base-colors, white),
     200: map.get($base-colors, white),
