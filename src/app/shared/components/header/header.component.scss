@@ -1,8 +1,42 @@
-.header {
-  &-container {
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user {
+  background-color: rgba(201, 203, 214, 0.1);;
+  border-radius: var(--border-radius-xs);
+  display: flex;
+  height: calc(var(--offset) * 3);
+  padding: var(--offset-xs) var(--offset-s);
+
+  &-img {
+    align-items: center;
+    background: var(--black);
+    border-radius: var(--border-radius-xs);
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    height: var(--offset-l);
+    width: var(--offset-l);
   }
 
+  &-name {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--offset-s);
+  }
+
+  &-notification {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
 }

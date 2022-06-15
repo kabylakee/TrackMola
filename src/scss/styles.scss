@@ -7,3 +7,9 @@
   @include variable(transition, $transition);
   @include var-colors($base-colors);
 }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
