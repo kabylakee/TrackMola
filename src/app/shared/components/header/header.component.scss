@@ -8,11 +8,10 @@
 
 .title {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: flex-start;
 	font-weight: 500;
 	font-size: var(--font-size-l);
-	letter-spacing: -0.02em;
 }
 
 .user {
@@ -27,8 +26,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: var(--offset-l);
-		height: var(--offset-l);
+		width: 2rem;
+		height: 2rem;
 		background: var(--black);
 		border-radius: var(--border-radius-xs);
 	}
