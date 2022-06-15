@@ -1,10 +1,13 @@
 @import './theme';
 @import './vars/offsets.scss';
+@import './vars/fonts.scss';
 
 :root {
   @include variable(offset, $offset);
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
+
+  @include var-fonts($font-size);
   @include var-colors($base-colors);
 }
 
