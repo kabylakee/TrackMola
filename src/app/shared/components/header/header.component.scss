@@ -1,50 +1,50 @@
 @import 'mixins/colors-mixin';
 
 .container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .title {
-  align-items: flex-start;
-  display: flex;
-  justify-content: flex-start;
-  font-size: var(--font-size-l);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	font-weight: 500;
+	font-size: var(--font-size-l);
+	letter-spacing: -0.02em;
 }
 
 .user {
-  background: rgba-color(light-gray, 0.1);
-  border-radius: var(--border-radius-xs);
-  color: var(--light-black);
-  display: flex;
-  height: calc(var(--offset) * 3);
-  padding: var(--offset-xs) var(--offset-s);
+	display: flex;
+	height: calc(var(--offset) * 3);
+	padding: var(--offset-xs) var(--offset-s);
+	color: var(--light-black);
+	background: rgba-color(light-gray, 0.1);
+	border-radius: var(--border-radius-xs);
 
-  &-img {
-    align-items: center;
-    background: var(--black);
-    border-radius: var(--border-radius-xs);
-    display: flex;
-    justify-content: center;
-    height: var(--offset-l);
-    width: var(--offset-l);
-  }
+	&-img {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--offset-l);
+		height: var(--offset-l);
+		background: var(--black);
+		border-radius: var(--border-radius-xs);
+	}
 
-  &-name {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    font-size: var(--font-size-s);
-    font-weight: 500;
-    padding: 0 var(--offset-s);
-  }
+	&-name {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 var(--offset-s);
+		font-weight: 500;
+		font-size: var(--font-size-s);
+	}
 
-  &-notification {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
+	&-notification {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }
