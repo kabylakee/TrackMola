@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LeftPanelComponent } from './left-panel.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
-
-
 @NgModule({
   declarations: [
     LeftPanelComponent

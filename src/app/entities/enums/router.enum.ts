@@ -1,8 +1,9 @@
 export enum RouterPaths {
   Dashboard = 'dashboard',
-  Reports = 'reports',
-  Statistic = 'statistic',
-  Vacation = 'vacation',
   Projects = 'projects',
+  Reports = 'reports',
+  Vacation = 'vacation',
+  Statistic = 'statistic',
   Finance = 'finance',
+  Settings = 'settings',
 }

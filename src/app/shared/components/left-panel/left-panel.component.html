@@ -1,5 +1,17 @@
-<nav>
-  <ul *ngFor="let path of paths | keyvalue">
-    <li><a routerLink="/{{path.value}}">{{path.value}}</a></li>
-  </ul>  
-</nav>
+<div class="wrapper" [ngClass]=" {smallView:isPanelSmall}">
+  <div class="top">
+    <div class="logo"></div>
+    <nav>
+      <ul>
+        <li class="{{path.value}}" *ngFor="let path of paths | keyvalue: originalOrderComparator" routerLinkActive="active">
+          <a routerLink="/{{path.value}}">{{path.value | titlecase}}</a>
+        </li>
+      </ul>  
+    </nav>
+  </div>
+  <div class="bot logout">
+    <div class="icon"></div>
+    <a href="">Logout</a>
+  </div>
+  <button class="switch" (click)="switchMenuView()"></button>
+</div>

@@ -11,5 +11,14 @@ import { RouterPaths } from 'src/app/entities/enums/router.enum';
 export class LeftPanelComponent {
 
   public paths = RouterPaths;
+  public isPanelSmall = true;
+
+  public originalOrderComparator = (a: any, b: any): number => {
+    return 0;
+  }
+
+  public switchMenuView() {
+    this.isPanelSmall = !this.isPanelSmall;
+  }
 
 }
