@@ -1,13 +1,14 @@
 @import './theme';
-@import './vars/offsets.scss';
-@import './vars/fonts.scss';
+@import 'mixins/offsets-mixin';
+@import 'mixins/fonts-mixin';
+@import 'mixins/colors-mixin';
 
 :root {
   @include variable(offset, $offset);
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
 
-  @include var-fonts($font-size);
+  @include var-fonts(font-size, $font-size);
   @include var-colors($base-colors);
 }
 
@@ -15,4 +16,13 @@
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+html, 
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
 }

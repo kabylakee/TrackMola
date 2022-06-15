@@ -1,10 +1,4 @@
 @use "sass:map";
-// Color vars
-@mixin var-colors($colors) {
-  @each $name, $color in $colors {
-    --#{$name}: #{$color};
-  }
-}
 
 $base-colors: (
   black: #261C45,

@@ -1,3 +1,5 @@
+@import 'mixins/colors-mixin';
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -8,11 +10,15 @@
   align-items: flex-start;
   display: flex;
   justify-content: flex-start;
+  font-size: var(--font-size-l);
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .user {
-  background-color: rgba(201, 203, 214, 0.1);;
+  background: rgba-color(light-gray, 0.1);
   border-radius: var(--border-radius-xs);
+  color: var(--light-black);
   display: flex;
   height: calc(var(--offset) * 3);
   padding: var(--offset-xs) var(--offset-s);
@@ -31,6 +37,8 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    font-size: var(--font-size-s);
+    font-weight: 500;
     padding: 0 var(--offset-s);
   }
 
