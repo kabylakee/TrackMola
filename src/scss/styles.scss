@@ -6,4 +6,12 @@
   @include variable(offset, $offset);
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
+
+  @include var-colors($base-colors);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
