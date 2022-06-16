@@ -7,6 +7,6 @@
   @include variable(border-radius, $border-radius);
   @include variable(transition, $transition);
 
-  @include var-fonts($font-size);
+  @include var-fonts(font-size, $font-size);
   @include var-colors($base-colors);
 }
