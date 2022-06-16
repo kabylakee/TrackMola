@@ -4,8 +4,9 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HeaderModule} from './shared/components/header/header.module';
+import { DayTableComponent } from './shared/components/day-table/day-table.component';
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, DayTableComponent],
 	imports: [BrowserModule, AppRoutingModule, HeaderModule],
 	providers: [],
 	bootstrap: [AppComponent],
