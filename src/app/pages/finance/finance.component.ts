@@ -6,6 +6,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	styleUrls: ['./finance.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FinanceComponent {
-	constructor() {}
-}
+export class FinanceComponent {}

@@ -1,3 +1,5 @@
+@import 'vars/fonts';
+
 @mixin var-fonts($property, $value) {
   --#{$property}-xxs: calc(#{$value} * 0.625);
   --#{$property}-xs: calc(#{$value} * 0.75);
@@ -6,6 +8,3 @@
   --#{$property}-m: calc(#{$value} * 1.25);
   --#{$property}-l: calc(#{$value} * 1.75);
 }
-
-$font-size: 1rem;
-

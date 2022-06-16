@@ -38,6 +38,11 @@
             "styles": [
               "src/scss/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/scss"
+              ]
+           },
             "scripts": []
           },
           "configurations": {
