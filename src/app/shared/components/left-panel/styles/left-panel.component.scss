@@ -33,6 +33,7 @@
         align-items: center;
         padding: var(--offset-xs) var(--offset-s);
         cursor: pointer;
+        border-radius: var(--offset-xs);
         &-icon {
           width: 1.75rem;
           height: 1.75rem;
