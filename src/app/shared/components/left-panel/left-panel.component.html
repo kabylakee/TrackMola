@@ -1,10 +1,14 @@
 <div class="wrapper" [ngClass]=" {smallView:isPanelSmall}">
   <div class="logo"></div>
   <nav>
-    <ul>
-      <li class="{{path.value}}" *ngFor="let path of paths | keyvalue: originalOrderComparator" routerLinkActive="active">
-        <div class="icon"></div>
-        <a routerLink="/{{path.value}}">{{path.value | titlecase}}</a>
+    <ul class="menu">
+      <li 
+        class="menu-item"
+        *ngFor="let path of paths | keyvalue: originalOrderComparator"
+        routerLinkActive="active"
+        routerLink="/{{path.value}}">
+        <div class="menu-item-icon {{path.value}}"></div>
+        <span class="menu-item-title">{{path.value | titlecase}}</span>
       </li>
     </ul>  
   </nav>

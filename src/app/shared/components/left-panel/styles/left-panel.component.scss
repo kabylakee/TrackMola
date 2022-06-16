@@ -1,0 +1,66 @@
+@import 'mixins/colors-mixin';
+
+:host {
+  *{
+    box-sizing: border-box;
+  }
+
+  .active {
+    background-color: rgba-color(--accent-100, 0.5); 
+  }
+
+  .wrapper {
+    padding: calc(var(--offset) * 3.5) calc(var(--offset) * 3) calc(var(--offset) * 5) var(--offset-l); 
+    width: 15.5rem;
+    height: 100vh;
+    background-color: var(--accent-50);
+    position: relative;
+    transition: var(--transition-xxxs);
+    .logo {
+      width: 10.5rem;
+      height: 1.5rem;
+      background: url('../../../../../assets/image/Logo.svg') no-repeat;
+      margin-bottom: var(--offset-l);
+    }
+    .menu {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--offset);
+      &-item {
+        display: flex;
+        align-items: center;
+        padding: var(--offset-xs) var(--offset-s);
+        cursor: pointer;
+        &-icon {
+          width: 1.75rem;
+          height: 1.75rem;
+          margin-right: var(--offset-s);
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+        &-title {
+          font-size: var(--font-size);
+          font-weight: 500;
+          text-decoration: none;
+          color: var(--light-black);
+          &:visited {
+            color: var(--light-black);
+          }
+        }
+      }
+    }
+    .switch {
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: url('../../../../../assets/image/Navigation arrow.svg') no-repeat;
+      position: absolute;
+      top: calc(var(--offset-xs) * 10);
+      right: calc(0px - var(--offset));
+    }
+  } 
+}

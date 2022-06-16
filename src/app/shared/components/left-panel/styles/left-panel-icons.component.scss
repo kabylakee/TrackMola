@@ -1,0 +1,46 @@
+:host {
+  .active { 
+    .dashboard {
+      background-image: url('../../../../../assets/image/Dashboard active.svg');
+    }
+    .projects {
+      background-image: url('../../../../../assets/image/Projects active.svg');
+    }
+    .reports {
+      background-image: url('../../../../../assets/image/Reports active.svg');
+    }
+    .vacation {
+      background-image: url('../../../../../assets/image/Vacation active.svg');
+    }
+    .statistic {
+      background-image: url('../../../../../assets/image/Statistic active.svg');
+    }
+    .finance {
+      background-image: url('../../../../../assets/image/Finance active.svg');
+    }
+    .settings {
+      background-image: url('../../../../../assets/image/Settings active.svg');
+    }
+  }
+  .dashboard {
+    background-image: url('../../../../../assets/image/Dashboard.svg');
+  }
+  .projects {
+    background-image: url('../../../../../assets/image/Projects.svg');
+  }
+  .reports {
+    background-image: url('../../../../../assets/image/Reports.svg');
+  }
+  .vacation {
+    background-image: url('../../../../../assets/image/Vacation.svg');
+  }
+  .statistic {
+    background-image: url('../../../../../assets/image/Statistic.svg');
+  }
+  .finance {
+    background-image: url('../../../../../assets/image/Finance.svg');
+  }
+  .settings {
+    background-image: url('../../../../../assets/image/Settings.svg');
+  }
+}
