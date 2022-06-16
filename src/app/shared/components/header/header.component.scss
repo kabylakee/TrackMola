@@ -2,6 +2,9 @@
 @import 'mixins/common-mixin';
 
 :host {
+	$user-area: 3rem;
+	$user-img: 2rem;
+
 	.container {
 		display: flex;
 		justify-content: space-between;
@@ -9,18 +12,18 @@
 	}
 
 	.title {
-		color: var(--light-black);
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
+		color: var(--light-black);
 		font-weight: 500;
 		font-size: var(--font-size-l);
 	}
 
 	.user {
-		align-items: center;
 		display: flex;
-		height: calc(var(--offset) * 3);
+		align-items: center;
+		height: $user-area;
 		padding: var(--offset-xs);
 		color: var(--light-black);
 		background: rgba-color(light-gray, 0.1);
@@ -29,11 +32,11 @@
 		&-img {
 			@include flex-center;
 
-			width: 2rem;
-			height: 2rem;
+			width: $user-img;
+			height: $user-img;
+			margin: 0 var(--offset-s) 0 var(--offset-xxxs);
 			background: var(--black);
 			border-radius: var(--border-radius-xs);
-			margin: 0 var(--offset-s) 0 var(--offset-xxxs);
 		}
 
 		&-name {
