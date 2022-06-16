@@ -1,0 +1,50 @@
+@import 'mixins/colors-mixin';
+@import 'mixins/common-mixin';
+
+:host {
+	.container {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.title {
+		color: var(--light-black);
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		font-weight: 500;
+		font-size: var(--font-size-l);
+	}
+
+	.user {
+		align-items: center;
+		display: flex;
+		height: calc(var(--offset) * 3);
+		padding: var(--offset-xs);
+		color: var(--light-black);
+		background: rgba-color(light-gray, 0.1);
+		border-radius: var(--border-radius-xs);
+
+		&-img {
+			@include flex-center;
+
+			width: 2rem;
+			height: 2rem;
+			background: var(--black);
+			border-radius: var(--border-radius-xs);
+			margin: 0 var(--offset-s) 0 var(--offset-xxxs);
+		}
+
+		&-name {
+			@include flex-center;
+
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		&-logout {
+			margin: var(--offset-xxxs);
+		}
+	}
+}
