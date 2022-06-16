@@ -1,3 +1,5 @@
+@import 'vars/offsets';
+
 @mixin variable($property, $value) {
   --#{$property}-xxxs: calc(#{$value} * 0.125);
   --#{$property}-xxs: calc(#{$value} * 0.25);
@@ -8,8 +10,3 @@
   --#{$property}-l: calc(#{$value} * 2);
   --#{$property}-xl: calc(#{$value} * 4);
 }
-
-// Variables
-$offset: 1rem;
-$border-radius: 1rem;
-$transition: 1s;

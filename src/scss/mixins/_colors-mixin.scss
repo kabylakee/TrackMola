@@ -1,0 +1,11 @@
+@import 'vars/colors';
+
+@mixin var-colors($colors) {
+  @each $name, $color in $colors {
+    --#{"" + $name}: #{$color};
+  }
+}
+
+@function rgba-color($color: black, $opacity: 1) {
+  @return rgba(map-get($base-colors, $color), $opacity);
+}

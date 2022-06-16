@@ -6,6 +6,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	styleUrls: ['./statistic.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatisticComponent {
-	constructor() {}
-}
+export class StatisticComponent {}
