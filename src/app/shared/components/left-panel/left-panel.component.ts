@@ -6,7 +6,7 @@ import {RouterPaths} from 'src/app/entities/enums/router.enum';
 @Component({
 	selector: 'app-left-panel',
 	templateUrl: './left-panel.component.html',
-	styleUrls: ['./styles/left-panel.component.scss'],
+	styleUrls: ['./left-panel.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftPanelComponent {

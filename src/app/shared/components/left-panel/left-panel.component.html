@@ -6,7 +6,7 @@
         class="menu-item"
         *ngFor="let path of paths | keyvalue: originalOrderComparator; let i = index"
         routerLinkActive="active"
-        routerLink="/{{path.value}}">
+        [routerLink]="'/' + path.value">
         <a class="menu-item-icon"><mat-icon class="material-icons-outlined">{{icons[i]}}</mat-icon></a>
         <span class="menu-item-title">{{path.value | titlecase}}</span>
       </li>
