@@ -21,7 +21,7 @@
 		.logo {
 			width: 10.5rem;
 			height: 1.5rem;
-			background: url('../../../../../assets/image/Logo.svg') no-repeat;
+			background: url('/assets/image/Logo.svg') no-repeat;
 			margin-bottom: var(--offset-l);
 		}
 
@@ -43,8 +43,12 @@
 					width: 1.75rem;
 					height: 1.75rem;
 					margin-right: var(--offset-s);
-					background-repeat: no-repeat;
-					background-position: center;
+          color: var(--accent-200);
+          mat-icon {
+            width: 100%;
+            height: 100%;
+            padding: var(--offset-xxxs);
+          }
 				}
 
 				&-title {
@@ -61,15 +65,37 @@
 		}
 
 		.switch {
-			width: 2rem;
-			height: 2rem;
-			border: none;
-			outline: none;
-			cursor: pointer;
-			background: url('../../../../../assets/image/Navigation arrow.svg') no-repeat;
 			position: absolute;
 			top: calc(var(--offset-xs) * 10);
 			right: calc(0px - var(--offset));
+      background-color: var(--accent-200);
+      color: var(--accent-50);
+		}
+	}
+
+  .smallView {
+		width: 7.75rem;
+		padding: calc(var(--offset) * 3.5) var(--offset-l) calc(var(--offset) * 5) var(--offset-l);
+
+		.logo {
+			width: 2.125rem;
+			height: 2rem;
+			background: url('/assets/image/Logo small.svg') no-repeat;
+			margin: 0 auto var(--offset-l) auto;
+		}
+
+		.menu {
+			&-item {
+				padding: var(--offset-xs) var(--offset);
+
+				&-icon {
+					margin: 0;
+				}
+
+				&-title {
+					display: none;
+				}
+			}
 		}
 	}
 }
