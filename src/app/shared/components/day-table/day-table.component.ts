@@ -1,16 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-day-table',
-  templateUrl: './day-table.component.html',
-  styleUrls: ['./day-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-day-table',
+	templateUrl: './day-table.component.html',
+	styleUrls: ['./day-table.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DayTableComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }
