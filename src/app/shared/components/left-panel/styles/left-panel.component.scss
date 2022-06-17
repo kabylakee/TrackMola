@@ -43,12 +43,13 @@
 					width: 1.75rem;
 					height: 1.75rem;
 					margin-right: var(--offset-s);
-          color: var(--accent-200);
-          mat-icon {
-            width: 100%;
-            height: 100%;
-            padding: var(--offset-xxxs);
-          }
+					color: var(--accent-200);
+
+					mat-icon {
+						width: 100%;
+						height: 100%;
+						padding: var(--offset-xxxs);
+					}
 				}
 
 				&-title {
@@ -68,12 +69,12 @@
 			position: absolute;
 			top: calc(var(--offset-xs) * 10);
 			right: calc(0px - var(--offset));
-      background-color: var(--accent-200);
-      color: var(--accent-50);
+			background-color: var(--accent-200);
+			color: var(--accent-50);
 		}
 	}
 
-  .smallView {
+	.smallView {
 		width: 7.75rem;
 		padding: calc(var(--offset) * 3.5) var(--offset-l) calc(var(--offset) * 5) var(--offset-l);
 
