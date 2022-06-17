@@ -7,13 +7,13 @@
         *ngFor="let path of paths | keyvalue: originalOrderComparator; let i = index"
         routerLinkActive="active"
         [routerLink]="'/' + path.value">
-        <a class="menu-item-icon"><mat-icon class="material-icons-outlined">{{icons[i]}}</mat-icon></a>
+        <a class="menu-item-icon"><mat-icon class="material-icons-outlined mat-icon">{{icons[i]}}</mat-icon></a>
         <span class="menu-item-title">{{path.value | titlecase}}</span>
       </li>
     </ul>  
   </nav>
   <button mat-mini-fab class="switch" (click)="switchMenuView()">
-    <mat-icon *ngIf="!isPanelSmall">keyboard_arrow_left</mat-icon>
-    <mat-icon *ngIf="isPanelSmall">keyboard_arrow_right</mat-icon>
+    <mat-icon class="mat-icon" *ngIf="!isPanelSmall; else rightArrow">keyboard_arrow_left</mat-icon>
+    <ng-template #rightArrow><mat-icon class="mat-icon">keyboard_arrow_right</mat-icon></ng-template>
   </button>
 </div>
