@@ -1,10 +1,10 @@
 @import 'mixins/colors-mixin';
 
-$full-width: 15.5rem;
-$small-width: 8rem;
-$menu-icon-size: 1.75rem;
-
 :host {
+	$full-width: 15.5rem;
+	$small-width: 8rem;
+	$menu-icon-size: 1.75rem;
+
 	.active {
 		background-color: rgba-color(accent-100, 0.5);
 	}
