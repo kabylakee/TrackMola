@@ -6,9 +6,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
 import {AppComponent} from './app.component';
+import {LeftPanelModule} from './shared/components/left-panel/left-panel.module';
+
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, HeaderModule, MatIconModule, MatButtonModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HeaderModule,
+		MatIconModule,
+		MatButtonModule,
+		LeftPanelModule,
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
