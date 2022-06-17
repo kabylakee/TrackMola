@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {KeyValue} from '@angular/common';
 
-import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {NavigationIcons} from 'src/app/entities/enums/nav-icon.enum';
+import {NAVIGATION_LINKS} from 'src/app/entities/constants/router.constants';
 
 @Component({
 	selector: 'app-left-panel',
@@ -13,36 +12,7 @@ import {NavigationIcons} from 'src/app/entities/enums/nav-icon.enum';
 export class LeftPanelComponent {
 	public isPanelSmall = true;
 
-	public readonly navigationLinks = [
-		{
-			path: RouterPaths.Dashboard,
-			icon: NavigationIcons.Dashboard,
-		},
-		{
-			path: RouterPaths.Projects,
-			icon: NavigationIcons.Projects,
-		},
-		{
-			path: RouterPaths.Reports,
-			icon: NavigationIcons.Reports,
-		},
-		{
-			path: RouterPaths.Vacation,
-			icon: NavigationIcons.Vacation,
-		},
-		{
-			path: RouterPaths.Statistic,
-			icon: NavigationIcons.Statistic,
-		},
-		{
-			path: RouterPaths.Finance,
-			icon: NavigationIcons.Finance,
-		},
-		{
-			path: RouterPaths.Settings,
-			icon: NavigationIcons.Settings,
-		},
-	];
+	public readonly navigationLinks = NAVIGATION_LINKS;
 
 	public originalOrderComparator = (
 		a: KeyValue<string, string>,
