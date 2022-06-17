@@ -2,8 +2,8 @@
 @import 'mixins/common-mixin';
 
 :host {
-	$user-area: 3rem;
-	$user-img: 2rem;
+	$user-area-height: 3rem;
+	$user-img-size: 2rem;
 
 	.container {
 		display: flex;
@@ -23,7 +23,7 @@
 	.user {
 		display: flex;
 		align-items: center;
-		height: $user-area;
+		height: $user-area-height;
 		padding: var(--offset-xs);
 		color: var(--light-black);
 		background: rgba-color(light-gray, 0.1);
@@ -32,8 +32,8 @@
 		&-img {
 			@include flex-center;
 
-			width: $user-img;
-			height: $user-img;
+			width: $user-img-size;
+			height: $user-img-size;
 			margin: 0 var(--offset-s) 0 var(--offset-xxxs);
 			background: var(--black);
 			border-radius: var(--border-radius-xs);
