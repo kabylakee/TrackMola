@@ -25,7 +25,7 @@ export class LeftPanelComponent {
 		return 0;
 	};
 
-	public switchMenuView() {
+	public switchMenuView(): void {
 		this.isPanelSmall = !this.isPanelSmall;
 	}
 }
