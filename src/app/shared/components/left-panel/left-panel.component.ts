@@ -10,11 +10,11 @@ import {RouterPaths} from 'src/app/entities/enums/router.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftPanelComponent {
-	public paths = RouterPaths;
+	public readonly paths = RouterPaths;
 
 	public isPanelSmall = true;
 
-	public icons = [
+	public readonly icons = [
 		'dashboard',
 		'view_timeline',
 		'schedule',

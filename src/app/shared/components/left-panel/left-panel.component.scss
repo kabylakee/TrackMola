@@ -1,47 +1,47 @@
 @import 'mixins/colors-mixin';
 
-:host {
-	* {
-		box-sizing: border-box;
-	}
+$full-width: 15.5rem;
+$small-width: 8rem;
+$menu-icon-size: 1.75rem;
 
+:host {
 	.active {
 		background-color: rgba-color(accent-100, 0.5);
 	}
 
 	.wrapper {
+		position: relative;
+		width: $full-width;
+		height: 100vh;
 		padding: calc(var(--offset) * 3.5) calc(var(--offset) * 3) calc(var(--offset) * 5)
 			var(--offset-l);
-		width: 15.5rem;
-		height: 100vh;
 		background-color: var(--accent-50);
-		position: relative;
 		transition: var(--transition-xxxs);
 
 		.logo {
-			width: 10.5rem;
+			width: $full-width * 0.7;
 			height: 1.5rem;
-			background: url('/assets/image/Logo.svg') no-repeat;
 			margin-bottom: var(--offset-l);
+			background: url('/assets/image/Logo.svg') no-repeat;
 		}
 
 		.menu {
-			list-style-type: none;
-			padding: 0;
 			display: flex;
 			flex-direction: column;
 			gap: var(--offset);
+			padding: 0;
+			list-style-type: none;
 
 			&-item {
 				display: flex;
 				align-items: center;
 				padding: var(--offset-xs) var(--offset-s);
-				cursor: pointer;
 				border-radius: var(--offset-xs);
+				cursor: pointer;
 
 				&-icon {
-					width: 1.75rem;
-					height: 1.75rem;
+					width: $menu-icon-size;
+					height: $menu-icon-size;
 					margin-right: var(--offset-s);
 					color: var(--accent-200);
 
@@ -53,10 +53,10 @@
 				}
 
 				&-title {
-					font-size: var(--font-size);
-					font-weight: 500;
-					text-decoration: none;
 					color: var(--light-black);
+					font-weight: 500;
+					font-size: var(--font-size);
+					text-decoration: none;
 
 					&:visited {
 						color: var(--light-black);
@@ -68,21 +68,21 @@
 		.switch {
 			position: absolute;
 			top: calc(var(--offset-xs) * 10);
-			right: calc(0px - var(--offset));
-			background-color: var(--accent-200);
+			right: calc(-1 * var(--offset));
 			color: var(--accent-50);
+			background-color: var(--accent-200);
 		}
 	}
 
-	.smallView {
-		width: 7.75rem;
+	.small {
+		width: $small-width;
 		padding: calc(var(--offset) * 3.5) var(--offset-l) calc(var(--offset) * 5) var(--offset-l);
 
 		.logo {
-			width: 2.125rem;
-			height: 2rem;
-			background: url('/assets/image/Logo small.svg') no-repeat;
+			width: $small-width * 0.3;
+			height: $small-width * 0.3;
 			margin: 0 auto var(--offset-l) auto;
+			background: url('/assets/image/Logo small.svg') no-repeat center;
 		}
 
 		.menu {
@@ -91,6 +91,10 @@
 
 				&-icon {
 					margin: 0;
+
+					mat-icon {
+						padding: var(--offset-xxs);
+					}
 				}
 
 				&-title {
