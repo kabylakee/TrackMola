@@ -1,4 +1,4 @@
 export enum Status {
-	Done = 'dashboard',
+	Done = 'Done',
 	InProgress = 'In progress',
 }

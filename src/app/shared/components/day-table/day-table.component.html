@@ -1,1 +1,70 @@
-<p>day-table works!</p>
+<table mat-table [dataSource]="tasks">
+  <ng-container matColumnDef="checkbox">
+    <th class="checkbox" mat-header-cell *matHeaderCellDef> 
+      <mat-checkbox class="mat-checkbox" [checked]="allChecked" color="primary" (change)="setAll($event.checked)"></mat-checkbox>
+    </th>
+    <td class="checkbox" mat-cell *matCellDef="let element">
+      <mat-checkbox [(ngModel)]="element.checked" color="primary" (ngModelChange)="updateAllChecked()"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th class="title" mat-header-cell *matHeaderCellDef> Title </th>
+    <td class="title" mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="project">
+    <th mat-header-cell *matHeaderCellDef> Project </th>
+    <td mat-cell *matCellDef="let element">
+      <span class="project-text"> {{element.project}} </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element">
+      <span class="status-text"> {{element.status}} </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <th class="center" mat-header-cell *matHeaderCellDef> Time </th>
+    <td class="center" mat-cell *matCellDef="let element"> {{element.time ? element.time : ""}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="overtime">
+    <th class="center" mat-header-cell *matHeaderCellDef> Overtime </th>
+    <td class="center" mat-cell *matCellDef="let element"> {{element.overtime ? element.overtime : ""}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="paid">
+    <th class="center" mat-header-cell *matHeaderCellDef> Paid </th>
+    <td class="center" mat-cell *matCellDef="let element">
+      <mat-checkbox [(ngModel)]="element.paid" color="primary"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="asanaLink">
+    <th class="center" mat-header-cell *matHeaderCellDef> Asana Link </th>
+    <td class="center" mat-cell *matCellDef="let element">
+      <button class="add-link" mat-icon-button aria-label="Add Link" *ngIf="!element.asanaLink">
+        <mat-icon aria-hidden="false">add_link</mat-icon> 
+      </button>
+      <a mat-icon-button aria-label="Link" *ngIf="element.asanaLink" [href]="element.asanaLink" target="_blank">
+        <mat-icon aria-hidden="false" color="primary">link</mat-icon> 
+      </a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="options">
+    <th class="center" mat-header-cell *matHeaderCellDef> Options </th>
+    <td class="center" mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="Options" class="user-logout">
+        <mat-icon aria-hidden="false">more_horiz</mat-icon> 
+      </button>
+    </td>
+  </ng-container>
+
+  <tr class="mat-header-row" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
