@@ -7,4 +7,5 @@ import {ReportsRoutingModule} from './reports-routing.module';
 	declarations: [ReportsComponent],
 	imports: [CommonModule, ReportsRoutingModule],
 })
-export class ReportsModule {}sadfw
+export class ReportsModule {}
+sas
