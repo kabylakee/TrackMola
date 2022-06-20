@@ -9,18 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "fix": "npx eslint . --fix --color",
-    "stylelint": "stylelint **/*{.css,.scss}",
-    "stylelint:fix": "stylelint **/*{.css,.scss} --fix --color"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --relative"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "npx eslint --fix"
-   ]
+    "stylelint": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint **/*.scss --fix --color",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -60,7 +51,7 @@
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-recommended-scss": "^6.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-prettier": "^2.0.0",
     "stylelint-scss": "^4.2.0",
