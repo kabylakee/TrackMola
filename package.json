@@ -18,13 +18,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "*{.js,.ts}": [
        "npm run fix",
        "git add"
-    ],
-    "*.(css|scss)": [
-      "npm run stylelint:fix",
-      "git add"
     ]
   },
   "private": true,
