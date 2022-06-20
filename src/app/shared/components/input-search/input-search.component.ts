@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
 	selector: 'app-input-search',
@@ -6,8 +6,6 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 	styleUrls: ['./input-search.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputSearchComponent implements OnInit {
-	constructor() {}
-
-	ngOnInit(): void {}
+export class InputSearchComponent {
+	public value = '';
 }
