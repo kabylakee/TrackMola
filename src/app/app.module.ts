@@ -4,6 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {HeaderModule} from './shared/components/header/header.module';
+// import {TableFilterComponent} from './shared/components/table-filter/table-filter.component';
 @NgModule({
 	declarations: [AppComponent],
 	imports: [BrowserModule, AppRoutingModule, HeaderModule],

@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+
+enum List {
+	day = 'day',
+	week = 'week',
+	month = 'month',
+}
 
 @Component({
 	selector: 'app-toggle-button',
@@ -6,8 +12,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 	styleUrls: ['./toggle-button.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleButtonComponent implements OnInit {
-	constructor() {}
+export class ToggleButtonComponent {
+	keys = Object.keys;
 
-	ngOnInit(): void {}
+	list = List;
 }
