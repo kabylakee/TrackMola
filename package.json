@@ -8,9 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "fix": "npx eslint . --fix --color",
+    "fix": "npx eslint . --fix",
     "stylelint": "stylelint **/*{.css,.scss}",
-    "stylelint:fix": "stylelint **/*{.css,.scss} --fix --color"
+    "stylelint:fix": "stylelint **/*{.css,.scss} --fix"
   },
   "husky": {
     "hooks": {
