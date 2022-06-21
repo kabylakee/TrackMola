@@ -1,8 +1,8 @@
 <mat-button-toggle-group color="primary" name="reportsType" aria-label="Reports Type">
   <mat-button-toggle
-    *ngFor="let element of toggle"
-    (click)="Click.emit(element.mode)"
-    value="{{element.title}}">
+    *ngFor="let element of config"
+    (change)="changeSelectedValue.emit(element.mode)"
+    [value]="element.title">
     {{element.title}}
   </mat-button-toggle>
 </mat-button-toggle-group>

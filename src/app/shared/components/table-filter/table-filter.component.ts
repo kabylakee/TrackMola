@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TOGGLE} from 'src/app/entities/constants/period.constants';
 
 @Component({
 	selector: 'app-table-filter',
@@ -6,4 +7,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	styleUrls: ['./table-filter.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableFilterComponent {}
+export class TableFilterComponent {
+  public readonly toggleConfig = TOGGLE;
+}

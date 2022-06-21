@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, Input, Output} from '@angular/core';
-import {TOGGLE} from 'src/app/entities/constants/period.constants';
 import {ViewPeriod} from 'src/app/entities/interfaces/view-period';
 import {EventEmitter} from '@angular/core';
 
@@ -9,11 +8,8 @@ import {EventEmitter} from '@angular/core';
 	styleUrls: ['./toggle-button.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToggleButtonComponent {
+export class ToggleButtonComponent<T> {
+	@Input() config: ViewPeriod<T>[] = [];
 
-  toggle = TOGGLE;
-
-	// @Input() readonly myConf: ViewPeriod;
-
-	@Output() Click = new EventEmitter();
+	@Output() changeSelectedValue = new EventEmitter<T>();
 }

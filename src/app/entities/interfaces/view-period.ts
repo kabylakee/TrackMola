@@ -1,4 +1,4 @@
-export interface ViewPeriod {
+export interface ViewPeriod<T> {
 	title: string;
-	mode: 'ViewMode';
+	mode: T;
 }
