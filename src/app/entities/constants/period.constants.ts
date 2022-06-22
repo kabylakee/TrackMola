@@ -1,7 +1,7 @@
-import {ViewPeriod} from '../interfaces/view-period';
+import {IViewPeriod} from '../interfaces/view-period.interface';
 import {Period} from '../enums/period.enum';
 
-export const TOGGLE: ViewPeriod<Period>[] = [
+export const TOGGLE: IViewPeriod<Period>[] = [
 	{
 		title: 'Day',
 		mode: Period.Day,

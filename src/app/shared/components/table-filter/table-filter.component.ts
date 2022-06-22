@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TOGGLE} from 'src/app/entities/constants/period.constants';
+import {Period} from 'src/app/entities/enums/period.enum';
+import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 
 @Component({
 	selector: 'app-table-filter',
@@ -8,9 +10,5 @@ import {TOGGLE} from 'src/app/entities/constants/period.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterComponent {
-	public readonly toggleConfig = TOGGLE;
-
-	public testFunc(x: number): void {
-		console.log(x);
-	}
+	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 }

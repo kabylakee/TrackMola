@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, Output, EventEmitter} from '@angular/core';
-import {ViewPeriod} from 'src/app/entities/interfaces/view-period';
+import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 
 @Component({
 	selector: 'app-toggle-button',
@@ -8,7 +8,7 @@ import {ViewPeriod} from 'src/app/entities/interfaces/view-period';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleButtonComponent<T> {
-	@Input() config: ViewPeriod<T>[] = [];
+	@Input() config: IViewPeriod<T>[] = [];
 
 	@Output() changeSelectedValue = new EventEmitter<T>();
 }
