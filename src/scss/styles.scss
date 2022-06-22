@@ -2,7 +2,7 @@
 @import 'mixins/offsets-mixin';
 @import 'mixins/fonts-mixin';
 @import 'mixins/colors-mixin';
-@import 'material';
+@import 'material/mat-button.scss';
 
 :root {
 	@include variable(offset, $offset);
