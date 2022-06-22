@@ -8,5 +8,9 @@ import {TOGGLE} from 'src/app/entities/constants/period.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterComponent {
-  public readonly toggleConfig = TOGGLE;
+	public readonly toggleConfig = TOGGLE;
+
+	public testFunc(x: number): void {
+		console.log(x);
+	}
 }

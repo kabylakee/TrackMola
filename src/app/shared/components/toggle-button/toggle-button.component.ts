@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, Output, EventEmitter} from '@angular/core';
 import {ViewPeriod} from 'src/app/entities/interfaces/view-period';
-import {EventEmitter} from '@angular/core';
 
 @Component({
 	selector: 'app-toggle-button',
