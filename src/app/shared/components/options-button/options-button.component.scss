@@ -1,23 +1,21 @@
 :host {
+  $icon-size: 1.25rem;
+
   margin-left: 100px; //temp
-  .mat-button {
-    line-height: 0;
-  }
   .menu-button {
-    width: 102px;
-    height: 36px;
-    padding: 8px 12px;
-    border-radius: 8px;
+    line-height: 0;
+    padding: var(--offset-xs) var(--offset-s);
+    border-radius: var(--offset-xs);
     border: 1px solid var(--accent-300);  
     &-icon {
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-      margin-right: 12px;
+      width: $icon-size;
+      height: $icon-size;
+      font-size: var(--font-size-m);
+      margin-right: var(--offset-s);
       color: var(--accent-300);
     }
     &-text {
-      font-size: 12px;
+      font-size: var(--font-size-xs);
       font-weight: 600;
       color: var(--accent-300);
     }
@@ -31,19 +29,20 @@
   }
 }
 ::ng-deep {
+  $menu-item-width: 7.5rem;
   .mat-menu-content:not(:empty) {
     padding: 0 !important;
   }
 
   .cdk-overlay-pane {
     position: absolute !important;
-    top: 6px;
-    left: -9px;
+    top: var(--offset-xxs);
+    left: calc(-1 * var(--offset-xs));
   }
 
   .mat-menu-item {
-    padding: 0 12px !important;
-    width: 120px !important;
+    padding: 0 var(--offset-s) !important;
+    width: $menu-item-width !important;
     &:hover {
       background-color: var(--accent-50);
       & .menu-item-icon {
