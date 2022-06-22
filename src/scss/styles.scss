@@ -2,6 +2,7 @@
 @import 'mixins/offsets-mixin';
 @import 'mixins/fonts-mixin';
 @import 'mixins/colors-mixin';
+@import 'material';
 
 :root {
 	@include variable(offset, $offset);
