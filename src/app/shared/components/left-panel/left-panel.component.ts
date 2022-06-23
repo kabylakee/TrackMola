@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
-import { NAVIGATION_LINKS } from 'src/app/entities/constants/router.constants';
+import {NAVIGATION_LINKS} from 'src/app/entities/constants/router.constants';
 
 @Component({
 	selector: 'app-left-panel',

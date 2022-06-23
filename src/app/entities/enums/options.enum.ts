@@ -1,11 +1,17 @@
 export enum OptionsTitle {
-  Copy = 'Copy to',
-  Remove = 'Remove',
-  Move = 'Move to'
+	Copy = 'Copy to',
+	Remove = 'Remove',
+	Move = 'Move to',
 }
 
 export enum OptionsIcon {
-  Copy = 'content_copy',
-  Remove = 'delete',
-  Move = 'autorenew'
+	Copy = 'content_copy',
+	Remove = 'delete',
+	Move = 'autorenew',
+}
+
+export enum OptionEvent {
+	Copy = 'copyTo',
+	Remove = 'remove',
+	Move = 'moveTo',
 }

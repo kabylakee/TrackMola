@@ -1,17 +1,46 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { OPTIONS_CONFIG } from 'src/app/entities/constants/options.constants';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 
 @Component({
-  selector: 'app-options-button',
-  templateUrl: './options-button.component.html',
-  styleUrls: ['./options-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-options-button',
+	templateUrl: './options-button.component.html',
+	styleUrls: ['./options-button.component.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionsButtonComponent {
-  public readonly options = OPTIONS_CONFIG;
-  public focused = false;
+	public readonly options = OPTIONS_CONFIG;
 
-  public switchFocus() {
-    this.focused = !this.focused;
-  }
+	public isMenuOpen = false;
+
+	@Input()
+	selectedElements = []; // add interface in future
+
+	@Output()
+	copyTo = new EventEmitter();
+
+	@Output()
+	remove = new EventEmitter();
+
+	@Output()
+	moveTo = new EventEmitter();
+
+	public switchFocus(): void {
+		this.isMenuOpen = !this.isMenuOpen;
+	}
+
+	public OnButtonClicked(event: string): void {
+		switch (event) {
+			case 'copyTo':
+				this.copyTo.emit();
+				break;
+			case 'remove':
+				this.remove.emit();
+				break;
+			case 'moveTo':
+				this.moveTo.emit();
+				break;
+			default:
+				break;
+		}
+	}
 }
