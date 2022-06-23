@@ -51,12 +51,12 @@ $row-height: 2.5rem;
 	}
 
 	.mat-checkbox {
-		.mat-checkbox-frame {
+		&-frame {
 			border: 1px solid var(--light-gray);
 			border-radius: var(--border-radius-xxs);
 		}
 
-		.mat-checkbox-background {
+		&-background {
 			border-radius: var(--border-radius-xxs);
 		}
 	}

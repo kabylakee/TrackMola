@@ -1,11 +1,12 @@
 import {Status} from '../enums/status.enum';
 import {ITask} from '../interfaces/task.interface';
+import {PROJECT_MOCK} from './project.mock';
 
 export const TASKS_MOCK: ITask[] = [
 	{
 		checked: false,
 		title: 'Task 1',
-		project: 'Project A',
+		project: PROJECT_MOCK[0],
 		status: Status.Done,
 		time: 4,
 		overtime: 0,
@@ -15,7 +16,7 @@ export const TASKS_MOCK: ITask[] = [
 	{
 		checked: false,
 		title: 'Task 2',
-		project: 'Project A',
+		project: PROJECT_MOCK[1],
 		status: Status.InProgress,
 		time: 3,
 		overtime: 0,
@@ -25,7 +26,7 @@ export const TASKS_MOCK: ITask[] = [
 	{
 		checked: false,
 		title: 'Task 3',
-		project: 'Project A',
+		project: PROJECT_MOCK[2],
 		status: Status.Done,
 		time: 1,
 		overtime: 0,

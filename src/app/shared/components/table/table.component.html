@@ -1,0 +1,20 @@
+<table mat-table [dataSource]="dataSource">
+  <ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
+    <th mat-header-cell *matHeaderCellDef>
+      <div [ngSwitch]="column.type" [ngClass]="column.cls">
+        <div *ngSwitchDefault>
+          {{ column.title }}
+        </div>
+      </div>
+    </th>
+
+    <td *matCellDef="let element">
+      <div [ngSwitch]="column.type">
+        <div *ngSwitchDefault> Info </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

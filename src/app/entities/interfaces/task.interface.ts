@@ -1,11 +1,11 @@
 import {Status} from '../enums/status.enum';
-// import {IProject} from './project.interface';
+import {IProject} from './project.interface';
 
 export interface ITask {
-	// date: Date;
+	// TODO: date: Date;
 	checked: boolean;
 	title: string;
-	project: string;
+	project: IProject;
 	status: Status;
 	time: number;
 	overtime: number;
