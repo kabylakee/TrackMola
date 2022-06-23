@@ -1,11 +1,9 @@
 @import 'mixins/common-mixin';
-@import 'vars/offsets.scss';
 
 :host {
 	$button-width: 6.9rem;
 	$button-height: 2.45rem;
 
-	::ng-deep {
 		.mat-button-toggle-appearance-standard {
 			&:not(.mat-button-toggle-disabled) {
 				&:hover {
@@ -29,7 +27,7 @@
 		.mat-button-toggle {
 			&:hover {
 				color: var(--accent-500);
-        transition: var(--transition-xxs);
+				transition: var(--transition-xxs);
 			}
 
 			&-group-appearance-standard {
@@ -93,5 +91,5 @@
 				}
 			}
 		}
-	}
+
 }
