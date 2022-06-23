@@ -1,7 +1,9 @@
-export interface TargetsTableColumn {
+import {ColumnType} from '../enums/column-type.enum';
+
+export interface ITableColumn {
 	id: string;
-	// cls: string;
-	// sortable?: boolean;
+	cls: string;
+	sortable?: boolean;
 	title?: string;
 	// sticky: boolean;
 	// isDefault?: boolean;
@@ -10,9 +12,9 @@ export interface TargetsTableColumn {
 	// checked?: boolean;
 	// rowspan?: number;
 	// iconKey?: TargetsTableColumnAction;
-	// field?: TargetsTableColumnField;
+	field?: string;
 	// tooltipText?: string;
-	// type: TargetsTableColumnType;
+	type: ColumnType;
 	// width?: number;
 	// dropdownMenu?: any[];
 	// filterField?: TargetsTableColumnField;
