@@ -1,12 +1,12 @@
 @import 'vars/offsets';
 
 @mixin variable($property, $value) {
-  --#{$property}-xxxs: calc(#{$value} * 0.125);
-  --#{$property}-xxs: calc(#{$value} * 0.25);
-  --#{$property}-xs: calc(#{$value} * 0.5);
-  --#{$property}-s: calc(#{$value} * 0.75);
-  --#{$property}: #{$value};
-  --#{$property}-m: calc(#{$value} * 1.5);
-  --#{$property}-l: calc(#{$value} * 2);
-  --#{$property}-xl: calc(#{$value} * 4);
+	--#{$property}-xxxs: calc(#{$value} * 0.125);
+	--#{$property}-xxs: calc(#{$value} * 0.25);
+	--#{$property}-xs: calc(#{$value} * 0.5);
+	--#{$property}-s: calc(#{$value} * 0.75);
+	--#{$property}: #{$value};
+	--#{$property}-m: calc(#{$value} * 1.5);
+	--#{$property}-l: calc(#{$value} * 2);
+	--#{$property}-xl: calc(#{$value} * 4);
 }

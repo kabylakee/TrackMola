@@ -1,9 +1,10 @@
 module.exports = {
-  extends: ["stylelint-config-standard",
+  extends: ["stylelint-config-recommended-scss",
             "stylelint-config-rational-order",
             "stylelint-prettier/recommended"],
   plugins: ["stylelint-order", "stylelint-scss"],
   rules: {
-
+    'no-descending-specificity': null,
+    'no-empty-source': null,
   }
 };
