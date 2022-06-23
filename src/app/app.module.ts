@@ -1,13 +1,14 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from './app-routing.module';
-import {HeaderModule} from './shared/components/header/header.module';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderModule } from './shared/components/header/header.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {AppComponent} from './app.component';
-import {LeftPanelModule} from './shared/components/left-panel/left-panel.module';
+import { AppComponent } from './app.component';
+import { LeftPanelModule } from './shared/components/left-panel/left-panel.module';
+import { OptionsButtonModule } from './shared/components/options-button/options-button.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -19,8 +20,9 @@ import {LeftPanelModule} from './shared/components/left-panel/left-panel.module'
 		MatButtonModule,
 		LeftPanelModule,
 		BrowserAnimationsModule,
+		OptionsButtonModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

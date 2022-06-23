@@ -1,4 +1,4 @@
-<button class="menu-button" mat-button [matMenuTriggerFor]="menu" (menuClosed)="switchFocus()"
+<button class="menu-button" mat-flat-button color="secondary" [matMenuTriggerFor]="menu" (menuClosed)="switchFocus()"
   (menuOpened)="switchFocus()" [class.focused]="isMenuOpen === true" [class.hidden]="selectedElements.length===1">
   <mat-icon class="material-icons-outlined menu-button-icon" [class.focused]="isMenuOpen === true">settings</mat-icon>
   <span class="menu-button-text" [class.focused]="isMenuOpen === true">Options</span>

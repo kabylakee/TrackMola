@@ -5,21 +5,15 @@
 	.menu-button {
 		line-height: 0;
 		padding: var(--offset-xs) var(--offset-s);
-		border-radius: var(--offset-xs);
-		border: 1px solid var(--accent-300);
 
 		&-icon {
 			width: $icon-size;
 			height: $icon-size;
 			font-size: var(--font-size-m);
-			margin-right: var(--offset-s);
-			color: var(--accent-300);
 		}
 
 		&-text {
 			font-size: var(--font-size-xs);
-			font-weight: 600;
-			color: var(--accent-300);
 		}
 	}
 
