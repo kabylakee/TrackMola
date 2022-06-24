@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
-import {OptionsEvent} from 'src/app/entities/enums/options.enum';
 
 @Component({
 	selector: 'app-options-button',
@@ -9,9 +8,7 @@ import {OptionsEvent} from 'src/app/entities/enums/options.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionsButtonComponent {
-	public readonly options = OPTIONS_CONFIG;
-
-	public readonly optionsEvent = OptionsEvent;
+	public readonly options = Object.values(OPTIONS_CONFIG);
 
 	public isMenuOpen = false;
 
@@ -20,5 +17,5 @@ export class OptionsButtonComponent {
 	}
 
 	@Output()
-	optionSelected = new EventEmitter<OptionsEvent>();
+	optionSelected = new EventEmitter<string>();
 }

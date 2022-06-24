@@ -8,7 +8,7 @@
   <span class="menu-button-text" [class.focused]="isMenuOpen">Options</span>
 </button>
 <mat-menu #menu="matMenu" class="menu">
-  <button mat-menu-item class="menu-item" *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
+  <button mat-menu-item *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
     <mat-icon class="material-icons-outlined menu-item-icon">{{option.icon}}</mat-icon>
     <span class="menu-item-text">{{option.title}}</span>
   </button>
