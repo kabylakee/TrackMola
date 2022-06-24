@@ -3,10 +3,9 @@
   [matMenuTriggerFor]="menu"
   (menuClosed)="switchFocus()"
   (menuOpened)="switchFocus()"
-  [class.focused]="isMenuOpen === true"
-  [class.hidden]="selectedElements.length===0">
-  <mat-icon class="material-icons-outlined menu-button-icon" [class.focused]="isMenuOpen === true">settings</mat-icon>
-  <span class="menu-button-text" [class.focused]="isMenuOpen === true">Options</span>
+  [class.focused]="isMenuOpen">
+  <mat-icon class="material-icons-outlined menu-button-icon" [class.focused]="isMenuOpen">settings</mat-icon>
+  <span class="menu-button-text" [class.focused]="isMenuOpen">Options</span>
 </button>
 <mat-menu #menu="matMenu" class="menu">
   <button mat-menu-item class="menu-item" *ngFor="let option of options" (click)="OnButtonClicked(option.event)">

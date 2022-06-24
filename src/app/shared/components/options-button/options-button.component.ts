@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 
 @Component({
@@ -11,9 +11,6 @@ export class OptionsButtonComponent {
 	public readonly options = OPTIONS_CONFIG;
 
 	public isMenuOpen = false;
-
-	@Input()
-	selectedElements = []; // add interface in future
 
 	@Output()
 	copyTo = new EventEmitter();
