@@ -19,38 +19,3 @@
 		color: var(--accent-500);
 	}
 }
-
-::ng-deep {
-	$menu-item-width: 7.5rem;
-
-	.mat-menu-content:not(:empty) {
-		padding: 0 !important;
-	}
-
-	.cdk-overlay-pane {
-		position: absolute !important;
-		top: var(--offset-xxs);
-		left: calc(-1 * var(--offset-xs));
-	}
-
-	.mat-menu-item {
-		padding: 0 var(--offset-s) !important;
-		width: $menu-item-width !important;
-
-		&:hover {
-			background-color: var(--accent-50);
-
-			& .menu-item-icon {
-				color: var(--gray);
-			}
-		}
-
-		.menu-item-text {
-			color: var(--light-black);
-		}
-
-		.menu-item-icon {
-			color: var(--light-gray);
-		}
-	}
-}

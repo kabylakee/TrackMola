@@ -2,8 +2,9 @@
 @import 'mixins/offsets-mixin';
 @import 'mixins/fonts-mixin';
 @import 'mixins/colors-mixin';
-@import 'material/mat-button.scss';
 @import 'mixins/icons-variable';
+@import 'material/mat-button.scss';
+@import 'material/mat-menu.scss';
 
 :root {
 	@include variable(offset, $offset);
