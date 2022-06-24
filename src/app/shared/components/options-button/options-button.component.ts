@@ -8,6 +8,9 @@ import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionsButtonComponent {
+	@Output()
+	optionSelected = new EventEmitter<string>();
+
 	public readonly options = Object.values(OPTIONS_CONFIG);
 
 	public isMenuOpen = false;
@@ -15,7 +18,4 @@ export class OptionsButtonComponent {
 	public switchFocus(): void {
 		this.isMenuOpen = !this.isMenuOpen;
 	}
-
-	@Output()
-	optionSelected = new EventEmitter<string>();
 }
