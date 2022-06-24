@@ -1,5 +1,6 @@
+import {OptionsTitle, OptionsIcon, OptionsEvent} from '../enums/options.enum';
 export interface IOptionsButton {
-	title: string;
-	icon: string;
-	event: string;
+	title: OptionsTitle;
+	icon: OptionsIcon;
+	event: OptionsEvent;
 }
