@@ -1,17 +1,5 @@
-export enum OptionsTitle {
+export enum Options {
 	Copy = 'Copy to',
 	Remove = 'Remove',
 	Move = 'Move to',
-}
-
-export enum OptionsIcon {
-	Copy = 'content_copy',
-	Remove = 'delete',
-	Move = 'autorenew',
-}
-
-export enum OptionEvent {
-	Copy = 'copyTo',
-	Remove = 'remove',
-	Move = 'moveTo',
 }

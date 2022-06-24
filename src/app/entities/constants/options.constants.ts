@@ -1,19 +1,20 @@
-import {OptionsTitle, OptionsIcon, OptionEvent} from '../enums/options.enum';
+import {Options} from '../enums/options.enum';
+import {IOptionsButton} from '../interfaces/option-config.interface';
 
-export const OPTIONS_CONFIG = [
+export const OPTIONS_CONFIG: IOptionsButton[] = [
 	{
-		title: OptionsTitle.Copy,
-		icon: OptionsIcon.Copy,
-		event: OptionEvent.Copy,
+		title: Options.Copy,
+		icon: 'content_copy',
+		event: 'copyTo',
 	},
 	{
-		title: OptionsTitle.Remove,
-		icon: OptionsIcon.Remove,
-		event: OptionEvent.Remove,
+		title: Options.Remove,
+		icon: 'delete',
+		event: 'remove',
 	},
 	{
-		title: OptionsTitle.Move,
-		icon: OptionsIcon.Move,
-		event: OptionEvent.Move,
+		title: Options.Move,
+		icon: 'autorenew',
+		event: 'moveTo',
 	},
 ];
