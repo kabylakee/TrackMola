@@ -1,9 +1,9 @@
 <div class="cards-wrapper">
-  <mat-card>
+  <mat-card [class.transparent-bg]="!hasBackground">
     <span class="title">Total Hours</span>
-    <span class="hours" [ngClass]="hourStatus">{{totalHours | number:'':'fr'}}</span>
+    <span class="hours" [ngClass]="currentTimeStatus">{{totalHours | number:'':'fr'}}</span>
   </mat-card>
-  <mat-card *ngIf="hourStatus === 'overtime'">
+  <mat-card [class.transparent-bg]="!hasBackground" *ngIf="currentTimeStatus === timeStatus.Overtime">
     <span class="title">Overtime Hours</span>
     <span class="hours overtime">{{totalHours - normalHoursCount | number:'':'fr'}}</span>
   </mat-card>

@@ -9,6 +9,9 @@
       border-radius: var(--border-radius-xs);
       background-color: var(--accent-50);
       box-shadow: none;
+      &.transparent-bg {
+        background-color: transparent;
+      }
       .title, .hours {
         line-height: var(--font-size-xl);
       }

@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {TimeStatus} from 'src/app/entities/enums/timeStatus.enum';
 
 @Component({
 	selector: 'app-hours-card',
@@ -7,26 +8,29 @@ import {ChangeDetectionStrategy, Component, Input, OnChanges} from '@angular/cor
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HoursCardComponent implements OnChanges {
-	@Input()
-	totalHours = 0;
+	@Input() totalHours = 0;
 
-	public hourStatus = 'not-enough';
+	@Input() normalHoursCount = 8;
 
-	public readonly normalHoursCount = 8;
+	@Input() hasBackground = true;
 
-	ngOnChanges() {
-		switch (true) {
-			case this.totalHours < this.normalHoursCount:
-				this.hourStatus = 'not-enough';
-				break;
-			case this.totalHours === this.normalHoursCount:
-				this.hourStatus = 'enough';
-				break;
-			case this.totalHours > this.normalHoursCount:
-				this.hourStatus = 'overtime';
-				break;
-			default:
-				break;
+	public readonly timeStatus = TimeStatus;
+
+	public currentTimeStatus = this.timeStatus.NotEnough;
+
+	public ngOnChanges(changes: SimpleChanges): void {
+		if (changes['totalHours']) {
+			this.setTimeStatus();
+		}
+	}
+
+	private setTimeStatus(): void {
+		if (this.totalHours < this.normalHoursCount) {
+			this.currentTimeStatus = this.timeStatus.NotEnough;
+		} else if (this.totalHours < this.normalHoursCount) {
+			this.currentTimeStatus = this.timeStatus.NotEnough;
+		} else {
+			this.currentTimeStatus = this.timeStatus.Overtime;
 		}
 	}
 }
