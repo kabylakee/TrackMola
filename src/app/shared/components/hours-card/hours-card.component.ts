@@ -9,17 +9,14 @@ import {TimeStatus} from 'src/app/entities/enums/timeStatus.enum';
 })
 export class HoursCardComponent implements OnChanges {
 	@Input() totalHours = 0;
-
 	@Input() normalHoursCount = 8;
-
 	@Input() hasBackground = true;
 
 	public readonly timeStatus = TimeStatus;
-
-	public currentTimeStatus = this.timeStatus.NotEnough;
+	public currentTimeStatus: TimeStatus;
 
 	public ngOnChanges(changes: SimpleChanges): void {
-		if (changes['totalHours']) {
+		if (changes.totalHours) {
 			this.setTimeStatus();
 		}
 	}
@@ -27,10 +24,12 @@ export class HoursCardComponent implements OnChanges {
 	private setTimeStatus(): void {
 		if (this.totalHours < this.normalHoursCount) {
 			this.currentTimeStatus = this.timeStatus.NotEnough;
-		} else if (this.totalHours === this.normalHoursCount) {
-			this.currentTimeStatus = this.timeStatus.Enough;
-		} else {
-			this.currentTimeStatus = this.timeStatus.Overtime;
+			return;
 		}
+		if (this.totalHours > this.normalHoursCount) {
+			this.currentTimeStatus = this.timeStatus.Overtime;
+			return;
+		}
+		this.currentTimeStatus = this.timeStatus.Enough;
 	}
 }
