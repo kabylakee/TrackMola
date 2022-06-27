@@ -1,10 +1,10 @@
 <div class="cards-wrapper">
   <mat-card>
     <span class="title">Total Hours</span>
-    <span class="hours">8</span>
+    <span class="hours" [ngClass]="hourStatus">{{totalHours | number:'':'fr'}}</span>
   </mat-card>
-  <mat-card>
+  <mat-card *ngIf="hourStatus === 'overtime'">
     <span class="title">Overtime Hours</span>
-    <span class="hours">8</span>
+    <span class="hours overtime">{{totalHours - normalHoursCount | number:'':'fr'}}</span>
   </mat-card>
 </div>

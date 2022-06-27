@@ -18,9 +18,16 @@
       .hours {
         font-size: var(--font-size);
         font-weight: 500;
-        color: orange; //rm
+        &.not-enough {
+          color: var(--red);
+        }
+        &.enough {
+          color: var(--secondary-200);
+        }
+        &.overtime {
+          color: var(--yellow);
+        }
       }
     }
-    margin-bottom: 20px; //rm
   }
 }
