@@ -65,6 +65,7 @@ module.exports = {
         "@typescript-eslint/no-use-before-define": "off",
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/lines-between-class-members": 'off',
         "@angular-eslint/directive-selector": [
           "error",
           {
