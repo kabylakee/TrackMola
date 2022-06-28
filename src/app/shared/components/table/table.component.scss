@@ -1,3 +1,56 @@
-.mat-table {
-  width: 100%;
+@import 'mixins/colors-mixin';
+
+:host {
+  $input-width: 2rem;
+
+  .project-column {
+    .mat-button {
+      background-color: rgba-color(accent-300, 0.2);
+      color: var(--accent-300);
+      padding: var(--offset-xxs) calc(0.375 * var(--offset));
+    }
+  }
+
+  .status-column {
+    .mat-button {
+      border: 1px solid var(--light-gray);
+      padding: var(--offset-xxs) var(--offset-s);
+    }
+  }
+
+  .time-column {
+    display: flex;
+    justify-content: center;
+    .mat-input-element {
+      text-align: center;
+      width: $input-width;
+    }
+  }
+
+  .paid-column {
+    display: flex;
+    justify-content: center;
+  }
+
+  .link-column {
+    display: flex;
+    justify-content: center;
+    .mat-icon {
+      color: var(--gray);
+    }
+  }
+
+  .options-column {
+    display: flex;
+    justify-content: center;
+    .mat-icon {
+      color: var(--dark-gray);
+    }
+  }
+
+  .asana-link {
+    .mat-icon {
+      color: var(--accent-300);
+    }
+  }
 }

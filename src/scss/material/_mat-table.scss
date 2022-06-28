@@ -1,0 +1,82 @@
+$row-height: 2.5rem;
+
+app-root {
+  .mat-table {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius-xs);
+
+    .mat-header-row {
+      height: $row-height;
+  		background: var(--accent-50);
+
+      .mat-header-cell {
+        color: var(--black);
+        font-size: var(--font-size-s);
+        font-weight: 500;
+        padding-left: var(--offset-s);
+        &:first-of-type {
+          padding-left: var(--offset-s);
+        }
+        &:last-of-type {
+          padding: 0 var(--offset-s);
+        }
+      }
+    }
+
+    .mat-row {
+      color: var(--light-black);
+      font-size: var(--font-size-s);
+      font-weight: 400;
+      height: $row-height;
+      td {
+        padding: 0 0 0 var(--offset-s);
+        &:last-of-type {
+          padding: 0 var(--offset-s);
+        }
+      }
+    }
+
+    .mat-form {
+      &-field-wrapper {
+        padding: 0;
+      }
+  
+      &-field-underline {
+        display: none;
+      }
+  
+      &-field-flex {
+        background: none;
+        padding: 0;
+      }
+
+      &-field-infix {
+        border: none;
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    .mat-checkbox {
+      display: flex;
+
+      &-frame {
+        border: 1px solid var(--light-gray);
+        border-radius: var(--border-radius-xxs);
+      }
+  
+      &-background {
+        border-radius: var(--border-radius-xxs);
+      }
+    }
+
+    .mat-button {
+      border-radius: var(--border-radius-xs);
+      font-size: var(--font-size-xs);
+      line-height: var(--font-size);
+      min-width: 0;
+    }
+  }
+}

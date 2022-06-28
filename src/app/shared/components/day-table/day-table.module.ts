@@ -5,6 +5,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
+import {TableModule} from '../table/table.module';
 
 import {DayTableComponent} from './day-table.component';
 
@@ -12,6 +13,7 @@ import {DayTableComponent} from './day-table.component';
 	declarations: [DayTableComponent],
 	imports: [
 		CommonModule,
+		TableModule,
 		MatTableModule,
 		MatCheckboxModule,
 		FormsModule,
