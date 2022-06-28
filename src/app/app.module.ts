@@ -5,7 +5,6 @@ import {HeaderModule} from './shared/components/header/header.module';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import {AppComponent} from './app.component';
 import {LeftPanelModule} from './shared/components/left-panel/left-panel.module';
 
