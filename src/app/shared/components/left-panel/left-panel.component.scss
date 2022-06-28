@@ -71,6 +71,9 @@
 			right: calc(-1 * var(--offset));
 			color: var(--accent-50);
 			background-color: var(--accent-200);
+			&.mat-mini-fab {
+				box-shadow: none;
+			}
 		}
 	}
 
