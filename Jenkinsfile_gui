@@ -6,7 +6,7 @@ node {
     registry_url = "https://${registry_name}/v1/" // Private Registry
     registry_creds_id = "amc_docker_build" // name of the Jenkins Credentials ID
 
-    deploy_cloud_ip = "75.126.211.182"
+    deploy_cloud_ip = "169.60.206.52"
     deploy_cloud_user = "amcdashboard"
     deploy_cloud_creds_id = "amc_stage_cloud"
     deploy_repo_name = "20_docker_deploy"
