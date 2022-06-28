@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule, registerLocaleData} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {HoursCardComponent} from './hours-card.component';
 import {MatCardModule} from '@angular/material/card';
-import localeFr from '@angular/common/locales/fr';
-registerLocaleData(localeFr);
+import {CommaSeparatedPipe} from '../../pipes/comma-separated.pipe';
+
 @NgModule({
-	declarations: [HoursCardComponent],
+	declarations: [HoursCardComponent, CommaSeparatedPipe],
 	imports: [CommonModule, MatCardModule],
 	exports: [HoursCardComponent],
 })
