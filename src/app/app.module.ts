@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {LeftPanelModule} from './shared/components/left-panel/left-panel.module';
+import {PageWrapperModule} from './shared/components/page-wrapper/page-wrapper.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -17,6 +18,7 @@ import {LeftPanelModule} from './shared/components/left-panel/left-panel.module'
 		MatIconModule,
 		MatButtonModule,
 		LeftPanelModule,
+		PageWrapperModule,
 		BrowserAnimationsModule,
 	],
 	providers: [],
