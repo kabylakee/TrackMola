@@ -33,7 +33,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "./assets/"
+              }
             ],
             "styles": [
               "src/scss/styles.scss"
@@ -102,10 +107,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/assets"],
             "styles": [
               "src/styles.scss"
             ],
