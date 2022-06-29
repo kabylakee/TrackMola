@@ -3,3 +3,10 @@
 	align-items: center;
 	justify-content: center;
 }
+
+@mixin icon-size($size) {
+  font-size: var($size);
+  height: var($size);
+  line-height: var($size);
+  width: var($size);
+}
