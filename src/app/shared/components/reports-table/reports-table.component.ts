@@ -4,12 +4,12 @@ import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 
 @Component({
-	selector: 'app-table',
-	templateUrl: './table.component.html',
-	styleUrls: ['./table.component.scss'],
+	selector: 'app-reports-table',
+	templateUrl: './reports-table.component.html',
+	styleUrls: ['./reports-table.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit {
+export class ReportsTableComponent implements OnInit {
 	@Input() public dataSource: ITask[] = [];
 
 	@Input() public columns: ITableColumn[] = [];

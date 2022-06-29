@@ -7,8 +7,9 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 	providedIn: 'root',
 })
 export class TaskService {
-	getTasks(): Observable<ITask[]> {
-		const tasks = of(TASKS_MOCK);
-		return tasks;
+	public tasks$: Observable<ITask[]>;
+
+	public getTasks(): Observable<ITask[]> {
+		return (this.tasks$ = of(TASKS_MOCK));
 	}
 }

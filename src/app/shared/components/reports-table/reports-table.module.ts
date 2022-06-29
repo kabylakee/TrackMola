@@ -8,10 +8,10 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 
-import {TableComponent} from './table.component';
+import {ReportsTableComponent} from './reports-table.component';
 
 @NgModule({
-	declarations: [TableComponent],
+	declarations: [ReportsTableComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,
@@ -22,6 +22,6 @@ import {TableComponent} from './table.component';
 		MatInputModule,
 		MatMenuModule,
 	],
-	exports: [TableComponent],
+	exports: [ReportsTableComponent],
 })
-export class TableModule {}
+export class ReportsTableModule {}

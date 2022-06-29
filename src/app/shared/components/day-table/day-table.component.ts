@@ -1,8 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {DAY_TABLE_MOCK} from 'src/app/entities/constants/day-columns.mock';
+import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {TaskService} from '../../services/task.service';
+
+// TODO: Remove this component and replace functionality to REPORTS page
 
 @Component({
 	selector: 'app-day-table',
@@ -21,7 +23,7 @@ export class DayTableComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.getTasks();
-		this.columns = DAY_TABLE_MOCK;
+		this.columns = DAY_TABLE_CONFIG;
 
 		this.tasks.forEach((t) => (t.checked = false));
 	}

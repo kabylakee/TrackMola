@@ -7,7 +7,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {LeftPanelModule} from './shared/components/left-panel/left-panel.module';
 import {HeaderModule} from './shared/components/header/header.module';
 import {DayTableModule} from './shared/components/day-table/day-table.module';
-import {TableModule} from './shared/components/table/table.module';
 
 import {AppComponent} from './app.component';
 
@@ -22,7 +21,6 @@ import {AppComponent} from './app.component';
 		LeftPanelModule,
 		HeaderModule,
 		DayTableModule,
-		TableModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

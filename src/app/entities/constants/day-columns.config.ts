@@ -1,7 +1,7 @@
 import {ColumnType} from '../enums/column-type.enum';
 import {ITableColumn} from '../interfaces/table-column.interface';
 
-export const DAY_TABLE_MOCK: ITableColumn[] = [
+export const DAY_TABLE_CONFIG: ITableColumn[] = [
 	{
 		id: '0',
 		type: ColumnType.CHECK_ALL,
