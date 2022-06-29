@@ -1,0 +1,72 @@
+:host {
+  $calendar-item-width: 11rem;
+  $calendar-item-height: 7rem;
+
+  .item-wrapper {
+    margin-bottom: 50px; //rm
+
+    width: $calendar-item-width;
+    height: $calendar-item-height;
+    border: 1px solid var(--light-gray);
+    line-height: var(--font-size);
+    color: var(--light-black);
+    font-weight: 500;
+
+    .date {
+      text-align: center;
+      padding: var(--offset-xs) 0;
+      background-color: var(--accent-50);
+    }
+
+    .info {
+      margin: 0;
+      list-style: none;
+      padding: var(--offset-s);
+      display: flex;
+      flex-direction: column;
+      gap: var(--offset-xxs);
+      .info-item{
+        display: flex;
+        justify-content: space-between;
+        .info-title {
+          font-weight: 400;
+        }
+        .info-value {
+          font-weight: 600;
+        }
+      }
+    }
+
+    &.overtime {
+      .date {
+        background-color: rgba(241, 186, 102, 0.2);
+      }
+
+      &:hover .date{
+        background-color: rgba(241, 186, 102, 0.4);
+      }
+
+      .info-item:last-of-type, .info-item:nth-of-type(2) .info-value {
+        color: var(--yellow);
+      }
+    }
+
+    &.unfinished {
+      .date {
+        background-color: rgba(241, 102, 102, 0.2);
+      }
+
+      &:hover .date{
+        background-color: rgba(241, 102, 102, 0.4);
+      }
+
+      .info-item:nth-of-type(2) {
+        color: var(--red);
+      }
+
+      .info-item:last-of-type {
+        display: none;
+      }
+    }
+  }
+}
