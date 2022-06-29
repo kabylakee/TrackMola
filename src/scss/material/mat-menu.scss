@@ -1,0 +1,31 @@
+.cdk-overlay-pane {
+	position: absolute !important;
+	top: var(--offset-xxs);
+	left: calc(-1 * var(--offset-xs));
+
+  .mat-menu-content.mat-menu-content:not(:empty) {
+	  padding: 0;
+  }
+}
+
+button.mat-menu-item {
+	padding: 0 var(--offset-s);
+
+  span {
+		color: var(--light-black);
+	}
+
+	.mat-icon {
+		color: var(--light-gray);
+	}
+
+	&:hover {
+		background-color: var(--accent-50);
+
+		& .mat-icon {
+			color: var(--gray);
+		}
+	}
+
+	
+}
