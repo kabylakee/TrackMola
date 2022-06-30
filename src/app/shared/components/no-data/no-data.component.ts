@@ -14,7 +14,8 @@ export class NoDataComponent implements OnInit{
 	@Input() type: string = Type.Inline;
 	@Input() size: string = Size.L;
 	
-	public sizeRem: ISizeConfig = SIZES_CONFIG[Size.L];
+	public sizeRem: ISizeConfig;
+
 	ngOnInit(): void {
 		this.sizeRem = SIZES_CONFIG[this.size];
 	}
