@@ -1,35 +1,35 @@
 @import 'mixins/common-mixin';
-@import 'vars/offsets.scss';
+@import 'vars/offsets';
 
 :host {
 	$button-width: 6.9rem;
 	$button-height: 2.45rem;
 
-	::ng-deep {
-		.mat-button-toggle-appearance-standard {
-			&:not(.mat-button-toggle-disabled) {
-				&:hover {
-					.mat-button-toggle-focus-overlay {
-						display: none;
-					}
+	
+	.mat-button-toggle-appearance-standard {
+		&:not(.mat-button-toggle-disabled) {
+			&:hover {
+				.mat-button-toggle-focus-overlay {
+					display: none;
 				}
 			}
 		}
+		
 
 		mat-button-toggle {
 			@include flex-center;
 
 			width: $button-width;
 			height: $button-height;
-			font-size: var(--font-size-xs);
 			color: var(--accent-300);
 			font-weight: 600;
+			font-size: var(--font-size-xs);
 		}
 
 		.mat-button-toggle {
 			&:hover {
 				color: var(--accent-500);
-        transition: var(--transition-xxs);
+				transition: var(--transition-xxs);
 			}
 
 			&-group-appearance-standard {
@@ -38,13 +38,13 @@
 			}
 
 			&-checked {
-				background-color: var(--accent-300);
 				color: var(--white);
+				background-color: var(--accent-300);
 
 				&:hover {
-					transition: var(--transition-xxs);
 					color: var(--white);
 					background-color: var(--accent-500);
+					transition: var(--transition-xxs);
 				}
 			}
 
@@ -56,8 +56,8 @@
 					border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
 
 					&:hover {
-						transition: var(--transition-xxs);
 						border-color: var(--accent-500);
+						transition: var(--transition-xxs);
 
 						& + .mat-button-toggle {
 							border-left-color: var(--accent-500);
@@ -72,8 +72,8 @@
 						border-left: 1px solid var(--accent-300);
 
 						&:hover {
-							transition: var(--transition-xxs);
 							border-color: var(--accent-500);
+							transition: var(--transition-xxs);
 
 							& + .mat-button-toggle {
 								border-left-color: var(--accent-500);
@@ -87,8 +87,8 @@
 					border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
 
 					&:hover {
-						transition: var(--transition-xxs);
 						border-color: var(--accent-500);
+						transition: var(--transition-xxs);
 					}
 				}
 			}

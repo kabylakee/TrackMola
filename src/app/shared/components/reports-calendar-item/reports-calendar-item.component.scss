@@ -1,72 +1,142 @@
 :host {
-  $calendar-item-width: 11rem;
-  $calendar-item-height: 7rem;
+	$calendar-item-width: 11rem;
+	$calendar-item-height: 7rem;
 
-  .item-wrapper {
-    margin-bottom: 50px; //rm
+	.item-wrapper {
 
-    width: $calendar-item-width;
-    height: $calendar-item-height;
-    border: 1px solid var(--light-gray);
-    line-height: var(--font-size);
-    color: var(--light-black);
-    font-weight: 500;
+		width: $calendar-item-width;
+		height: $calendar-item-height;
+		margin-bottom: 50px; //rm
+		color: var(--light-black);
+		font-weight: 500;
+		line-height: var(--font-size);
+		border: 1px solid var(--light-gray);
 
-    .date {
-      text-align: center;
-      padding: var(--offset-xs) 0;
-      background-color: var(--accent-50);
-    }
+		.date {
+			position: relative;
+			padding: var(--offset-xs) 0;
+			text-align: center;
+			background-color: var(--accent-50);
+			.hint {
+				position: absolute;
+			}
+		}
 
-    .info {
-      margin: 0;
-      list-style: none;
-      padding: var(--offset-s);
-      display: flex;
-      flex-direction: column;
-      gap: var(--offset-xxs);
-      .info-item{
-        display: flex;
-        justify-content: space-between;
-        .info-title {
-          font-weight: 400;
-        }
-        .info-value {
-          font-weight: 600;
-        }
-      }
-    }
+		&:hover .date {
+			background-color: rgba(221, 232, 245, 0.5);
+		}
 
-    &.overtime {
-      .date {
-        background-color: rgba(241, 186, 102, 0.2);
-      }
+		.info {
+			display: flex;
+			flex-direction: column;
+			gap: var(--offset-xxs);
+			margin: 0;
+			padding: var(--offset-s);
+			list-style: none;
+			.info-item {
+				display: flex;
+				justify-content: space-between;
+				.info-title {
+					font-weight: 400;
+				}
+				.info-value {
+					font-weight: 600;
+				}
+			}
+		}
 
-      &:hover .date{
-        background-color: rgba(241, 186, 102, 0.4);
-      }
+		.vacation-info {
+			padding-top: var(--offset-l);
+			text-align: center;
+		}
 
-      .info-item:last-of-type, .info-item:nth-of-type(2) .info-value {
-        color: var(--yellow);
-      }
-    }
+		&.overtime {
+			.date {
+				background-color: rgba(241, 186, 102, 0.2);
+			}
 
-    &.unfinished {
-      .date {
-        background-color: rgba(241, 102, 102, 0.2);
-      }
+			&:hover .date {
+				background-color: rgba(241, 186, 102, 0.4);
+			}
 
-      &:hover .date{
-        background-color: rgba(241, 102, 102, 0.4);
-      }
+			.info-item:last-of-type,
+			.info-item:nth-of-type(2) .info-value {
+				color: var(--yellow);
+			}
+		}
 
-      .info-item:nth-of-type(2) {
-        color: var(--red);
-      }
+		&.unfinished {
+			.date {
+				background-color: rgba(241, 102, 102, 0.2);
+			}
 
-      .info-item:last-of-type {
-        display: none;
-      }
-    }
-  }
+			&:hover .date {
+				background-color: rgba(241, 102, 102, 0.4);
+			}
+
+			.info-item:nth-of-type(2) {
+				color: var(--red);
+			}
+
+			.info-item:last-of-type {
+				display: none;
+			}
+		}
+
+		&.present {
+			border: 1px solid var(--accent-300);
+			.date {
+				color: var(--accent-500);
+			}
+		}
+
+		&.vacation {
+			.date {
+				background-color: rgba(88, 174, 223, 0.2);
+			}
+			&:hover .date {
+				background-color: rgba(88, 174, 223, 0.4);
+			}
+			.vacation-info {
+				color: var(--blue);
+			}
+		}
+
+		&.day-off {
+			.date {
+				background-color: rgba(125, 214, 165, 0.2);
+			}
+			&:hover .date {
+				background-color: rgba(125, 214, 165, 0.4);
+			}
+			.vacation-info {
+				color: var(--secondary-200);
+			}
+		}
+
+		&.holiday {
+			.date {
+				background-color: rgba(65, 94, 182, 0.2);
+			}
+			&:hover .date {
+				background-color: rgba(65, 94, 182, 0.4);
+			}
+			.vacation-info {
+				color: var(--accent-300);
+			}
+		}
+
+		&.disabled {
+			.date {
+				color: var(--gray);
+				background-color: var(--accent-50);
+			}
+			&:hover .date {
+				background-color: var(--accent-50);
+			}
+			.vacation-info {
+				color: var(--light-gray);
+			}
+		}
+	}
 }
