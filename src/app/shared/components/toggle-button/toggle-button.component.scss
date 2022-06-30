@@ -5,7 +5,6 @@
 	$button-width: 6.9rem;
 	$button-height: 2.45rem;
 
-	
 	.mat-button-toggle-appearance-standard {
 		&:not(.mat-button-toggle-disabled) {
 			&:hover {
@@ -14,7 +13,6 @@
 				}
 			}
 		}
-		
 
 		mat-button-toggle {
 			@include flex-center;
