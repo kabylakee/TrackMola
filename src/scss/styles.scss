@@ -2,13 +2,16 @@
 @import 'mixins/offsets-mixin';
 @import 'mixins/fonts-mixin';
 @import 'mixins/colors-mixin';
+@import 'mixins/icons-variable';
 @import 'material/mat-button';
+@import 'material/mat-menu';
 
 :root {
 	@include variable(offset, $offset);
 	@include variable(border-radius, $border-radius);
 	@include variable(transition, $transition);
 
+	@include var-icons(icon-size, $icon-size);
 	@include var-fonts(font-size, $font-size);
 	@include var-colors($base-colors);
 }

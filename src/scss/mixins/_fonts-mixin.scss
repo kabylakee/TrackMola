@@ -7,4 +7,5 @@
 	--#{$property}: #{$value};
 	--#{$property}-m: calc(#{$value} * 1.25);
 	--#{$property}-l: calc(#{$value} * 1.75);
+	--#{$property}-xl: calc(#{$value} * 2);
 }
