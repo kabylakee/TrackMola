@@ -8,5 +8,6 @@
 		border-radius: var(--offset-xs);
 		height: calc(100vh - 2*var(--offset-l));
 		overflow-y: scroll;
+		overflow: hidden;
 	}
 }
