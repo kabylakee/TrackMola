@@ -1,0 +1,11 @@
+:host {
+	width: 100%;
+	.page-wrapper {
+    	margin: var(--offset-l);
+    	margin-left: 0rem;
+		padding: calc(3 * var(--offset));
+		background-color: var(--white);
+		border-radius: var(--offset-xs);
+		height: 100vh;
+	}
+}
