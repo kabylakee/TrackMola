@@ -1,6 +1,6 @@
 export enum Size {
-	S = 's',
-	M = 'm',
-	L = 'l',
-	Xl = 'xl',
+	S,
+	M,
+	L,
+	Xl
 }
