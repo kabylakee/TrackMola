@@ -1,4 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {SIZES_CONFIG} from 'src/app/entities/constants/sizes.constants';
+import {Size} from 'src/app/entities/enums/size.enum';
+import {Type} from 'src/app/entities/enums/type.enum';
+import {ISizeConfig} from 'src/app/entities/interfaces/size-config.interface';
 
 @Component({
 	selector: 'app-no-data',
@@ -6,34 +10,12 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 	styleUrls: ['./no-data.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoDataComponent implements OnInit {
-	@Input() type = 'inline';
-	@Input() size = 'l';
-
-	public widthRem: number;
-	public heightRem: number;
-
+export class NoDataComponent implements OnInit{
+	@Input() type: string = Type.Inline;
+	@Input() size: string = Size.L;
+	
+	public sizeRem: ISizeConfig = SIZES_CONFIG[Size.L];
 	ngOnInit(): void {
-		switch (this.size) {
-			case 's':
-				this.widthRem = 1;
-				this.heightRem = 0.75;
-				break;
-			case 'm':
-				this.widthRem = 1.5;
-				this.heightRem = 1.125;
-				break;
-			case 'l':
-				this.widthRem = 2;
-				this.heightRem = 1.5;
-				break;
-			case 'xl':
-				this.widthRem = 4;
-				this.heightRem = 3;
-				break;
-			default:
-				this.widthRem = 2;
-				this.heightRem = 1.5;
-		}
+		this.sizeRem = SIZES_CONFIG[this.size];
 	}
 }
