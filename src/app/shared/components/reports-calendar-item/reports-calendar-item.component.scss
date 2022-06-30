@@ -1,4 +1,6 @@
 :host {
+	@import 'mixins/common-mixin';
+
 	$calendar-item-width: 11rem;
 	$calendar-item-height: 7rem;
 
@@ -6,6 +8,7 @@
 		width: $calendar-item-width;
 		height: $calendar-item-height;
 		margin-bottom: 50px; //rm
+		margin-left: 50px; //rm
 		color: var(--light-black);
 		font-weight: 500;
 		line-height: var(--font-size);
@@ -18,11 +21,18 @@
 			background-color: var(--accent-50);
 			.hint {
 				position: absolute;
+        @include icon-size(--icon-size);
+				margin-left: var(--offset-xs);
+				color: var(--light-gray);
+				display: none;
 			}
 		}
 
 		&:hover .date {
 			background-color: rgba(221, 232, 245, 0.5);
+			.hint {
+				display: inline-block;
+			}
 		}
 
 		.info {
@@ -56,6 +66,9 @@
 
 			&:hover .date {
 				background-color: rgba(241, 186, 102, 0.4);
+				.hint {
+					color: var(--yellow);
+				}
 			}
 
 			.info-item:last-of-type,
@@ -71,6 +84,9 @@
 
 			&:hover .date {
 				background-color: rgba(241, 102, 102, 0.4);
+				.hint {
+					color: var(--red);
+				}
 			}
 
 			.info-item:nth-of-type(2) {
@@ -113,17 +129,17 @@
 			}
 		}
 
-		&.holiday {
-			.date {
-				background-color: rgba(65, 94, 182, 0.2);
-			}
-			&:hover .date {
-				background-color: rgba(65, 94, 182, 0.4);
-			}
-			.vacation-info {
-				color: var(--accent-300);
-			}
-		}
+		// &.holiday {
+		// 	.date {
+		// 		background-color: rgba(65, 94, 182, 0.2);
+		// 	}
+		// 	&:hover .date {
+		// 		background-color: rgba(65, 94, 182, 0.4);
+		// 	}
+		// 	.vacation-info {
+		// 		color: var(--accent-300);
+		// 	}
+		// }
 
 		&.disabled {
 			.date {
@@ -132,9 +148,15 @@
 			}
 			&:hover .date {
 				background-color: var(--accent-50);
+				.hint {
+					display: none;
+				}
 			}
 			.vacation-info {
 				color: var(--light-gray);
+			}
+			.info {
+				display: none;
 			}
 		}
 	}

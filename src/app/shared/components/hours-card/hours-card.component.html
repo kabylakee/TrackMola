@@ -3,8 +3,8 @@
     <span class="title">Total Hours</span>
     <span class="hours" [ngClass]="currentTimeStatus">{{totalHours | appCommaSeparated}}</span>
   </mat-card>
-  <mat-card [class.transparent-bg]="!hasBackground" *ngIf="currentTimeStatus === timeStatus.Overtime">
+  <mat-card [class.transparent-bg]="!hasBackground" *ngIf="currentTimeStatus === timeStatus.Overwork">
     <span class="title">Overtime Hours</span>
-    <span class="hours overtime">{{totalHours - normalHoursCount | appCommaSeparated}}</span>
+    <span class="hours" [ngClass]="timeStatus.Overwork">{{totalHours - normalHoursCount | appCommaSeparated}}</span>
   </mat-card>
 </div>

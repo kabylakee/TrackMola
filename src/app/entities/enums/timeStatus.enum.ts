@@ -1,5 +1,5 @@
 export enum TimeStatus {
-	NotEnough = 'not-enough',
+	Unfinished = 'unfinished',
 	Enough = 'enough',
-	Overtime = 'overtime',
+	Overwork = 'overwork',
 }
