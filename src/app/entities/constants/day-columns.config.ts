@@ -34,14 +34,14 @@ export const DAY_TABLE_CONFIG: ITableColumn[] = [
 		id: '4',
 		type: ColumnType.INPUT,
 		cls: 'time-column',
-		title: 'Time',
+		title: 'Time (h)',
 		field: 'time',
 	},
 	{
 		id: '5',
 		type: ColumnType.INPUT,
 		cls: 'time-column',
-		title: 'Overtime',
+		title: 'Overtime (h)',
 		field: 'overtime',
 	},
 	{
@@ -55,7 +55,7 @@ export const DAY_TABLE_CONFIG: ITableColumn[] = [
 		id: '7',
 		type: ColumnType.LINK,
 		cls: 'link-column',
-		title: 'Asana Link',
+		title: 'Task links',
 		field: 'asanaLink',
 	},
 	{

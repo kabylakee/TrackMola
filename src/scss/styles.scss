@@ -3,9 +3,9 @@
 @import 'mixins/fonts-mixin';
 @import 'mixins/colors-mixin';
 @import 'mixins/icons-variable';
-@import 'material/mat-button.scss';
-@import 'material/mat-table.scss';
-@import 'material/mat-menu.scss';
+@import 'material/mat-button';
+@import 'material/mat-table';
+@import 'material/mat-menu';
 
 :root {
 	@include variable(offset, $offset);
