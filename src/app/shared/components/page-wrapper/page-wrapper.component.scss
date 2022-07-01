@@ -6,6 +6,7 @@
 		padding: calc(3 * var(--offset));
 		background-color: var(--white);
 		border-radius: var(--offset-xs);
-		height: 100vh;
+		height: calc(100vh - var(--offset-xl));
+		overflow: hidden;
 	}
 }
