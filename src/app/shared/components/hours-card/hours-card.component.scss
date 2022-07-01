@@ -1,36 +1,37 @@
 :host {
-  .cards-wrapper {
-    display: flex;
-    gap: var(--offset-xs);
-    .mat-card {
-      display: flex;
-      gap: var(--offset-s);
-      padding: var(--offset-xxs) var(--offset-s);
-      border-radius: var(--border-radius-xs);
-      background-color: var(--accent-50);
-      box-shadow: none;
-      &.transparent-bg {
-        background-color: transparent;
-      }
-      .title, .hours {
-        line-height: var(--font-size-xl);
-      }
-      .title {
-        color: var(--light-black);
-      }
-      .hours {
-        font-size: var(--font-size);
-        font-weight: 500;
-        &.not-enough {
-          color: var(--red);
-        }
-        &.enough {
-          color: var(--secondary-200);
-        }
-        &.overtime {
-          color: var(--yellow);
-        }
-      }
-    }
-  }
+	.cards-wrapper {
+		display: flex;
+		gap: var(--offset-xs);
+		.mat-card {
+			display: flex;
+			gap: var(--offset-s);
+			padding: var(--offset-xxs) var(--offset-s);
+			border-radius: var(--border-radius-xs);
+			background-color: var(--accent-50);
+			box-shadow: none;
+			&.transparent-bg {
+				background-color: transparent;
+			}
+			.title,
+			.hours {
+				line-height: var(--font-size-xl);
+			}
+			.title {
+				color: var(--light-black);
+			}
+			.hours {
+				font-size: var(--font-size);
+				font-weight: 500;
+				&.not-enough {
+					color: var(--red);
+				}
+				&.enough {
+					color: var(--secondary-200);
+				}
+				&.overtime {
+					color: var(--yellow);
+				}
+			}
+		}
+	}
 }

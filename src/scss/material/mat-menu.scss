@@ -3,15 +3,15 @@
 	top: var(--offset-xxs);
 	left: calc(-1 * var(--offset-xs));
 
-  .mat-menu-content.mat-menu-content:not(:empty) {
-	  padding: 0;
-  }
+	.mat-menu-content.mat-menu-content:not(:empty) {
+		padding: 0;
+	}
 }
 
 button.mat-menu-item {
 	padding: 0 var(--offset-s);
 
-  span {
+	span {
 		color: var(--light-black);
 	}
 
@@ -26,6 +26,4 @@ button.mat-menu-item {
 			color: var(--gray);
 		}
 	}
-
-	
 }

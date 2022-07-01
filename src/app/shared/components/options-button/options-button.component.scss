@@ -2,8 +2,8 @@
 	@import 'mixins/common-mixin';
 
 	.menu-button {
-		line-height: 0;
 		padding: var(--offset-xs) var(--offset-s);
+		line-height: 0;
 
 		&-icon {
 			@include icon-size(--icon-size-m);
@@ -15,7 +15,7 @@
 	}
 
 	.focused {
-		border-color: var(--accent-500);
 		color: var(--accent-500);
+		border-color: var(--accent-500);
 	}
 }
