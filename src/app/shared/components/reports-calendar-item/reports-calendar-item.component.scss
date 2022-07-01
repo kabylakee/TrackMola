@@ -10,13 +10,13 @@
 	$calendar-item-height: 7rem;
 
 	.item-wrapper {
-		cursor: pointer;
 		width: $calendar-item-width;
 		height: $calendar-item-height;
 		color: var(--light-black);
 		font-weight: 500;
 		line-height: var(--font-size);
 		border: 1px solid var(--light-gray);
+		cursor: pointer;
 
 		.date {
 			position: relative;
@@ -25,10 +25,10 @@
 			background-color: var(--accent-50);
 			.hint {
 				position: absolute;
-        @include icon-size(--icon-size);
+				display: none;
 				margin-left: var(--offset-xxs);
 				color: var(--light-gray);
-				display: none;
+				@include icon-size(--icon-size);
 			}
 		}
 
