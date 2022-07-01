@@ -1,14 +1,18 @@
-:host {
-	@import 'mixins/common-mixin';
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
 
+:host {
+	$yellow: rgb(241, 186, 102);
+	$red: rgb(241, 102, 102);
+	$blue: rgb(88, 174, 223);
+	$green: rgb(125, 214, 165);
 	$calendar-item-width: 11rem;
 	$calendar-item-height: 7rem;
 
 	.item-wrapper {
+		cursor: pointer;
 		width: $calendar-item-width;
 		height: $calendar-item-height;
-		margin-bottom: 50px; //rm
-		margin-left: 50px; //rm
 		color: var(--light-black);
 		font-weight: 500;
 		line-height: var(--font-size);
@@ -22,14 +26,14 @@
 			.hint {
 				position: absolute;
         @include icon-size(--icon-size);
-				margin-left: var(--offset-xs);
+				margin-left: var(--offset-xxs);
 				color: var(--light-gray);
 				display: none;
 			}
 		}
 
 		&:hover .date {
-			background-color: rgba(221, 232, 245, 0.5);
+			background-color: rgba-color(accent-100, 0.5);
 			.hint {
 				display: inline-block;
 			}
@@ -59,13 +63,13 @@
 			text-align: center;
 		}
 
-		&.overtime {
+		&.overwork {
 			.date {
-				background-color: rgba(241, 186, 102, 0.2);
+				background-color: rgba($yellow, 0.2);
 			}
 
 			&:hover .date {
-				background-color: rgba(241, 186, 102, 0.4);
+				background-color: rgba($yellow, 0.4);
 				.hint {
 					color: var(--yellow);
 				}
@@ -79,11 +83,11 @@
 
 		&.unfinished {
 			.date {
-				background-color: rgba(241, 102, 102, 0.2);
+				background-color: rgba($red, 0.2);
 			}
 
 			&:hover .date {
-				background-color: rgba(241, 102, 102, 0.4);
+				background-color: rgba($red, 0.4);
 				.hint {
 					color: var(--red);
 				}
@@ -91,10 +95,6 @@
 
 			.info-item:nth-of-type(2) {
 				color: var(--red);
-			}
-
-			.info-item:last-of-type {
-				display: none;
 			}
 		}
 
@@ -107,10 +107,10 @@
 
 		&.vacation {
 			.date {
-				background-color: rgba(88, 174, 223, 0.2);
+				background-color: rgba($blue, 0.2);
 			}
 			&:hover .date {
-				background-color: rgba(88, 174, 223, 0.4);
+				background-color: rgba($blue, 0.4);
 			}
 			.vacation-info {
 				color: var(--blue);
@@ -119,27 +119,15 @@
 
 		&.day-off {
 			.date {
-				background-color: rgba(125, 214, 165, 0.2);
+				background-color: rgba($green, 0.2);
 			}
 			&:hover .date {
-				background-color: rgba(125, 214, 165, 0.4);
+				background-color: rgba($green, 0.4);
 			}
 			.vacation-info {
 				color: var(--secondary-200);
 			}
 		}
-
-		// &.holiday {
-		// 	.date {
-		// 		background-color: rgba(65, 94, 182, 0.2);
-		// 	}
-		// 	&:hover .date {
-		// 		background-color: rgba(65, 94, 182, 0.4);
-		// 	}
-		// 	.vacation-info {
-		// 		color: var(--accent-300);
-		// 	}
-		// }
 
 		&.disabled {
 			.date {
@@ -148,12 +136,9 @@
 			}
 			&:hover .date {
 				background-color: var(--accent-50);
-				.hint {
-					display: none;
-				}
 			}
 			.vacation-info {
-				color: var(--light-gray);
+				display: none;
 			}
 			.info {
 				display: none;

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { TimeStatus } from 'src/app/entities/enums/timeStatus.enum';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {TimeStatus} from 'src/app/entities/enums/timeStatus.enum';
 
 @Component({
 	selector: 'app-hours-card',
