@@ -30,6 +30,9 @@ app-root {
       font-size: var(--font-size-s);
       font-weight: 400;
       height: $row-height;
+      &:not(:last-of-type) td {
+        border-bottom: 1px solid var(--light-gray);
+      }
       td {
         padding: 0 0 0 var(--offset-s);
         &:last-of-type {
