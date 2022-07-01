@@ -2,10 +2,12 @@
 @import 'mixins/colors-mixin';
 
 :host {
-	$yellow: rgb(241, 186, 102);
-	$red: rgb(241, 102, 102);
-	$blue: rgb(88, 174, 223);
-	$green: rgb(125, 214, 165);
+	$overwork: rgb(241, 186, 102);
+	$unfinished: rgb(241, 102, 102);
+	$vacation: rgb(88, 174, 223);
+	$day-off: rgb(125, 214, 165);
+	$common-transition: 0.2;
+	$hover-transition: 0.4;
 	$calendar-item-width: 11rem;
 	$calendar-item-height: 7rem;
 
@@ -65,11 +67,11 @@
 
 		&.overwork {
 			.date {
-				background-color: rgba($yellow, 0.2);
+				background-color: rgba($overwork, $common-transition);
 			}
 
 			&:hover .date {
-				background-color: rgba($yellow, 0.4);
+				background-color: rgba($overwork, $hover-transition);
 				.hint {
 					color: var(--yellow);
 				}
@@ -83,11 +85,11 @@
 
 		&.unfinished {
 			.date {
-				background-color: rgba($red, 0.2);
+				background-color: rgba($unfinished, $common-transition);
 			}
 
 			&:hover .date {
-				background-color: rgba($red, 0.4);
+				background-color: rgba($unfinished, $hover-transition);
 				.hint {
 					color: var(--red);
 				}
@@ -107,10 +109,10 @@
 
 		&.vacation {
 			.date {
-				background-color: rgba($blue, 0.2);
+				background-color: rgba($vacation, $common-transition);
 			}
 			&:hover .date {
-				background-color: rgba($blue, 0.4);
+				background-color: rgba($vacation, $hover-transition);
 			}
 			.vacation-info {
 				color: var(--blue);
@@ -119,10 +121,10 @@
 
 		&.day-off {
 			.date {
-				background-color: rgba($green, 0.2);
+				background-color: rgba($day-off, $common-transition);
 			}
 			&:hover .date {
-				background-color: rgba($green, 0.4);
+				background-color: rgba($day-off, $hover-transition);
 			}
 			.vacation-info {
 				color: var(--secondary-200);
