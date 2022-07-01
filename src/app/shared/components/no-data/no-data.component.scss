@@ -2,8 +2,8 @@
 
 :host{
 	.no-data{
-		background-image: url('/assets/image/no-data.svg');
-		background-size: cover;
+		background: url('/assets/image/no-data.svg') no-repeat;
+		background-size: contain;
 	}
 	.inline{
 		display: inline-block;
