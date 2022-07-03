@@ -1,7 +1,0 @@
-@import 'vars/icons-size';
-
-@mixin var-icons($property, $value) {
-	--#{$property}: #{$value};
-	--#{$property}-m: calc(#{$value} * 1.25);
-	--#{$property}-l: calc(#{$value} * 1.5);
-}

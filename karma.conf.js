@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/track-mola'),
+      dir: require('path').join(__dirname, './coverage/login-module-training'),
       subdir: '.',
       reporters: [
         { type: 'html' },
