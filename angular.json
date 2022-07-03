@@ -3,8 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "loginModuleTraining": {
+    "TrackMola": {
       "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "skipTests": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -12,186 +25,73 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/loginModuleTraining",
+            "outputPath": "dist/track-mola",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": [
-              "lodash",
-              "numeral",
-              "izitoast",
-              "@bugsnag/js",
-              "nouislider",
-              "rxjs",
-              "highcharts",
-              "highcharts-custom-events/js/customEvents",
-              "word-to-numbers",
-              "jspdf",
-              "file-saver"
-            ],
-            "aot": true,
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "src/assets",
-              "src/config",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/amc-common-components/assets",
-                "output": "./assets/"
-              },
-              "src/manifest.webmanifest"
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
-            ],
-            "scripts": [
+              "src/scss/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/scss"]
-            }
+              "includePaths": [
+                "src/scss"
+              ]
+           },
+            "scripts": []
           },
           "configurations": {
-            "local": {
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "serviceWorker": false
-            },
-            "dev": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": false,
-              "outputHashing": "all",
-              "sourceMap": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "45mb",
-                  "maximumError": "50mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "512kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
-            },
-            "uat": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.uat.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "45mb",
-                  "maximumError": "50mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "512kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
-            },
-            "qa": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.qa.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "45mb",
-                  "maximumError": "50mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "512kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
-            },
             "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "45mb",
-                  "maximumError": "50mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "512kb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "loginModuleTraining:build"
-          },
           "configurations": {
-            "local": {
-              "browserTarget": "loginModuleTraining:build:local"
-            },
             "production": {
-              "browserTarget": "loginModuleTraining:build:production"
+              "browserTarget": "TrackMola:build:production"
+            },
+            "development": {
+              "browserTarget": "TrackMola:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "loginModuleTraining:build"
+            "browserTarget": "TrackMola:build"
           }
         },
         "test": {
@@ -201,57 +101,31 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/assets", "src/manifest.webmanifest"],
-            "styles": ["src/styles.scss"],
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "loginModuleTraining:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "loginModuleTraining:serve:production"
-            }
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.component.html"
+            ]
           }
         }
       }
     }
   },
-  "schematics": {
-    "@schematics/angular:class": {
-      "skipTests": true
-    },
-    "@schematics/angular:component": {
-      "skipTests": true,
-      "prefix": "est",
-      "style": "scss",
-      "changeDetection": "OnPush"
-    },
-    "@schematics/angular:directive": {
-      "skipTests": true,
-      "prefix": "est"
-    },
-    "@schematics/angular:module": {
-      "skipTests": true
-    },
-    "@schematics/angular:pipe": {
-      "skipTests": true
-    },
-    "@schematics/angular:service": {
-      "skipTests": true
-    }
-  },
   "cli": {
-    "analytics": "56315fe6-ddac-465a-8afc-a8c19ffed80a"
+    "analytics": false,
+    "defaultCollection": "@angular-eslint/schematics"
   }
 }

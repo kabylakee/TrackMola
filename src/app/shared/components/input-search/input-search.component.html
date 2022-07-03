@@ -1,0 +1,5 @@
+<mat-icon class="search-icon">search</mat-icon>
+<input class="search-input" matInput type="text" [(ngModel)]="value" placeholder="Search">
+<button class="search-clear" *ngIf="value" matSuffix mat-icon-button (click)="value=''">
+  <mat-icon class="search-clear-icon">close</mat-icon>
+</button>

@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+@import 'vars/colors';
+
+@include mat.core();
+
+$TrackMola-primary: mat.define-palette($primary-palette, 300);
+$TrackMola-accent: mat.define-palette($accent-palette, 200);
+
+$TrackMola-warn: mat.define-palette($red-palette);
+
+$TrackMola-typography: mat.define-typography-config(
+	$font-family: 'Inter',
+);
+
+$TrackMola-theme: mat.define-light-theme(
+	(
+		color: (
+			primary: $TrackMola-primary,
+			accent: $TrackMola-accent,
+			warn: $TrackMola-warn,
+		),
+		typography: $TrackMola-typography,
+	)
+);
+
+@include mat.all-component-themes($TrackMola-theme);
+
+@include mat.core($TrackMola-typography);
