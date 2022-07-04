@@ -1,0 +1,22 @@
+:host{
+    @import 'mixins/common-mixin';
+
+    .menu-button {
+        line-height: 0;
+        padding: var(--offset-xs) var(--offset-s);
+
+        &-icon {
+            @include icon-size(--icon-size-m);
+        }
+
+        &-text {
+            font-size: var(--font-size-xs);
+        }
+    }
+}
+.mat-menu-item{
+    color: var(--light-black);
+}
+.mat-checkbox{
+    display: block;
+}
