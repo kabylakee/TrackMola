@@ -1,0 +1,26 @@
+<div class="item-wrapper"
+  [ngClass]="dayInfo.timeStatus"
+  [class.present]="isPresent"
+  [class.disabled]="disabled"
+  [class.vacation]="dayInfo.isVacation && dayInfo.paid" 
+  [class.day-off]="dayInfo.isVacation && !dayInfo.paid">
+  <div class="date">
+    {{dayInfo.date | date:'d MMMM'}}
+    <mat-icon class="hint" *ngIf="!dayInfo.isVacation && !disabled">open_in_new</mat-icon>
+  </div>
+  <ul class="info" *ngIf="!dayInfo.isVacation && dayInfo.taskCount > 0">
+    <li class="info-item">
+      <span class="info-title">Task</span>
+      <span class="info-value">{{dayInfo.taskCount}}</span>
+    </li>
+    <li class="info-item">
+      <span class="info-title">Total</span>
+      <span class="info-value">{{dayInfo.total | appCommaSeparated}}h</span>
+    </li>
+    <li class="info-item" *ngIf="dayInfo.overtime > 0">
+      <span class="info-title">Overtime</span>
+      <span class="info-value">{{dayInfo.overtime | appCommaSeparated}}h</span>
+    </li>
+  </ul>
+  <div class="vacation-info" *ngIf="dayInfo.isVacation">{{isPaid()}}</div>
+</div>
