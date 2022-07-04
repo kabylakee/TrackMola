@@ -5,7 +5,7 @@ import {PageWrapperComponent} from './page-wrapper.component';
 
 @NgModule({
 	declarations: [PageWrapperComponent],
-	imports: [HeaderModule, AppRoutingModule,],
+	imports: [HeaderModule, AppRoutingModule],
 	exports: [PageWrapperComponent],
 })
 export class PageWrapperModule {}
