@@ -13,7 +13,3 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Deploy
-
-https://develop.auroravts.com/45kvqbb9nk4jfia79hdpi2ymgwr976nl/dashboard

@@ -6,8 +6,8 @@
 			display: flex;
 			gap: var(--offset-s);
 			padding: var(--offset-xxs) var(--offset-s);
-			border-radius: var(--border-radius-xs);
 			background-color: var(--accent-50);
+			border-radius: var(--border-radius-xs);
 			box-shadow: none;
 			&.transparent-bg {
 				background-color: transparent;
@@ -20,8 +20,8 @@
 				color: var(--light-black);
 			}
 			.hours {
-				font-size: var(--font-size);
 				font-weight: 500;
+				font-size: var(--font-size);
 				&.not-enough {
 					color: var(--red);
 				}

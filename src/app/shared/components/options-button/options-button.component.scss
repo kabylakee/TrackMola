@@ -1,6 +1,6 @@
-:host {
-	@import 'mixins/common-mixin';
+@import 'mixins/common-mixin';
 
+:host {
 	.menu-button {
 		padding: var(--offset-xs) var(--offset-s);
 		line-height: 0;
