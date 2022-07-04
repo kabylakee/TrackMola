@@ -9,7 +9,7 @@ app-root {
 			border: none;
 		}
 
-		&.mat-button-wrapper {
+		.mat-button-wrapper {
 			display: flex;
 			gap: var(--offset-s);
 			align-items: center;
