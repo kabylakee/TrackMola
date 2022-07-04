@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 import {ReportsTableComponent} from './reports-table.component';
 
@@ -21,6 +22,7 @@ import {ReportsTableComponent} from './reports-table.component';
 		FormsModule,
 		MatInputModule,
 		MatMenuModule,
+		MatSelectModule,
 	],
 	exports: [ReportsTableComponent],
 })

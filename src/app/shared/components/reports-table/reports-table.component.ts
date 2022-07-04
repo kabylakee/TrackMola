@@ -1,5 +1,16 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+} from '@angular/core';
+import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
+import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
+import {Status} from 'src/app/entities/enums/status.enum';
+import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 
@@ -11,14 +22,16 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 })
 export class ReportsTableComponent implements OnInit {
 	@Input() public dataSource: ITask[] = [];
-
 	@Input() public columns: ITableColumn[] = [];
 
+	@Output() optionSelected = new EventEmitter<string>();
+
 	public allChecked: boolean = false;
-
 	public readonly columnType = ColumnType;
-
 	public displayedColumns: string[] = [];
+	public readonly projects: IProject[] = PROJECT_MOCK;
+	public readonly status = Status;
+	public readonly options = Object.values(OPTIONS_CONFIG);
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
