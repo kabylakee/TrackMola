@@ -1,12 +1,12 @@
 :host {
 	width: 100%;
 	.page-wrapper {
-    	margin: var(--offset-l);
-    	margin-left: 0rem;
+		height: calc(100vh - var(--offset-xl));
+		margin: var(--offset-l);
+		margin-left: 0rem;
 		padding: calc(3 * var(--offset));
+		overflow: hidden;
 		background-color: var(--white);
 		border-radius: var(--offset-xs);
-		height: calc(100vh - var(--offset-xl));
-		overflow: hidden;
 	}
 }

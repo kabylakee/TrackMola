@@ -1,95 +1,93 @@
 @import 'mixins/common-mixin';
-@import 'vars/offsets.scss';
+@import 'vars/offsets';
 
 :host {
 	$button-width: 6.9rem;
 	$button-height: 2.45rem;
 
-	::ng-deep {
-		.mat-button-toggle-appearance-standard {
-			&:not(.mat-button-toggle-disabled) {
+	.mat-button-toggle-appearance-standard {
+		&:not(.mat-button-toggle-disabled) {
+			&:hover {
+				.mat-button-toggle-focus-overlay {
+					display: none;
+				}
+			}
+		}
+	}
+
+	mat-button-toggle {
+		@include flex-center;
+
+		width: $button-width;
+		height: $button-height;
+		color: var(--accent-300);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+	}
+
+	.mat-button-toggle {
+		&:hover {
+			color: var(--accent-500);
+			transition: var(--transition-xxs);
+		}
+
+		&-group-appearance-standard {
+			border: none;
+			border-radius: var(--border-radius-xs);
+		}
+
+		&-checked {
+			color: var(--white);
+			background-color: var(--accent-300);
+
+			&:hover {
+				color: var(--white);
+				background-color: var(--accent-500);
+				transition: var(--transition-xxs);
+			}
+		}
+
+		&-group-appearance-standard .mat-button-toggle {
+			&:first-child {
+				border-top: 1px solid var(--accent-300);
+				border-bottom: 1px solid var(--accent-300);
+				border-left: 1px solid var(--accent-300);
+				border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
+
 				&:hover {
-					.mat-button-toggle-focus-overlay {
-						display: none;
+					border-color: var(--accent-500);
+					transition: var(--transition-xxs);
+
+					& + .mat-button-toggle {
+						border-left-color: var(--accent-500);
 					}
 				}
 			}
-		}
 
-		mat-button-toggle {
-			@include flex-center;
-
-			width: $button-width;
-			height: $button-height;
-			font-size: var(--font-size-xs);
-			color: var(--accent-300);
-			font-weight: 600;
-		}
-
-		.mat-button-toggle {
-			&:hover {
-				color: var(--accent-500);
-        transition: var(--transition-xxs);
-			}
-
-			&-group-appearance-standard {
-				border: none;
-				border-radius: var(--border-radius-xs);
-			}
-
-			&-checked {
-				background-color: var(--accent-300);
-				color: var(--white);
-
-				&:hover {
-					transition: var(--transition-xxs);
-					color: var(--white);
-					background-color: var(--accent-500);
-				}
-			}
-
-			&-group-appearance-standard .mat-button-toggle {
-				&:first-child {
+			&:not(:first-child) {
+				&:not(:last-child) {
 					border-top: 1px solid var(--accent-300);
 					border-bottom: 1px solid var(--accent-300);
 					border-left: 1px solid var(--accent-300);
-					border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
 
 					&:hover {
-						transition: var(--transition-xxs);
 						border-color: var(--accent-500);
+						transition: var(--transition-xxs);
 
 						& + .mat-button-toggle {
 							border-left-color: var(--accent-500);
 						}
 					}
 				}
+			}
 
-				&:not(:first-child) {
-					&:not(:last-child) {
-						border-top: 1px solid var(--accent-300);
-						border-bottom: 1px solid var(--accent-300);
-						border-left: 1px solid var(--accent-300);
+			&:last-child {
+				border: 1px solid var(--accent-300);
+				border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
 
-						&:hover {
-							transition: var(--transition-xxs);
-							border-color: var(--accent-500);
-
-							& + .mat-button-toggle {
-								border-left-color: var(--accent-500);
-							}
-						}
-					}
-				}
-
-				&:last-child {
-					border: 1px solid var(--accent-300);
-					border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
-
-					&:hover {
-						transition: var(--transition-xxs);
-						border-color: var(--accent-500);
-					}
+				&:hover {
+					border-color: var(--accent-500);
+					transition: var(--transition-xxs);
 				}
 			}
 		}

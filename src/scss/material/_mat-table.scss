@@ -1,0 +1,86 @@
+$row-height: 2.5rem;
+
+app-root {
+	.mat-table {
+		width: 100%;
+		overflow: hidden;
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius-xs);
+
+		.mat-header-row {
+			height: $row-height;
+			background: var(--accent-50);
+
+			.mat-header-cell {
+				color: var(--black);
+				font-weight: 500;
+				font-size: var(--font-size-s);
+				&:first-of-type {
+					width: calc($row-height - 2 * var(--offset-s));
+					padding: 0 var(--offset-s);
+				}
+				&:last-of-type {
+					padding: 0;
+				}
+			}
+		}
+
+		.mat-row {
+			height: $row-height;
+			color: var(--light-black);
+			font-weight: 400;
+			font-size: var(--font-size-s);
+			&:not(:last-of-type) td {
+				border-bottom: 1px solid var(--light-gray);
+			}
+			td {
+				margin: 0;
+				padding: 0;
+				&:first-of-type {
+					padding: 0 var(--offset-s);
+				}
+			}
+		}
+
+		.mat-form {
+			&-field-wrapper {
+				padding: 0;
+			}
+
+			&-field-underline {
+				display: none;
+			}
+
+			&-field-flex {
+				padding: 0;
+				background: none;
+			}
+
+			&-field-infix {
+				width: 100%;
+				padding: 0;
+				border: none;
+			}
+		}
+
+		.mat-checkbox {
+			display: flex;
+
+			&-frame {
+				border: 1px solid var(--light-gray);
+				border-radius: var(--border-radius-xxs);
+			}
+
+			&-background {
+				border-radius: var(--border-radius-xxs);
+			}
+		}
+
+		.mat-button {
+			min-width: 0;
+			font-size: var(--font-size-xs);
+			line-height: var(--font-size);
+			border-radius: var(--border-radius-xs);
+		}
+	}
+}

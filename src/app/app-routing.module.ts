@@ -3,6 +3,7 @@ import {RouterModule, Routes, PreloadAllModules} from '@angular/router';
 
 import {RouterPaths} from './entities/enums/router.enum';
 
+
 const routes: Routes = [
 	{path: '', redirectTo: 'dashboard', pathMatch: 'full'},
 	{
