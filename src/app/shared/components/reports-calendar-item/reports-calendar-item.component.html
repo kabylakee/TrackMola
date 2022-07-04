@@ -1,6 +1,6 @@
 <div class="item-wrapper"
   [ngClass]="dayInfo.timeStatus"
-  [class.present]="isPresent()"
+  [class.present]="isPresent"
   [class.disabled]="disabled"
   [class.vacation]="dayInfo.isVacation && dayInfo.paid" 
   [class.day-off]="dayInfo.isVacation && !dayInfo.paid">

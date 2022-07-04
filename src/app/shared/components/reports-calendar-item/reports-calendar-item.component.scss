@@ -1,5 +1,4 @@
 @import 'mixins/common-mixin';
-@import 'mixins/colors-mixin';
 
 :host {
 	$overwork: rgb(241, 186, 102);
@@ -70,10 +69,13 @@
 				background-color: rgba($overwork, $common-transition);
 			}
 
-			&:hover .date {
-				background-color: rgba($overwork, $hover-transition);
-				.hint {
-					color: var(--yellow);
+			&:hover {
+				border: 1px solid var(--yellow);
+				.date {
+					background-color: rgba($overwork, $hover-transition);
+					.hint {
+						color: var(--yellow);
+					}
 				}
 			}
 
@@ -88,10 +90,13 @@
 				background-color: rgba($unfinished, $common-transition);
 			}
 
-			&:hover .date {
-				background-color: rgba($unfinished, $hover-transition);
-				.hint {
-					color: var(--red);
+			&:hover {
+				border: 1px solid var(--red);
+				.date {
+					background-color: rgba($unfinished, $hover-transition);
+					.hint {
+						color: var(--red);
+					}
 				}
 			}
 
@@ -100,19 +105,15 @@
 			}
 		}
 
-		&.present {
-			border: 1px solid var(--accent-300);
-			.date {
-				color: var(--accent-500);
-			}
-		}
-
 		&.vacation {
 			.date {
 				background-color: rgba($vacation, $common-transition);
 			}
-			&:hover .date {
-				background-color: rgba($vacation, $hover-transition);
+			&:hover {
+				border: 1px solid var(--blue);
+				.date {
+					background-color: rgba($vacation, $hover-transition);
+				}
 			}
 			.vacation-info {
 				color: var(--blue);
@@ -123,11 +124,24 @@
 			.date {
 				background-color: rgba($day-off, $common-transition);
 			}
-			&:hover .date {
-				background-color: rgba($day-off, $hover-transition);
+			&:hover {
+				border: 1px solid var(--secondary-200);
+				.date {
+					background-color: rgba($day-off, $hover-transition);
+				}
 			}
 			.vacation-info {
 				color: var(--secondary-200);
+			}
+		}
+
+		&.present {
+			border: 1px solid var(--accent-300);
+			&:hover {
+				border: 1px solid var(--accent-300);
+			}
+			.date {
+				color: var(--accent-500);
 			}
 		}
 
@@ -136,8 +150,11 @@
 				color: var(--gray);
 				background-color: var(--accent-50);
 			}
-			&:hover .date {
-				background-color: var(--accent-50);
+			&:hover {
+				border: 1px solid var(--light-gray);
+				.date {
+					background-color: var(--accent-50);
+				}
 			}
 			.vacation-info {
 				display: none;

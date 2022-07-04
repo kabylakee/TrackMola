@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {NotWorkingDay} from 'src/app/entities/enums/not-working-day.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
 
 @Component({
@@ -11,7 +12,7 @@ export class ReportsCalendarItemComponent {
 	@Input() dayInfo: IReportsDayInfo;
 	@Input() disabled = false;
 
-	public isPresent(): boolean {
+	public get isPresent(): boolean {
 		const today = new Date();
 		return (
 			this.dayInfo.date.getDate() === today.getDate() &&
@@ -20,6 +21,6 @@ export class ReportsCalendarItemComponent {
 	}
 
 	public isPaid(): string {
-		return this.dayInfo.paid ? 'Vacation' : 'Day-off';
+		return this.dayInfo.paid ? NotWorkingDay.Vacation : NotWorkingDay.DayOff;
 	}
 }
