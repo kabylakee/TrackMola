@@ -1,0 +1,167 @@
+@import 'mixins/common-mixin';
+
+:host {
+	$overwork: rgb(241, 186, 102);
+	$unfinished: rgb(241, 102, 102);
+	$vacation: rgb(88, 174, 223);
+	$day-off: rgb(125, 214, 165);
+	$common-transition: 0.2;
+	$hover-transition: 0.4;
+	$calendar-item-width: 11rem;
+	$calendar-item-height: 7rem;
+
+	.item-wrapper {
+		width: $calendar-item-width;
+		height: $calendar-item-height;
+		color: var(--light-black);
+		font-weight: 500;
+		line-height: var(--font-size);
+		border: 1px solid var(--light-gray);
+		cursor: pointer;
+
+		.date {
+			position: relative;
+			padding: var(--offset-xs) 0;
+			text-align: center;
+			background-color: var(--accent-50);
+			.hint {
+				position: absolute;
+				display: none;
+				margin-left: var(--offset-xxs);
+				color: var(--light-gray);
+				@include icon-size(--icon-size);
+			}
+		}
+
+		&:hover .date {
+			background-color: rgba-color(accent-100, 0.5);
+			.hint {
+				display: inline-block;
+			}
+		}
+
+		.info {
+			display: flex;
+			flex-direction: column;
+			gap: var(--offset-xxs);
+			margin: 0;
+			padding: var(--offset-s);
+			list-style: none;
+			.info-item {
+				display: flex;
+				justify-content: space-between;
+				.info-title {
+					font-weight: 400;
+				}
+				.info-value {
+					font-weight: 600;
+				}
+			}
+		}
+
+		.vacation-info {
+			padding-top: var(--offset-l);
+			text-align: center;
+		}
+
+		&.overwork {
+			.date {
+				background-color: rgba($overwork, $common-transition);
+			}
+
+			&:hover {
+				border: 1px solid var(--yellow);
+				.date {
+					background-color: rgba($overwork, $hover-transition);
+					.hint {
+						color: var(--yellow);
+					}
+				}
+			}
+
+			.info-item:last-of-type,
+			.info-item:nth-of-type(2) .info-value {
+				color: var(--yellow);
+			}
+		}
+
+		&.unfinished {
+			.date {
+				background-color: rgba($unfinished, $common-transition);
+			}
+
+			&:hover {
+				border: 1px solid var(--red);
+				.date {
+					background-color: rgba($unfinished, $hover-transition);
+					.hint {
+						color: var(--red);
+					}
+				}
+			}
+
+			.info-item:nth-of-type(2) {
+				color: var(--red);
+			}
+		}
+
+		&.vacation {
+			.date {
+				background-color: rgba($vacation, $common-transition);
+			}
+			&:hover {
+				border: 1px solid var(--blue);
+				.date {
+					background-color: rgba($vacation, $hover-transition);
+				}
+			}
+			.vacation-info {
+				color: var(--blue);
+			}
+		}
+
+		&.day-off {
+			.date {
+				background-color: rgba($day-off, $common-transition);
+			}
+			&:hover {
+				border: 1px solid var(--secondary-200);
+				.date {
+					background-color: rgba($day-off, $hover-transition);
+				}
+			}
+			.vacation-info {
+				color: var(--secondary-200);
+			}
+		}
+
+		&.present {
+			border: 1px solid var(--accent-300);
+			&:hover {
+				border: 1px solid var(--accent-300);
+			}
+			.date {
+				color: var(--accent-500);
+			}
+		}
+
+		&.disabled {
+			.date {
+				color: var(--gray);
+				background-color: var(--accent-50);
+			}
+			&:hover {
+				border: 1px solid var(--light-gray);
+				.date {
+					background-color: var(--accent-50);
+				}
+			}
+			.vacation-info {
+				display: none;
+			}
+			.info {
+				display: none;
+			}
+		}
+	}
+}

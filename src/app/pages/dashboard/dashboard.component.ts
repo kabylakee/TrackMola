@@ -11,5 +11,4 @@ import {Type} from 'src/app/entities/enums/type.enum';
 export class DashboardComponent {
 	public readonly size = Size;
 	public readonly type = Type;
-
 }
