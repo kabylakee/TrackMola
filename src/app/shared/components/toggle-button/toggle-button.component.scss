@@ -20,9 +20,9 @@
 
 		width: $button-width;
 		height: $button-height;
-		font-size: var(--font-size-xs);
 		color: var(--accent-300);
 		font-weight: 600;
+		font-size: var(--font-size-xs);
 	}
 
 	.mat-button-toggle {
@@ -37,13 +37,13 @@
 		}
 
 		&-checked {
-			background-color: var(--accent-300);
 			color: var(--white);
+			background-color: var(--accent-300);
 
 			&:hover {
-				transition: var(--transition-xxs);
 				color: var(--white);
 				background-color: var(--accent-500);
+				transition: var(--transition-xxs);
 			}
 		}
 
@@ -55,8 +55,8 @@
 				border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
 
 				&:hover {
-					transition: var(--transition-xxs);
 					border-color: var(--accent-500);
+					transition: var(--transition-xxs);
 
 					& + .mat-button-toggle {
 						border-left-color: var(--accent-500);
@@ -71,8 +71,8 @@
 					border-left: 1px solid var(--accent-300);
 
 					&:hover {
-						transition: var(--transition-xxs);
 						border-color: var(--accent-500);
+						transition: var(--transition-xxs);
 
 						& + .mat-button-toggle {
 							border-left-color: var(--accent-500);
@@ -86,8 +86,8 @@
 				border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
 
 				&:hover {
-					transition: var(--transition-xxs);
 					border-color: var(--accent-500);
+					transition: var(--transition-xxs);
 				}
 			}
 		}

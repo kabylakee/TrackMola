@@ -1,0 +1,33 @@
+app-root {
+	.mat-flat-button {
+		padding: var(--offset-xxs) var(--offset-m);
+		transition: var(--transition-xxs);
+
+		&.mat-button-disabled.mat-button-disabled {
+			color: var(--light-gray);
+			background-color: var(--accent-50);
+			border: none;
+		}
+
+		.mat-button-wrapper {
+			display: flex;
+			gap: var(--offset-s);
+			align-items: center;
+		}
+
+		.mat-secondary {
+			color: var(--accent-300);
+			border: 1px solid var(--accent-300);
+			&:hover {
+				color: var(--accent-500);
+				border-color: var(--accent-500);
+			}
+		}
+
+		.mat-primary {
+			:hover {
+				background-color: var(--accent-500);
+			}
+		}
+	}
+}
