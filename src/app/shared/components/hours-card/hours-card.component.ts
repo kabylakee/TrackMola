@@ -23,11 +23,11 @@ export class HoursCardComponent implements OnChanges {
 
 	private setTimeStatus(): void {
 		if (this.totalHours < this.normalHoursCount) {
-			this.currentTimeStatus = this.timeStatus.NotEnough;
+			this.currentTimeStatus = this.timeStatus.Unfinished;
 			return;
 		}
 		if (this.totalHours > this.normalHoursCount) {
-			this.currentTimeStatus = this.timeStatus.Overtime;
+			this.currentTimeStatus = this.timeStatus.Overwork;
 			return;
 		}
 		this.currentTimeStatus = this.timeStatus.Enough;

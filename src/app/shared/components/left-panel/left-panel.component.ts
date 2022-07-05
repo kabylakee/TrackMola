@@ -9,7 +9,7 @@ import {NAVIGATION_LINKS} from 'src/app/entities/constants/router.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftPanelComponent {
-	public isPanelSmall = true;
+	public isPanelSmall = false;
 
 	public readonly navigationLinks = NAVIGATION_LINKS;
 
