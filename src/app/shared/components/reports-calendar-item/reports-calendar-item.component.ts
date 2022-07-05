@@ -20,7 +20,7 @@ export class ReportsCalendarItemComponent {
 		);
 	}
 
-	public isPaid(): string {
+	public get notWorkingDayType(): string {
 		return this.dayInfo.paid ? NotWorkingDay.Vacation : NotWorkingDay.DayOff;
 	}
 }

@@ -22,5 +22,5 @@
       <span class="info-value">{{dayInfo.overtime | appCommaSeparated}}h</span>
     </li>
   </ul>
-  <div class="vacation-info" *ngIf="dayInfo.isVacation">{{isPaid()}}</div>
+  <div class="vacation-info" *ngIf="dayInfo.isVacation">{{notWorkingDayType}}</div>
 </div>

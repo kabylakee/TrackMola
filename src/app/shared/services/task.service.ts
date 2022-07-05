@@ -9,7 +9,9 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 export class TaskService {
 	public tasks$: Observable<ITask[]>;
 
-	public getTasks(): Observable<ITask[]> {
-		return (this.tasks$ = of(TASKS_MOCK));
+	public getTasks(dateFrom: Date = new Date(0), dateTo: Date = new Date()): Observable<ITask[]> {
+		return (this.tasks$ = of(
+			TASKS_MOCK.filter((task) => task.date > dateFrom && task.date <= dateTo),
+		));
 	}
 }
