@@ -5,22 +5,12 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {MY_FORMATS} from 'src/app/entities/constants/formats.constants';
 import {Period} from 'src/app/entities/enums/period.enum';
 
-// Depending on whether rollup is used, moment needs to be imported differently.
-// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
-// syntax. However, rollup creates a synthetic default module and we thus need to import it using
-// the `default as` syntax.
 import * as _moment from 'moment';
 import {default as _rollupMoment} from 'moment';
 import {MatDatepicker} from '@angular/material/datepicker';
 
-// tslint:disable-next-line:no-duplicate-imports
-
 const moment = _rollupMoment || _moment;
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
-
-/** @title Datepicker with custom formats */
 @Component({
 	selector: 'app-date-picker',
 	templateUrl: './date-picker.component.html',
