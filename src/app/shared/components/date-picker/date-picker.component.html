@@ -1,1 +1,34 @@
-<p>date-picker works!</p>
+<div class="button-group">
+  <mat-form-field appearance="fill" (click)="picker.open()">
+    <mat-datepicker-toggle matSuffix>
+      <mat-icon matDatepickerToggleIcon>
+        calendar_today
+      </mat-icon>
+    </mat-datepicker-toggle>
+    <input matInput [matDatepicker]="picker" [formControl]="date" readonly>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button mat-flat-button color="secondary" (click)="changeDateRange(-1)">
+    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_left</mat-icon>
+  </button>
+  <button mat-flat-button color="secondary" (click)="changeDateRange(1)">
+    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_right</mat-icon>
+  </button>
+</div>
+<!-- <div class="button-group">
+  <button mat-flat-button mat-button-wrapper color="secondary" type="button" (click)="onSelectedDate()">
+    <span>June 17, 2022</span>
+    <mat-icon class="material-symbols-outlined calendar-icon">
+      calendar_today
+    </mat-icon>
+  </button>
+  <button mat-flat-button color="secondary">
+    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_left</mat-icon>
+  </button>
+  <button mat-flat-button color="secondary">
+    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_right</mat-icon>
+  </button>
+  <div *ngIf="selectedDate">
+    <app-calendar></app-calendar>
+  </div>
+</div> -->

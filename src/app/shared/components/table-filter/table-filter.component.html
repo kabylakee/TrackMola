@@ -1,1 +1,2 @@
-<app-toggle-button [config]="toggleConfig"></app-toggle-button>
+<app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changeDatePicker($event)"></app-toggle-button>
+<app-date-picker [periodRange]="periodRange"></app-date-picker>
