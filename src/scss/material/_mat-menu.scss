@@ -24,7 +24,16 @@ button.mat-menu-item {
 	}
 	
 	.mat-checkbox{
-        margin-right: var(--offset-s)
+        margin-right: var(--offset-s);
+
+		.mat-checkbox-frame {
+			border: 1px solid var(--light-gray) ;
+			border-radius: var(--border-radius-xxs);
+			}
+		
+			.mat-checkbox-background {
+			border-radius: var(--border-radius-xxs);
+			}
     }
 	
 	&:hover {

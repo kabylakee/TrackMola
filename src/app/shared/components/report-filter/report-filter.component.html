@@ -7,11 +7,11 @@
 <mat-menu #filter="matMenu">
 	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="projects">
 		<span>Project</span>
-		<mat-icon >keyboard_arrow_right</mat-icon>
+		<mat-icon>keyboard_arrow_right</mat-icon>
 	</button>
 	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="statuses">
 		<span>Status</span>
-		<mat-icon >keyboard_arrow_right</mat-icon>
+		<mat-icon>keyboard_arrow_right</mat-icon>
 	</button>
 	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="overtime">
 		<span>Overtime</span>
@@ -21,7 +21,7 @@
 
 <mat-menu #projects="matMenu">
 	<button mat-menu-item>
-		<mat-checkbox  color="primary" (clck)="$event.stopPropagation()"></mat-checkbox>
+		<mat-checkbox color="primary" (click)="$event.stopPropagation()"></mat-checkbox>
 		<span>Select All</span>
 	</button>
 	<button mat-menu-item>
