@@ -18,7 +18,15 @@ button.mat-menu-item {
 	.mat-icon {
 		color: var(--light-gray);
 	}
-
+	
+	.mat-menu-submenu-icon {
+		display: none;    
+	}
+	
+	.mat-checkbox{
+        margin-right: var(--offset-s)
+    }
+	
 	&:hover {
 		background-color: var(--accent-50);
 
@@ -26,4 +34,6 @@ button.mat-menu-item {
 			color: var(--gray);
 		}
 	}
+	
 }
+
