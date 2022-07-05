@@ -1,7 +1,7 @@
 :host {
   .grid-wrapper {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(8, 1fr);
 
     .header {
       text-align: center;
@@ -16,7 +16,7 @@
         border-top-left-radius: var(--border-radius-xs);
       }
 
-      &:nth-child(7) {
+      &:nth-child(8) {
         border-right: 1px solid var(--light-gray);
         border-top-right-radius: var(--border-radius-xs);
       }

@@ -1,6 +1,6 @@
-import {Status} from '../enums/status.enum';
-import {ITask} from '../interfaces/task.interface';
-import {PROJECT_MOCK} from './project.mock';
+import { Status } from '../enums/status.enum';
+import { ITask } from '../interfaces/task.interface';
+import { PROJECT_MOCK } from './project.mock';
 
 export const TASKS_MOCK: ITask[] = [
 	{
@@ -29,6 +29,17 @@ export const TASKS_MOCK: ITask[] = [
 		date: new Date(2022, 6, 2),
 		checked: false,
 		title: 'Task 3',
+		project: PROJECT_MOCK[2],
+		status: Status.Done,
+		time: 1,
+		overtime: 0,
+		paid: false,
+		asanaLink: '',
+	},
+	{
+		date: new Date(2022, 6, 2),
+		checked: false,
+		title: 'Task 4',
 		project: PROJECT_MOCK[2],
 		status: Status.Done,
 		time: 1,
