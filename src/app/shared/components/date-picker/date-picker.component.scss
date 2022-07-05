@@ -7,52 +7,52 @@ $button-group-width: 12.8rem;
 $arrows-height: 2.313rem;
 
 :host {
-  ::ng-deep {
-    mat-datepicker-toggle {
-      & .mat-ripple {
-        display: none;
-      }
-      color: var(--accent-300);
-    }
+	::ng-deep {
+		mat-datepicker-toggle {
+			& .mat-ripple {
+				display: none;
+			}
+			color: var(--accent-300);
+		}
 
-    .mat-flat-button {
-      min-width: $button-min-width;
-    }
+		.mat-flat-button {
+			min-width: $button-min-width;
+		}
 
-    .mat-form-field {
-      &:hover {
-        background: none;
-        border-radius: var(--border-radius-xs);
-      }
-      &-wrapper {
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        @include flex-center;
-        padding: 0;
-        color: var(--accent-300);
-        border-right: 1px solid var(--accent-300);
-        width: $wrapper-width;
-        height: $buttons-height;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-      &-underline {
-        display: none;
-      }
+		.mat-form-field {
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				font-size: var(--font-size-xs);
+				font-weight: 600;
+				@include flex-center;
+				padding: 0;
+				color: var(--accent-300);
+				border-right: 1px solid var(--accent-300);
+				width: $wrapper-width;
+				height: $buttons-height;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			&-underline {
+				display: none;
+			}
 
-      &-appearance-fill .mat-form-field-flex {
-        display: flex;
-        align-items: center;
-        padding: 0 calc(var(--offset) * 0.63) 0 calc(var(--offset) * 1.13);
-        border-radius: var(--border-radius-xs);
-        background-color: var(--white);
-      }
-      &-suffix {
-        padding-top: calc(var(--offset) * 0.2);
-      }
-    }
-  }
+			&-appearance-fill .mat-form-field-flex {
+				display: flex;
+				align-items: center;
+				padding: 0 calc(var(--offset) * 0.63) 0 calc(var(--offset) * 1.13);
+				border-radius: var(--border-radius-xs);
+				background-color: var(--white);
+			}
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
+			}
+		}
+	}
 
 	input.mat-input-element {
 		cursor: pointer;
