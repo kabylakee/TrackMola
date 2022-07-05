@@ -1,0 +1,21 @@
+@import 'mixins/common-mixin';
+
+:host {
+	.menu-button {
+		padding: var(--offset-xs) var(--offset-s);
+		line-height: 0;
+
+		&-icon {
+			@include icon-size(--icon-size-m);
+		}
+
+		&-text {
+			font-size: var(--font-size-xs);
+		}
+	}
+
+	.focused {
+		color: var(--accent-500);
+		border-color: var(--accent-500);
+	}
+}
