@@ -34,13 +34,13 @@ export class DatePickerComponent {
 	changeDateRange(increment: number): void {
 		switch (this.periodRange) {
 			case this.period.Day: {
-				const sd = this.date.value?.add(increment, 'days');
-				this.pick.select(sd as _moment.Moment);
+				const changedDate = this.date.value?.add(increment, 'days');
+				this.pick.select(changedDate as _moment.Moment);
 				break;
 			}
 			case this.period.Month: {
-				const sd = this.date.value?.add(increment, 'month');
-				this.pick.select(sd as _moment.Moment);
+				const changedDate = this.date.value?.add(increment, 'month');
+				this.pick.select(changedDate as _moment.Moment);
 				break;
 			}
 		}
