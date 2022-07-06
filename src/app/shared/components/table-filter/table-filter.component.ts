@@ -11,4 +11,9 @@ import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 })
 export class TableFilterComponent {
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
+	public periodRange: Period;
+
+	public changeDatePicker(element: Period): void {
+		this.periodRange = element;
+	}
 }
