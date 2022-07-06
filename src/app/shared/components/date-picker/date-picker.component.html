@@ -5,7 +5,7 @@
         calendar_today
       </mat-icon>
     </mat-datepicker-toggle>
-    <input matInput [matDatepicker]="picker" [formControl]="date" readonly>
+    <input (dateChange)="changeDate.emit(date.value?.toDate())" matInput [matDatepicker]="picker" [formControl]="date" readonly>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <button mat-flat-button color="secondary" (click)="changeDateRange(-1)">

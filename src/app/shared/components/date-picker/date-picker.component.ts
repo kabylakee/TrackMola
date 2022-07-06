@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
@@ -27,9 +27,10 @@ const moment = _rollupMoment || _moment;
 })
 export class DatePickerComponent {
 	@ViewChild('picker') pick!: MatDatepicker<_moment.Moment>;
-	date = new FormControl(moment());
+	public date = new FormControl(moment());
 	readonly period = Period;
 	@Input() periodRange: Period;
+	@Output() changeDate = new EventEmitter();
 
 	public changeDateRange(increment: number): void {
 		switch (this.periodRange) {
