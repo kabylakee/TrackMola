@@ -36,7 +36,18 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {
+		if (changes.dataSource) {
+			this.filterDataSource = this.dataSource;
+		}
 		if (changes.value) {
+			console.log(
+				'Changes value',
+				changes.value,
+				this.filterDataSource,
+				'DataSource',
+				this.dataSource,
+			);
+			// this.filterDataSource = this.dataSource;
 			this.getTaskField(this.value);
 		}
 	}
@@ -58,9 +69,12 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 		// if (column.field === 'title') {
 		console.log(this.dataSource);
 		console.log(this.value);
-		this.dataSource = this.dataSource.filter((item) => {
+		this.filterDataSource = this.dataSource.filter((item) => {
 			return item.title.toLowerCase().includes(value.toLowerCase());
 		});
+		if (this.value === '') {
+			this.filterDataSource = this.dataSource;
+		}
 		console.log(this.dataSource);
 		console.log(this.value);
 		// }
