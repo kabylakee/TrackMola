@@ -19,5 +19,5 @@ export class TableFilterComponent {
 
 	public tmp(date: Date) {
 		console.log(date);
-  }
+	}
 }

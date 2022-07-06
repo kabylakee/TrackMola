@@ -20,7 +20,7 @@ import {PageWrapperModule} from './shared/components/page-wrapper/page-wrapper.m
 		MatButtonModule,
 		LeftPanelModule,
 		BrowserAnimationsModule,
-    PageWrapperModule,
+		PageWrapperModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
