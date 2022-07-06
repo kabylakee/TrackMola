@@ -16,8 +16,4 @@ export class TableFilterComponent {
 	public changeDatePicker(element: Period): void {
 		this.periodRange = element;
 	}
-
-	public tmp(date: Date) {
-		console.log(date);
-	}
 }
