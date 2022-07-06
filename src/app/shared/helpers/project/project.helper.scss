@@ -1,0 +1,20 @@
+@import 'mixins/colors-mixin';
+
+:host {
+  $project-height: calc(2 * var(--offset-xxs) + var(--font-size-xs));
+
+  .project {
+    display: flex;
+    &-container {
+      color: var(--accent-300);
+      background-color: rgba-color(accent-300, 0.2) !important;
+      padding: var(--offset-xxs) calc(0.375 * var(--offset));
+      border-radius: var(--border-radius-xs);
+      height: $project-height;  
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+			font-size: var(--font-size-xs);
+    }
+  }
+}

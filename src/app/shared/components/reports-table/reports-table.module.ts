@@ -10,9 +10,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 
 import {ReportsTableComponent} from './reports-table.component';
+import {ProjectHelperComponent} from '../../helpers/project/project.helper';
 
 @NgModule({
-	declarations: [ReportsTableComponent],
+	declarations: [ReportsTableComponent, ProjectHelperComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,
