@@ -25,6 +25,7 @@ $arrows-height: 2.313rem;
 				border-radius: var(--border-radius-xs);
 			}
 			&-wrapper {
+        @include flex-center;
 				width: $wrapper-width;
 				height: $buttons-height;
 				padding: 0;
@@ -32,7 +33,6 @@ $arrows-height: 2.313rem;
 				font-weight: 600;
 				font-size: var(--font-size-xs);
 				border-right: 1px solid var(--accent-300);
-				@include flex-center;
 				&:hover {
 					cursor: pointer;
 				}

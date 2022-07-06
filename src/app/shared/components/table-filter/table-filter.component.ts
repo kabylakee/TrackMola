@@ -13,7 +13,7 @@ export class TableFilterComponent {
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 	public periodRange: Period;
 
-	changeDatePicker(element: Period): void {
+	public changeDatePicker(element: Period): void {
 		this.periodRange = element;
 	}
 }

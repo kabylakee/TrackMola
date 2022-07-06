@@ -31,7 +31,7 @@ export class DatePickerComponent {
 	readonly period = Period;
 	@Input() periodRange: Period;
 
-	changeDateRange(increment: number): void {
+	public changeDateRange(increment: number): void {
 		switch (this.periodRange) {
 			case this.period.Day: {
 				const changedDate = this.date.value?.add(increment, 'days');
