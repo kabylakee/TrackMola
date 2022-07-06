@@ -25,6 +25,12 @@ export class ReportsComponent implements OnInit {
 	}
 
 	// Get all tasks from task service
+	public value: string = '';
+
+	private getValue(): void {
+		console.log(this.value);
+	}
+
 	private getTasks(): void {
 		this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
 	}

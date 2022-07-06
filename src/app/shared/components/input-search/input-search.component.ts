@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
 	selector: 'app-input-search',
@@ -7,5 +7,11 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputSearchComponent {
-	public value = '';
+	@Output() valueChange = new EventEmitter<string>();
+	public value: string = '';
+
+	public onChangeValue(event: string): void {
+		console.log(event);
+		this.valueChange.emit(event);
+	}
 }

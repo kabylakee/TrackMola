@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {TOGGLE} from 'src/app/entities/constants/period.constants';
 import {Period} from 'src/app/entities/enums/period.enum';
 import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
@@ -10,5 +10,7 @@ import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableFilterComponent {
+	@Output() valueChange = new EventEmitter<string>();
+	public value: string = '';
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 }

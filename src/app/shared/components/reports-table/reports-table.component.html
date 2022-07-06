@@ -24,7 +24,7 @@
 
         <div *ngSwitchCase="columnType.INPUT">
           <mat-form-field class="example-full-width" appearance="fill">
-            <input matInput [value]="element[''+column.field]">
+            <input matInput [value]="element[''+column.field]" [ngModel]="element[''+column.field]" (ngModelChange)="search($event, column, element)">
           </mat-form-field>
         </div>
 
@@ -46,10 +46,10 @@
 
         <div *ngSwitchCase="columnType.LINK">
           <button class="add-link" mat-icon-button aria-label="Add Link" *ngIf="!element.asanaLink">
-            <mat-icon aria-hidden="false">add_link</mat-icon> 
+            <mat-icon aria-hidden="false">add_link</mat-icon>
           </button>
           <a mat-icon-button aria-label="Link" class="task-links" *ngIf="element.asanaLink" [href]="element.asanaLink" target="_blank">
-            <mat-icon aria-hidden="false">link</mat-icon> 
+            <mat-icon aria-hidden="false">link</mat-icon>
           </a>
         </div>
 
