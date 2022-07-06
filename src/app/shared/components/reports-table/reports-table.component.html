@@ -24,7 +24,7 @@
 
         <div *ngSwitchCase="columnType.INPUT">
           <mat-form-field class="example-full-width" appearance="fill">
-            <input matInput [value]="element[''+column.field]" [ngModel]="element[''+column.field]" (ngModelChange)="search($event, column, element)">
+            <input matInput [value]="element[''+column.field]" [ngModel]="element[''+column.field]">
           </mat-form-field>
         </div>
 

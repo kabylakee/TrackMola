@@ -1,3 +1,3 @@
 <app-month-table></app-month-table>
-<app-table-filter (valueChange)="value = $event"></app-table-filter>
+<app-table-filter (valueChange)="onValueChange($event)"></app-table-filter>
 <app-reports-table [columns]="columns" [dataSource]="tasks" [value]="value"></app-reports-table>

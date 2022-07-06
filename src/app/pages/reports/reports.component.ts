@@ -15,6 +15,8 @@ export class ReportsComponent implements OnInit {
 
 	public columns: ITableColumn[] = [];
 
+	public value: string = '';
+
 	constructor(private taskService: TaskService) {}
 
 	public ngOnInit(): void {
@@ -25,7 +27,6 @@ export class ReportsComponent implements OnInit {
 	}
 
 	// Get all tasks from task service
-	public value: string = '';
 
 	private getValue(): void {
 		console.log(this.value);
@@ -33,5 +34,10 @@ export class ReportsComponent implements OnInit {
 
 	private getTasks(): void {
 		this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+	}
+
+	public onValueChange($event: string): void {
+		this.value = $event;
+		console.log(this.value);
 	}
 }

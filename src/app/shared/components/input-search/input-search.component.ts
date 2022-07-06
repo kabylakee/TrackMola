@@ -10,8 +10,8 @@ export class InputSearchComponent {
 	@Output() valueChange = new EventEmitter<string>();
 	public value: string = '';
 
-	public onChangeValue(event: string): void {
-		console.log(event);
-		this.valueChange.emit(event);
+	public onChangeValue(str: string): void {
+		console.log(str);
+		this.valueChange.emit(str);
 	}
 }

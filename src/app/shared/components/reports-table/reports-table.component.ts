@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	Input,
+	OnChanges,
+	OnInit,
+	SimpleChanges,
+} from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
@@ -16,6 +23,8 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 
 	@Input() public value: string = '';
 
+	public filterDataSource: ITask[] = [];
+
 	public allChecked: boolean = false;
 
 	public readonly columnType = ColumnType;
@@ -23,12 +32,13 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	public displayedColumns: string[] = [];
 
 	public ngOnInit(): void {
-		console.log(this.value);
 		this.displayedColumns = this.columns.map((i) => i.id);
 	}
 
-	public ngOnChanges(): void {
-		console.log(this.value);
+	public ngOnChanges(changes: SimpleChanges): void {
+		if (changes.value) {
+			this.getTaskField(this.value);
+		}
 	}
 
 	// When you click subcheckbox update main checkbox
@@ -44,9 +54,15 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 		}
 	}
 
-	public search(event: string, column: ITableColumn, elem: ITask): void {
-		if (column.field === 'title') {
-			console.log(elem[column.field], event);
-		}
+	public getTaskField(value: string): void {
+		// if (column.field === 'title') {
+		console.log(this.dataSource);
+		console.log(this.value);
+		this.dataSource = this.dataSource.filter((item) => {
+			return item.title.toLowerCase().includes(value.toLowerCase());
+		});
+		console.log(this.dataSource);
+		console.log(this.value);
+		// }
 	}
 }
