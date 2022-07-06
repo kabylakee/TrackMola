@@ -1,11 +1,4 @@
-import {
-	ChangeDetectionStrategy,
-	Component,
-	Input,
-	OnChanges,
-	OnInit,
-	SimpleChanges,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
@@ -36,7 +29,6 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 
 	public ngOnChanges(): void {
 		console.log(this.value);
-		// this.search(this.value,  'gfdfghgfd');
 	}
 
 	// When you click subcheckbox update main checkbox
