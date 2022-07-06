@@ -6,13 +6,27 @@
 	.mat-menu-content.mat-menu-content:not(:empty) {
 		padding: 0;
 	}
+
+	.inner-menu{
+		left: var(--offset-xs);
+		top: calc(-1*var(--offset-xxs));
+	}
+
+	.mat-menu-panel {
+		border-radius: var(--border-radius-xs) !important;
+	}
 }
 
 button.mat-menu-item {
 	padding: 0 var(--offset-s);
+	border-bottom: 1px solid var(--light-gray);
 
 	span {
 		color: var(--light-black);
+	}
+
+	.project span {
+		color: var(--accent-300);
 	}
 
 	.mat-icon {
@@ -22,9 +36,9 @@ button.mat-menu-item {
 	.mat-menu-submenu-icon {
 		display: none;    
 	}
-	
+
 	.mat-checkbox{
-        margin-right: var(--offset-s);
+		margin-right: var(--offset-s);
 
 		.mat-checkbox-frame {
 			border: 1px solid var(--light-gray) ;
@@ -34,7 +48,7 @@ button.mat-menu-item {
 			.mat-checkbox-background {
 			border-radius: var(--border-radius-xxs);
 			}
-    }
+	}
 	
 	&:hover {
 		background-color: var(--accent-50);
@@ -44,5 +58,8 @@ button.mat-menu-item {
 		}
 	}
 	
+	&:last-child {
+		border: none;
+	}
 }
 

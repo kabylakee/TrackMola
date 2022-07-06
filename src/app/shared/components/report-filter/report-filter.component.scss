@@ -18,7 +18,7 @@
 button.mat-menu-item .mat-button.project{
     color: var(--accent-300);
     padding: var(--offset-xxs) calc(0.375 * var(--offset));
-	background-color: rgba(65, 94, 182, 0.2);
+    background-color: rgba(65, 94, 182, 0.2);
     font-size: var(--font-size-xs);
     line-height: var(--font-size);
     border-radius: var(--border-radius-xs);
@@ -42,15 +42,3 @@ button.mat-menu-item .mat-icon {
     justify-content: space-between;
     align-items: center;
 }
-// ::ng-deep{
-//     .mat-checkbox {
-//         &-frame {
-//             border: 1px solid var(--light-gray);
-//             border-radius: var(--border-radius-xxs);
-//         }
-
-//         &-background {
-//             border-radius: var(--border-radius-xxs);
-//         }   
-//     }
-// }
