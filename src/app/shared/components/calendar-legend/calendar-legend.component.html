@@ -1,22 +1,6 @@
 <div class="legends-wrapper">
-  <div class="element">
-    <div class="marker unworked"></div>
-    <span>Some text</span>
-  </div>
-  <div class="element">
-    <div class="marker"></div>
-    <span>Some text</span>
-  </div>
-  <div class="element">
-    <div class="marker"></div>
-    <span>Some text</span>
-  </div>
-  <div class="element">
-    <div class="marker"></div>
-    <span>Some text</span>
-  </div>
-  <div class="element">
-    <div class="marker"></div>
-    <span>Some text</span>
+  <div class="element" *ngFor="let item of legendItems">
+    <div class="marker" [ngClass]="item | lowercase"></div>
+    <span>{{item}}</span>
   </div>
 </div>
