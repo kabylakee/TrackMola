@@ -5,7 +5,7 @@ import {ToggleButtonModule} from 'src/app/shared/components/toggle-button/toggle
 import {DatePickerModule} from 'src/app/shared/components/date-picker/date-picker.module';
 import {OptionsButtonModule} from '../options-button/options-button.module';
 import {HoursCardModule} from '../hours-card/hours-card.module';
-import {ReportFilterModule} from '../report-filter/report-filter.module';
+import {FiltersButtonModule} from '../filters-button/filters-button.module';
 
 @NgModule({
 	declarations: [TableFilterComponent],
@@ -13,7 +13,7 @@ import {ReportFilterModule} from '../report-filter/report-filter.module';
 		CommonModule,
 		ToggleButtonModule,
 		OptionsButtonModule,
-		ReportFilterModule,
+		FiltersButtonModule,
 		HoursCardModule,
 		DatePickerModule,
 	],

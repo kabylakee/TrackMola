@@ -6,12 +6,12 @@ import {OVERTIME} from 'src/app/entities/constants/overtime.constants';
 import {STATUSES} from 'src/app/entities/constants/status.constants';
 
 @Component({
-	selector: 'app-report-filter',
-	templateUrl: './report-filter.component.html',
-	styleUrls: ['./report-filter.component.scss'],
+	selector: 'app-filters-button',
+	templateUrl: './filters-button.component.html',
+	styleUrls: ['./filters-button.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportFilterComponent {
+export class FiltersButtonComponent {
 	@Input() public projectSource: IProject[] = [];
 	public statusSource: IStatus[] = Object.values(STATUSES);
 	public overtimeSource: IOvertime[] = Object.values(OVERTIME);

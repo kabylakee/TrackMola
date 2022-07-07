@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {ReportFilterComponent} from './report-filter.component';
+import {FiltersButtonComponent} from './filters-button.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -8,7 +8,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
-	declarations: [ReportFilterComponent],
+	declarations: [FiltersButtonComponent],
 	imports: [
 		CommonModule,
 		MatMenuModule,
@@ -17,6 +17,6 @@ import {FormsModule} from '@angular/forms';
 		MatCheckboxModule,
 		FormsModule
 	],
-	exports: [ReportFilterComponent],
+	exports: [FiltersButtonComponent],
 })
-export class ReportFilterModule {}
+export class FiltersButtonModule {}
