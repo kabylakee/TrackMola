@@ -4,6 +4,7 @@ import {IStatus} from 'src/app/entities/interfaces/status.interface';
 import {IOvertime} from 'src/app/entities/interfaces/overtime.interface';
 import {OVERTIME} from 'src/app/entities/constants/overtime.constants';
 import {STATUSES} from 'src/app/entities/constants/status.constants';
+import {FilterItems} from 'src/app/entities/enums/filter-items.enum';
 
 @Component({
 	selector: 'app-filters-button',
@@ -13,21 +14,18 @@ import {STATUSES} from 'src/app/entities/constants/status.constants';
 })
 export class FiltersButtonComponent {
 	@Input() public projectSource: IProject[] = [];
-	public statusSource: IStatus[] = Object.values(STATUSES);
-	public overtimeSource: IOvertime[] = Object.values(OVERTIME);
+	public readonly statusSource: IStatus[] = Object.values(STATUSES);
+	public readonly overtimeSource: IOvertime[] = Object.values(OVERTIME);
+	public readonly filterItems: string[] = Object.keys(FilterItems);
 
-	public filters: number = 0;
+	public filtersCount: number = 0;
 
 	public allStatusChecked: boolean = false;
 	public allOvertimeChecked: boolean = false;
 	public allProjectChecked: boolean = false;
 
-	OnChange(type: string, checked: boolean): void {
-		if (checked) {
-			this.filters++;
-		} else {
-			this.filters--;
-		}
+	onChange(type: string, checked: boolean): void {
+		checked ? this.filtersCount++ : this.filtersCount--;
 
 		switch (type) {
 			case 'overtime':
@@ -54,13 +52,13 @@ export class FiltersButtonComponent {
 				this.allOvertimeChecked = !this.allOvertimeChecked;
 				this.overtimeSource.forEach((t) => {
 					if (!t.checked && this.allOvertimeChecked) {
-						this.filters++;
+						this.filtersCount++;
 					}
 					t.checked = this.allOvertimeChecked;
 				});
 
 				if (!this.allOvertimeChecked) {
-					this.filters -= this.overtimeSource.length;
+					this.filtersCount -= this.overtimeSource.length;
 				}
 				break;
 
@@ -68,13 +66,13 @@ export class FiltersButtonComponent {
 				this.allProjectChecked = !this.allProjectChecked;
 				this.projectSource.forEach((t) => {
 					if (!t.checked && this.allProjectChecked) {
-						this.filters++;
+						this.filtersCount++;
 					}
 					t.checked = this.allProjectChecked;
 				});
 
 				if (!this.allProjectChecked) {
-					this.filters -= this.projectSource.length;
+					this.filtersCount -= this.projectSource.length;
 				}
 				break;
 
@@ -82,13 +80,13 @@ export class FiltersButtonComponent {
 				this.allStatusChecked = !this.allStatusChecked;
 				this.statusSource.forEach((t) => {
 					if (!t.checked && this.allStatusChecked) {
-						this.filters++;
+						this.filtersCount++;
 					}
 					t.checked = this.allStatusChecked;
 				});
 
 				if (!this.allStatusChecked) {
-					this.filters -= this.statusSource.length;
+					this.filtersCount -= this.statusSource.length;
 				}
 				break;
 		}
