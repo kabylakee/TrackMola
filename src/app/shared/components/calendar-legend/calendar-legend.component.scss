@@ -3,6 +3,7 @@
 :host {
 	$marker-size: 1rem;
 	$wrapper-size: 28.5rem;
+  $color-opacity: 0.5;
 
 	.legends-wrapper {
 		display: flex;
@@ -25,19 +26,19 @@
 			height: $marker-size;
 		}
 		.unworked {
-			background-color: rgba-color(unfinished, 0.5);
+			background-color: rgba-color(unfinished, $color-opacity);
 		}
 		.overwork {
-			background-color: rgba-color(overwork, 0.5);
+			background-color: rgba-color(overwork, $color-opacity);
 		}
 		.day-off {
-			background-color: rgba-color(day-off, 0.5);
+			background-color: rgba-color(day-off, $color-opacity);
 		}
 		.vacation {
-			background-color: rgba-color(vacation, 0.5);
+			background-color: rgba-color(vacation, $color-opacity);
 		}
 		.holiday {
-			background-color: rgba-color(holiday, 0.5);
+			background-color: rgba-color(holiday, $color-opacity);
 		}
 	}
 }
