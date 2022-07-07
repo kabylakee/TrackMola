@@ -27,10 +27,11 @@
 		<span>Select All</span>
 	</button>
 	<button mat-menu-item *ngFor="let project of projectSource">
-		<mat-checkbox color="primary" [checked]="allProjectChecked"
-		(change)="setAll('project')" (click)="$event.stopPropagation()"></mat-checkbox>
+		<mat-checkbox color="primary" [(ngModel)]="project.checked"
+		(change)="OnChange('project',$event.checked)"
+		(click)="$event.stopPropagation()"></mat-checkbox>
 		<button mat-button class="project">{{project.title}}</button>
-	</button>  
+	</button>
 </mat-menu>
 
 <mat-menu #statuses="matMenu" class="inner-menu">
@@ -38,7 +39,7 @@
 		<mat-checkbox color="primary" [checked]="allStatusChecked"
 		(change)="setAll('status')" (click)="$event.stopPropagation()"></mat-checkbox>
 		<span>Select All</span>
-	</button> 
+	</button>
 	<button mat-menu-item *ngFor="let status of statusSource">
 		<mat-checkbox color="primary" [(ngModel)]="status.checked"
 		(change)="OnChange('status',$event.checked)"
@@ -50,9 +51,9 @@
 <mat-menu #overtime="matMenu" class="inner-menu">
 	<button mat-menu-item>
 		<mat-checkbox color="primary" [checked]="allOvertimeChecked"
-		(change)="setAll('overtime')" (click)="$event.stopPropagation()"></mat-checkbox> 
+		(change)="setAll('overtime')" (click)="$event.stopPropagation()"></mat-checkbox>
 		<span>Select All</span>
-		</button>
+	</button>
 	<button mat-menu-item *ngFor="let overtime of overtimeSource">
 		<mat-checkbox color="primary" [(ngModel)]="overtime.checked"
 		(change)="OnChange('overtime',$event.checked)"
