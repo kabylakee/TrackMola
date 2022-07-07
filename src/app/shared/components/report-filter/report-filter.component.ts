@@ -52,30 +52,42 @@ export class ReportFilterComponent {
 		switch (type) {
 			case 'overtime':
 				this.allOvertimeChecked = !this.allOvertimeChecked;
-				this.overtimeSource.forEach((t) => (t.checked = this.allOvertimeChecked));
-				if (this.allOvertimeChecked) {
-					this.filters += this.overtimeSource.length;
-				} else {
+				this.overtimeSource.forEach((t) => {
+					if (!t.checked && this.allOvertimeChecked) {
+						this.filters++;
+					}
+					t.checked = this.allOvertimeChecked;
+				});
+
+				if (!this.allOvertimeChecked) {
 					this.filters -= this.overtimeSource.length;
 				}
 				break;
 
 			case 'project':
 				this.allProjectChecked = !this.allProjectChecked;
-				this.projectSource.forEach((t) => (t.checked = this.allProjectChecked));
-				if (this.allProjectChecked) {
-					this.filters += this.projectSource.length;
-				} else {
+				this.projectSource.forEach((t) => {
+					if (!t.checked && this.allProjectChecked) {
+						this.filters++;
+					}
+					t.checked = this.allProjectChecked;
+				});
+
+				if (!this.allProjectChecked) {
 					this.filters -= this.projectSource.length;
 				}
 				break;
 
 			case 'status':
 				this.allStatusChecked = !this.allStatusChecked;
-				this.statusSource.forEach((t) => (t.checked = this.allStatusChecked));
-				if (this.allStatusChecked) {
-					this.filters += this.statusSource.length;
-				} else {
+				this.statusSource.forEach((t) => {
+					if (!t.checked && this.allStatusChecked) {
+						this.filters++;
+					}
+					t.checked = this.allStatusChecked;
+				});
+
+				if (!this.allStatusChecked) {
 					this.filters -= this.statusSource.length;
 				}
 				break;
