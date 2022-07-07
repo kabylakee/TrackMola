@@ -26,7 +26,7 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: 'https://api.chucknorris.io/jokes/CF0vMe-zRTWEbaYEy6LJ1A',
 	},
 	{
-		date: new Date(2022, 6, 2),
+		date: new Date(2022, 6, 4),
 		checked: false,
 		title: 'Task 3',
 		project: PROJECT_MOCK[2],
@@ -37,14 +37,14 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: '',
 	},
 	{
-		date: new Date(2022, 6, 2),
+		date: new Date(2022, 6, 5),
 		checked: false,
 		title: 'Task 4',
 		project: PROJECT_MOCK[2],
 		status: Status.Done,
-		time: 1,
-		overtime: 0,
-		paid: false,
+		time: 10,
+		overtime: 2,
+		paid: true,
 		asanaLink: '',
 	},
 ];

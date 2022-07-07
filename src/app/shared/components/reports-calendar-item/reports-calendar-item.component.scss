@@ -5,6 +5,7 @@
 	$unfinished: rgb(241, 102, 102);
 	$vacation: rgb(88, 174, 223);
 	$day-off: rgb(125, 214, 165);
+	$common: rgb(221, 232, 245);
 	$common-transition: 0.2;
 	$hover-transition: 0.4;
 	// $calendar-item-width: 11rem;
@@ -33,10 +34,13 @@
 			}
 		}
 
-		&:hover .date {
-			background-color: rgba-color(accent-100, 0.5);
-			.hint {
-				display: inline-block;
+		&:hover { 
+			border: 1px solid $common;
+			.date {
+				background-color: rgba($common, 0.5);
+				.hint {
+					display: inline-block;
+				}
 			}
 		}
 

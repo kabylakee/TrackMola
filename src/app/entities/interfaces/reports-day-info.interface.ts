@@ -1,4 +1,4 @@
-import {TimeStatus} from '../enums/timeStatus.enum';
+import { TimeStatus } from '../enums/timeStatus.enum';
 
 export interface IReportsDayInfo {
 	date: Date;
@@ -8,4 +8,5 @@ export interface IReportsDayInfo {
 	timeStatus: TimeStatus;
 	isVacation: boolean;
 	paid: boolean;
+	disabled: boolean;
 }
