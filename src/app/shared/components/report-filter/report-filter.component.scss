@@ -1,44 +1,44 @@
 @import 'mixins/common-mixin';
 
 :host {
-    .menu-button {
-        line-height: 0;
-        padding: var(--offset-xs) var(--offset-s);
+	.menu-button {
+		line-height: 0;
+		padding: var(--offset-xs) var(--offset-s);
 
-        &-icon {
-            @include icon-size(--icon-size-m);
-        }
+		&-icon {
+			@include icon-size(--icon-size-m);
+		}
 
-        &-text {
-            font-size: var(--font-size-xs);
-        }
-    }
+		&-text {
+			font-size: var(--font-size-xs);
+		}
+	}
 }
 
-button.mat-menu-item .mat-button.project{
-    color: var(--accent-300);
-    padding: var(--offset-xxs) calc(0.375 * var(--offset));
-    background-color: rgba(65, 94, 182, 0.2);
-    font-size: var(--font-size-xs);
-    line-height: var(--font-size);
-    border-radius: var(--border-radius-xs);
+button.mat-menu-item .mat-button.project {
+	color: var(--accent-300);
+	padding: var(--offset-xxs) calc(0.375 * var(--offset));
+	background-color: rgba(65, 94, 182, 0.2);
+	font-size: var(--font-size-xs);
+	line-height: var(--font-size);
+	border-radius: var(--border-radius-xs);
 }
 
 button.mat-menu-item .mat-button.status {
-    padding: var(--offset-xxs) var(--offset-s);
+	padding: var(--offset-xxs) var(--offset-s);
 	border: 1px solid var(--light-gray);
-    font-size: var(--font-size-xs);
-    line-height: var(--font-size);
-    border-radius: var(--border-radius-xs);
+	font-size: var(--font-size-xs);
+	line-height: var(--font-size);
+	border-radius: var(--border-radius-xs);
 }
 
 button.mat-menu-item .mat-icon {
-    color: var(--light-black);
-    margin: 0rem;    
+	color: var(--light-black);
+	margin: 0rem;    
 }
 
-.filter-menu-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.filter-menu-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
