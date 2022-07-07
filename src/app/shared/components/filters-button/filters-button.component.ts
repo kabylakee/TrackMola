@@ -20,72 +20,81 @@ export class FiltersButtonComponent {
 
 	public filtersCount: number = 0;
 
-	public allStatusChecked: boolean = false;
-	public allOvertimeChecked: boolean = false;
-	public allProjectChecked: boolean = false;
+	public status: IStatus = {
+		checked: false,
+		title: 'status',
+	};
+	public project: IProject = {
+		checked: false,
+		title: 'project',
+	};
+	public overtime: IOvertime = {
+		checked: false,
+		title: 'overtime',
+	};
 
-	onChange(type: string, checked: boolean): void {
+	onChange(title: string, checked: boolean): void {
 		checked ? this.filtersCount++ : this.filtersCount--;
 
-		switch (type) {
+		switch (title) {
 			case 'overtime':
-				this.allOvertimeChecked =
+				this.overtime.checked =
 					this.overtimeSource.filter((t) => t.checked == true).length ===
 					this.overtimeSource.length;
 				break;
 
 			case 'project':
-				this.allProjectChecked =
+				this.project.checked =
 					this.projectSource.filter((t) => t.checked == true).length === this.projectSource.length;
 				break;
 
 			case 'status':
-				this.allStatusChecked =
+				this.status.checked =
 					this.statusSource.filter((t) => t.checked == true).length === this.statusSource.length;
 				break;
 		}
 	}
 
-	public setAll(type: string): void {
-		switch (type) {
+	public setAll(title: string): void {
+		switch (title) {
 			case 'overtime':
-				this.allOvertimeChecked = !this.allOvertimeChecked;
+				this.overtime.checked = !this.overtime.checked;
 				this.overtimeSource.forEach((t) => {
-					if (!t.checked && this.allOvertimeChecked) {
+					if (!t.checked && this.overtime.checked) {
 						this.filtersCount++;
 					}
-					t.checked = this.allOvertimeChecked;
+					t.checked = this.overtime.checked;
 				});
 
-				if (!this.allOvertimeChecked) {
+				if (!this.overtime.checked) {
 					this.filtersCount -= this.overtimeSource.length;
 				}
 				break;
 
 			case 'project':
-				this.allProjectChecked = !this.allProjectChecked;
+				this.project.checked = !this.project.checked;
 				this.projectSource.forEach((t) => {
-					if (!t.checked && this.allProjectChecked) {
+					if (!t.checked && this.project.checked) {
 						this.filtersCount++;
 					}
-					t.checked = this.allProjectChecked;
+					t.checked = this.project.checked;
 				});
 
-				if (!this.allProjectChecked) {
+				if (!this.project.checked) {
 					this.filtersCount -= this.projectSource.length;
 				}
 				break;
 
 			case 'status':
-				this.allStatusChecked = !this.allStatusChecked;
+				this.status.checked = !this.status.checked;
 				this.statusSource.forEach((t) => {
-					if (!t.checked && this.allStatusChecked) {
+					if (!t.checked && this.status.checked) {
 						this.filtersCount++;
 					}
-					t.checked = this.allStatusChecked;
+					t.checked = this.status.checked;
 				});
 
-				if (!this.allStatusChecked) {
+				if (!this.status.checked) {
 					this.filtersCount -= this.statusSource.length;
 				}
 				break;

@@ -14,7 +14,7 @@
 		<span>Status</span>
 		<mat-icon>keyboard_arrow_right</mat-icon>
 	</button>
-	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="overtime">
+	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="overtimes">
 		<span>Overtime</span>
 		<mat-icon >keyboard_arrow_right</mat-icon>
 	</button>
@@ -22,9 +22,7 @@
 
 <mat-menu #projects="matMenu" class="inner-menu">
 	<button mat-menu-item>
-		<mat-checkbox color="primary" [checked]="allProjectChecked"
-		(change)="setAll('project')" (click)="$event.stopPropagation()"></mat-checkbox>
-		<span>Select All</span>
+		<ng-container *ngTemplateOutlet="setAllTemplate; context: project"></ng-container>
 	</button>
 	<button mat-menu-item *ngFor="let project of projectSource">
 		<mat-checkbox color="primary" [(ngModel)]="project.checked"
@@ -36,9 +34,7 @@
 
 <mat-menu #statuses="matMenu" class="inner-menu">
 	<button mat-menu-item>
-		<mat-checkbox color="primary" [checked]="allStatusChecked"
-		(change)="setAll('status')" (click)="$event.stopPropagation()"></mat-checkbox>
-		<span>Select All</span>
+		<ng-container *ngTemplateOutlet="setAllTemplate; context: status"></ng-container>
 	</button>
 	<button mat-menu-item *ngFor="let status of statusSource">
 		<mat-checkbox color="primary" [(ngModel)]="status.checked"
@@ -48,11 +44,9 @@
 	</button>
 </mat-menu>
 
-<mat-menu #overtime="matMenu" class="inner-menu">
+<mat-menu #overtimes="matMenu" class="inner-menu">
 	<button mat-menu-item>
-		<mat-checkbox color="primary" [checked]="allOvertimeChecked"
-		(change)="setAll('overtime')" (click)="$event.stopPropagation()"></mat-checkbox>
-		<span>Select All</span>
+		<ng-container *ngTemplateOutlet="setAllTemplate; context: overtime"></ng-container>
 	</button>
 	<button mat-menu-item *ngFor="let overtime of overtimeSource">
 		<mat-checkbox color="primary" [(ngModel)]="overtime.checked"
@@ -61,3 +55,9 @@
 		 <span>{{overtime.title}}</span>
 	</button>
 </mat-menu>
+
+<ng-template #setAllTemplate let-check="checked" let-title="title">
+	<mat-checkbox color="primary" [checked]="check"
+	(change)="setAll(title)" (click)="$event.stopPropagation()"></mat-checkbox>
+	<span>Select All</span>
+</ng-template>
