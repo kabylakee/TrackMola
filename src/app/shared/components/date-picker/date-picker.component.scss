@@ -25,7 +25,7 @@ $arrows-height: 2.313rem;
 				border-radius: var(--border-radius-xs);
 			}
 			&-wrapper {
-        @include flex-center;
+				@include flex-center;
 				width: $wrapper-width;
 				height: $buttons-height;
 				padding: 0;

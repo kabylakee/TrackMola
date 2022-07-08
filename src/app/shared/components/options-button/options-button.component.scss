@@ -3,7 +3,9 @@
 :host {
 	.menu-button {
 		padding: var(--offset-xs) var(--offset-s);
+		color: var(--accent-300);
 		line-height: 0;
+		border: 1px solid var(--accent-300);
 
 		&-icon {
 			@include icon-size(--icon-size-m);
