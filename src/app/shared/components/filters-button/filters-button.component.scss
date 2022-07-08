@@ -1,4 +1,5 @@
 @import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
 
 :host {
 	.menu-button {
@@ -18,7 +19,7 @@
 button.mat-menu-item .mat-button.project {
 	color: var(--accent-300);
 	padding: var(--offset-xxs) calc(0.375 * var(--offset));
-	background-color: rgba(65, 94, 182, 0.2);
+	background-color: rgba-color(accent-300, 0.2);
 	font-size: var(--font-size-xs);
 	line-height: var(--font-size);
 	border-radius: var(--border-radius-xs);
