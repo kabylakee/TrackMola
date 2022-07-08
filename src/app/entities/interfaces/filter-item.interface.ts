@@ -1,4 +1,4 @@
-export interface IOvertime {
+export interface IFilterItem {
 	title: string;
 	checked: boolean;
 }

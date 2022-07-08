@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
-import {IStatus} from 'src/app/entities/interfaces/status.interface';
-import {IOvertime} from 'src/app/entities/interfaces/overtime.interface';
+import {IFilterItem} from 'src/app/entities/interfaces/filter-item.interface';
 import {OVERTIME} from 'src/app/entities/constants/overtime.constants';
 import {STATUSES} from 'src/app/entities/constants/status.constants';
 import {FilterItems} from 'src/app/entities/enums/filter-items.enum';
@@ -14,13 +13,13 @@ import {FilterItems} from 'src/app/entities/enums/filter-items.enum';
 })
 export class FiltersButtonComponent {
 	@Input() public projectSource: IProject[] = [];
-	public readonly statusSource: IStatus[] = Object.values(STATUSES);
-	public readonly overtimeSource: IOvertime[] = Object.values(OVERTIME);
+	public readonly statusSource: IFilterItem[] = Object.values(STATUSES);
+	public readonly overtimeSource: IFilterItem[] = Object.values(OVERTIME);
 	public readonly filterItems: string[] = Object.keys(FilterItems);
 
 	public filtersCount: number = 0;
 
-	public status: IStatus = {
+	public status: IFilterItem = {
 		checked: false,
 		title: 'status',
 	};
@@ -28,7 +27,7 @@ export class FiltersButtonComponent {
 		checked: false,
 		title: 'project',
 	};
-	public overtime: IOvertime = {
+	public overtime: IFilterItem = {
 		checked: false,
 		title: 'overtime',
 	};

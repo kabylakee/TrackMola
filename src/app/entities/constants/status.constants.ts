@@ -1,7 +1,7 @@
-import {IStatus} from '../interfaces/status.interface';
+import {IFilterItem} from '../interfaces/filter-item.interface';
 import {Status} from '../enums/status.enum';
 
-export const STATUSES: IStatus[] = [
+export const STATUSES: IFilterItem[] = [
 	{
 		checked: false,
 		title: Status.Done,
