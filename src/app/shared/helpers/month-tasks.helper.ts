@@ -1,12 +1,12 @@
-import { TimeStatus } from 'src/app/entities/enums/timeStatus.enum';
-import { IReportsDayInfo } from 'src/app/entities/interfaces/reports-day-info.interface';
-import { ITask } from 'src/app/entities/interfaces/task.interface';
+import {TimeStatus} from 'src/app/entities/enums/timeStatus.enum';
+import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
+import {ITask} from 'src/app/entities/interfaces/task.interface';
 
 export class MonthTasksHelper {
 	public static taskMapper(tasks: ITask[]): IReportsDayInfo[] {
 		if (tasks.length === 0) return [];
-		let days: ITask[][] = [];
-		let dayTasks: ITask[] = [];
+		let days: ITask[][] = []; // array of day tasks arrays
+		let dayTasks: ITask[] = []; // one day tasks
 		let currentDate = tasks[0].date;
 
 		tasks.forEach((task) => {
@@ -20,7 +20,7 @@ export class MonthTasksHelper {
 			}
 		});
 
-		days.push(dayTasks);
+		days.push(dayTasks); // last day
 
 		return days.map((day) => ({
 			date: day[0].date,

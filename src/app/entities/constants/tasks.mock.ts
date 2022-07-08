@@ -1,6 +1,6 @@
-import { Status } from '../enums/status.enum';
-import { ITask } from '../interfaces/task.interface';
-import { PROJECT_MOCK } from './project.mock';
+import {Status} from '../enums/status.enum';
+import {ITask} from '../interfaces/task.interface';
+import {PROJECT_MOCK} from './project.mock';
 
 export const TASKS_MOCK: ITask[] = [
 	{

@@ -1,9 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { TimeStatus } from 'src/app/entities/enums/timeStatus.enum';
-import { IReportsDayInfo } from 'src/app/entities/interfaces/reports-day-info.interface';
-import { ITask } from 'src/app/entities/interfaces/task.interface';
-import { MonthTasksHelper } from '../../helpers/month-tasks.helper';
-import { TaskService } from '../../services/task.service';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {TimeStatus} from 'src/app/entities/enums/timeStatus.enum';
+import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
 
 @Component({
 	selector: 'app-month-table',
@@ -12,7 +9,8 @@ import { TaskService } from '../../services/task.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonthTableComponent implements OnInit {
-	@Input() readonly selectedDate: Date = new Date(2022, 6, 1);
+	@Input() selectedDate: Date = new Date();
+	@Input() daysInfo: IReportsDayInfo[];
 
 	public defaultDayInfo: IReportsDayInfo = {
 		date: new Date(),
@@ -24,27 +22,14 @@ export class MonthTableComponent implements OnInit {
 		paid: false,
 		disabled: false,
 	};
-	public tasks: ITask[];
 
-	public allDaysInfo: IReportsDayInfo[] = [];
+	public allDaysInfo: IReportsDayInfo[] = []; // days with info and empty days
 
-	constructor(private taskService: TaskService) { }
-
-	ngOnInit(): void {
-		this.taskService
-			.getTasks(
-				this.selectedDate,
-				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 1),
-			)
-			.subscribe((tasks) => (this.tasks = tasks));
-
-		const daysInfo = MonthTasksHelper.taskMapper(this.tasks);
-		console.log(daysInfo);
-
-		this.makeCalendar(daysInfo);
+	public ngOnInit(): void {
+		this.makeCalendar(this.daysInfo);
 	}
 
-	makeCalendar(daysInfo: IReportsDayInfo[]): void {
+	private makeCalendar(daysInfo: IReportsDayInfo[]): void {
 		const currentDay = new Date().getDate();
 		const currentMonth = new Date().getMonth();
 		const currentYear = new Date().getFullYear();
@@ -56,41 +41,47 @@ export class MonthTableComponent implements OnInit {
 		const lastDayOfMonth = new Date(selectedYear, selectedMonth + 1, 0);
 		const daysInMonth = lastDayOfMonth.getDate();
 
-		const paddingDaysStart = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1;
+		const paddingDaysStart = firstDayOfMonth.getDay() === 0 ? 7 : firstDayOfMonth.getDay();
 		const paddingDaysEnd = lastDayOfMonth.getDay() === 0 ? 0 : 7 - lastDayOfMonth.getDay();
 
-		for (let i = 1; i <= paddingDaysStart + daysInMonth; i++) {
-			this.allDaysInfo.push({ ...this.defaultDayInfo });
-			this.allDaysInfo[i - 1].date = new Date(selectedYear, selectedMonth, i - paddingDaysStart);
+		for (let i = 0; i < paddingDaysStart - 1; i++) {
+			this.allDaysInfo.push({...this.defaultDayInfo});
+			this.allDaysInfo[i].date = new Date(selectedYear, selectedMonth, i - paddingDaysStart + 2);
+			this.allDaysInfo[i].disabled = true;
+		}
+
+		for (let i = paddingDaysStart - 1; i < paddingDaysStart + daysInMonth - 1; i++) {
+			this.allDaysInfo.push({...this.defaultDayInfo});
+			this.allDaysInfo[i].date = new Date(selectedYear, selectedMonth, i - paddingDaysStart + 2);
 
 			if (
-				i - paddingDaysStart < currentDay &&
+				i - paddingDaysStart + 2 < currentDay &&
 				selectedMonth === currentMonth &&
 				selectedYear === currentYear
 			) {
-				this.allDaysInfo[i - 1].timeStatus = TimeStatus.Unfinished;
+				this.allDaysInfo[i].timeStatus = TimeStatus.Unfinished;
 			}
 
 			daysInfo.forEach((dayInfo) => {
-				if (+dayInfo.date === +this.allDaysInfo[i - 1].date) this.allDaysInfo[i - 1] = dayInfo;
+				if (+dayInfo.date === +this.allDaysInfo[i].date) this.allDaysInfo[i] = dayInfo;
 			});
 
-			if (
-				i <= paddingDaysStart ||
-				this.allDaysInfo[i - 1].date.getDay() === 6 ||
-				this.allDaysInfo[i - 1].date.getDay() === 0
-			) {
-				this.allDaysInfo[i - 1].disabled = true;
+			if (this.allDaysInfo[i].date.getDay() === 6 || this.allDaysInfo[i].date.getDay() === 0) {
+				this.allDaysInfo[i].disabled = true;
 			}
 		}
 
 		for (
-			let i = paddingDaysStart + daysInMonth;
-			i < paddingDaysStart + daysInMonth + paddingDaysEnd;
+			let i = paddingDaysStart + daysInMonth - 1;
+			i < paddingDaysStart + daysInMonth + paddingDaysEnd - 1;
 			i++
 		) {
-			this.allDaysInfo.push({ ...this.defaultDayInfo });
-			this.allDaysInfo[i].date = new Date(selectedYear, selectedMonth + 1, i);
+			this.allDaysInfo.push({...this.defaultDayInfo});
+			this.allDaysInfo[i].date = new Date(
+				selectedYear,
+				selectedMonth + 1,
+				i - paddingDaysStart - daysInMonth + 1,
+			);
 			this.allDaysInfo[i].disabled = true;
 		}
 	}
