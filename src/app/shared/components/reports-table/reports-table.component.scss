@@ -4,6 +4,7 @@
 	$input-width: 2rem;
 	$project-width: 5rem;
 	$status-width: 3rem;
+  overflow: auto;
 
 	.project-column {
 		width: $project-width;

@@ -48,7 +48,7 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 				this.dataSource,
 			);
 			// this.filterDataSource = this.dataSource;
-			this.getTaskField(this.value);
+			this.getTaskField();
 		}
 	}
 
@@ -65,12 +65,11 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 		}
 	}
 
-	public getTaskField(value: string): void {
-		// if (column.field === 'title') {
+	public getTaskField(): void {
 		console.log(this.dataSource);
 		console.log(this.value);
 		this.filterDataSource = this.dataSource.filter((item) => {
-			return item.title.toLowerCase().includes(value.toLowerCase());
+			return item.title.toLowerCase().includes(this.value.toLowerCase());
 		});
 		if (this.value === '') {
 			this.filterDataSource = this.dataSource;
@@ -78,5 +77,17 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 		console.log(this.dataSource);
 		console.log(this.value);
 		// }
+	}
+
+	public changeFieldValue(event: string, column: ITableColumn, elem: ITask): void {
+		// if ((column.field === 'time' || column.field === 'overtime') && event == +event) {
+		// 	elem[column.field] = +event;
+		// 	console.log('getSum');
+		// 	//this.getSum([column.field]);
+		// }
+		if (column.field === 'title') {
+			elem[column.field] = event;
+			this.getTaskField();
+		}
 	}
 }
