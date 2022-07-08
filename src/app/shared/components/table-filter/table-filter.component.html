@@ -1,6 +1,13 @@
-<app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changeDatePicker($event)"></app-toggle-button>
-<app-date-picker [periodRange]="periodRange"></app-date-picker>
-<app-options-button></app-options-button>
-<app-input-search (valueChange)="onValueChange($event)">{{valueChange}}</app-input-search>
-<app-hours-card [totalHours]="9.5"></app-hours-card>
+<div class="date-controls">
+  <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changeDatePicker($event)"></app-toggle-button>
+  <app-date-picker [periodRange]="periodRange"></app-date-picker>
+</div>
+<div class="filter-controls">
+  <div class="filters">
+    <app-input-search (valueChange)="onValueChange($event)"></app-input-search>
+    <app-options-button></app-options-button>
+  </div>
+  <app-hours-card [sumTime]="sumTime"></app-hours-card>
+</div>
+
 

@@ -14,7 +14,7 @@ import {InputSearchModule} from '../input-search/input-search.module';
 		ToggleButtonModule,
 		OptionsButtonModule,
 		HoursCardModule,
-    DatePickerModule,
+		DatePickerModule,
 		InputSearchModule,
 	],
 	exports: [TableFilterComponent],
