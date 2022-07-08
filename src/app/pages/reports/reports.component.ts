@@ -1,10 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
-import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
-import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
-import {ITask} from 'src/app/entities/interfaces/task.interface';
-import {TaskService} from 'src/app/shared/services/task.service';
-import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { DAY_TABLE_CONFIG } from 'src/app/entities/constants/day-columns.config';
+import { IReportsDayInfo } from 'src/app/entities/interfaces/reports-day-info.interface';
+import { ITableColumn } from 'src/app/entities/interfaces/table-column.interface';
+import { ITask } from 'src/app/entities/interfaces/task.interface';
+import { TaskService } from 'src/app/shared/services/task.service';
+import { MonthTasksHelper } from '../../shared/helpers/month-tasks.helper';
 
 @Component({
 	selector: 'app-reports',
@@ -22,7 +22,7 @@ export class ReportsComponent implements OnInit {
 	public monthTasks: ITask[];
 	public daysInfo: IReportsDayInfo[];
 
-	constructor(private taskService: TaskService) {}
+	constructor(private taskService: TaskService) { }
 
 	public ngOnInit(): void {
 		this.getTasks();
@@ -32,7 +32,7 @@ export class ReportsComponent implements OnInit {
 
 		this.tasks.forEach((t) => (t.checked = false));
 
-		this.daysInfo = MonthTasksHelper.taskMapper(this.tasks);
+		this.daysInfo = MonthTasksHelper.taskToDayMapper(this.tasks);
 	}
 
 	// Get all tasks from task service
