@@ -12,11 +12,16 @@ import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 export class TableFilterComponent {
 	@Output() valueChange = new EventEmitter<string>();
 	public value: string = '';
+  public periodRange: Period;
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 
 	public onValueChange($event: string): void {
 		this.value = $event;
 		this.valueChange.emit(this.value);
 		console.log(this.value);
+	}
+
+	public changeDatePicker(element: Period): void {
+		this.periodRange = element;
 	}
 }

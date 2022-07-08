@@ -15,7 +15,7 @@ app-root {
 			align-items: center;
 		}
 
-		.mat-secondary {
+		&.mat-secondary {
 			color: var(--accent-300);
 			border: 1px solid var(--accent-300);
 			&:hover {
@@ -24,7 +24,7 @@ app-root {
 			}
 		}
 
-		.mat-primary {
+		&.mat-primary {
 			:hover {
 				background-color: var(--accent-500);
 			}
