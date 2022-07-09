@@ -58,6 +58,9 @@
 		justify-content: center;
 		.mat-icon {
 			color: var(--gray);
+			&.active-links {
+				color: var(--accent-300) !important;
+			}
 		}
 	}
 
@@ -67,9 +70,5 @@
 		.mat-icon {
 			color: var(--dark-gray);
 		}
-	}
-
-	.task-links .mat-icon {
-		color: var(--accent-300);
 	}
 }

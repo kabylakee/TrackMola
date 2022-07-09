@@ -13,6 +13,8 @@ import {Status} from 'src/app/entities/enums/status.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
+import {MatDialog} from '@angular/material/dialog';
+import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 
 @Component({
 	selector: 'app-reports-table',
@@ -33,6 +35,8 @@ export class ReportsTableComponent implements OnInit {
 	public readonly status = Status;
 	public readonly options = Object.values(OPTIONS_CONFIG);
 
+	constructor(public dialog: MatDialog) {}
+
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
 	}
@@ -49,5 +53,13 @@ export class ReportsTableComponent implements OnInit {
 		if (this.dataSource) {
 			this.dataSource.forEach((t) => (t.checked = checked));
 		}
+	}
+
+	openDialog() {
+		const dialogRef = this.dialog.open(LinkDialogComponent);
+
+		dialogRef.afterClosed().subscribe((result) => {
+			console.log(`Dialog result: ${result}`);
+		});
 	}
 }

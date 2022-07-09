@@ -1,0 +1,29 @@
+<div mat-dialog-title>
+  <h2 >Add Task Links</h2>
+  <mat-dialog-actions>
+    <mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
+  </mat-dialog-actions>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="asana">
+    <div>
+      <img src="../../../../assets/image/asana.svg" alt="asana">
+    </div>
+    <input matInput placeholder="Asana link" value="">
+    <div>
+      <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
+    </div>
+  </div>
+  <div class="bitbucket">
+    <div>
+      <img src="../../../../assets/image/bitbucket.svg" alt="bitbucket">
+    </div>
+    <input matInput placeholder="Bitbucket link" value="">
+    <div>
+      <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>

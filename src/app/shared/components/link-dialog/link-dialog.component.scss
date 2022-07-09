@@ -1,0 +1,63 @@
+:host {
+	$header-size: 2rem;
+
+	.mat-icon {
+		cursor: pointer;
+	}
+
+	.mat-dialog-title {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin: 0;
+
+		h2 {
+			display: flex;
+			align-items: center;
+			font-size: var(--font-size-s);
+			font-weight: 500;
+			margin: 0;
+			height: $header-size;
+		}
+
+		.mat-dialog-actions {
+			display: flex;
+			align-items: center;
+			min-height: 0;
+			height: $header-size;
+			padding: 0;
+			.mat-icon {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.asana,
+	.bitbucket {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: var(--offset-s);
+
+		input {
+			border: 1px solid var(--accent-300);
+			border-radius: var(--border-radius-xs);
+			font-size: var(--font-size-s);
+			padding: calc(0.625 * var(--offset)) var(--offset-s);
+			margin-right: var(--offset-s);
+		}
+
+		img {
+			margin-right: var(--offset-s);
+		}
+	}
+}
+
+::ng-deep {
+	.mat-dialog-container {
+		overflow: hidden;
+		width: 100%;
+	}
+}
