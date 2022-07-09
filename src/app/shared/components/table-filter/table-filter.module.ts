@@ -6,6 +6,7 @@ import {DatePickerModule} from 'src/app/shared/components/date-picker/date-picke
 import {OptionsButtonModule} from '../options-button/options-button.module';
 import {HoursCardModule} from '../hours-card/hours-card.module';
 import {FiltersButtonModule} from '../filters-button/filters-button.module';
+import {InputSearchModule} from '../input-search/input-search.module';
 
 @NgModule({
 	declarations: [TableFilterComponent],
@@ -16,6 +17,7 @@ import {FiltersButtonModule} from '../filters-button/filters-button.module';
 		FiltersButtonModule,
 		HoursCardModule,
 		DatePickerModule,
+		InputSearchModule,
 	],
 	exports: [TableFilterComponent],
 })
