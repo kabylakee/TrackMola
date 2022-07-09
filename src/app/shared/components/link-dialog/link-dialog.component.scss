@@ -39,18 +39,33 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-top: var(--offset-s);
+		padding: var(--offset-xs) 0;
 
 		input {
-			border: 1px solid var(--accent-300);
+			border: 1px solid var(--accent-200);
 			border-radius: var(--border-radius-xs);
 			font-size: var(--font-size-s);
 			padding: calc(0.625 * var(--offset)) var(--offset-s);
 			margin-right: var(--offset-s);
+			&:focus {
+				border: 1px solid var(--accent-300);
+			}
 		}
 
 		img {
 			margin-right: var(--offset-s);
+		}
+
+		.image {
+			display: flex;
+			.mat-icon {
+				color: var(--accent-100);
+			}
+			&.active {
+				.mat-icon {
+					color: var(--accent-300);
+				}
+			}
 		}
 	}
 }

@@ -6,15 +6,15 @@
 	.project {
 		display: flex;
 		&-container {
-			color: var(--accent-300);
-			background-color: rgba-color(accent-300, 0.2) !important;
-			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			border-radius: var(--border-radius-xs);
-			height: $project-height;
 			display: flex;
 			align-items: center;
+			height: $project-height;
+			padding: var(--offset-xxs) calc(0.375 * var(--offset));
+			color: var(--accent-300);
 			font-weight: 500;
 			font-size: var(--font-size-xs);
+			background-color: rgba-color(accent-300, 0.2) !important;
+			border-radius: var(--border-radius-xs);
 		}
 	}
 }
