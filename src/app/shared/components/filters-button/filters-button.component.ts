@@ -17,7 +17,6 @@ export class FiltersButtonComponent {
 	public readonly overtimeSource: IFilterItem[] = Object.values(OVERTIME);
 	public readonly filterItems: string[] = Object.keys(FilterItems);
 
-	public opened: string = '';
 	public filtersCount: number = 0;
 
 	public status: IFilterItem = {
