@@ -6,33 +6,27 @@
 	 <span class="menu-button-text" *ngIf="!filtersCount">Filter</span>
 </button>
 <mat-menu #filter="matMenu">
-	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="projects">
-		<span>Project</span>
+	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="innerMatMenu" 
+	*ngFor="let item of filterItems" (mouseover)="opened = item">
+		<span>{{item}}</span>
 		<mat-icon>keyboard_arrow_right</mat-icon>
-	</button>
-	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="statuses">
-		<span>Status</span>
-		<mat-icon>keyboard_arrow_right</mat-icon>
-	</button>
-	<button mat-menu-item class="filter-menu-item" [matMenuTriggerFor]="overtimes">
-		<span>Overtime</span>
-		<mat-icon >keyboard_arrow_right</mat-icon>
 	</button>
 </mat-menu>
 
-<mat-menu #projects="matMenu" class="inner-menu">
-	<button mat-menu-item>
-		<ng-container *ngTemplateOutlet="setAllTemplate; context: project"></ng-container>
-	</button>
-	<button mat-menu-item *ngFor="let project of projectSource">
-		<mat-checkbox color="primary" [(ngModel)]="project.checked"
-		(change)="onChange('project',$event.checked)"
-		(click)="$event.stopPropagation()"></mat-checkbox>
-		<button mat-button class="project">{{project.title}}</button>
-	</button>
-</mat-menu>
+<mat-menu #innerMatMenu="matMenu" class="inner-menu" [ngSwitch]="opened">
+	<div *ngSwitchCase="'Project'">
+		<button mat-menu-item>
+			<ng-container *ngTemplateOutlet="setAllTemplate; context: project"></ng-container>
+		</button>
+		<button mat-menu-item *ngFor="let project of projectSource">
+			<mat-checkbox color="primary" [(ngModel)]="project.checked"
+			(change)="onChange('project',$event.checked)"
+			(click)="$event.stopPropagation()"></mat-checkbox>
+			<button mat-button class="project">{{project.title}}</button>
+		</button>
+	</div>
 
-<mat-menu #statuses="matMenu" class="inner-menu">
+	<div *ngSwitchCase="'Status'">
 	<button mat-menu-item>
 		<ng-container *ngTemplateOutlet="setAllTemplate; context: status"></ng-container>
 	</button>
@@ -42,9 +36,9 @@
 		(click)="$event.stopPropagation()"></mat-checkbox>
 		<button mat-button class="status">{{status.title}}</button>
 	</button>
-</mat-menu>
+	</div>
 
-<mat-menu #overtimes="matMenu" class="inner-menu">
+	<div *ngSwitchCase="'Overtime'">
 	<button mat-menu-item>
 		<ng-container *ngTemplateOutlet="setAllTemplate; context: overtime"></ng-container>
 	</button>
@@ -54,6 +48,7 @@
 		(click)="$event.stopPropagation()"></mat-checkbox>
 		 <span>{{overtime.title}}</span>
 	</button>
+	</div>
 </mat-menu>
 
 <ng-template #setAllTemplate let-check="checked" let-title="title">
