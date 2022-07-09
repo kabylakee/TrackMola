@@ -37,18 +37,18 @@ export class FiltersButtonComponent {
 		checked ? this.filtersCount++ : this.filtersCount--;
 
 		switch (title) {
-			case 'overtime':
+			case FilterItems.Overtime:
 				this.overtime.checked =
 					this.overtimeSource.filter((t) => t.checked == true).length ===
 					this.overtimeSource.length;
 				break;
 
-			case 'project':
+			case FilterItems.Project:
 				this.project.checked =
 					this.projectSource.filter((t) => t.checked == true).length === this.projectSource.length;
 				break;
 
-			case 'status':
+			case FilterItems.Status:
 				this.status.checked =
 					this.statusSource.filter((t) => t.checked == true).length === this.statusSource.length;
 				break;
@@ -57,7 +57,7 @@ export class FiltersButtonComponent {
 
 	public setAll(title: string): void {
 		switch (title) {
-			case 'overtime':
+			case FilterItems.Overtime:
 				this.overtime.checked = !this.overtime.checked;
 				this.overtimeSource.forEach((t) => {
 					if (!t.checked && this.overtime.checked) {
@@ -71,7 +71,7 @@ export class FiltersButtonComponent {
 				}
 				break;
 
-			case 'project':
+			case FilterItems.Project:
 				this.project.checked = !this.project.checked;
 				this.projectSource.forEach((t) => {
 					if (!t.checked && this.project.checked) {
@@ -85,7 +85,7 @@ export class FiltersButtonComponent {
 				}
 				break;
 
-			case 'status':
+			case FilterItems.Status:
 				this.status.checked = !this.status.checked;
 				this.statusSource.forEach((t) => {
 					if (!t.checked && this.status.checked) {
