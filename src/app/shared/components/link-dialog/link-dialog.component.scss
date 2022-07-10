@@ -14,17 +14,17 @@
 		h2 {
 			display: flex;
 			align-items: center;
-			font-size: var(--font-size-s);
-			font-weight: 500;
-			margin: 0;
 			height: $header-size;
+			margin: 0;
+			font-weight: 500;
+			font-size: var(--font-size-s);
 		}
 
 		.mat-dialog-actions {
 			display: flex;
 			align-items: center;
-			min-height: 0;
 			height: $header-size;
+			min-height: 0;
 			padding: 0;
 			.mat-icon {
 				display: flex;
@@ -42,11 +42,11 @@
 		padding: var(--offset-xs) 0;
 
 		input {
+			margin-right: var(--offset-s);
+			padding: calc(0.625 * var(--offset)) var(--offset-s);
+			font-size: var(--font-size-s);
 			border: 1px solid var(--accent-200);
 			border-radius: var(--border-radius-xs);
-			font-size: var(--font-size-s);
-			padding: calc(0.625 * var(--offset)) var(--offset-s);
-			margin-right: var(--offset-s);
 			&:focus {
 				border: 1px solid var(--accent-300);
 			}
@@ -72,7 +72,7 @@
 
 ::ng-deep {
 	.mat-dialog-container {
-		overflow: hidden;
 		width: 100%;
+		overflow: hidden;
 	}
 }

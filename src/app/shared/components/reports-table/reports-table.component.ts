@@ -55,8 +55,13 @@ export class ReportsTableComponent implements OnInit {
 		}
 	}
 
-	openDialog() {
-		const dialogRef = this.dialog.open(LinkDialogComponent);
+	openDialog(x: number, y: number) {
+		const dialogRef = this.dialog.open(LinkDialogComponent, {
+			position: {
+				top: `${y + 20}px`,
+				left: `${x - 330}px`,
+			},
+		});
 
 		dialogRef.afterClosed().subscribe((result) => {
 			console.log(`Dialog result: ${result}`);
