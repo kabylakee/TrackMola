@@ -10,6 +10,7 @@ import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.inte
 export class MonthTableComponent {
 	@Input() selectedDate: Date = new Date();
 	@Input() daysInfo: IReportsDayInfo[];
+	@Input() show: boolean = false;
 	@Output() selectDay = new EventEmitter<Date>();
 
 	public onSelectDay(date: Date): void {
