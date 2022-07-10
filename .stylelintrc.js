@@ -6,5 +6,8 @@ module.exports = {
   rules: {
     'no-descending-specificity': null,
     'no-empty-source': null,
+    "selector-pseudo-element-no-unknown": [true, {
+      "ignorePseudoElements": ["ng-deep"]
+    }]
   }
 };

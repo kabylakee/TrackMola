@@ -1,3 +1,3 @@
 <app-month-table [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
-<app-table-filter></app-table-filter>
-<app-reports-table [columns]="columns" [dataSource]="tasks"></app-reports-table>
+<app-table-filter [sumTime]="sumTime"></app-table-filter>
+<app-reports-table [columns]="columns" [dataSource]="tasks" (outChangeTime)="updateSumTime($event)"></app-reports-table>

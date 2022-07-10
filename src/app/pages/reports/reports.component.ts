@@ -5,6 +5,8 @@ import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {TaskService} from 'src/app/shared/services/task.service';
 import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
+import {IHours} from '../../entities/interfaces/hours.interface';
+import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 
 @Component({
 	selector: 'app-reports',
@@ -21,6 +23,7 @@ export class ReportsComponent implements OnInit {
 
 	public monthTasks: ITask[];
 	public calendarConfig: IReportsDayInfo[];
+	public sumTime: IHours = DEFAULT_TIME;
 
 	constructor(private taskService: TaskService) {}
 
@@ -47,5 +50,9 @@ export class ReportsComponent implements OnInit {
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 1),
 			)
 			.subscribe((tasks) => (this.monthTasks = tasks));
+	}
+
+	public updateSumTime(event: IHours): void {
+		this.sumTime = {...event};
 	}
 }

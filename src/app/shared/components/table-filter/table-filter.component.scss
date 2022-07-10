@@ -1,0 +1,21 @@
+:host {
+	.date-controls {
+		display: flex;
+		gap: var(--offset);
+		align-items: center;
+		margin-top: var(--offset-l);
+	}
+
+	.filter-controls {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: var(--offset) 0;
+
+		.filters {
+			display: flex;
+			gap: var(--offset);
+			align-items: center;
+		}
+	}
+}

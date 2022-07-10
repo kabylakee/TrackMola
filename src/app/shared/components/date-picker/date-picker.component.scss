@@ -1,0 +1,101 @@
+@import 'mixins/common-mixin';
+
+$button-min-width: 2.25rem;
+$wrapper-width: 8.2rem;
+$buttons-height: 2.44rem;
+$button-group-width: 12.8rem;
+$arrows-height: 2.313rem;
+
+:host {
+	::ng-deep {
+		mat-datepicker-toggle {
+			& .mat-ripple {
+				display: none;
+			}
+			color: var(--accent-300);
+		}
+
+		.mat-flat-button {
+			min-width: $button-min-width;
+		}
+
+		.mat-form-field {
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				@include flex-center;
+				width: $wrapper-width;
+				height: $buttons-height;
+				padding: 0;
+				color: var(--accent-300);
+				font-weight: 600;
+				font-size: var(--font-size-xs);
+				border-right: 1px solid var(--accent-300);
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			&-underline {
+				display: none;
+			}
+
+			&-appearance-fill .mat-form-field-flex {
+				display: flex;
+				align-items: center;
+				padding: 0 calc(var(--offset) * 0.63) 0 calc(var(--offset) * 1.13);
+				background-color: var(--white);
+				border-radius: var(--border-radius-xs);
+			}
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
+			}
+		}
+	}
+
+	input.mat-input-element {
+		cursor: pointer;
+	}
+
+	.button-group {
+		display: flex;
+		align-items: center;
+		width: $button-group-width;
+		height: $buttons-height;
+		border: 1px solid var(--accent-300);
+		border-radius: var(--border-radius-xs);
+	}
+	.mat-flat-button {
+		&:first-child {
+			@include flex-center;
+			border-width: 0 1px 0 0;
+			border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
+		}
+		&:nth-child(2) {
+			@include flex-center;
+			width: $button-min-width;
+			height: $arrows-height;
+			padding: 0;
+			border-width: 0 1px 0 0;
+			border-radius: 0;
+		}
+		&:nth-child(3) {
+			@include flex-center;
+			width: $button-min-width;
+			height: $arrows-height;
+			padding: 0;
+			border-width: 0;
+			border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
+		}
+	}
+
+	.calendar-icon {
+		font-size: var(--font-size-m);
+	}
+
+	.arrow-icon {
+		@include flex-center;
+		font-size: var(--font-size-m);
+	}
+}
