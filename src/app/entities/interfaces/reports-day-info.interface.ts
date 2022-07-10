@@ -9,4 +9,5 @@ export interface IReportsDayInfo {
 	isVacation: boolean;
 	paid: boolean;
 	disabled: boolean;
+	isWeekInfo: boolean;
 }

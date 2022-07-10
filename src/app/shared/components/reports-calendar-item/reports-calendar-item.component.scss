@@ -34,7 +34,7 @@
 			}
 		}
 
-		&:hover { 
+		&:hover {
 			border: 1px solid $common;
 			.date {
 				background-color: rgba($common, 0.5);
@@ -146,6 +146,22 @@
 			}
 			.date {
 				color: var(--accent-500);
+			}
+		}
+
+		&.week-info {
+			background-color: var(--accent-50);
+			.date {
+				background-color: var(--accent-50);
+			}
+			&:hover {
+				border: 1px solid var(--light-gray);
+				.date {
+					background-color: var(--accent-50);
+					.hint {
+						color: var(--accent-200);
+					}
+				}
 			}
 		}
 

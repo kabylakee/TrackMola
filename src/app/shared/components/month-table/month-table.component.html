@@ -1,5 +1,6 @@
 <div class="grid-wrapper">
   <!-- <div class="header">Week</div> -->
+  <div class="header">Week</div>
   <div class="header">Monday</div>
   <div class="header">Tuesday</div>
   <div class="header">Wednesday</div>
@@ -8,7 +9,8 @@
   <div class="header">Saturday</div>
   <div class="header">Sunday</div>
   <app-reports-calendar-item
-    *ngFor="let dayInfo of allDaysInfo"
+    *ngFor="let dayInfo of daysInfo"
+    (selectDay)="onSelectDay($event)"
     [dayInfo]="dayInfo"
     [disabled]="dayInfo.disabled">
   </app-reports-calendar-item>

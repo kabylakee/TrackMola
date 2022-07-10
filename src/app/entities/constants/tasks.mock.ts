@@ -37,6 +37,17 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: '',
 	},
 	{
+		date: new Date(2022, 6, 4),
+		checked: false,
+		title: 'Task 8',
+		project: PROJECT_MOCK[2],
+		status: Status.Done,
+		time: 3,
+		overtime: 0,
+		paid: false,
+		asanaLink: '',
+	},
+	{
 		date: new Date(2022, 6, 5),
 		checked: false,
 		title: 'Task 4',
