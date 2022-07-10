@@ -5,7 +5,7 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 export class MonthTasksHelper {
 	public static getCalendarConfig(monthTasks: ITask[], selectedDate: Date): IReportsDayInfo[] {
 		const daysInfo = MonthTasksHelper.taskToDayMapper(monthTasks);
-		const allDaysInfo = MonthTasksHelper.getAllDayInfo(daysInfo, selectedDate);
+		const allDaysInfo = MonthTasksHelper.getAllDayInfo(daysInfo, selectedDate); // filled empty days with default information
 		const allWeeksInfo = MonthTasksHelper.dayToWeekMapper(daysInfo, selectedDate);
 
 		const calendarConfig: IReportsDayInfo[] = [];
@@ -14,9 +14,11 @@ export class MonthTasksHelper {
 
 		for (let i = 0; i < allDaysInfo.length + allWeeksInfo.length; i++) {
 			if (i % 8 === 0) {
+				// month column
 				calendarConfig.push(allWeeksInfo[weekCounter]);
 				weekCounter++;
 			} else {
+				// day column
 				calendarConfig.push(allDaysInfo[dayCounter]);
 				dayCounter++;
 			}
@@ -33,8 +35,10 @@ export class MonthTasksHelper {
 
 		tasks.forEach((task) => {
 			if (+task.date === +currentDate) {
+				// add all tasks of current day
 				dayTasks.push(task);
 			} else {
+				// switch to next day
 				days.push(dayTasks);
 				dayTasks = [];
 				currentDate = task.date;
@@ -44,6 +48,7 @@ export class MonthTasksHelper {
 		days.push(dayTasks); // last day
 
 		return days.map((day) => ({
+			// return information about completed days
 			date: day[0].date,
 			taskCount: day.length,
 			total: day.reduce((totalTime, task) => (totalTime += task.time), 0),
@@ -77,8 +82,8 @@ export class MonthTasksHelper {
 		const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
 		const lastDayOfMonth = new Date(selectedYear, selectedMonth + 1, 0);
 		const daysInMonth = lastDayOfMonth.getDate();
-		const paddingDaysStart = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1; // day count from last month
-		const paddingDaysEnd = lastDayOfMonth.getDay() === 0 ? 0 : 7 - lastDayOfMonth.getDay(); // day count from next month
+		const paddingDaysStart = firstDayOfMonth.getDay() === 0 ? 6 : firstDayOfMonth.getDay() - 1; // amount of days from last month
+		const paddingDaysEnd = lastDayOfMonth.getDay() === 0 ? 0 : 7 - lastDayOfMonth.getDay(); // amount of days from next month
 
 		for (let i = 0; i < paddingDaysStart; i++) {
 			allDaysInfo.push({...defaultDayInfo});

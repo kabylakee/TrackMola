@@ -8,11 +8,9 @@
 	$common: rgb(221, 232, 245);
 	$common-transition: 0.2;
 	$hover-transition: 0.4;
-	// $calendar-item-width: 11rem;
 	$calendar-item-height: 7rem;
 
 	.item-wrapper {
-		// width: $calendar-item-width;
 		height: $calendar-item-height;
 		color: var(--light-black);
 		font-weight: 500;
