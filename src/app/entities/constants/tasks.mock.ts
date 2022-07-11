@@ -4,6 +4,7 @@ import {PROJECT_MOCK} from './project.mock';
 
 export const TASKS_MOCK: ITask[] = [
 	{
+		date: new Date(2022, 5, 30),
 		checked: false,
 		title: 'Task 1',
 		project: PROJECT_MOCK[0],
@@ -14,6 +15,7 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: '',
 	},
 	{
+		date: new Date(2022, 6, 1),
 		checked: false,
 		title: 'Task 2',
 		project: PROJECT_MOCK[1],
@@ -24,6 +26,7 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: 'https://api.chucknorris.io/jokes/CF0vMe-zRTWEbaYEy6LJ1A',
 	},
 	{
+		date: new Date(2022, 6, 4),
 		checked: false,
 		title: 'Task 3',
 		project: PROJECT_MOCK[2],
@@ -31,6 +34,28 @@ export const TASKS_MOCK: ITask[] = [
 		time: 1,
 		overtime: 0,
 		paid: false,
+		asanaLink: '',
+	},
+	{
+		date: new Date(2022, 6, 4),
+		checked: false,
+		title: 'Task 8',
+		project: PROJECT_MOCK[2],
+		status: Status.Done,
+		time: 3,
+		overtime: 0,
+		paid: false,
+		asanaLink: '',
+	},
+	{
+		date: new Date(2022, 6, 5),
+		checked: false,
+		title: 'Task 4',
+		project: PROJECT_MOCK[2],
+		status: Status.Done,
+		time: 10,
+		overtime: 2,
+		paid: true,
 		asanaLink: '',
 	},
 ];

@@ -8,4 +8,6 @@ export interface IReportsDayInfo {
 	timeStatus: TimeStatus;
 	isVacation: boolean;
 	paid: boolean;
+	disabled: boolean;
+	isWeekInfo: boolean;
 }
