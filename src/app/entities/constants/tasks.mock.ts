@@ -49,6 +49,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 	{
 		date: new Date(2022, 6, 5),
@@ -60,5 +61,6 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 2,
 		paid: true,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 ];
