@@ -14,7 +14,6 @@ import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 })
 export class ReportsComponent implements OnInit {
 	public tasks: ITask[] = [];
-
 	public columns: ITableColumn[] = [];
 
 	public sumTime: IHours = DEFAULT_TIME;
