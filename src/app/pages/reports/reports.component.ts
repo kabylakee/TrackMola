@@ -1,9 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
-import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
-import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
-import {ITask} from 'src/app/entities/interfaces/task.interface';
-import {TaskService} from 'src/app/shared/services/task.service';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DAY_TABLE_CONFIG } from 'src/app/entities/constants/day-columns.config';
+import { DayTypeEnum } from 'src/app/entities/enums/day-type.enum';
+import { ITableColumn } from 'src/app/entities/interfaces/table-column.interface';
+import { ITask } from 'src/app/entities/interfaces/task.interface';
+import { TaskService } from 'src/app/shared/services/task.service';
+import { IHours } from '../../entities/interfaces/hours.interface';
+import { DEFAULT_TIME } from '../../entities/constants/hours.constants';
 
 @Component({
 	selector: 'app-reports',
@@ -17,8 +19,9 @@ export class ReportsComponent implements OnInit {
 	public columns: ITableColumn[] = [];
 
 	public readonly legendItems = Object.values(DayTypeEnum);
+	public sumTime: IHours = DEFAULT_TIME;
 
-	constructor(private taskService: TaskService) {}
+	constructor(private taskService: TaskService) { }
 
 	public ngOnInit(): void {
 		this.getTasks();
@@ -30,5 +33,9 @@ export class ReportsComponent implements OnInit {
 	// Get all tasks from task service
 	private getTasks(): void {
 		this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+	}
+
+	public updateSumTime(event: IHours): void {
+		this.sumTime = { ...event };
 	}
 }
