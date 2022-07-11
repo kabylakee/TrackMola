@@ -33,7 +33,8 @@ export class FiltersButtonComponent {
 	};
 
 	onChange(title: string, checked: boolean): void {
-		this.filtersCount = checked ? this.filtersCount++ : this.filtersCount--;
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		checked ? this.filtersCount++ : this.filtersCount--;
 
 		switch (title) {
 			case FilterItems.Overtime:
