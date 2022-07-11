@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ReportsButtonEnum} from 'src/app/entities/enums/reports-button.enum';
 
 @Component({
 	selector: 'app-reports-button',
@@ -9,4 +10,6 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 export class ReportsButtonComponent {
 	@Input() canSubmit = false;
 	@Input() showNotifier = false;
+
+	public readonly buttons = ReportsButtonEnum;
 }
