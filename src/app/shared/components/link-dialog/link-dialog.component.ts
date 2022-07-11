@@ -9,11 +9,5 @@ import {ILinks} from 'src/app/entities/interfaces/links.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkDialogComponent {
-	public asanaLink: string = '';
-	public bitbucketLink: string = '';
-
-	constructor(@Inject(MAT_DIALOG_DATA) public data: ILinks) {
-		this.asanaLink = data.asanaLink;
-		this.bitbucketLink = data.bitbucketLink;
-	}
+	constructor(@Inject(MAT_DIALOG_DATA) public data: ILinks) {}
 }

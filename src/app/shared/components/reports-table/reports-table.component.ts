@@ -32,11 +32,10 @@ export class ReportsTableComponent implements OnInit {
 	@Output() optionSelected = new EventEmitter<string>();
 
 	public allChecked: boolean = false;
-
 	public sumTime: IHours = DEFAULT_TIME;
+	public displayedColumns: string[] = [];
 
 	public readonly columnType = ColumnType;
-	public displayedColumns: string[] = [];
 	public readonly projects: IProject[] = PROJECT_MOCK;
 	public readonly status = Status;
 	public readonly options = Object.values(OPTIONS_CONFIG);
@@ -61,6 +60,7 @@ export class ReportsTableComponent implements OnInit {
 		}
 	}
 
+	// Open dialog window at bottom of your cursor
 	public openDialog(x: number, y: number, asanaLink: string, bitbucketLink: string) {
 		const dialogRef = this.dialog.open(LinkDialogComponent, {
 			position: {
@@ -94,6 +94,7 @@ export class ReportsTableComponent implements OnInit {
 		this.outChangeTime.emit(this.sumTime);
 	}
 
+	// Format input value to blank string when 0 value
 	public inputFormater(value: number): string {
 		return value ? `${value}` : '';
 	}

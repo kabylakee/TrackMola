@@ -11,12 +11,12 @@
       <img src="../../../../assets/image/asana.svg" alt="asana">
     </div>
 
-    <input matInput placeholder="Asana link" [(ngModel)]="asanaLink">
+    <input matInput placeholder="Asana link" [(ngModel)]="data.asanaLink">
 
-    <a [href]="asanaLink" class="image active" *ngIf="asanaLink">
+    <a [href]="data.asanaLink" class="image active" *ngIf="data.asanaLink">
       <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
     </a>
-    <div class="image" *ngIf="!asanaLink">
+    <div class="image" *ngIf="!data.asanaLink">
       <mat-icon aria-hidden="false">open_in_new</mat-icon>
     </div>
   </div>
@@ -26,12 +26,12 @@
       <img src="../../../../assets/image/bitbucket.svg" alt="bitbucket">
     </div>
 
-    <input matInput placeholder="Bitbucket link" value="" [(ngModel)]="bitbucketLink">
+    <input matInput placeholder="Bitbucket link" value="" [(ngModel)]="data.bitbucketLink">
 
-    <a [href]="bitbucketLink" class="image active" *ngIf="bitbucketLink">
+    <a [href]="data.bitbucketLink" class="image active" *ngIf="data.bitbucketLink">
       <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
     </a>
-    <div class="image" *ngIf="!bitbucketLink">
+    <div class="image" *ngIf="!data.bitbucketLink">
       <mat-icon aria-hidden="false">open_in_new</mat-icon>
     </div>
   </div>
