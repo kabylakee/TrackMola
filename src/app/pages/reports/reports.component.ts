@@ -5,6 +5,7 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {TaskService} from 'src/app/shared/services/task.service';
 import {IHours} from '../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
+import {RouterPaths} from 'src/app/entities/enums/router.enum';
 
 @Component({
 	selector: 'app-reports',
@@ -17,6 +18,9 @@ export class ReportsComponent implements OnInit {
 	public columns: ITableColumn[] = [];
 
 	public sumTime: IHours = DEFAULT_TIME;
+
+	public readonly title =
+		RouterPaths.Reports.charAt(0).toUpperCase() + RouterPaths.Reports.slice(1);
 
 	constructor(private taskService: TaskService) {}
 

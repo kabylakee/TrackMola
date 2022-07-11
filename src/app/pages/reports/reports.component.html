@@ -1,3 +1,4 @@
+<app-header [pageTitle]="title"></app-header>
 <app-month-table></app-month-table>
 <app-table-filter [sumTime]="sumTime"></app-table-filter>
 <app-reports-table [columns]="columns" [dataSource]="tasks" (outChangeTime)="updateSumTime($event)"></app-reports-table>
