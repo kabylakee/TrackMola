@@ -93,4 +93,8 @@ export class ReportsTableComponent implements OnInit {
 		});
 		this.outChangeTime.emit(this.sumTime);
 	}
+
+	public inputFormater(value: number): string {
+		return value ? `${value}` : '';
+	}
 }

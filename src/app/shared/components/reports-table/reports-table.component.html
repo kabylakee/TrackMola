@@ -35,8 +35,8 @@
 					<mat-form-field class="example-full-width" appearance="fill">
 						<input
 							matInput
-							[value]="element['' + column.field]"
-							[ngModel]="element['' + column.field]"
+							[value]="inputFormater(element['' + column.field])"
+							[ngModel]="inputFormater(element['' + column.field])"
 							(ngModelChange)="changeFieldValue($event, column, element)"
 						/>
 					</mat-form-field>
