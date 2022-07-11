@@ -44,7 +44,7 @@
 
         <div *ngSwitchCase="columnType.PROJECT">
           <mat-form-field appearance="fill">
-            <mat-select [(value)]="element[''+column.field].title">
+            <mat-select [value]="element[''+column.field].title">
               <mat-option [value]="project.title" *ngFor="let project of projects">
                 <app-project-helper projectName="{{project.title}}"></app-project-helper>
               </mat-option>
