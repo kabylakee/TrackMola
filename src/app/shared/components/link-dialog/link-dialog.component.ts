@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ILinks} from 'src/app/entities/interfaces/links.interface';
 
 @Component({
 	selector: 'app-link-dialog',
@@ -8,15 +10,10 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 })
 export class LinkDialogComponent {
 	public asanaLink: string = '';
-	public asanaActive: string = '';
 	public bitbucketLink: string = '';
-	public bitbucketActive: string = '';
 
-	public asanaUpdate() {
-		this.asanaActive = this.asanaLink ? 'active' : '';
-	}
-
-	public bitbucketUpdate() {
-		this.bitbucketActive = this.bitbucketLink ? 'active' : '';
+	constructor(@Inject(MAT_DIALOG_DATA) public data: ILinks) {
+		this.asanaLink = data.asanaLink;
+		this.bitbucketLink = data.bitbucketLink;
 	}
 }

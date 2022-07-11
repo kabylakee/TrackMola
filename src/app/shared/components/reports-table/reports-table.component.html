@@ -49,7 +49,8 @@
         </div>
 
         <div *ngSwitchCase="columnType.LINK">
-          <button class="add-link" mat-icon-button aria-label="Add Link" (click)="openDialog($event.clientX, $event.clientY)">
+          <button class="add-link" mat-icon-button aria-label="Add Link" 
+                  (click)="openDialog($event.clientX, $event.clientY, element.asanaLink, element.bitbucketLink)">
             <mat-icon aria-hidden="false" *ngIf="!element.asanaLink">add_link</mat-icon> 
             <mat-icon aria-hidden="false" *ngIf="element.asanaLink" class="active-links">link</mat-icon> 
           </button>

@@ -12,6 +12,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: true,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 	{
 		checked: false,
@@ -22,6 +23,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: 'https://api.chucknorris.io/jokes/CF0vMe-zRTWEbaYEy6LJ1A',
+		bitbucketLink: '',
 	},
 	{
 		checked: false,
@@ -32,5 +34,6 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 ];

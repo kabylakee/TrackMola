@@ -11,7 +11,7 @@
       <img src="../../../../assets/image/asana.svg" alt="asana">
     </div>
 
-    <input matInput placeholder="Asana link" [(ngModel)]="asanaLink" (change)="asanaUpdate()">
+    <input matInput placeholder="Asana link" [(ngModel)]="asanaLink">
 
     <a [href]="asanaLink" class="image active" *ngIf="asanaLink">
       <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
@@ -26,7 +26,7 @@
       <img src="../../../../assets/image/bitbucket.svg" alt="bitbucket">
     </div>
 
-    <input matInput placeholder="Bitbucket link" value="" [(ngModel)]="bitbucketLink" (change)="bitbucketUpdate()">
+    <input matInput placeholder="Bitbucket link" value="" [(ngModel)]="bitbucketLink">
 
     <a [href]="bitbucketLink" class="image active" *ngIf="bitbucketLink">
       <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>

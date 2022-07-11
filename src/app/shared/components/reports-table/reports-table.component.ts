@@ -55,11 +55,15 @@ export class ReportsTableComponent implements OnInit {
 		}
 	}
 
-	openDialog(x: number, y: number) {
+	openDialog(x: number, y: number, asanaLink: string, bitbucketLink: string) {
 		const dialogRef = this.dialog.open(LinkDialogComponent, {
 			position: {
 				top: `${y + 20}px`,
 				left: `${x - 330}px`,
+			},
+			data: {
+				asanaLink: asanaLink,
+				bitbucketLink: bitbucketLink,
 			},
 		});
 
