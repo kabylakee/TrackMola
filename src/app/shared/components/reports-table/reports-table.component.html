@@ -42,7 +42,6 @@
 					</mat-form-field>
 				</div>
 
-<<<<<<< HEAD
         <div *ngSwitchCase="columnType.PROJECT">
           <mat-form-field appearance="fill">
             <mat-select [(value)]="element[''+column.field].title">
@@ -82,56 +81,6 @@
             </button>
           </mat-menu>
         </div>
-=======
-				<div *ngSwitchCase="columnType.PROJECT">
-					<button mat-button [matMenuTriggerFor]="menu">
-						{{ element['' + column.field].title }}
-					</button>
-					<mat-menu #menu="matMenu">
-						<button mat-menu-item>Item 1</button>
-						<button mat-menu-item>Item 2</button>
-					</mat-menu>
-				</div>
-
-				<div *ngSwitchCase="columnType.STATUS">
-					<button mat-button [matMenuTriggerFor]="menu">{{ element['' + column.field] }}</button>
-					<mat-menu #menu="matMenu">
-						<button mat-menu-item>Item 1</button>
-						<button mat-menu-item>Item 2</button>
-					</mat-menu>
-				</div>
-
-				<div *ngSwitchCase="columnType.LINK">
-					<button class="add-link" mat-icon-button aria-label="Add Link" *ngIf="!element.asanaLink">
-						<mat-icon aria-hidden="false">add_link</mat-icon>
-					</button>
-					<a
-						mat-icon-button
-						aria-label="Link"
-						class="task-links"
-						*ngIf="element.asanaLink"
-						[href]="element.asanaLink"
-						target="_blank"
-					>
-						<mat-icon aria-hidden="false">link</mat-icon>
-					</a>
-				</div>
-
-				<div *ngSwitchCase="columnType.OPTIONS">
-					<button
-						mat-icon-button
-						aria-label="Options"
-						class="user-logout"
-						[matMenuTriggerFor]="menu"
-					>
-						<mat-icon aria-hidden="false">more_horiz</mat-icon>
-					</button>
-					<mat-menu #menu="matMenu">
-						<button mat-menu-item>Item 1</button>
-						<button mat-menu-item>Item 2</button>
-					</mat-menu>
-				</div>
->>>>>>> origin/master
 
 				<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
 			</div>

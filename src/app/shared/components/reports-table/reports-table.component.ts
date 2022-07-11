@@ -29,6 +29,7 @@ export class ReportsTableComponent implements OnInit {
 	@Input() public columns: ITableColumn[] = [];
 
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
+	@Output() optionSelected = new EventEmitter<string>();
 
 	public allChecked: boolean = false;
 
