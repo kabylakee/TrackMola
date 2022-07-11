@@ -8,4 +8,5 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class ReportsButtonComponent {
 	@Input() canSubmit = false;
+	@Input() showNotifier = false;
 }

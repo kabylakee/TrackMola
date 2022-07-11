@@ -32,6 +32,16 @@
 		.right-button {
 			display: flex;
 			gap: var(--offset);
+
+			.notifier {
+				display: flex;
+				align-items: center;
+				margin-right: var(--offset-s);
+				color: var(--red);
+				&.invisible {
+					display: none;
+				}
+			}
 		}
 	}
 }

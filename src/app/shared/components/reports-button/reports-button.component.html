@@ -4,6 +4,7 @@
     <span class="mat-text">Add Task</span>
   </button>
   <div class="right-button">
+    <span class="notifier" [class.invisible]="!showNotifier">Time was not filled</span>
     <button mat-flat-button color="secondary">
       <span class="mat-text">Save</span>
     </button>
