@@ -1,11 +1,12 @@
 <div class="item-wrapper"
   (click)="selectDay.emit(dayInfo.date)"
-  [ngClass]="dayInfo.timeStatus"
-  [class.present]="isPresent"
-  [class.disabled]="disabled"
-  [class.vacation]="dayInfo.isVacation && dayInfo.paid" 
-  [class.day-off]="dayInfo.isVacation && !dayInfo.paid"
-  [class.week-info]="dayInfo.isWeekInfo">
+  [ngClass]="{
+    present: isPresent, 
+    disabled: disabled, 
+    vacation: dayInfo.isVacation && dayInfo.paid, 
+    'day-off': dayInfo.isVacation && !dayInfo.paid, 
+    'week-info': dayInfo.isWeekInfo}"
+  [class]="dayInfo.timeStatus">
   <div class="date">
     <span *ngIf="!dayInfo.isWeekInfo; else weekly">{{dayInfo.date | date:'d MMMM'}}</span>
     <ng-template #weekly [ngSwitch]="getWeek(dayInfo.date)">
