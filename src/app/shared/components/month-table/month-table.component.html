@@ -1,0 +1,10 @@
+<div class="grid-wrapper" [class.hidden]="!show">
+  <div class="header">Week</div>
+  <div class="header" *ngFor="let day of weekDay">{{day}}</div>
+  <app-reports-calendar-item
+    *ngFor="let dayInfo of daysInfo"
+    (selectDay)="onSelectDay($event)"
+    [dayInfo]="dayInfo"
+    [disabled]="dayInfo.disabled">
+  </app-reports-calendar-item>
+</div>
