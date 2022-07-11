@@ -6,8 +6,6 @@ import {
 	OnInit,
 	Output,
 } from '@angular/core';
-import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
-import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {Status} from 'src/app/entities/enums/status.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
@@ -15,6 +13,10 @@ import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {MatDialog} from '@angular/material/dialog';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
+import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
+import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
+import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
+import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 
 @Component({
 	selector: 'app-reports-table',
@@ -26,9 +28,12 @@ export class ReportsTableComponent implements OnInit {
 	@Input() public dataSource: ITask[] = [];
 	@Input() public columns: ITableColumn[] = [];
 
-	@Output() optionSelected = new EventEmitter<string>();
+	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 
 	public allChecked: boolean = false;
+
+	public sumTime: IHours = DEFAULT_TIME;
+
 	public readonly columnType = ColumnType;
 	public displayedColumns: string[] = [];
 	public readonly projects: IProject[] = PROJECT_MOCK;
@@ -39,12 +44,12 @@ export class ReportsTableComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
+		this.getSum(['time', 'overtime']);
 	}
 
 	// When you click subcheckbox update main checkbox
 	public updateAllChecked(): void {
-		this.allChecked =
-			this.dataSource.filter((t) => t.checked == true).length === this.dataSource.length;
+		this.allChecked = this.dataSource.filter((t) => t.checked).length === this.dataSource.length;
 	}
 
 	// When you click main checkbox update subcheckboxes
@@ -55,7 +60,7 @@ export class ReportsTableComponent implements OnInit {
 		}
 	}
 
-	openDialog(x: number, y: number, asanaLink: string, bitbucketLink: string) {
+	public openDialog(x: number, y: number, asanaLink: string, bitbucketLink: string) {
 		const dialogRef = this.dialog.open(LinkDialogComponent, {
 			position: {
 				top: `${y + 20}px`,
@@ -70,5 +75,21 @@ export class ReportsTableComponent implements OnInit {
 		dialogRef.afterClosed().subscribe((result) => {
 			console.log(`Dialog result: ${result}`);
 		});
+	}
+
+	public changeFieldValue(event: number, column: ITableColumn, elem: ITask): void {
+		if ((column.field === 'time' || column.field === 'overtime') && event == +event) {
+			elem[column.field] = +event;
+			this.getSum([column.field]);
+		}
+	}
+
+	public getSum(fields: HoursKeys[]): void {
+		fields.forEach((field) => {
+			this.sumTime[field] = this.dataSource.reduce((acc, curr) => {
+				return acc + curr[field];
+			}, 0);
+		});
+		this.outChangeTime.emit(this.sumTime);
 	}
 }
