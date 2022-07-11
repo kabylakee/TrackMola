@@ -61,20 +61,23 @@ export class ReportsTableComponent implements OnInit {
 	}
 
 	// Open dialog window at bottom of your cursor
-	public openDialog(x: number, y: number, asanaLink: string, bitbucketLink: string) {
+	public openDialog(x: number, y: number, element: ITask) {
 		const dialogRef = this.dialog.open(LinkDialogComponent, {
 			position: {
 				top: `${y + 20}px`,
 				left: `${x - 330}px`,
 			},
 			data: {
-				asanaLink: asanaLink,
-				bitbucketLink: bitbucketLink,
+				asanaLink: element.asanaLink,
+				bitbucketLink: element.bitbucketLink,
 			},
 		});
 
 		dialogRef.afterClosed().subscribe((result) => {
-			console.log(`Dialog result: ${result}`);
+			if (result) {
+				element.asanaLink = result.asanaLink;
+				element.bitbucketLink = result.bitbucketLink;
+			}
 		});
 	}
 

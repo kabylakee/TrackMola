@@ -46,7 +46,7 @@
           <mat-form-field appearance="fill">
             <mat-select [value]="element[''+column.field].title">
               <mat-option [value]="project.title" *ngFor="let project of projects">
-                <app-project-helper projectName="{{project.title}}"></app-project-helper>
+                <app-project-component projectName="{{project.title}}"></app-project-component>
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -64,9 +64,10 @@
 
         <div *ngSwitchCase="columnType.LINK">
           <button class="add-link" mat-icon-button aria-label="Add Link" 
-                  (click)="openDialog($event.clientX, $event.clientY, element.asanaLink, element.bitbucketLink)">
-            <mat-icon aria-hidden="false" *ngIf="!element.asanaLink">add_link</mat-icon> 
-            <mat-icon aria-hidden="false" *ngIf="element.asanaLink" class="active-links">link</mat-icon> 
+                  (click)="openDialog($event.clientX, $event.clientY, element)">
+						<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
+							{{element.asanaLink ? 'link' : 'add_link'}}
+						</mat-icon>
           </button>
         </div>
 

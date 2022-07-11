@@ -11,7 +11,7 @@
 		justify-content: space-between;
 		margin: 0;
 
-		h2 {
+		.title {
 			display: flex;
 			align-items: center;
 			height: $header-size;
@@ -41,7 +41,7 @@
 		justify-content: space-between;
 		padding: var(--offset-xs) 0;
 
-		input {
+		.link-input {
 			margin-right: var(--offset-s);
 			padding: calc(0.625 * var(--offset)) var(--offset-s);
 			font-size: var(--font-size-s);
@@ -52,31 +52,27 @@
 			}
 		}
 
-		img {
-			margin-right: var(--offset-s);
-		}
-
 		.image {
 			display: flex;
+
+			&-img {
+				margin-right: var(--offset-s);
+			}
+
 			.mat-icon {
 				color: var(--accent-100);
 			}
+
 			&.active {
 				.mat-icon {
 					color: var(--accent-300);
 				}
 			}
 		}
-	}
-}
 
-::ng-deep {
-	.mat-dialog-container {
-		width: 100%;
-		overflow: hidden;
-	}
-
-	.cdk-overlay-dark-backdrop {
-		background: none;
+		.disabled {
+			pointer-events: none;
+			cursor: default;
+		}
 	}
 }

@@ -11,11 +11,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import {ReportsTableComponent} from './reports-table.component';
-import {ProjectHelperComponent} from '../../helpers/project/project.helper';
+import {ProjectComponent} from '../../components/project/project.component';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 
 @NgModule({
-	declarations: [ReportsTableComponent, ProjectHelperComponent, LinkDialogComponent],
+	declarations: [ReportsTableComponent, ProjectComponent, LinkDialogComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,

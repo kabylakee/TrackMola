@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <h2 >Add Task Links</h2>
+  <h2 class="title">Add Task Links</h2>
   <mat-dialog-actions>
     <mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
   </mat-dialog-actions>
@@ -8,35 +8,29 @@
 <mat-dialog-content class="mat-typography">
   <div class="asana">
     <div class="image">
-      <img src="../../../../assets/image/asana.svg" alt="asana">
+      <img class="image-img" src="../../../../assets/image/asana.svg" alt="asana">
     </div>
 
-    <input matInput placeholder="Asana link" [(ngModel)]="data.asanaLink">
-
-    <a [href]="data.asanaLink" class="image active" *ngIf="data.asanaLink">
-      <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
+    <input matInput placeholder="Asana link" class="link-input" [(ngModel)]="data.asanaLink">
+    
+    <a [href]="data.asanaLink" class="image" [ngClass]="{'active' : data.asanaLink, 'disabled' : !data.asanaLink}">
+      <mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
     </a>
-    <div class="image" *ngIf="!data.asanaLink">
-      <mat-icon aria-hidden="false">open_in_new</mat-icon>
-    </div>
   </div>
 
   <div class="bitbucket">
     <div class="image">
-      <img src="../../../../assets/image/bitbucket.svg" alt="bitbucket">
+      <img class="image-img" src="../../../../assets/image/bitbucket.svg" alt="bitbucket">
     </div>
 
-    <input matInput placeholder="Bitbucket link" value="" [(ngModel)]="data.bitbucketLink">
+    <input matInput placeholder="Bitbucket link" class="link-input" [(ngModel)]="data.bitbucketLink">
 
-    <a [href]="data.bitbucketLink" class="image active" *ngIf="data.bitbucketLink">
-      <mat-icon aria-hidden="false" mat-dialog-close>open_in_new</mat-icon>
+    <a [href]="data.bitbucketLink" class="image" [ngClass]="{'active' : data.bitbucketLink, 'disabled' : !data.bitbucketLink}">
+      <mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
     </a>
-    <div class="image" *ngIf="!data.bitbucketLink">
-      <mat-icon aria-hidden="false">open_in_new</mat-icon>
-    </div>
   </div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" [mat-dialog-close]="true">Save</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="links">Save</button>
 </mat-dialog-actions>

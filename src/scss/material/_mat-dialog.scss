@@ -1,0 +1,10 @@
+app-root {
+	.mat-dialog-container {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.cdk-overlay-dark-backdrop {
+		background: none;
+	}
+}

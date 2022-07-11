@@ -9,5 +9,9 @@ import {ILinks} from 'src/app/entities/interfaces/links.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LinkDialogComponent {
-	constructor(@Inject(MAT_DIALOG_DATA) public data: ILinks) {}
+	public links: ILinks;
+
+	constructor(@Inject(MAT_DIALOG_DATA) public data: ILinks) {
+		this.links = data;
+	}
 }
