@@ -18,9 +18,19 @@ export class ReportsCalendarItemComponent {
 
 	public get isPresent(): boolean {
 		const today = new Date();
+
+		if (this.dayInfo.isWeekInfo) {
+			return (
+				this.getWeek(this.dayInfo.date) === this.getWeek(today) &&
+				this.dayInfo.date.getMonth() === today.getMonth() &&
+				this.dayInfo.date.getFullYear() === today.getFullYear()
+			);
+		}
+
 		return (
 			this.dayInfo.date.getDate() === today.getDate() &&
-			this.dayInfo.date.getMonth() === today.getMonth()
+			this.dayInfo.date.getMonth() === today.getMonth() &&
+			this.dayInfo.date.getFullYear() === today.getFullYear()
 		);
 	}
 
