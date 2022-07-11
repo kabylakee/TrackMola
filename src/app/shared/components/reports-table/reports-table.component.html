@@ -54,7 +54,7 @@
 
         <div *ngSwitchCase="columnType.STATUS">
           <mat-form-field appearance="fill">
-            <mat-select [(value)]="element[''+column.field]">
+            <mat-select [value]="element[''+column.field]">
               <mat-option [value]="status.Done">{{ status.Done }}</mat-option>
               <mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
               <mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
