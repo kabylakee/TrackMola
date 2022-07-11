@@ -5,6 +5,7 @@ import {ToggleButtonModule} from 'src/app/shared/components/toggle-button/toggle
 import {DatePickerModule} from 'src/app/shared/components/date-picker/date-picker.module';
 import {OptionsButtonModule} from '../options-button/options-button.module';
 import {HoursCardModule} from '../hours-card/hours-card.module';
+import {InputSearchModule} from '../input-search/input-search.module';
 
 @NgModule({
 	declarations: [TableFilterComponent],
@@ -14,6 +15,7 @@ import {HoursCardModule} from '../hours-card/hours-card.module';
 		OptionsButtonModule,
 		HoursCardModule,
 		DatePickerModule,
+		InputSearchModule,
 	],
 	exports: [TableFilterComponent],
 })
