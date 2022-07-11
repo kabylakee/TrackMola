@@ -11,7 +11,8 @@ import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.inte
 export class MonthTableComponent {
 	@Input() selectedDate: Date = new Date();
 	@Input() daysInfo: IReportsDayInfo[];
-	@Input() show: boolean = false;
+	@Input() show: boolean = true;
+
 	@Output() selectDay = new EventEmitter<Date>();
 
 	public readonly weekDay = Object.values(WeekDayEnum);
