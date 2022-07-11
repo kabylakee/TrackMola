@@ -1,0 +1,14 @@
+<div class="button-wrapper">
+  <button mat-flat-button color="secondary">
+    <mat-icon>add</mat-icon>
+    <span class="mat-text">Add Task</span>
+  </button>
+  <div class="right-button">
+    <button mat-flat-button color="secondary">
+      <span class="mat-text">Save</span>
+    </button>
+    <button mat-flat-button color="primary" [class.mat-button-disabled]="!canSubmit">
+      <span class="mat-text">Submit</span>
+    </button>
+  </div>
+</div>

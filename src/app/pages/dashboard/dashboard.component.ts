@@ -12,5 +12,6 @@ import {Type} from 'src/app/entities/enums/type.enum';
 export class DashboardComponent {
 	public readonly size = Size;
 	public readonly type = Type;
-	public readonly title = RouterPaths.Dashboard.charAt(0).toUpperCase() + RouterPaths.Dashboard.slice(1);
+	public readonly title =
+		RouterPaths.Dashboard.charAt(0).toUpperCase() + RouterPaths.Dashboard.slice(1);
 }

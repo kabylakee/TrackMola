@@ -13,6 +13,7 @@ app-root {
 			display: flex;
 			gap: var(--offset-s);
 			align-items: center;
+			justify-content: center;
 		}
 
 		&.mat-secondary {
@@ -25,7 +26,7 @@ app-root {
 		}
 
 		&.mat-primary {
-			:hover {
+			&:hover {
 				background-color: var(--accent-500);
 			}
 		}

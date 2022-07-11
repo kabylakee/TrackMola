@@ -1,0 +1,37 @@
+@import 'mixins/common-mixin';
+
+:host {
+	.button-wrapper {
+		display: flex;
+		justify-content: space-between;
+
+		.mat-flat-button {
+			padding: var(--offset-xs) var(--offset-s);
+			border-radius: var(--border-radius-xs);
+
+			&.mat-primary:hover {
+				background-color: var(--accent-500);
+				&.mat-button-disabled:hover {
+					color: var(--light-gray);
+					background-color: var(--accent-50);
+					border: none;
+				}
+			}
+
+			.mat-icon {
+				@include icon-size(--icon-size-m);
+			}
+
+			.mat-text {
+				font-weight: 600;
+				font-size: var(--font-size-xs);
+				line-height: var(--font-size);
+			}
+		}
+
+		.right-button {
+			display: flex;
+			gap: var(--offset);
+		}
+	}
+}

@@ -15,7 +15,7 @@ import {FormsModule} from '@angular/forms';
 		MatIconModule,
 		MatButtonModule,
 		MatCheckboxModule,
-		FormsModule
+		FormsModule,
 	],
 	exports: [FiltersButtonComponent],
 })
