@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterPaths} from 'src/app/entities/enums/router.enum';
 
 @Component({
 	selector: 'app-statistic',
@@ -6,4 +7,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	styleUrls: ['./statistic.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StatisticComponent {}
+export class StatisticComponent {
+	public readonly title =
+		RouterPaths.Statistic.charAt(0).toUpperCase() + RouterPaths.Statistic.slice(1);
+}

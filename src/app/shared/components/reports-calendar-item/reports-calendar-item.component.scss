@@ -5,13 +5,12 @@
 	$unfinished: rgb(241, 102, 102);
 	$vacation: rgb(88, 174, 223);
 	$day-off: rgb(125, 214, 165);
+	$common: rgb(221, 232, 245);
 	$common-transition: 0.2;
 	$hover-transition: 0.4;
-	$calendar-item-width: 11rem;
 	$calendar-item-height: 7rem;
 
 	.item-wrapper {
-		width: $calendar-item-width;
 		height: $calendar-item-height;
 		color: var(--light-black);
 		font-weight: 500;
@@ -33,10 +32,13 @@
 			}
 		}
 
-		&:hover .date {
-			background-color: rgba-color(accent-100, 0.5);
-			.hint {
-				display: inline-block;
+		&:hover {
+			border: 1px solid $common;
+			.date {
+				background-color: rgba($common, $hover-transition);
+				.hint {
+					display: inline-block;
+				}
 			}
 		}
 
@@ -142,6 +144,23 @@
 			}
 			.date {
 				color: var(--accent-500);
+			}
+		}
+
+		&.week-info {
+			background-color: var(--accent-50);
+			border: 1px solid var(--light-gray);
+			.date {
+				background-color: var(--accent-50);
+			}
+			&:hover {
+				border: 1px solid var(--light-gray);
+				.date {
+					background-color: var(--accent-50);
+					.hint {
+						color: var(--accent-200);
+					}
+				}
 			}
 		}
 

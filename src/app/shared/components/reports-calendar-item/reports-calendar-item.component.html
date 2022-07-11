@@ -1,11 +1,22 @@
 <div class="item-wrapper"
-  [ngClass]="dayInfo.timeStatus"
-  [class.present]="isPresent"
-  [class.disabled]="disabled"
-  [class.vacation]="dayInfo.isVacation && dayInfo.paid" 
-  [class.day-off]="dayInfo.isVacation && !dayInfo.paid">
+  (click)="selectDay.emit(dayInfo.date)"
+  [ngClass]="{
+    present: isPresent, 
+    disabled: disabled, 
+    vacation: dayInfo.isVacation && dayInfo.paid, 
+    'day-off': dayInfo.isVacation && !dayInfo.paid, 
+    'week-info': dayInfo.isWeekInfo}"
+  [class]="dayInfo.timeStatus">
   <div class="date">
-    {{dayInfo.date | date:'d MMMM'}}
+    <span *ngIf="!dayInfo.isWeekInfo; else weekly">{{dayInfo.date | date:'d MMMM'}}</span>
+    <ng-template #weekly [ngSwitch]="getWeek(dayInfo.date)">
+      <span *ngSwitchCase="1">{{weekNumber.First}}</span>
+      <span *ngSwitchCase="2">{{weekNumber.Second}}</span>
+      <span *ngSwitchCase="3">{{weekNumber.Third}}</span>
+      <span *ngSwitchCase="4">{{weekNumber.Fourth}}</span>
+      <span *ngSwitchCase="5">{{weekNumber.Fifth}}</span>
+      <span *ngSwitchCase="6">{{weekNumber.Sixth}}</span>
+    </ng-template>
     <mat-icon class="hint" *ngIf="!dayInfo.isVacation && !disabled">open_in_new</mat-icon>
   </div>
   <ul class="info" *ngIf="!dayInfo.isVacation && dayInfo.taskCount > 0">
@@ -22,5 +33,5 @@
       <span class="info-value">{{dayInfo.overtime | appCommaSeparated}}h</span>
     </li>
   </ul>
-  <div class="vacation-info" *ngIf="dayInfo.isVacation">{{isPaid()}}</div>
+  <div class="vacation-info" *ngIf="dayInfo.isVacation">{{notWorkingDayType}}</div>
 </div>

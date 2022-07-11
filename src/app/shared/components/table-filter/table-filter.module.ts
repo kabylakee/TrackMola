@@ -5,6 +5,7 @@ import {ToggleButtonModule} from 'src/app/shared/components/toggle-button/toggle
 import {DatePickerModule} from 'src/app/shared/components/date-picker/date-picker.module';
 import {OptionsButtonModule} from '../options-button/options-button.module';
 import {HoursCardModule} from '../hours-card/hours-card.module';
+import {FiltersButtonModule} from '../filters-button/filters-button.module';
 import {InputSearchModule} from '../input-search/input-search.module';
 
 @NgModule({
@@ -13,6 +14,7 @@ import {InputSearchModule} from '../input-search/input-search.module';
 		CommonModule,
 		ToggleButtonModule,
 		OptionsButtonModule,
+		FiltersButtonModule,
 		HoursCardModule,
 		DatePickerModule,
 		InputSearchModule,
