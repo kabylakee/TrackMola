@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterPaths} from 'src/app/entities/enums/router.enum';
 
 @Component({
 	selector: 'app-vacation',
@@ -6,4 +7,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 	styleUrls: ['./vacation.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationComponent {}
+export class VacationComponent {
+	public readonly title =
+		RouterPaths.Vacation.charAt(0).toUpperCase() + RouterPaths.Vacation.slice(1);
+}

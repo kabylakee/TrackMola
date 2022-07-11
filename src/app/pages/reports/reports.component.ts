@@ -7,6 +7,7 @@ import {TaskService} from 'src/app/shared/services/task.service';
 import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
 import {IHours} from '../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
+import {RouterPaths} from 'src/app/entities/enums/router.enum';
 
 @Component({
 	selector: 'app-reports',
@@ -18,12 +19,14 @@ export class ReportsComponent implements OnInit {
 	@Input() selectedDate: Date = new Date();
 
 	public tasks: ITask[] = [];
-
 	public columns: ITableColumn[] = [];
 
 	public monthTasks: ITask[];
 	public calendarConfig: IReportsDayInfo[];
 	public sumTime: IHours = DEFAULT_TIME;
+
+	public readonly title =
+		RouterPaths.Reports.charAt(0).toUpperCase() + RouterPaths.Reports.slice(1);
 
 	constructor(private taskService: TaskService) {}
 
