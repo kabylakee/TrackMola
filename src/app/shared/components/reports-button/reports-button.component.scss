@@ -8,6 +8,9 @@
 			display: flex;
 			gap: var(--offset);
 
+			.mat-flat-button {
+				padding: var(--offset-s) var(--offset-m);
+			}
 			.notifier {
 				display: flex;
 				align-items: center;
