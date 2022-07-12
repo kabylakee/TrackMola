@@ -1,9 +1,10 @@
 <div class="date-controls">
-  <app-toggle-button [config]="toggleConfig"></app-toggle-button>
+  <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changeDatePicker($event)"></app-toggle-button>
   <app-date-picker [periodRange]="periodRange"></app-date-picker>
 </div>
 <div class="filter-controls">
   <div class="filters">
+    <app-filters-button [projectSource]="projects"></app-filters-button>
     <app-input-search></app-input-search>
     <app-options-button></app-options-button>
   </div>
