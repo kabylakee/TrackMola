@@ -7,10 +7,16 @@ import {
 	Output,
 } from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
+import {Status} from 'src/app/entities/enums/status.enum';
+import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
+import {MatDialog} from '@angular/material/dialog';
+import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
+import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
+import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 
 @Component({
 	selector: 'app-reports-table',
@@ -20,18 +26,21 @@ import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 })
 export class ReportsTableComponent implements OnInit {
 	@Input() public dataSource: ITask[] = [];
-
 	@Input() public columns: ITableColumn[] = [];
 
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
+	@Output() optionSelected = new EventEmitter<string>();
 
 	public allChecked: boolean = false;
-
 	public sumTime: IHours = DEFAULT_TIME;
+	public displayedColumns: string[] = [];
 
 	public readonly columnType = ColumnType;
+	public readonly projects: IProject[] = PROJECT_MOCK;
+	public readonly status = Status;
+	public readonly options = Object.values(OPTIONS_CONFIG);
 
-	public displayedColumns: string[] = [];
+	constructor(public dialog: MatDialog) {}
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
@@ -51,6 +60,27 @@ export class ReportsTableComponent implements OnInit {
 		}
 	}
 
+	// Open dialog window at bottom of your cursor
+	public openDialog(x: number, y: number, element: ITask) {
+		const dialogRef = this.dialog.open(LinkDialogComponent, {
+			position: {
+				top: `${y + 20}px`,
+				left: `${x - 330}px`,
+			},
+			data: {
+				asanaLink: element.asanaLink,
+				bitbucketLink: element.bitbucketLink,
+			},
+		});
+
+		dialogRef.afterClosed().subscribe((result) => {
+			if (result) {
+				element.asanaLink = result.asanaLink;
+				element.bitbucketLink = result.bitbucketLink;
+			}
+		});
+	}
+
 	public changeFieldValue(event: number, column: ITableColumn, elem: ITask): void {
 		if ((column.field === 'time' || column.field === 'overtime') && event == +event) {
 			elem[column.field] = +event;
@@ -65,5 +95,10 @@ export class ReportsTableComponent implements OnInit {
 			}, 0);
 		});
 		this.outChangeTime.emit(this.sumTime);
+	}
+
+	// Format input value to blank string when 0 value
+	public inputFormater(value: number): string {
+		return value ? `${value}` : '';
 	}
 }

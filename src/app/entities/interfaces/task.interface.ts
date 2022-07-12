@@ -11,4 +11,5 @@ export interface ITask {
 	overtime: number;
 	paid: boolean;
 	asanaLink: string;
+	bitbucketLink: string;
 }
