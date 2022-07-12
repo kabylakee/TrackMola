@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
+import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
@@ -24,6 +25,7 @@ export class ReportsComponent implements OnInit {
 	public monthTasks: ITask[];
 	public calendarConfig: IReportsDayInfo[];
 	public sumTime: IHours = DEFAULT_TIME;
+	public readonly legendItems = Object.values(DayTypeEnum);
 
 	public readonly title =
 		RouterPaths.Reports.charAt(0).toUpperCase() + RouterPaths.Reports.slice(1);
