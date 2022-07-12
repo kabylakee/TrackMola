@@ -7,6 +7,7 @@ import {MonthTableModule} from 'src/app/shared/components/month-table/month-tabl
 import {ReportsTableModule} from 'src/app/shared/components/reports-table/reports-table.module';
 import {CalendarLegendModule} from 'src/app/shared/components/calendar-legend/calendar-legend.module';
 import {HeaderModule} from 'src/app/shared/components/header/header.module';
+import {ReportsButtonModule} from 'src/app/shared/components/reports-button/reports-button.module';
 
 @NgModule({
 	declarations: [ReportsComponent],
@@ -18,6 +19,7 @@ import {HeaderModule} from 'src/app/shared/components/header/header.module';
 		ReportsTableModule,
 		MonthTableModule,
 		CalendarLegendModule,
+		ReportsButtonModule,
 	],
 })
 export class ReportsModule {}

@@ -1,5 +1,6 @@
 <app-header [pageTitle]="title"></app-header>
-<app-reports-table [columns]="columns" [dataSource]="tasks" (outChangeTime)="updateSumTime($event)"></app-reports-table>
 <app-table-filter [sumTime]="sumTime"></app-table-filter>
+<app-reports-table [columns]="columns" [dataSource]="tasks" (outChangeTime)="updateSumTime($event)"></app-reports-table>
+<app-reports-button></app-reports-button>
 <app-month-table [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
 <app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>

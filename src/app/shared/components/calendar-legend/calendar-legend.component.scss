@@ -9,6 +9,7 @@
 		display: flex;
 		gap: var(--offset);
 		width: $wrapper-size;
+		margin-top: var(--offset-m);
 		padding: var(--offset-s);
 		color: var(--light-black);
 		font-size: var(--font-size-xs);
