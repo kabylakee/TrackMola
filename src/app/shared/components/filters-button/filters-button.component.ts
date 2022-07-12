@@ -23,7 +23,6 @@ export class FiltersButtonComponent {
 	public filtersCount: number = 0;
 	public filtersToOutput: IFilter;
 
-	protected isFilterOpen = false;
 	public status: IFilterItem = {
 		checked: false,
 		title: 'status',
