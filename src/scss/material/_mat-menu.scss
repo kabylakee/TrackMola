@@ -8,8 +8,8 @@
 	}
 
 	.inner-menu {
+		top: calc(-1 * var(--offset-xxs));
 		left: var(--offset-xs);
-		top: calc(-1*var(--offset-xxs));
 	}
 
 	.mat-menu-panel {
@@ -32,24 +32,24 @@ button.mat-menu-item {
 	.mat-icon {
 		color: var(--light-gray);
 	}
-	
+
 	.mat-menu-submenu-icon {
-		display: none;    
+		display: none;
 	}
 
 	.mat-checkbox {
 		margin-right: var(--offset-s);
 
 		&-frame {
-			border: 1px solid var(--light-gray) ;
+			border: 1px solid var(--light-gray);
 			border-radius: var(--border-radius-xxs);
 		}
-		
+
 		&-background {
 			border-radius: var(--border-radius-xxs);
 		}
 	}
-	
+
 	&:hover {
 		background-color: var(--accent-50);
 
@@ -57,9 +57,8 @@ button.mat-menu-item {
 			color: var(--gray);
 		}
 	}
-	
+
 	&:last-child {
 		border: none;
 	}
 }
-

@@ -13,6 +13,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: true,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 	{
 		date: new Date(2022, 6, 1),
@@ -24,6 +25,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: 'https://api.chucknorris.io/jokes/CF0vMe-zRTWEbaYEy6LJ1A',
+		bitbucketLink: '',
 	},
 	{
 		date: new Date(2022, 6, 4),
@@ -35,6 +37,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 	{
 		date: new Date(2022, 6, 4),
@@ -46,6 +49,7 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 0,
 		paid: false,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 	{
 		date: new Date(2022, 6, 5),
@@ -57,5 +61,6 @@ export const TASKS_MOCK: ITask[] = [
 		overtime: 2,
 		paid: true,
 		asanaLink: '',
+		bitbucketLink: '',
 	},
 ];
