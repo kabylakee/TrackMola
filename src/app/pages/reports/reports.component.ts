@@ -1,14 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { DAY_TABLE_CONFIG } from 'src/app/entities/constants/day-columns.config';
-import { DayTypeEnum } from 'src/app/entities/enums/day-type.enum';
-import { IReportsDayInfo } from 'src/app/entities/interfaces/reports-day-info.interface';
-import { ITableColumn } from 'src/app/entities/interfaces/table-column.interface';
-import { ITask } from 'src/app/entities/interfaces/task.interface';
-import { TaskService } from 'src/app/shared/services/task.service';
-import { MonthTasksHelper } from '../../shared/helpers/month-tasks.helper';
-import { IHours } from '../../entities/interfaces/hours.interface';
-import { DEFAULT_TIME } from '../../entities/constants/hours.constants';
-import { RouterPaths } from 'src/app/entities/enums/router.enum';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
+import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
+import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
+import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
+import {ITask} from 'src/app/entities/interfaces/task.interface';
+import {TaskService} from 'src/app/shared/services/task.service';
+import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
+import {IHours} from '../../entities/interfaces/hours.interface';
+import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
+import {RouterPaths} from 'src/app/entities/enums/router.enum';
 
 @Component({
 	selector: 'app-reports',
@@ -30,7 +30,7 @@ export class ReportsComponent implements OnInit {
 	public readonly title =
 		RouterPaths.Reports.charAt(0).toUpperCase() + RouterPaths.Reports.slice(1);
 
-	constructor(private taskService: TaskService) { }
+	constructor(private taskService: TaskService) {}
 
 	public ngOnInit(): void {
 		this.getTasks();
@@ -58,6 +58,6 @@ export class ReportsComponent implements OnInit {
 	}
 
 	public updateSumTime(event: IHours): void {
-		this.sumTime = { ...event };
+		this.sumTime = {...event};
 	}
 }
