@@ -1,3 +1,5 @@
+@import 'mixins/common-mixin';
+
 app-root {
 	.mat-flat-button {
 		padding: var(--offset-xxs) var(--offset-m);
@@ -30,4 +32,20 @@ app-root {
 			}
 		}
 	}
+
+	.menu-button, 
+	.action-button {
+		padding: var(--offset-xs) var(--offset-s);
+		line-height: 0;
+		border-radius: var(--border-radius-xs);
+
+		&-icon {
+			@include icon-size(--icon-size-m);
+		}
+
+		&-text {
+			font-size: var(--font-size-xs);
+		}
+	}
+
 }

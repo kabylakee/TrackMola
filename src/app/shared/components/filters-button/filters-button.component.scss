@@ -1,21 +1,6 @@
 @import 'mixins/common-mixin';
 @import 'mixins/colors-mixin';
 
-:host {
-	.menu-button {
-		padding: var(--offset-xs) var(--offset-s);
-		line-height: 0;
-
-		&-icon {
-			@include icon-size(--icon-size-m);
-		}
-
-		&-text {
-			font-size: var(--font-size-xs);
-		}
-	}
-}
-
 button.mat-menu-item .mat-button.project {
 	padding: var(--offset-xxs) calc(0.375 * var(--offset));
 	color: var(--accent-300);

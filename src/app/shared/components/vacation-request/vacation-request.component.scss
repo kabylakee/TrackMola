@@ -1,0 +1,134 @@
+@import 'mixins/common-mixin';
+
+$button-min-width: 2.25rem;
+$wrapper-width: calc(10rem - 1px);
+$buttons-height: 2.44rem;
+$button-group-width: 12.8rem;
+$arrows-height: 2.313rem;
+$header-size: 2rem;
+
+:host {
+	::ng-deep {
+		mat-datepicker-toggle {
+			& .mat-ripple {
+				display: none;
+			}
+			color: var(--accent-300);
+		}
+
+		.mat-form-field {
+			margin: 0 var(--offset-s);
+			height: calc(var(--offset-s)*3);
+
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				@include flex-center;
+				width: $wrapper-width;
+				height: $buttons-height;
+				padding: 0;
+				color: var(--accent-300);
+				font-weight: 600;
+				font-size: var(--font-size-xs);
+				&:hover {
+					cursor: pointer;
+				}
+
+				.mat-input-element{
+					font-size: var(--font-size-s);
+				}
+
+			}
+
+			&-underline {
+				display: none;
+			}
+
+			&-appearance-fill {
+				.mat-form-field-flex {
+					display: flex;
+					align-items: center;
+					padding: 0 var(--offset-s);
+					max-height: calc(2.25*var(--offset));
+					background-color: var(--white);
+					border-radius: var(--border-radius-xs);
+					border: 1px solid var(--accent-300);
+				}
+				.mat-form-field-label{
+					top: var(--offset);
+				}
+			}
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
+			}
+		}
+	}
+
+	input.mat-input-element {
+		cursor: pointer;
+	}
+
+	.mat-dialog-title {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin: 0;
+		padding-bottom: var(--offset-s);
+
+		.title {
+			display: flex;
+			align-items: center;
+			height: $header-size;
+			margin: 0;
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+		.mat-dialog-actions{
+			min-height: 1.5rem;
+			padding: 0;
+		}
+	}
+
+	.mat-dialog-actions {
+		display: flex;
+		align-items: center;
+		height: $header-size;
+		padding: var(--offset-s);
+
+		.mat-icon {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+		}
+		.action-button {
+			padding: var(--offset-xs) var(--offset-s);
+			line-height: 0;
+			border-radius: var(--border-radius-xs);
+	
+			&-text {
+				font-size: var(--font-size-xs);
+			}
+		}
+	}
+	.mat-dialog-content {
+		overflow: hidden;
+		height: calc(var(--offset)*11.5);
+
+		.dialog-content-item {
+			padding-bottom: var(--offset-s);
+			width: 25.25rem;
+		}
+	}
+
+	textarea {
+		border: 1px solid var(--light-gray);
+		border-radius: var(--offset-xxs);
+		padding: var(--offset-xs);
+		max-width: calc(100% -  var(--offset));
+	}
+}

@@ -6,10 +6,40 @@
  </div>
   
   <mat-dialog-content class="mat-typography">
-
+    <div class="dialog-content-item">
+        <mat-label>From</mat-label>
+        <mat-form-field class="example-full-width" appearance="fill" color="secondary">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+                    calendar_today
+                </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-label>To</mat-label>
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+                  calendar_today
+                </mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="dialog-content-item">
+        <mat-label>Comments</mat-label>
+    </div>
+    <div class="dialog-content-item">
+        <textarea matInput placeholder="Leave your comment"></textarea>
+    </div>
   </mat-dialog-content>
   
-  <mat-dialog-actions align="end">
-    <button mat-raised-button color="secondary" [mat-dialog-close]="links">Cancel</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="links">Send</button>
+  <mat-dialog-actions>
+    <button mat-flat-button class="action-button" color="secondary">Cancel</button>
+    <button mat-flat-button class="action-button" color="primary">Send</button>
   </mat-dialog-actions>
+  
