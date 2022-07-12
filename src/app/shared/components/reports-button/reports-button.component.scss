@@ -3,14 +3,6 @@
 		display: flex;
 		justify-content: space-between;
 
-		.mat-flat-button {
-			.mat-text {
-				font-weight: 600;
-				font-size: var(--font-size-xs);
-				line-height: var(--font-size);
-			}
-		}
-
 		.right-button {
 			display: flex;
 			gap: var(--offset);

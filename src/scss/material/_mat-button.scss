@@ -3,6 +3,9 @@
 app-root {
 	.mat-flat-button {
 		padding: var(--offset-xs) var(--offset-s);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
 		border-radius: var(--border-radius-xs);
 		transition: var(--transition-xxs);
 

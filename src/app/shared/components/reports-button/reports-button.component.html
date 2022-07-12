@@ -1,15 +1,15 @@
 <div class="button-wrapper">
   <button mat-flat-button color="secondary" (click)="onClick(buttons.AddTask)">
     <mat-icon>add</mat-icon>
-    <span class="mat-text">{{buttons.AddTask}}</span>
+    {{buttons.AddTask}}
   </button>
   <div class="right-button">
     <span class="notifier" [class.invisible]="!notifierMassage">{{notifierMassage}}</span>
     <button mat-flat-button color="secondary" (click)="onClick(buttons.Save)">
-      <span class="mat-text">{{buttons.Save}}</span>
+      {{buttons.Save}}
     </button>
     <button mat-flat-button color="primary" [class.mat-button-disabled]="!canSubmit" (click)="onClick(buttons.Submit)">
-      <span class="mat-text">{{buttons.Submit}}</span>
+      {{buttons.Submit}}
     </button>
   </div>
 </div>
