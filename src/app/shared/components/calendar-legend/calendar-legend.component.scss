@@ -7,13 +7,13 @@
 
 	.legends-wrapper {
 		display: flex;
+		gap: var(--offset);
 		width: $wrapper-size;
 		padding: var(--offset-s);
-		gap: var(--offset);
-		background-color: var(--accent-50);
-		border-radius: var(--border-radius-xs);
 		color: var(--light-black);
 		font-size: var(--font-size-xs);
+		background-color: var(--accent-50);
+		border-radius: var(--border-radius-xs);
 	}
 
 	.element {
@@ -21,9 +21,9 @@
 		gap: var(--offset-xs);
 		align-items: center;
 		.marker {
-			border-radius: var(--offset-xxs);
 			width: $marker-size;
 			height: $marker-size;
+			border-radius: var(--offset-xxs);
 		}
 		.unworked {
 			background-color: rgba-color(unfinished, $color-opacity);
