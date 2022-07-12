@@ -7,7 +7,6 @@ import {
 	Output,
 	OnChanges,
 	SimpleChanges,
-	OnDestroy,
 } from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
@@ -15,7 +14,7 @@ import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {merge, takeWhile} from 'rxjs';
+import {merge} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 
@@ -25,7 +24,7 @@ import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 	styleUrls: ['./reports-table.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
+export class ReportsTableComponent implements OnInit, OnChanges {
 	@Input() public dataSource: ITask[] = [];
 
 	@Input() public columns: ITableColumn[] = [];
@@ -43,7 +42,6 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public allChecked: boolean = false;
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
-	private isSubscription = true;
 	public readonly columnType = ColumnType;
 
 	constructor(private formBuilder: FormBuilder, private taskService: TaskService) {}
@@ -70,11 +68,9 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 				...(this.tableForm.get('rows') as FormArray).controls.map(
 					(control) => control.valueChanges,
 				),
-			)
-				.pipe(takeWhile(() => this.isSubscription))
-				.subscribe((data) => {
-					this.changeFieldValue(data, data.rowIndex);
-				});
+			).subscribe((data) => {
+				this.changeFieldValue(data, data.rowIndex);
+			});
 		}
 	}
 
@@ -165,9 +161,5 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (this.value === '') {
 			this.filterDataSource = this.dataSource;
 		}
-	}
-
-	ngOnDestroy(): void {
-		this.isSubscription = false;
 	}
 }

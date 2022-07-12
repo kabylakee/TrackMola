@@ -26,11 +26,11 @@
 	}
 
 	.search-clear-icon {
-		cursor: pointer;
-		color: var(--accent-300);
 		width: calc($search-area-height * 0.5);
 		height: calc($search-area-height * 0.5);
+		color: var(--accent-300);
 		font-size: var(--font-size-m);
+		cursor: pointer;
 
 		&:hover {
 			color: var(--accent-500);

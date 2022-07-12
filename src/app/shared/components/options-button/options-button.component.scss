@@ -22,22 +22,22 @@
 	}
 
 	.hidden-input {
-		height: 0;
 		width: 0;
+		height: 0;
 	}
 }
 
 ::ng-deep .hidden-mat-menu-item {
-	height: 0;
 	width: 0;
 	min-width: 0 !important;
+	height: 0;
 }
 
 ::ng-deep .mat-menu-submenu-icon {
 	display: none;
 }
 
-::ng-deep  .mat-datepicker-popup {
-	top: 16rem !important;
-	left: 43.4rem !important;
+::ng-deep .mat-datepicker-popup {
+	margin-right: var(--offset-m);
+	margin-left: var(--offset-xs);
 }
