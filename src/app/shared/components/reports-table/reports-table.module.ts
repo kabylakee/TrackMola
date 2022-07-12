@@ -7,11 +7,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {ReportsTableComponent} from './reports-table.component';
+import {ProjectComponent} from '../../components/project/project.component';
+import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 
 @NgModule({
-	declarations: [ReportsTableComponent],
+	declarations: [ReportsTableComponent, ProjectComponent, LinkDialogComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,
@@ -21,6 +25,8 @@ import {ReportsTableComponent} from './reports-table.component';
 		FormsModule,
 		MatInputModule,
 		MatMenuModule,
+		MatSelectModule,
+		MatDialogModule,
 	],
 	exports: [ReportsTableComponent],
 })
