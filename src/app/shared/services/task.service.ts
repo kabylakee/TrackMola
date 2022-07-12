@@ -41,9 +41,9 @@ export class TaskService {
 					filter.statuses.find((status) => task.status === status.title) &&
 					filter.overtimes.find(
 						(overtime) =>
-							(task.paid === true && overtime.title === 'Paid' && task.overtime) ||
-							(task.paid === false && overtime.title === 'Unpaid' && task.overtime) ||
-							(!task.overtime && overtime.title === 'No overtime'),
+							(task.paid && overtime.title === 'Paid' && task.overtime) ||
+							(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
+							(!task.overtime && overtime.title === 'No overtime' && !task.paid),
 					),
 			),
 		));

@@ -114,11 +114,4 @@ export class FiltersButtonComponent {
 		};
 		this.selectedFilters.emit(this.filtersToOutput);
 	}
-
-	public switchFocus(): void {
-		this.isFilterOpen = !this.isFilterOpen;
-		if (!this.isFilterOpen) {
-			this.emitFilter();
-		}
-	}
 }
