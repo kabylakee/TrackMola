@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {ReportsButtonEnum} from 'src/app/entities/enums/reports-button.enum';
+import {ReportsErrorEnum} from 'src/app/entities/enums/reports-error.enum';
 
 @Component({
 	selector: 'app-reports-button',
@@ -9,7 +10,7 @@ import {ReportsButtonEnum} from 'src/app/entities/enums/reports-button.enum';
 })
 export class ReportsButtonComponent {
 	@Input() canSubmit = false;
-	@Input() showNotifier = false;
+	@Input() notifierMassage: ReportsErrorEnum;
 
 	@Output() addTask = new EventEmitter<void>();
 	@Output() saveReport = new EventEmitter<void>();

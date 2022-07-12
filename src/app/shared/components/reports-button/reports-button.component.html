@@ -4,7 +4,7 @@
     <span class="mat-text">{{buttons.AddTask}}</span>
   </button>
   <div class="right-button">
-    <span class="notifier" [class.invisible]="!showNotifier">Time was not filled</span>
+    <span class="notifier" [class.invisible]="!notifierMassage">{{notifierMassage}}</span>
     <button mat-flat-button color="secondary" (click)="onClick(buttons.Save)">
       <span class="mat-text">{{buttons.Save}}</span>
     </button>

@@ -1,7 +1,14 @@
+@import 'mixins/common-mixin';
+
 app-root {
 	.mat-flat-button {
-		padding: var(--offset-xxs) var(--offset-m);
+		padding: var(--offset-xs) var(--offset-s);
+		border-radius: var(--border-radius-xs);
 		transition: var(--transition-xxs);
+
+		.mat-icon {
+			@include icon-size(--icon-size-m);
+		}
 
 		&.mat-button-disabled.mat-button-disabled {
 			color: var(--light-gray);
@@ -29,6 +36,12 @@ app-root {
 			&:hover {
 				background-color: var(--accent-500);
 			}
+		}
+
+		&.mat-button-disabled:hover {
+			color: var(--light-gray);
+			background-color: var(--accent-50);
+			border: none;
 		}
 	}
 }
