@@ -27,7 +27,7 @@ export class TableFilterComponent {
 		this.periodRange = element;
 	}
 
-	public emitFilters(filters: IFilter) {
+	public emitFilters(filters: IFilter): void {
 		this.selectedFilters.emit(filters);
 	}
 
