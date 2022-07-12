@@ -4,10 +4,23 @@ import {OptionsButtonComponent} from './options-button.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
 	declarations: [OptionsButtonComponent],
-	imports: [CommonModule, MatMenuModule, MatIconModule, MatButtonModule],
+	imports: [
+		CommonModule,
+		MatMenuModule,
+		MatIconModule,
+		MatButtonModule,
+		MatDatepickerModule,
+		MatFormFieldModule,
+		MatInputModule,
+		FormsModule,
+	],
 	exports: [OptionsButtonComponent],
 })
 export class OptionsButtonModule {}

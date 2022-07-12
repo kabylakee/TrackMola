@@ -2,7 +2,7 @@ import {Status} from '../enums/status.enum';
 import {IProject} from './project.interface';
 
 export interface ITask {
-	// TODO: date: Date;
+	date: Date;
 	checked: boolean;
 	title: string;
 	project: IProject;
@@ -11,4 +11,9 @@ export interface ITask {
 	overtime: number;
 	paid: boolean;
 	asanaLink: string;
+}
+
+export interface IReportData {
+	date: string;
+	tasks: ITask[];
 }

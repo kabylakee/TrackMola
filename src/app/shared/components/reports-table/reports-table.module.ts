@@ -4,11 +4,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 
 import {ReportsTableComponent} from './reports-table.component';
+import {CdkTableModule} from '@angular/cdk/table';
 
 @NgModule({
 	declarations: [ReportsTableComponent],
@@ -21,6 +22,8 @@ import {ReportsTableComponent} from './reports-table.component';
 		FormsModule,
 		MatInputModule,
 		MatMenuModule,
+		ReactiveFormsModule,
+		CdkTableModule,
 	],
 	exports: [ReportsTableComponent],
 })

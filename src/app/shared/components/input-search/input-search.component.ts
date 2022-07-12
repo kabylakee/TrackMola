@@ -7,11 +7,6 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputSearchComponent {
-	@Output() valueChange = new EventEmitter<string>();
+	@Output() searchValueChange = new EventEmitter<string>();
 	public value: string = '';
-
-	public onChangeValue(str: string): void {
-		console.log(str);
-		this.valueChange.emit(str);
-	}
 }

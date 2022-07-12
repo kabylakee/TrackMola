@@ -20,4 +20,24 @@
 		color: var(--accent-500);
 		border-color: var(--accent-500);
 	}
+
+	.hidden-input {
+		height: 0;
+		width: 0;
+	}
+}
+
+::ng-deep .hidden-mat-menu-item {
+	height: 0;
+	width: 0;
+	min-width: 0 !important;
+}
+
+::ng-deep .mat-menu-submenu-icon {
+	display: none;
+}
+
+::ng-deep  .mat-datepicker-popup {
+	top: 16rem !important;
+	left: 43.4rem !important;
 }

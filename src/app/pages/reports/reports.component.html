@@ -1,3 +1,15 @@
 <app-month-table></app-month-table>
-<app-table-filter [sumTime]="sumTime" (valueChange)="onValueChange($event)"></app-table-filter>
-<app-reports-table [columns]="columns" [dataSource]="tasks" (outChangeTime)="updateSumTime($event)" [value]="value"></app-reports-table>
+<app-table-filter
+	[sumTime]="sumTime"
+	(searchValueChange)="onSearchValueChange($event)"
+	(actionHanding)="onActionHanding($event)"
+	(changeDate)="onChangeDate($event)"
+></app-table-filter>
+<app-reports-table
+	[columns]="columns"
+	[dataSource]="tasks"
+	[value]="searchValue"
+	[day]="day"
+	[actionHanding]="actionHanding"
+	(outChangeTime)="updateSumTime($event)"
+></app-reports-table>

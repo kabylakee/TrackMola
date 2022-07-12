@@ -25,19 +25,15 @@
 		outline: none;
 	}
 
-	.search-clear {
+	.search-clear-icon {
+		cursor: pointer;
+		color: var(--accent-300);
 		width: calc($search-area-height * 0.5);
 		height: calc($search-area-height * 0.5);
-		margin-left: auto;
-		padding: 0;
-		color: var(--accent-500);
-		background: none;
-		border: none;
+		font-size: var(--font-size-m);
 
-		&-icon {
-			width: calc($search-area-height * 0.5);
-			height: calc($search-area-height * 0.5);
-			font-size: var(--font-size-m);
+		&:hover {
+			color: var(--accent-500);
 		}
 	}
 }

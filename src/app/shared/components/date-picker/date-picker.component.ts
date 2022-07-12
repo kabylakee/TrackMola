@@ -12,11 +12,11 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {MY_FORMATS} from 'src/app/entities/constants/formats.constants';
 import {Period} from 'src/app/entities/enums/period.enum';
 
-import * as _moment from 'moment';
-import {default as _rollupMoment} from 'moment';
+import * as moment from 'moment';
+// import {default as _rollupMoment} from 'moment';
 import {MatDatepicker} from '@angular/material/datepicker';
 
-const moment = _rollupMoment || _moment;
+// const moment = _rollupMoment || _moment;
 
 @Component({
 	selector: 'app-date-picker',
@@ -33,7 +33,7 @@ const moment = _rollupMoment || _moment;
 	],
 })
 export class DatePickerComponent {
-	@ViewChild('picker') pick!: MatDatepicker<_moment.Moment>;
+	@ViewChild('picker') pick!: MatDatepicker<moment.Moment>;
 	public date = new FormControl(moment());
 	readonly period = Period;
 	@Input() periodRange: Period;
@@ -43,12 +43,14 @@ export class DatePickerComponent {
 		switch (this.periodRange) {
 			case this.period.Day: {
 				const changedDate = this.date.value?.add(increment, 'days');
-				this.pick.select(changedDate as _moment.Moment);
+				this.pick.select(changedDate as moment.Moment);
+				console.log(this.date.value);
 				break;
 			}
 			case this.period.Month: {
 				const changedDate = this.date.value?.add(increment, 'month');
-				this.pick.select(changedDate as _moment.Moment);
+				this.pick.select(changedDate as moment.Moment);
+				console.log(this.date.value);
 				break;
 			}
 		}
