@@ -5,6 +5,7 @@ import {ReportsRoutingModule} from './reports-routing.module';
 import {TableFilterModule} from 'src/app/shared/components/table-filter/table-filter.module';
 import {MonthTableModule} from 'src/app/shared/components/month-table/month-table.module';
 import {ReportsTableModule} from 'src/app/shared/components/reports-table/reports-table.module';
+import {CalendarLegendModule} from 'src/app/shared/components/calendar-legend/calendar-legend.module';
 import {HeaderModule} from 'src/app/shared/components/header/header.module';
 import {ReportsButtonModule} from 'src/app/shared/components/reports-button/reports-button.module';
 
@@ -17,6 +18,7 @@ import {ReportsButtonModule} from 'src/app/shared/components/reports-button/repo
 		TableFilterModule,
 		ReportsTableModule,
 		MonthTableModule,
+		CalendarLegendModule,
 		ReportsButtonModule,
 	],
 })
