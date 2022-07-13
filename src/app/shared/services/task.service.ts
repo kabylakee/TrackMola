@@ -46,7 +46,7 @@ export class TaskService {
 		}
 
 		this.tasks$.next(
-			this.tasks$.value.filter(
+			TASKS_MOCK.filter(
 				(task) =>
 					task.date >= dateFrom &&
 					task.date < dateTo &&
@@ -104,7 +104,7 @@ export class TaskService {
 				});
 				newData.splice(findedIndex, 1);
 			});
-      console.log(newData);
+			console.log(newData);
 			this.tasks$.next(newData);
 		}
 		if (newAction.action === OptionsTitle.Move) {
