@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {IFilterItem} from 'src/app/entities/interfaces/filter-item.interface';
 import {OVERTIME} from 'src/app/entities/constants/overtime.constants';
 import {STATUSES} from 'src/app/entities/constants/status.constants';
 import {FilterItems} from 'src/app/entities/enums/filter-items.enum';
+import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 
 @Component({
 	selector: 'app-filters-button',
@@ -13,6 +14,8 @@ import {FilterItems} from 'src/app/entities/enums/filter-items.enum';
 })
 export class FiltersButtonComponent {
 	@Input() public projectSource: IProject[] = [];
+	@Output() public selectedFilters = new EventEmitter<IFilter>();
+
 	public readonly statusSource: IFilterItem[] = Object.values(STATUSES);
 	public readonly overtimeSource: IFilterItem[] = Object.values(OVERTIME);
 	public readonly filterItems: string[] = Object.keys(FilterItems);
@@ -99,5 +102,14 @@ export class FiltersButtonComponent {
 				}
 				break;
 		}
+	}
+
+	protected emitFilter(): void {
+		const filtersToOutput = {
+			projects: this.projectSource.filter((project) => project.checked),
+			statuses: this.statusSource.filter((status) => status.checked),
+			overtimes: this.overtimeSource.filter((overtime) => overtime.checked),
+		};
+		this.selectedFilters.emit(filtersToOutput);
 	}
 }

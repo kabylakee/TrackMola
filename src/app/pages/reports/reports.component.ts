@@ -10,6 +10,7 @@ import {IHours} from '../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
 import {Period} from 'src/app/entities/enums/period.enum';
+import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 
 @Component({
 	selector: 'app-reports',
@@ -21,6 +22,7 @@ export class ReportsComponent implements OnInit {
 	public selectedDate: Date = new Date();
 	public period: Period = Period.Day;
 	public readonly periods = Period;
+	public filters: IFilter;
 
 	public tasks: ITask[] = [];
 	public columns: ITableColumn[] = [];
@@ -46,7 +48,9 @@ export class ReportsComponent implements OnInit {
 
 	// Get all tasks from task service
 	private getTasks(): void {
-		this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+		this.taskService
+			.getTasks(new Date(0), new Date(), this.filters)
+			.subscribe((tasks) => (this.tasks = tasks));
 	}
 
 	private getMonthTasks(): void {
@@ -80,5 +84,10 @@ export class ReportsComponent implements OnInit {
 	public onChangeDate(event: Date): void {
 		this.selectedDate = event;
 		this.getMonthTasks();
+	}
+
+	public getFilters(filters: IFilter): void {
+		this.filters = filters;
+		this.getTasks();
 	}
 }

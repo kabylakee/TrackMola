@@ -7,8 +7,8 @@
     [sumTime]="sumTime"></app-hours-card>
 </div>
 <div class="filter-controls" [class.invisible]="periodRange === periods.Month">
-  <div class="filters" >
-    <app-filters-button [projectSource]="projects"></app-filters-button>
+  <div class="filters">
+    <app-filters-button [projectSource]="projects" (selectedFilters)="emitFilters($event)"></app-filters-button>
     <app-input-search></app-input-search>
     <app-options-button></app-options-button>
   </div>

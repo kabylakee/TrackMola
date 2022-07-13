@@ -6,6 +6,7 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 import {IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_MONTH_WORKTIME, DEFAULT_TIME} from '../../../entities/constants/hours.constants';
+import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 
 @Component({
 	selector: 'app-table-filter',
@@ -18,6 +19,7 @@ export class TableFilterComponent {
 
 	@Output() togglePeriod = new EventEmitter<Period>();
 	@Output() changeDate = new EventEmitter<Date>();
+	@Output() public selectedFilters = new EventEmitter<IFilter>();
 
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 	public readonly periods = Period;
@@ -28,5 +30,9 @@ export class TableFilterComponent {
 	public changePeriod(element: Period): void {
 		this.periodRange = element;
 		this.togglePeriod.emit(element);
+	}
+
+	public emitFilters(filters: IFilter): void {
+		this.selectedFilters.emit(filters);
 	}
 }

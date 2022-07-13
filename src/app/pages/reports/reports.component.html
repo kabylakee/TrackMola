@@ -1,8 +1,13 @@
 <app-header [pageTitle]="title"></app-header>
-<app-table-filter [sumTime]="sumTime" (togglePeriod)="togglePeriod($event)" (changeDate)="onChangeDate($event)"></app-table-filter>
+<app-table-filter 
+  [sumTime]="sumTime" 
+  (togglePeriod)="togglePeriod($event)" 
+  (changeDate)="onChangeDate($event)" 
+  (selectedFilters)="getFilters($event)"></app-table-filter>
 <app-reports-table 
   [class.invisible]="period !== periods.Day" 
-  [columns]="columns" [dataSource]="tasks" 
+  [columns]="columns" 
+  [dataSource]="tasks" 
   (outChangeTime)="updateSumTime($event)"></app-reports-table>
 <app-reports-button [class.invisible]="period !== periods.Day"></app-reports-button>
 <app-month-table [class.invisible]="period !== periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
