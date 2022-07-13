@@ -6,6 +6,8 @@
 @import 'material/mat-button';
 @import 'material/mat-table';
 @import 'material/mat-menu';
+@import 'material/mat-dialog';
+@import 'material/mat-checkbox';
 
 :root {
 	@include variable(offset, $offset);

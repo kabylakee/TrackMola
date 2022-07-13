@@ -1,5 +1,16 @@
 @import 'mixins/colors-mixin';
 
+::ng-deep {
+	.mat-select {
+		&-arrow-wrapper {
+			display: none !important;
+		}
+		&-value {
+			color: inherit;
+		}
+	}
+}
+
 :host {
 	$input-width: 2rem;
 	$project-width: 5rem;
@@ -7,18 +18,24 @@
 
 	.project-column {
 		width: $project-width;
-		.mat-button {
+		.mat-select {
 			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			color: var(--accent-300);
+			color: var(--accent-300) !important;
+			font-weight: 500;
+			font-size: var(--font-size-xs);
 			background-color: rgba-color(accent-300, 0.2);
+			border-radius: var(--border-radius-xs);
 		}
 	}
 
 	.status-column {
 		width: $status-width;
-		.mat-button {
+		.mat-select {
 			padding: var(--offset-xxs) var(--offset-s);
+			font-weight: 500;
+			font-size: var(--font-size-xs);
 			border: 1px solid var(--light-gray);
+			border-radius: var(--border-radius-xs);
 		}
 	}
 
@@ -41,6 +58,9 @@
 		justify-content: center;
 		.mat-icon {
 			color: var(--gray);
+			&.active-links {
+				color: var(--accent-300) !important;
+			}
 		}
 	}
 
@@ -50,9 +70,5 @@
 		.mat-icon {
 			color: var(--dark-gray);
 		}
-	}
-
-	.task-links .mat-icon {
-		color: var(--accent-300);
 	}
 }
