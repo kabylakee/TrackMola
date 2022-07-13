@@ -7,6 +7,7 @@ import {
 	Output,
 	OnChanges,
 	SimpleChanges,
+	OnDestroy,
 } from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {Status} from 'src/app/entities/enums/status.enum';
@@ -20,7 +21,7 @@ import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {merge} from 'rxjs';
+import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 
@@ -30,7 +31,7 @@ import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 	styleUrls: ['./reports-table.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsTableComponent implements OnInit, OnChanges {
+export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: ITask[] = [];
 	@Input() public columns: ITableColumn[] = [];
 	@Input() public day: Date;
@@ -46,6 +47,7 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
 
+	private isSubscription = true;
 	public readonly columnType = ColumnType;
 	public readonly projects: IProject[] = PROJECT_MOCK;
 	public readonly status = Status;
@@ -79,9 +81,11 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 				...(this.tableForm.get('rows') as FormArray).controls.map(
 					(control) => control.valueChanges,
 				),
-			).subscribe((data) => {
-				this.changeFieldValue(data, data.rowIndex);
-			});
+			)
+				.pipe(takeWhile(() => this.isSubscription))
+				.subscribe((data) => {
+					this.changeFieldValue(data, data.rowIndex);
+				});
 		}
 	}
 
@@ -109,7 +113,7 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 				this.getSum(['time', 'overtime']);
 			});
 		}
-		if (changes.value) {
+		if (changes.value && changes.value.currentValue) {
 			this.searchTaskField();
 		}
 	}
@@ -162,7 +166,6 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	}
 
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
-		console.log('changeFieldValue', newData, rowIndex);
 		updateTime =
 			this.dataSource[rowIndex].time !== +newData.time ||
 			this.dataSource[rowIndex].overtime !== +newData.overtime;
@@ -193,10 +196,18 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 
 	public searchTaskField(): void {
 		this.filterDataSource = this.dataSource.filter((item) => {
+			console.log('filterDataSource', this.filterDataSource);
+			console.log('dataSource', this.dataSource);
+      console.log('item.title', item.title, this.value);
 			return item.title.toLowerCase().includes(this.value.toLowerCase());
 		});
 		if (this.value === '') {
+      console.log(this.value);
 			this.filterDataSource = this.dataSource;
 		}
+	}
+
+	ngOnDestroy(): void {
+		this.isSubscription = false;
 	}
 }

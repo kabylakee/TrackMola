@@ -78,7 +78,7 @@ export class ReportsComponent implements OnInit {
 
 	public getFilters(filters: IFilter): void {
 		this.filters = filters;
-		this.getTasks();
+		this.getMonthTasks();
 	}
 
 	public onSearchValueChange(event: string): void {

@@ -46,7 +46,7 @@ export class TaskService {
 		}
 
 		this.tasks$.next(
-			TASKS_MOCK.filter(
+			this.tasks$.value.filter(
 				(task) =>
 					task.date >= dateFrom &&
 					task.date < dateTo &&
@@ -63,7 +63,7 @@ export class TaskService {
 		return this.tasks$;
 	}
 
-	private checkData(): void {
+	public checkData(): void {
 		const localStorageData = this.localStorageService.getData(this.REPORTS_DATA_KEY);
 		if (!localStorageData) {
 			this.localStorageService.setData(this.REPORTS_DATA_KEY, TASKS_MOCK);
@@ -92,7 +92,7 @@ export class TaskService {
 	public ChangeActionBtn(newAction: IOptionInterface, actionData: ITask[]): void {
 		if (newAction.action === OptionsTitle.Copy) {
 			const newArr = actionData.map((task) => {
-				return {...task, date: newAction.date};
+				return {...task, date: newAction.date, checked: false};
 			});
 			this.tasks$.next(this.tasks$.value.concat(newArr));
 		}
@@ -104,6 +104,7 @@ export class TaskService {
 				});
 				newData.splice(findedIndex, 1);
 			});
+      console.log(newData);
 			this.tasks$.next(newData);
 		}
 		if (newAction.action === OptionsTitle.Move) {

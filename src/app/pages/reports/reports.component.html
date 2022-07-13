@@ -5,6 +5,7 @@
 	(searchValueChange)="onSearchValueChange($event)"
 	(actionHanding)="onActionHanding($event)"
 	(changeDate)="onChangeDate($event)"
+  (selectedFilters)="getFilters($event)"
 ></app-table-filter>
 <app-reports-table
 	[columns]="columns"

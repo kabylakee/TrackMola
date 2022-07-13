@@ -44,7 +44,6 @@ export class DatePickerComponent {
 			case this.period.Day: {
 				const changedDate = this.date.value?.add(increment, 'days');
 				this.pick.select(changedDate as moment.Moment);
-				console.log(this.date.value);
 				break;
 			}
 			case this.period.Month: {
