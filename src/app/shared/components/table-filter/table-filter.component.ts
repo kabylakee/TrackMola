@@ -50,5 +50,4 @@ export class TableFilterComponent implements OnInit {
 	public emitFilters(filters: IFilter): void {
 		this.selectedFilters.emit(filters);
 	}
-
 }

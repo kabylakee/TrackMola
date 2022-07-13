@@ -56,16 +56,16 @@ export class ReportsComponent implements OnInit {
 	}
 
 	private getTasks(): void {
-		this.taskService
-			.getTasks(new Date(0), new Date(), this.filters)
-			.subscribe((tasks) => {this.tasks = tasks.filter((task) => {
-        return +task.date === +this.day;
-      })});
+		this.taskService.getTasks().subscribe((tasks) => {
+			this.tasks = tasks.filter((task) => {
+				return +task.date === +this.day;
+			});
+		});
 	}
 
 	private getMonthTasks(): void {
 		this.taskService
-			.getTasks(
+			.getMonthTasks(
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 1),
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 1),
 			)

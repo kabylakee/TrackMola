@@ -51,7 +51,11 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	public readonly status = Status;
 	public readonly options = Object.values(OPTIONS_CONFIG);
 
-	constructor(public dialog: MatDialog, private formBuilder: FormBuilder, private taskService: TaskService) {}
+	constructor(
+		public dialog: MatDialog,
+		private formBuilder: FormBuilder,
+		private taskService: TaskService,
+	) {}
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
@@ -158,20 +162,20 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	}
 
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
-    console.log('changeFieldValue', newData, rowIndex);
-    updateTime =
-      this.dataSource[rowIndex].time !== +newData.time ||
-      this.dataSource[rowIndex].overtime !== +newData.overtime;
-    this.dataSource[rowIndex] = {
-      ...this.dataSource[rowIndex],
-      title: newData.title,
-      time: +newData.time,
-      overtime: +newData.overtime,
-    };
-    if (updateTime) {
-      this.getSum(['time', 'overtime']);
-    }
-  }
+		console.log('changeFieldValue', newData, rowIndex);
+		updateTime =
+			this.dataSource[rowIndex].time !== +newData.time ||
+			this.dataSource[rowIndex].overtime !== +newData.overtime;
+		this.dataSource[rowIndex] = {
+			...this.dataSource[rowIndex],
+			title: newData.title,
+			time: +newData.time,
+			overtime: +newData.overtime,
+		};
+		if (updateTime) {
+			this.getSum(['time', 'overtime']);
+		}
+	}
 
 	public getSum(fields: HoursKeys[]): void {
 		fields.forEach((field) => {

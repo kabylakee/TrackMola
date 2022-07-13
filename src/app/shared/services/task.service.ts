@@ -22,12 +22,11 @@ export class TaskService {
 		this.checkData();
 	}
 
-  public getTasks(): Observable<ITask[]> {
-    this.getTask();
-    return this.tasks$.pipe();
-  }
+	public getTasks(): Observable<ITask[]> {
+		return this.tasks$.pipe();
+	}
 
-	public getTask(
+	public getMonthTasks(
 		dateFrom: Date = new Date(0),
 		dateTo: Date = new Date(),
 		filter: IFilter = {
@@ -61,63 +60,63 @@ export class TaskService {
 					),
 			),
 		);
-    return this.tasks$;
+		return this.tasks$;
 	}
 
-  private checkData(): void {
-    const localStorageData = this.localStorageService.getData(this.REPORTS_DATA_KEY);
-    if (!localStorageData) {
-      this.localStorageService.setData(this.REPORTS_DATA_KEY, TASKS_MOCK);
-      this.tasks$.next(TASKS_MOCK);
-    } else {
-      this.mapData(localStorageData as ITask[]);
-      this.tasks$.next(localStorageData as ITask[]);
-    }
-    console.log('this.tasks$', this.tasks$.value);
-  }
+	private checkData(): void {
+		const localStorageData = this.localStorageService.getData(this.REPORTS_DATA_KEY);
+		if (!localStorageData) {
+			this.localStorageService.setData(this.REPORTS_DATA_KEY, TASKS_MOCK);
+			this.tasks$.next(TASKS_MOCK);
+		} else {
+			this.mapData(localStorageData as ITask[]);
+			this.tasks$.next(localStorageData as ITask[]);
+		}
+		console.log('this.tasks$', this.tasks$.value);
+	}
 
-  public getDisabledOptionBtn(): Observable<boolean> {
-    return this.isDisabledOptionBtn.pipe();
-  }
+	public getDisabledOptionBtn(): Observable<boolean> {
+		return this.isDisabledOptionBtn.pipe();
+	}
 
-  public setDisabledOptionBtn(isDisabled: boolean): void {
-    this.isDisabledOptionBtn.next(isDisabled);
-  }
+	public setDisabledOptionBtn(isDisabled: boolean): void {
+		this.isDisabledOptionBtn.next(isDisabled);
+	}
 
-  private mapData(data: ITask[]): void {
-    data.forEach((task) => {
-      task.date = new Date(task.date);
-    });
-  }
+	private mapData(data: ITask[]): void {
+		data.forEach((task) => {
+			task.date = new Date(task.date);
+		});
+	}
 
-  public ChangeActionBtn(newAction: IOptionInterface, actionData: ITask[]): void {
-    if (newAction.action === OptionsTitle.Copy) {
-      const newArr = actionData.map((task) => {
-        return {...task, date: newAction.date};
-      });
-      this.tasks$.next(this.tasks$.value.concat(newArr));
-    }
-    if (newAction.action === OptionsTitle.Remove) {
-      let newData = [...this.tasks$.value];
-      actionData.forEach((actionTask) => {
-        const findedIndex = newData.findIndex((task) => {
-          return JSON.stringify(task) === JSON.stringify(actionTask);
-        });
-        newData.splice(findedIndex, 1);
-      });
-      this.tasks$.next(newData);
-    }
-    if (newAction.action === OptionsTitle.Move) {
-      let newData = [...this.tasks$.value];
-      newData.forEach((task) => {
-        actionData.forEach((actionTask) => {
-          if (JSON.stringify(task) === JSON.stringify(actionTask)) {
-            task.date = newAction.date;
-            task.checked = false;
-          }
-        });
-      });
-      this.tasks$.next(newData);
-    }
-  }
+	public ChangeActionBtn(newAction: IOptionInterface, actionData: ITask[]): void {
+		if (newAction.action === OptionsTitle.Copy) {
+			const newArr = actionData.map((task) => {
+				return {...task, date: newAction.date};
+			});
+			this.tasks$.next(this.tasks$.value.concat(newArr));
+		}
+		if (newAction.action === OptionsTitle.Remove) {
+			let newData = [...this.tasks$.value];
+			actionData.forEach((actionTask) => {
+				const findedIndex = newData.findIndex((task) => {
+					return JSON.stringify(task) === JSON.stringify(actionTask);
+				});
+				newData.splice(findedIndex, 1);
+			});
+			this.tasks$.next(newData);
+		}
+		if (newAction.action === OptionsTitle.Move) {
+			let newData = [...this.tasks$.value];
+			newData.forEach((task) => {
+				actionData.forEach((actionTask) => {
+					if (JSON.stringify(task) === JSON.stringify(actionTask)) {
+						task.date = newAction.date;
+						task.checked = false;
+					}
+				});
+			});
+			this.tasks$.next(newData);
+		}
+	}
 }
