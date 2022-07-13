@@ -21,7 +21,6 @@ export class FiltersButtonComponent {
 	public readonly filterItems: string[] = Object.keys(FilterItems);
 
 	public filtersCount: number = 0;
-	public filtersToOutput: IFilter;
 
 	public status: IFilterItem = {
 		checked: false,
@@ -106,11 +105,11 @@ export class FiltersButtonComponent {
 	}
 
 	protected emitFilter(): void {
-		this.filtersToOutput = {
+		const filtersToOutput = {
 			projects: this.projectSource.filter((project) => project.checked),
 			statuses: this.statusSource.filter((status) => status.checked),
 			overtimes: this.overtimeSource.filter((overtime) => overtime.checked),
 		};
-		this.selectedFilters.emit(this.filtersToOutput);
+		this.selectedFilters.emit(filtersToOutput);
 	}
 }
