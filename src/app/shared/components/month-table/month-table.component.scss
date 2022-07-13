@@ -6,10 +6,10 @@
 
 	.header-bg {
 		position: absolute;
+		top: var(--offset);
+		width: calc(100% - $scroll-size);
 		height: $scroll-size;
 		background-color: white;
-		width: calc(100% - $scroll-size);
-		top: var(--offset);
 	}
 
 	.grid-wrapper {
@@ -21,9 +21,9 @@
 
 		.header-bg {
 			position: absolute;
+			top: var(--offset);
 			height: 1rem;
 			background-color: var(--red);
-			top: var(--offset);
 		}
 
 		.header {
