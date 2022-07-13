@@ -15,7 +15,7 @@ export class VacationComponent {
 
 	constructor(public dialog: MatDialog) {}
 
-	ngOnInit(): void {
+	public dialogOpen(): void {
 		this.dialog.open(VacationRequestComponent, {
 			position: {
 				top: `100px`,
