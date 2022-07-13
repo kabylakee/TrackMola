@@ -9,10 +9,16 @@ import {
 	SimpleChanges,
 } from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
+import {Status} from 'src/app/entities/enums/status.enum';
+import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
+import {MatDialog} from '@angular/material/dialog';
+import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
+import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
+import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {merge} from 'rxjs';
 import {TaskService} from '../../services/task.service';
@@ -26,25 +32,26 @@ import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 })
 export class ReportsTableComponent implements OnInit, OnChanges {
 	@Input() public dataSource: ITask[] = [];
-
 	@Input() public columns: ITableColumn[] = [];
-
 	@Input() public day: Date;
-
 	@Input() public value: string = '';
-
 	@Input() public actionHanding: IOptionInterface;
 
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
+	@Output() optionSelected = new EventEmitter<string>();
 
 	public tableForm: FormGroup;
 	public filterDataSource: ITask[] = [];
 	public allChecked: boolean = false;
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
-	public readonly columnType = ColumnType;
 
-	constructor(private formBuilder: FormBuilder, private taskService: TaskService) {}
+	public readonly columnType = ColumnType;
+	public readonly projects: IProject[] = PROJECT_MOCK;
+	public readonly status = Status;
+	public readonly options = Object.values(OPTIONS_CONFIG);
+
+	constructor(public dialog: MatDialog, private formBuilder: FormBuilder, private taskService: TaskService) {}
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((i) => i.id);
@@ -118,6 +125,27 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 		this.taskService.setDisabledOptionBtn(!this.allChecked);
 	}
 
+	// Open dialog window at bottom of your cursor
+	public openDialog(x: number, y: number, element: ITask) {
+		const dialogRef = this.dialog.open(LinkDialogComponent, {
+			position: {
+				top: `${y + 20}px`,
+				left: `${x - 330}px`,
+			},
+			data: {
+				asanaLink: element.asanaLink,
+				bitbucketLink: element.bitbucketLink,
+			},
+		});
+
+		dialogRef.afterClosed().subscribe((result) => {
+			if (result) {
+				element.asanaLink = result.asanaLink;
+				element.bitbucketLink = result.bitbucketLink;
+			}
+		});
+	}
+
 	public updateChecked(checked: boolean, row: ITask): void {
 		row.checked = checked;
 		this.updateAllChecked();
@@ -130,20 +158,20 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 	}
 
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
-		console.log('changeFieldValue', newData, rowIndex);
-		updateTime =
-			this.dataSource[rowIndex].time !== +newData.time ||
-			this.dataSource[rowIndex].overtime !== +newData.overtime;
-		this.dataSource[rowIndex] = {
-			...this.dataSource[rowIndex],
-			title: newData.title,
-			time: +newData.time,
-			overtime: +newData.overtime,
-		};
-		if (updateTime) {
-			this.getSum(['time', 'overtime']);
-		}
-	}
+    console.log('changeFieldValue', newData, rowIndex);
+    updateTime =
+      this.dataSource[rowIndex].time !== +newData.time ||
+      this.dataSource[rowIndex].overtime !== +newData.overtime;
+    this.dataSource[rowIndex] = {
+      ...this.dataSource[rowIndex],
+      title: newData.title,
+      time: +newData.time,
+      overtime: +newData.overtime,
+    };
+    if (updateTime) {
+      this.getSum(['time', 'overtime']);
+    }
+  }
 
 	public getSum(fields: HoursKeys[]): void {
 		fields.forEach((field) => {
@@ -152,6 +180,11 @@ export class ReportsTableComponent implements OnInit, OnChanges {
 			}, 0);
 		});
 		this.outChangeTime.emit(this.sumTime);
+	}
+
+	// Format input value to blank string when 0 value
+	public inputFormater(value: number): string {
+		return value ? `${value}` : '';
 	}
 
 	public searchTaskField(): void {

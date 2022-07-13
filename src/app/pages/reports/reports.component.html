@@ -1,4 +1,5 @@
-<app-month-table></app-month-table>
+<app-header [pageTitle]="title"></app-header>
+
 <app-table-filter
 	[sumTime]="sumTime"
 	(searchValueChange)="onSearchValueChange($event)"
@@ -13,3 +14,6 @@
 	[actionHanding]="actionHanding"
 	(outChangeTime)="updateSumTime($event)"
 ></app-reports-table>
+<app-reports-button></app-reports-button>
+<app-month-table [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
+<app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>

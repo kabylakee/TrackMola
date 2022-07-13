@@ -7,10 +7,6 @@ export const TOGGLE: IViewPeriod<Period>[] = [
 		mode: Period.Day,
 	},
 	{
-		title: 'Week',
-		mode: Period.Week,
-	},
-	{
 		title: 'Month',
 		mode: Period.Month,
 	},

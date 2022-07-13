@@ -1,0 +1,45 @@
+@import 'mixins/colors-mixin';
+
+:host {
+	$marker-size: 1rem;
+	$wrapper-size: 28.5rem;
+	$color-opacity: 0.5;
+
+	.legends-wrapper {
+		display: flex;
+		gap: var(--offset);
+		width: $wrapper-size;
+		margin-top: var(--offset-m);
+		padding: var(--offset-s);
+		color: var(--light-black);
+		font-size: var(--font-size-xs);
+		background-color: var(--accent-50);
+		border-radius: var(--border-radius-xs);
+	}
+
+	.element {
+		display: flex;
+		gap: var(--offset-xs);
+		align-items: center;
+		.marker {
+			width: $marker-size;
+			height: $marker-size;
+			border-radius: var(--offset-xxs);
+		}
+		.unworked {
+			background-color: rgba-color(unfinished, $color-opacity);
+		}
+		.overwork {
+			background-color: rgba-color(overwork, $color-opacity);
+		}
+		.day-off {
+			background-color: rgba-color(day-off, $color-opacity);
+		}
+		.vacation {
+			background-color: rgba-color(vacation, $color-opacity);
+		}
+		.holiday {
+			background-color: rgba-color(holiday, $color-opacity);
+		}
+	}
+}

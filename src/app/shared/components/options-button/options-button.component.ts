@@ -10,7 +10,9 @@ import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OptionsButtonComponent {
-	@Input() isDisabled: boolean | null = true;
+  @Input() isDisabled: boolean | null = true;
+
+	@Output() optionSelected = new EventEmitter<string>();
 	@Output() actionHanding = new EventEmitter<IOptionInterface>();
 
 	public readonly options = Object.values(OPTIONS_CONFIG);

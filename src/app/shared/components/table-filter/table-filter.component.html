@@ -7,6 +7,7 @@
 </div>
 <div class="filter-controls">
 	<div class="filters">
+    <app-filters-button [projectSource]="projects" (selectedFilters)="emitFilters($event)"></app-filters-button>
 		<app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
 		<app-options-button [isDisabled]="isDisabled$ | async" (actionHanding)="actionHanding.emit($event)"></app-options-button>
 	</div>
