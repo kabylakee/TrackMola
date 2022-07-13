@@ -9,6 +9,6 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  public readonly Config: INotification[] = NOTIFiCATION_CONTENT;
+	public readonly Config: INotification[] = NOTIFiCATION_CONTENT;
 	@Input() pageTitle: string;
 }

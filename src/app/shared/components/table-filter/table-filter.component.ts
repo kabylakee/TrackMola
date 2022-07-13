@@ -30,5 +30,4 @@ export class TableFilterComponent {
 	public emitFilters(filters: IFilter): void {
 		this.selectedFilters.emit(filters);
 	}
-
 }
