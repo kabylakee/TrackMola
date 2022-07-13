@@ -130,5 +130,7 @@ $header-size: 2rem;
 		border-radius: var(--offset-xxs);
 		padding: var(--offset-xs);
 		max-width: calc(100% -  var(--offset));
+		height: 70px;
+		resize: none;
 	}
 }
