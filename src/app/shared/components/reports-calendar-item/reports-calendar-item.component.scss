@@ -27,9 +27,10 @@
 			transition: var(--transition-xxs);
 			.hint {
 				position: absolute;
-				display: none;
 				margin-left: var(--offset-xxs);
 				color: var(--light-gray);
+				opacity: 0;
+				transition: var(--transition-xxs);
 				@include icon-size(--icon-size);
 			}
 		}
@@ -39,7 +40,7 @@
 			.date {
 				background-color: rgba($common, $hover-transition);
 				.hint {
-					display: inline-block;
+					opacity: 1;
 				}
 			}
 		}

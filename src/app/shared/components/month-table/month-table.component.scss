@@ -1,10 +1,17 @@
 :host {
+	$max-calendar-height: 38rem;
+
 	.grid-wrapper {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
+		max-height: $max-calendar-height;
 		margin-top: var(--offset);
+		overflow-y: auto;
 
 		.header {
+			position: sticky;
+			top: 0;
+			z-index: 1;
 			padding: var(--offset-s) 0;
 			font-weight: 500;
 			text-align: center;
