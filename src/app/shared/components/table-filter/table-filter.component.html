@@ -1,6 +1,6 @@
 <div class="date-controls">
   <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changePeriod($event)"></app-toggle-button>
-  <app-date-picker [periodRange]="periodRange"></app-date-picker>
+  <app-date-picker [periodRange]="periodRange" (changeDate)="changeDate.emit($event)"></app-date-picker>
   <app-hours-card class="hours" 
     [class.invisible]="periodRange === periods.Day" 
     [normalHoursCount]="monthNormalTime" 

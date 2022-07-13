@@ -17,6 +17,7 @@ export class TableFilterComponent {
 	@Input() public sumTime: IHours = DEFAULT_TIME;
 
 	@Output() togglePeriod = new EventEmitter<Period>();
+	@Output() changeDate = new EventEmitter<Date>();
 
 	public readonly toggleConfig: IViewPeriod<Period>[] = TOGGLE;
 	public readonly periods = Period;
