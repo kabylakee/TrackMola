@@ -5,6 +5,10 @@
 	$user-area-height: 3rem;
 	$user-img-size: 2rem;
 
+  app-bell{
+    margin-left:calc(var(--offset) * 50);
+  }
+
 	.container {
 		display: flex;
 		justify-content: space-between;

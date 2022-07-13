@@ -1,0 +1,86 @@
+@import 'mixins/colors-mixin';
+
+$bell-icon-width-height: 3rem;
+$mat-card-width:20rem;
+$mat-flat-button-width:6.25rem;
+$mat-flat-button-height:2rem;
+$notification-controllers-width:3.5rem;
+$button-icons:1.44rem;
+
+:host{
+  .bell-icon{
+    width: $bell-icon-width-height;
+    height: $bell-icon-width-height;
+    border-radius: calc(var(--border-radius) * 0.5);
+		background: rgba-color(light-gray, 0.1);
+  }
+
+  .mat-card{
+    position: absolute;
+    z-index: 1;
+    width:$mat-card-width;
+    box-shadow: none;
+    border: 1px solid var(--accent-200);
+  }
+
+  .mat-card-title{
+    font-size: var(--font-size-s);
+  }
+
+  .mat-flat-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $mat-flat-button-width;
+    height: $mat-flat-button-height;
+    font-size: var(--font-size-xs);
+  }
+
+  .mat-card-actions{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .notification{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    margin-bottom:calc(var(--offset) * 0.5);
+  }
+
+  .notification-controllers{
+    display: flex;
+    justify-content: space-between;
+    width:$notification-controllers-width;
+    padding-right: var(--offset-xxxs);
+  }
+
+  .notification-controllers .mat-icon-button{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    color: var(--accent-300);
+    border:1px solid var(--accent-300);
+    width:$button-icons;
+    height:$button-icons;
+  }
+
+  .notification-controllers .mat-icon-button .mat-icon{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: calc(var(--font-size) * 1.2);
+  }
+
+  mat-card-actions .mat-flat-button mat-icon{
+    display: flex;
+    align-items: center;
+    font-size: calc(var(--font-size)* 1.13);
+  }
+
+  mat-card-actions .mat-flat-button ::ng-deep .mat-button-wrapper{
+    display: flex;
+    gap: var(--offset-xxxxs);
+    align-items: center;
+  }
+}

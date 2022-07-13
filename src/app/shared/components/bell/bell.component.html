@@ -1,0 +1,34 @@
+<button mat-icon-button class="bell-icon" (click)="showCard()">
+  <mat-icon>
+    notifications
+  </mat-icon>
+</button>
+<mat-card *ngIf="isCardOpen">
+  <div class="notifications-container">
+    <mat-card-title>Notifications</mat-card-title>
+    <ng-container *ngFor="let element of array; index as i">
+      <div *ngIf="isShownNotification" class="notification">
+        <span>{{element.content}}</span>
+        <div class="notification-controllers">
+          <button mat-icon-button (click)="snoozeNotification(i)">
+            <mat-icon>schedule</mat-icon>
+          </button>
+          <button mat-icon-button (click)="dismissNotification(i)">
+            <mat-icon>notifications_off</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <mat-card-actions>
+    <button class="shedules" mat-flat-button color="secondary" (click)="snoozeNotificationAll()">
+      <mat-icon class="shedule">schedule</mat-icon>
+      <span>Snooze All</span>
+    </button>
+    <button mat-flat-button color="secondary" (click)="dismissNotificationAll()">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Display All</span>
+    </button>
+  </mat-card-actions>
+</mat-card>
+
