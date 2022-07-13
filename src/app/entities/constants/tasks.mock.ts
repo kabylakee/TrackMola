@@ -11,7 +11,7 @@ export const TASKS_MOCK: ITask[] = [
 		status: Status.Done,
 		time: 4,
 		overtime: 0,
-		paid: true,
+		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
 	},
