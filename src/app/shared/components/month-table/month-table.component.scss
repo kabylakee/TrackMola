@@ -1,5 +1,16 @@
 :host {
 	$max-calendar-height: 38rem;
+	$scroll-size: 1rem;
+
+	position: relative;
+
+	.header-bg {
+		position: absolute;
+		height: $scroll-size;
+		background-color: white;
+		width: calc(100% - $scroll-size);
+		top: var(--offset);
+	}
 
 	.grid-wrapper {
 		display: grid;
@@ -7,6 +18,13 @@
 		max-height: $max-calendar-height;
 		margin-top: var(--offset);
 		overflow-y: auto;
+
+		.header-bg {
+			position: absolute;
+			height: 1rem;
+			background-color: var(--red);
+			top: var(--offset);
+		}
 
 		.header {
 			position: sticky;
