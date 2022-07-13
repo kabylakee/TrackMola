@@ -1,9 +1,13 @@
 <div class="date-controls">
-  <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changeDatePicker($event)"></app-toggle-button>
+  <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changePeriod($event)"></app-toggle-button>
   <app-date-picker [periodRange]="periodRange"></app-date-picker>
+  <app-hours-card class="hours" 
+    [class.invisible]="periodRange === periods.Day" 
+    [normalHoursCount]="monthNormalTime" 
+    [sumTime]="sumTime"></app-hours-card>
 </div>
-<div class="filter-controls">
-  <div class="filters">
+<div class="filter-controls" [class.invisible]="periodRange === periods.Month">
+  <div class="filters" >
     <app-filters-button [projectSource]="projects"></app-filters-button>
     <app-input-search></app-input-search>
     <app-options-button></app-options-button>

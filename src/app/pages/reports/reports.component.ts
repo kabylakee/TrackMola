@@ -9,6 +9,7 @@ import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
 import {IHours} from '../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
+import {Period} from 'src/app/entities/enums/period.enum';
 
 @Component({
 	selector: 'app-reports',
@@ -18,6 +19,9 @@ import {RouterPaths} from 'src/app/entities/enums/router.enum';
 })
 export class ReportsComponent implements OnInit {
 	@Input() selectedDate: Date = new Date();
+
+	public period: Period = Period.Day;
+	public readonly periods = Period;
 
 	public tasks: ITask[] = [];
 	public columns: ITableColumn[] = [];
@@ -59,5 +63,10 @@ export class ReportsComponent implements OnInit {
 
 	public updateSumTime(event: IHours): void {
 		this.sumTime = {...event};
+	}
+
+	public togglePeriod(period: Period): void {
+		this.period = period;
+		console.log(this.period);
 	}
 }

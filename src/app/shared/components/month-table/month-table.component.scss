@@ -2,6 +2,7 @@
 	.grid-wrapper {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
+		margin-top: var(--offset);
 
 		.header {
 			padding: var(--offset-s) 0;

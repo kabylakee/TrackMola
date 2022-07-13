@@ -11,8 +11,8 @@ import {DEFAULT_DAY_WORKTIME, DEFAULT_TIME} from '../../../entities/constants/ho
 })
 export class HoursCardComponent implements OnChanges {
 	@Input() public sumTime: IHours = DEFAULT_TIME;
-	@Input() public readonly normalHoursCount = DEFAULT_DAY_WORKTIME;
-	@Input() public readonly hasBackground = true;
+	@Input() public normalHoursCount = DEFAULT_DAY_WORKTIME;
+	@Input() public hasBackground = true;
 
 	public readonly timeStatus = TimeStatus;
 	public currentTimeStatus: TimeStatus;
