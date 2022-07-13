@@ -2,8 +2,16 @@
 
 app-root {
 	.mat-flat-button {
-		padding: var(--offset-xxs) var(--offset-m);
+		padding: var(--offset-xs) var(--offset-s);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
+		border-radius: var(--border-radius-xs);
 		transition: var(--transition-xxs);
+
+		.mat-icon {
+			@include icon-size(--icon-size-m);
+		}
 
 		&.mat-button-disabled.mat-button-disabled {
 			color: var(--light-gray);
@@ -15,6 +23,7 @@ app-root {
 			display: flex;
 			gap: var(--offset-s);
 			align-items: center;
+			justify-content: center;
 		}
 
 		&.mat-secondary {
@@ -27,9 +36,15 @@ app-root {
 		}
 
 		&.mat-primary {
-			:hover {
+			&:hover {
 				background-color: var(--accent-500);
 			}
+		}
+
+		&.mat-button-disabled:hover {
+			color: var(--light-gray);
+			background-color: var(--accent-50);
+			border: none;
 		}
 	}
 

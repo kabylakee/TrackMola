@@ -17,12 +17,14 @@
 		line-height: var(--font-size);
 		border: 1px solid var(--light-gray);
 		cursor: pointer;
+		transition: var(--transition-xxs);
 
 		.date {
 			position: relative;
 			padding: var(--offset-xs) 0;
 			text-align: center;
 			background-color: var(--accent-50);
+			transition: var(--transition-xxs);
 			.hint {
 				position: absolute;
 				display: none;
