@@ -56,6 +56,7 @@ export class FiltersButtonComponent {
 					this.statusSource.filter((t) => t.checked == true).length === this.statusSource.length;
 				break;
 		}
+		this.emitFilter();
 	}
 
 	public setAll(title: string): void {
@@ -102,6 +103,7 @@ export class FiltersButtonComponent {
 				}
 				break;
 		}
+		this.emitFilter();
 	}
 
 	protected emitFilter(): void {
