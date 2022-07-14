@@ -113,23 +113,16 @@ $textarea-height: 70px;
 					border-radius: var(--border-radius-xxs);
 				}
 			}
-		}
+			
+			.dialog-content-item {
+				padding-bottom: var(--offset-s);
+				width: 25.25rem;
 
-		.dialog-content-item {
-			padding-bottom: var(--offset-s);
-			width: 25.25rem;
-
-			&.last {
-				padding-bottom: $last-padding;
-			}
-		}
-
-		.mat-label{
-			font-size: var(--font-size-xs);
-			&.label{
-				color: var(--light-black);
-				font-size: var(--font-size-xs);
-				font-weight: 500;
+				&.last {
+					padding-bottom: $last-padding;
+				}
+				
+				
 			}
 		}
 
@@ -181,5 +174,14 @@ $textarea-height: 70px;
 
 	.invisible {
 		display: none;
+	}
+	::ng-deep .label{
+		color: var(--light-black);
+		font-size: var(--font-size-xs);
+		font-weight: 500;
+		&.last{
+			font-size: var(--font-size-s);
+			font-weight: 400;
+		}
 	}
 }
