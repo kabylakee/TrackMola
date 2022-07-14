@@ -12,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
 	declarations: [VacationComponent, VacationRequestComponent],
@@ -27,6 +28,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 		MatIconModule,
 		MatButtonModule,
 		MatCheckboxModule,
+		FormsModule,
 	],
 	entryComponents: [VacationRequestComponent],
 })

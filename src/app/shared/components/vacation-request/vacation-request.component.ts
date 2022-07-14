@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {IVacationRequest} from 'src/app/entities/interfaces/vacation-request.interface';
 
 @Component({
 	selector: 'app-vacation-request',
@@ -8,11 +9,40 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationRequestComponent {
+	@Output() sendRequest = new EventEmitter();
+	public request: IVacationRequest;
+	public field: string;
+	public notification = false;
+
 	constructor(
 		private dialogRef: MatDialogRef<VacationRequestComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: object,
-	) {}
-	public closeMe() {
+		@Inject(MAT_DIALOG_DATA) public data: IVacationRequest,
+	) {
+		this.request = data;
+	}
+
+	public closeMe(): void {
 		this.dialogRef.close();
+	}
+
+	public onSend(): void {
+		if (!this.request.dateFrom) {
+			this.field = 'Date from';
+			this.notification = true;
+		}
+		if (!this.request.dateTo) {
+			this.field = 'Date to';
+			this.notification = true;
+		}
+		if (!this.request.dateFrom && !this.request.dateTo) {
+			this.field = 'Date';
+			this.notification = true;
+		}
+		if (this.request.dateFrom && this.request.dateTo) {
+			this.notification = false;
+			console.log(this.request);
+			this.sendRequest.emit(this.request);
+			this.closeMe();
+		}
 	}
 }

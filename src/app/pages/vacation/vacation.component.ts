@@ -18,8 +18,8 @@ export class VacationComponent {
 	public dialogOpen(): void {
 		this.dialog.open(VacationRequestComponent, {
 			position: {
-				top: '25vh',
-				left: '65vh',
+				top: 'calc(50vh - 174px)',
+				left: 'calc(50vw - 226px)',
 			},
 			data: {},
 		});
