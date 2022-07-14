@@ -5,17 +5,18 @@
   (togglePeriod)="togglePeriod($event)" 
   (changeDate)="onChangeDate($event)" 
   (selectedFilters)="getFilters($event)"></app-table-filter>
-<div [ngSwitch]="period">
+<div [ngSwitch]="period" class="view-switcher">
   <app-reports-table 
     *ngSwitchCase="periods.Day" 
     [columns]="columns" 
     [dataSource]="tasks" 
     (outChangeTime)="updateSumTime($event)"></app-reports-table>
   <app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
-  <app-month-table 
-    *ngSwitchCase="periods.Month" 
-    [daysInfo]="calendarConfig" 
-    [selectedDate]="selectedDate" 
-    (selectDay)="tableFilter.onSelectCalendarDay($event)"></app-month-table>
-  <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
+  <div *ngSwitchCase="periods.Month" class="month-view">
+    <app-month-table 
+      [daysInfo]="calendarConfig" 
+      [selectedDate]="selectedDate" 
+      (selectDay)="tableFilter.onSelectCalendarDay($event)"></app-month-table>
+    <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
+  </div>
 </div>
