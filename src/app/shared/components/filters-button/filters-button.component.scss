@@ -17,22 +17,28 @@
 }
 
 button.mat-menu-item {
-	.mat-button {
-		&.project {
+	&.project {
+		.mat-checkbox {
+			::ng-deep  span.mat-checkbox-label {
 			padding: var(--offset-xxs) calc(0.375 * var(--offset));
 			color: var(--accent-300);
 			font-size: var(--font-size-xs);
 			line-height: var(--font-size);
 			background-color: rgba-color(accent-300, 0.2);
 			border-radius: var(--border-radius-xs);
+			}
 		}
+	}
 
-		&.status {
+	&.status {
+		.mat-checkbox {
+			::ng-deep  span.mat-checkbox-label {
 			padding: var(--offset-xxs) var(--offset-s);
 			font-size: var(--font-size-xs);
 			line-height: var(--font-size);
 			border: 1px solid var(--light-gray);
 			border-radius: var(--border-radius-xs);
+			}
 		}
 	}
 
