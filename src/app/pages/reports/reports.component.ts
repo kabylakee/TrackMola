@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
@@ -9,6 +9,7 @@ import {MonthTasksHelper} from '../../shared/helpers/month-tasks.helper';
 import {IHours} from '../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
+import {Period} from 'src/app/entities/enums/period.enum';
 import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 import {IOptionInterface} from '../../entities/interfaces/option.interface';
 import {takeWhile} from 'rxjs';
@@ -20,7 +21,9 @@ import {takeWhile} from 'rxjs';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsComponent implements OnInit, OnDestroy {
-	@Input() selectedDate: Date = new Date();
+	public selectedDate: Date = new Date();
+	public period: Period = Period.Day;
+	public readonly periods = Period;
 	public filters: IFilter;
 
 	public tasks: ITask[] = [];
@@ -48,12 +51,12 @@ export class ReportsComponent implements OnInit, OnDestroy {
 		this.columns = DAY_TABLE_CONFIG;
 
 		this.tasks.forEach((t) => (t.checked = false));
-
-		this.calendarConfig = MonthTasksHelper.getCalendarConfig(this.monthTasks, this.selectedDate);
 	}
 
 	public onChangeDate(event: Date): void {
 		this.day = event;
+		this.selectedDate = event;
+		this.getMonthTasks();
 		this.getTasks();
 	}
 
@@ -76,10 +79,25 @@ export class ReportsComponent implements OnInit, OnDestroy {
 			)
 			.pipe(takeWhile(() => this.isSub))
 			.subscribe((tasks) => (this.monthTasks = tasks));
+		this.calendarConfig = MonthTasksHelper.getCalendarConfig(this.monthTasks, this.selectedDate);
+		this.sumTime = this.calculateMonthSumTime(this.calendarConfig);
+	}
+
+	private calculateMonthSumTime(days: IReportsDayInfo[]): IHours {
+		const weeks = days.filter((day) => day.isWeekInfo === true);
+		return {
+			time: weeks.reduce((monthTime, week) => (monthTime += week.total), 0),
+			overtime: weeks.reduce((monthOvertime, week) => (monthOvertime += week.overtime), 0),
+		};
 	}
 
 	public updateSumTime(event: IHours): void {
 		this.sumTime = {...event};
+	}
+
+	public togglePeriod(period: Period): void {
+		this.period = period;
+		if (this.period === Period.Month) this.getMonthTasks();
 	}
 
 	public getFilters(filters: IFilter): void {

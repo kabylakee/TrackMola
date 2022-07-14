@@ -4,6 +4,9 @@
 		gap: var(--offset);
 		align-items: center;
 		margin-top: var(--offset-l);
+		.hours {
+			margin-left: auto;
+		}
 	}
 
 	.filter-controls {
@@ -17,5 +20,8 @@
 			gap: var(--offset);
 			align-items: center;
 		}
+	}
+	.invisible {
+		display: none;
 	}
 }

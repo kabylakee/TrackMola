@@ -1,9 +1,35 @@
 :host {
+	$max-calendar-height: 38rem;
+	$scroll-size: 1rem;
+
+	position: relative;
+
+	.header-bg {
+		position: absolute;
+		top: var(--offset);
+		width: calc(100% - $scroll-size);
+		height: $scroll-size;
+		background-color: white;
+	}
+
 	.grid-wrapper {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
+		max-height: $max-calendar-height;
+		margin-top: var(--offset);
+		overflow-y: auto;
+
+		.header-bg {
+			position: absolute;
+			top: var(--offset);
+			height: 1rem;
+			background-color: var(--red);
+		}
 
 		.header {
+			position: sticky;
+			top: 0;
+			z-index: 1;
 			padding: var(--offset-s) 0;
 			font-weight: 500;
 			text-align: center;

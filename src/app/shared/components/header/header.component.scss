@@ -5,6 +5,11 @@
 	$user-area-height: 3rem;
 	$user-img-size: 2rem;
 
+	.container-user-notification {
+		display: flex;
+		gap: var(--offset-xs);
+	}
+
 	.container {
 		display: flex;
 		justify-content: space-between;
