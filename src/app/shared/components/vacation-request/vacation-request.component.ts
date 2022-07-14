@@ -10,6 +10,7 @@ import {IVacationRequest} from 'src/app/entities/interfaces/vacation-request.int
 })
 export class VacationRequestComponent {
 	@Output() sendRequest = new EventEmitter();
+
 	public request: IVacationRequest;
 	public field: string;
 	public notification = false;
@@ -19,10 +20,6 @@ export class VacationRequestComponent {
 		@Inject(MAT_DIALOG_DATA) public data: IVacationRequest,
 	) {
 		this.request = data;
-	}
-
-	public closeMe(): void {
-		this.dialogRef.close();
 	}
 
 	public onSend(): void {
@@ -40,9 +37,8 @@ export class VacationRequestComponent {
 		}
 		if (this.request.dateFrom && this.request.dateTo) {
 			this.notification = false;
-			console.log(this.request);
 			this.sendRequest.emit(this.request);
-			this.closeMe();
+			this.dialogRef.close();
 		}
 	}
 }

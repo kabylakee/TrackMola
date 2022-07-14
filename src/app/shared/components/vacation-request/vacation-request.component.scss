@@ -138,7 +138,7 @@ $textarea-height: 70px;
 		}
 	}
 
-	textarea {
+	.textarea {
 		color: var(--light-black);
 		font-size: var(--font-size-xs);
 		padding: var(--offset-xs);
@@ -181,11 +181,5 @@ $textarea-height: 70px;
 
 	.invisible {
 		display: none;
-	}
-}
-
-::ng-deep {
-	.cdk-overlay-backdrop.cdk-overlay-dark-backdrop.cdk-overlay-backdrop-showing{
-		background-color: rgba-color(light-gray, 0.6);
 	}
 }

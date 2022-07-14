@@ -32,7 +32,7 @@
         <mat-label class="label">Comments</mat-label>
     </div>
     <div class="dialog-content-item">
-        <textarea matInput placeholder="Leave your comment" [(ngModel)]="data.comment"></textarea>
+        <textarea matInput class="textarea" placeholder="Leave your comment" [(ngModel)]="data.comment"></textarea>
     </div>
     <div class="dialog-content-item last">
         <mat-checkbox color="primary" [(ngModel)]="data.paid"></mat-checkbox>
@@ -40,8 +40,8 @@
     </div>
     
     <mat-dialog-actions>
-        <label class="error" [class.invisible]="!notification">{{ field }} is empty!</label>
-        <button mat-flat-button class="action-button" color="secondary" (click)="closeMe()">Cancel</button>
+        <label class="error" [hidden]="!notification">{{ field }} is empty!</label>
+        <button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Cancel</button>
         <button mat-flat-button class="action-button" color="primary" (click)="onSend()">Send</button>
     </mat-dialog-actions>
 </mat-dialog-content>
