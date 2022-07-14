@@ -3,6 +3,15 @@
 	$scroll-size: 1rem;
 
 	position: relative;
+	height: 100%;
+
+	.component-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--offset);
+		justify-content: space-between;
+		height: calc(100% - 3rem);
+	}
 
 	.header-bg {
 		position: absolute;
@@ -14,7 +23,8 @@
 	.grid-wrapper {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		max-height: $max-calendar-height;
+		align-items: start;
+		max-height: calc(100% - 2.75rem);
 		margin-top: var(--offset);
 		overflow-y: auto;
 

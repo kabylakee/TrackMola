@@ -19,12 +19,10 @@
 		(outChangeTime)="updateSumTime($event)"
 	></app-reports-table>
 	<app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
-	<div *ngSwitchCase="periods.Month" class="month-view">
-		<app-month-table
-			[daysInfo]="calendarConfig"
-			[selectedDate]="selectedDate"
-			(selectDay)="tableFilter.onSelectCalendarDay($event)"
-		></app-month-table>
-		<app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>
-	</div>
+	<app-month-table
+		*ngSwitchCase="periods.Month"
+		[daysInfo]="calendarConfig"
+		[selectedDate]="selectedDate"
+		(selectDay)="tableFilter.onSelectCalendarDay($event)"
+	></app-month-table>
 </div>

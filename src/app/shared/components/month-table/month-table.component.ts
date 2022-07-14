@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
 
@@ -16,6 +17,7 @@ export class MonthTableComponent {
 	@Output() selectDay = new EventEmitter<Date>();
 
 	public readonly weekDay = Object.values(WeekDayEnum);
+	public readonly legendItems = Object.values(DayTypeEnum);
 
 	public onSelectDay(date: Date): void {
 		this.selectDay.emit(date);

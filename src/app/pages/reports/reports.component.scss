@@ -1,18 +1,10 @@
 :host {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
+	height: 100%;
 
 	.view-switcher {
-		display: flex;
-		flex-direction: column;
 		flex-grow: 1;
-	}
-
-	.month-view {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-		justify-content: space-between;
+		overflow-y: hidden;
 	}
 }
