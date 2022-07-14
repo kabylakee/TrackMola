@@ -41,7 +41,7 @@ export class BellComponent implements OnInit {
 		setTimeout(() => {
 			this.copyOfNotifications.unshift(notification[0]);
 			this._cdr.detectChanges();
-		}, 2000);
+		}, 1000 * 3600);
 	}
 
 	dismissNotification(i: number) {
@@ -58,6 +58,6 @@ export class BellComponent implements OnInit {
 		setTimeout(() => {
 			this.copyOfNotifications = notifications;
 			this._cdr.detectChanges();
-		}, 2000);
+		}, 1000 * 3600);
 	}
 }
