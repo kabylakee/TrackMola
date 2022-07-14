@@ -72,7 +72,7 @@ module.exports = {
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/lines-between-class-members": "off",
-        "no-console": "error",
+        "no-console": [2, { allow: ["warn", "error"] }],
         "@angular-eslint/directive-selector": [
           "error",
           {
