@@ -1,105 +1,107 @@
 <form [formGroup]="tableForm">
-		<table mat-table [dataSource]="filterDataSource" formArrayName="rows">
-		<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
-			<th mat-header-cell *matHeaderCellDef>
-				<div [ngSwitch]="column.type" [ngClass]="column.cls">
-					<div *ngSwitchCase="columnType.CHECK_ALL">
-						<mat-checkbox
-							class="mat-checkbox"
-							[checked]="allChecked"
-							color="primary"
-							(change)="setAll($event.checked)"
-						></mat-checkbox>
+	<div class="day-table">
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
+			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
+				<th mat-header-cell *matHeaderCellDef>
+					<div [ngSwitch]="column.type" [ngClass]="column.cls">
+						<div *ngSwitchCase="columnType.CHECK_ALL">
+							<mat-checkbox
+								class="mat-checkbox"
+								[checked]="allChecked"
+								color="primary"
+								(change)="setAll($event.checked)"
+							></mat-checkbox>
+						</div>
+	
+						<div *ngSwitchDefault>
+							{{ column.title }}
+						</div>
 					</div>
-
-					<div *ngSwitchDefault>
-						{{ column.title }}
+				</th>
+	
+				<td *cdkCellDef="let element let rowIndex = index" [formGroupName]="rowIndex">
+					<div [ngSwitch]="column.type" [ngClass]="column.cls">
+						<div *ngSwitchCase="columnType.CHECK_ALL">
+							<mat-checkbox
+								color="primary"
+								[checked]="element.checked"
+								(change)="updateChecked($event.checked, element)"
+							></mat-checkbox>
+						</div>
+	
+						<div *ngSwitchCase="columnType.CHECK">
+							<mat-checkbox  color="primary"></mat-checkbox>
+						</div>
+	
+						<div *ngSwitchCase="columnType.INPUT">
+							<ng-container *ngIf="column.field === 'title'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="title"/>
+								</mat-form-field>
+							</ng-container>
+							<ng-container *ngIf="column.field === 'time'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="time"/>
+								</mat-form-field>
+							</ng-container>
+							<ng-container *ngIf="column.field === 'overtime'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="overtime"/>
+								</mat-form-field>
+							</ng-container>
+						</div>
+	
+					<div *ngSwitchCase="columnType.PROJECT">
+						<mat-form-field appearance="fill">
+							<mat-select [value]="element[''+column.field].title">
+								<mat-option [value]="project.title" *ngFor="let project of projects">
+									<app-project-component projectName="{{project.title}}"></app-project-component>
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
 					</div>
-				</div>
-			</th>
-
-			<td *cdkCellDef="let element let rowIndex = index" [formGroupName]="rowIndex">
-				<div [ngSwitch]="column.type" [ngClass]="column.cls">
-					<div *ngSwitchCase="columnType.CHECK_ALL">
-						<mat-checkbox
-							color="primary"
-							[checked]="element.checked"
-							(change)="updateChecked($event.checked, element)"
-						></mat-checkbox>
+	
+					<div *ngSwitchCase="columnType.STATUS">
+						<mat-form-field appearance="fill">
+							<mat-select [value]="element[''+column.field]">
+								<mat-option [value]="status.Done">{{ status.Done }}</mat-option>
+								<mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
+								<mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
+							</mat-select>
+						</mat-form-field>
 					</div>
-
-					<div *ngSwitchCase="columnType.CHECK">
-						<mat-checkbox  color="primary"></mat-checkbox>
+	
+					<div *ngSwitchCase="columnType.LINK">
+						<button class="add-link" mat-icon-button aria-label="Add Link"
+										(click)="openDialog($event.clientX, $event.clientY, element)">
+							<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
+								{{element.asanaLink ? 'link' : 'add_link'}}
+							</mat-icon>
+						</button>
 					</div>
-
-					<div *ngSwitchCase="columnType.INPUT">
-						<ng-container *ngIf="column.field === 'title'">
-							<mat-form-field class="example-full-width" appearance="fill">
-								<input matInput formControlName="title"/>
-							</mat-form-field>
-						</ng-container>
-						<ng-container *ngIf="column.field === 'time'">
-							<mat-form-field class="example-full-width" appearance="fill">
-								<input matInput formControlName="time"/>
-							</mat-form-field>
-						</ng-container>
-						<ng-container *ngIf="column.field === 'overtime'">
-							<mat-form-field class="example-full-width" appearance="fill">
-								<input matInput formControlName="overtime"/>
-							</mat-form-field>
-						</ng-container>
+	
+					<div *ngSwitchCase="columnType.OPTIONS">
+						<button mat-icon-button aria-label="Options" class="user-logout" [matMenuTriggerFor]="menu">
+							<mat-icon aria-hidden="false">more_horiz</mat-icon>
+						</button>
+						<mat-menu #menu="matMenu" class="menu">
+							<button mat-menu-item *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
+								<mat-icon class="material-icons-outlined menu-item-icon">{{option.icon}}</mat-icon>
+								<span class="menu-item-text">{{option.title}}</span>
+							</button>
+						</mat-menu>
 					</div>
-
-        <div *ngSwitchCase="columnType.PROJECT">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element[''+column.field].title">
-              <mat-option [value]="project.title" *ngFor="let project of projects">
-                <app-project-component projectName="{{project.title}}"></app-project-component>
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div *ngSwitchCase="columnType.STATUS">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element[''+column.field]">
-              <mat-option [value]="status.Done">{{ status.Done }}</mat-option>
-              <mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
-              <mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
-        <div *ngSwitchCase="columnType.LINK">
-          <button class="add-link" mat-icon-button aria-label="Add Link"
-                  (click)="openDialog($event.clientX, $event.clientY, element)">
-						<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
-							{{element.asanaLink ? 'link' : 'add_link'}}
-						</mat-icon>
-          </button>
-        </div>
-
-        <div *ngSwitchCase="columnType.OPTIONS">
-          <button mat-icon-button aria-label="Options" class="user-logout" [matMenuTriggerFor]="menu">
-            <mat-icon aria-hidden="false">more_horiz</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" class="menu">
-            <button mat-menu-item *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
-              <mat-icon class="material-icons-outlined menu-item-icon">{{option.icon}}</mat-icon>
-              <span class="menu-item-text">{{option.title}}</span>
-            </button>
-          </mat-menu>
-        </div>
-
-					<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
-				</div>
-			</td>
-		</ng-container>
-
-		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-		<tr
-			mat-row
-			*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
-		></tr>
-	</table>
+	
+						<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
+					</div>
+				</td>
+			</ng-container>
+	
+			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+			<tr
+				mat-row
+				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
+			></tr>
+		</table>
+	</div>
 </form>
