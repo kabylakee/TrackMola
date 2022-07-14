@@ -37,7 +37,7 @@ export class TableFilterComponent {
 		this.selectedFilters.emit(filters);
 	}
 
-	public onSelectCalendarDay(date: Date) {
+	public onSelectCalendarDay(date: Date): void {
 		this.changePeriod(Period.Day);
 		this.calendarDate = date;
 	}
