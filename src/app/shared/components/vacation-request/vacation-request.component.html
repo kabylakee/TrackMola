@@ -41,7 +41,7 @@
     </div>
     
     <mat-dialog-actions>
-        <label class="error" [hidden]="!notification">{{ field }} is empty!</label>
+        <label class="error" [hidden]="!notification">{{ field }}</label>
         <button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Cancel</button>
         <button mat-flat-button class="action-button" color="primary" (click)="onSend()">Send</button>
     </mat-dialog-actions>

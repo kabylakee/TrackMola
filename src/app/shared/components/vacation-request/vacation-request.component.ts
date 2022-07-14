@@ -1,5 +1,11 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {
+	AbstractControl,
+	FormControl,
+	FormGroup,
+	ValidationErrors,
+	Validators,
+} from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
@@ -19,31 +25,48 @@ export class VacationRequestComponent {
 		private dialogRef: MatDialogRef<VacationRequestComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
 	) {
-		this.requestForm = new FormGroup({
-			dateFrom: new FormControl(),
-			dateTo: new FormControl(),
-			comments: new FormControl(),
-			paid: new FormControl(),
-		});
+		this.requestForm = new FormGroup(
+			{
+				dateFrom: new FormControl('', [Validators.required, this.dateFromValidator]),
+				dateTo: new FormControl('', [Validators.required]),
+				comments: new FormControl(),
+				paid: new FormControl(),
+			},
+			{
+				validators: this.dateToValidator,
+			},
+		);
+	}
+
+	private dateFromValidator(control: FormControl): {[s: string]: boolean} | null {
+		if (control.value > new Date()) {
+			return null;
+		}
+		return {dateFrom: true};
+	}
+
+	dateToValidator(control: AbstractControl): ValidationErrors | null {
+		if (!control.get('dateFrom')?.value || !control.get('dateTo')?.value) return {error: true};
+		if (control.get('dateTo')?.value >= control.get('dateFrom')?.value) {
+			return null;
+		}
+		return {error: true};
 	}
 
 	public onSend(): void {
-		if (!this.requestForm.controls.dateFrom.value) {
-			this.field = 'Date from';
+		if (!this.requestForm.controls.dateFrom.valid) {
+			this.field = 'Date from is invalid';
 			this.notification = true;
+			return;
 		}
-		if (!this.requestForm.controls.dateTo.value) {
-			this.field = 'Date to';
+		if (!this.requestForm.valid) {
+			this.field = 'Date to is invalid';
 			this.notification = true;
+			return;
 		}
-		if (!this.requestForm.controls.dateFrom.value && !this.requestForm.controls.dateTo.value) {
-			this.field = 'Date';
-			this.notification = true;
-		}
-		if (this.requestForm.controls.dateFrom.value && this.requestForm.controls.dateTo.value) {
-			this.notification = false;
-			this.sendRequest.emit(this.requestForm);
-			this.dialogRef.close();
-		}
+
+		this.notification = false;
+		this.sendRequest.emit(this.requestForm);
+		this.dialogRef.close();
 	}
 }

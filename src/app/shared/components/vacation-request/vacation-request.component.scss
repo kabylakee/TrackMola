@@ -4,7 +4,7 @@
 $wrapper-width: calc(10rem - 1px);
 $buttons-height: 2.44rem;
 $last-padding: calc(var(--offset-s) - 7px);
-$textarea-height: 70px;
+$textarea-height: 4.375rem;
 
 :host {
 	::ng-deep {
@@ -39,6 +39,8 @@ $textarea-height: 70px;
 
 				.mat-input-element {
 					font-size: var(--font-size-xs);
+					color: var(--accent-300);
+					font-weight: 500;
 				}
 			}
 
@@ -134,7 +136,7 @@ $textarea-height: 70px;
 		height: $textarea-height;
 		padding: var(--offset-xs);
 		color: var(--light-black);
-		font-size: var(--font-size-xs);
+		font-size: var(--font-size-s);
 		border: 1px solid var(--light-gray);
 		border-radius: var(--offset-xxs);
 		resize: none;
