@@ -27,8 +27,6 @@ export class BellComponent implements OnInit {
 	}
 
 	showCard() {
-		console.log(this.copyOfNotifications);
-		console.log(this.notifications);
 		if (!this.isCardOpen) {
 			this.isCardOpen = true;
 		} else {
