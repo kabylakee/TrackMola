@@ -1,19 +1,23 @@
 <div [ngSwitch]="periodRange">
   <div class="date-controls">
-    <app-toggle-button [config]="toggleConfig" (changeSelectedValue)="changePeriod($event)"></app-toggle-button>
+    <app-toggle-button
+      [config]="toggleConfig"
+      (changeSelectedValue)="changePeriod($event)"
+    ></app-toggle-button>
     <app-date-picker [periodRange]="periodRange" (changeDate)="changeDate.emit($event)"></app-date-picker>
-    <app-hours-card class="hours" 
-      *ngSwitchCase="periods.Month" 
-      [normalHoursCount]="monthNormalTime" 
+    <app-hours-card class="hours"
+      *ngSwitchCase="periods.Month"
+      [normalHoursCount]="monthNormalTime"
       [sumTime]="sumTime"></app-hours-card>
   </div>
   <div class="filter-controls" *ngSwitchCase="periods.Day">
     <div class="filters">
       <app-filters-button [projectSource]="projects" (selectedFilters)="emitFilters($event)"></app-filters-button>
-      <app-input-search></app-input-search>
-      <app-options-button></app-options-button>
+      <app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
+      <app-options-button [isDisabled]="isDisabled$ | async" (actionHanding)="actionHanding.emit($event)"></app-options-button>
     </div>
     <app-hours-card [sumTime]="sumTime"></app-hours-card>
   </div>
-</div>  
+</div>
+
 

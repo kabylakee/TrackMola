@@ -1,16 +1,23 @@
 <app-header [pageTitle]="title"></app-header>
-<app-table-filter 
-  [sumTime]="sumTime" 
-  (togglePeriod)="togglePeriod($event)" 
-  (changeDate)="onChangeDate($event)" 
-  (selectedFilters)="getFilters($event)"></app-table-filter>
+
+<app-table-filter
+	[sumTime]="sumTime"
+  (togglePeriod)="togglePeriod($event)"
+  (searchValueChange)="onSearchValueChange($event)"
+	(actionHanding)="onActionHanding($event)"
+	(changeDate)="onChangeDate($event)"
+  (selectedFilters)="getFilters($event)"
+></app-table-filter>
 <div [ngSwitch]="period">
-  <app-reports-table 
-    *ngSwitchCase="periods.Day" 
-    [columns]="columns" 
-    [dataSource]="tasks" 
-    (outChangeTime)="updateSumTime($event)"></app-reports-table>
-  <app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
-  <app-month-table *ngSwitchCase="periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
-  <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
-</div>
+<app-reports-table
+  *ngSwitchCase="periods.Day"
+  [columns]="columns"
+	[dataSource]="tasks"
+	[value]="searchValue"
+	[day]="day"
+	[actionHanding]="actionHanding"
+	(outChangeTime)="updateSumTime($event)"
+></app-reports-table>
+<app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
+<app-month-table *ngSwitchCase="periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
+<app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>

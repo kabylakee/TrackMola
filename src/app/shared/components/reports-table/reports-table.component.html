@@ -1,46 +1,54 @@
-<table mat-table [dataSource]="dataSource">
-	<ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
-		<th mat-header-cell *matHeaderCellDef>
-			<div [ngSwitch]="column.type" [ngClass]="column.cls">
-				<div *ngSwitchCase="columnType.CHECK_ALL">
-					<mat-checkbox
-						class="mat-checkbox"
-						[checked]="allChecked"
-						color="primary"
-						(change)="setAll($event.checked)"
-					></mat-checkbox>
-				</div>
+<form [formGroup]="tableForm">
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows">
+		<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
+			<th mat-header-cell *matHeaderCellDef>
+				<div [ngSwitch]="column.type" [ngClass]="column.cls">
+					<div *ngSwitchCase="columnType.CHECK_ALL">
+						<mat-checkbox
+							class="mat-checkbox"
+							[checked]="allChecked"
+							color="primary"
+							(change)="setAll($event.checked)"
+						></mat-checkbox>
+					</div>
 
-				<div *ngSwitchDefault>
-					{{ column.title }}
+					<div *ngSwitchDefault>
+						{{ column.title }}
+					</div>
 				</div>
-			</div>
-		</th>
+			</th>
 
-		<td *matCellDef="let element">
-			<div [ngSwitch]="column.type" [ngClass]="column.cls">
-				<div *ngSwitchCase="columnType.CHECK_ALL">
-					<mat-checkbox
-						[(ngModel)]="element.checked"
-						color="primary"
-						(ngModelChange)="updateAllChecked()"
-					></mat-checkbox>
-				</div>
+			<td *cdkCellDef="let element let rowIndex = index" [formGroupName]="rowIndex">
+				<div [ngSwitch]="column.type" [ngClass]="column.cls">
+					<div *ngSwitchCase="columnType.CHECK_ALL">
+						<mat-checkbox
+							color="primary"
+							[checked]="element.checked"
+							(change)="updateChecked($event.checked, element)"
+						></mat-checkbox>
+					</div>
 
-				<div *ngSwitchCase="columnType.CHECK">
-					<mat-checkbox [(ngModel)]="element.paid" color="primary"></mat-checkbox>
-				</div>
+					<div *ngSwitchCase="columnType.CHECK">
+						<mat-checkbox  color="primary"></mat-checkbox>
+					</div>
 
-				<div *ngSwitchCase="columnType.INPUT">
-					<mat-form-field class="example-full-width" appearance="fill">
-						<input
-							matInput
-							[value]="inputFormater(element['' + column.field])"
-							[ngModel]="inputFormater(element['' + column.field])"
-							(ngModelChange)="changeFieldValue($event, column, element)"
-						/>
-					</mat-form-field>
-				</div>
+					<div *ngSwitchCase="columnType.INPUT">
+						<ng-container *ngIf="column.field === 'title'">
+							<mat-form-field class="example-full-width" appearance="fill">
+								<input matInput formControlName="title"/>
+							</mat-form-field>
+						</ng-container>
+						<ng-container *ngIf="column.field === 'time'">
+							<mat-form-field class="example-full-width" appearance="fill">
+								<input matInput formControlName="time"/>
+							</mat-form-field>
+						</ng-container>
+						<ng-container *ngIf="column.field === 'overtime'">
+							<mat-form-field class="example-full-width" appearance="fill">
+								<input matInput formControlName="overtime"/>
+							</mat-form-field>
+						</ng-container>
+					</div>
 
         <div *ngSwitchCase="columnType.PROJECT">
           <mat-form-field appearance="fill">
@@ -63,7 +71,7 @@
         </div>
 
         <div *ngSwitchCase="columnType.LINK">
-          <button class="add-link" mat-icon-button aria-label="Add Link" 
+          <button class="add-link" mat-icon-button aria-label="Add Link"
                   (click)="openDialog($event.clientX, $event.clientY, element)">
 						<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
 							{{element.asanaLink ? 'link' : 'add_link'}}
@@ -83,11 +91,15 @@
           </mat-menu>
         </div>
 
-				<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
-			</div>
-		</td>
-	</ng-container>
+					<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
+				</div>
+			</td>
+		</ng-container>
 
-	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr
+			mat-row
+			*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
+		></tr>
+	</table>
+</form>
