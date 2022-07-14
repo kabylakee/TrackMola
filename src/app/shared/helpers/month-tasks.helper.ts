@@ -7,13 +7,14 @@ export class MonthTasksHelper {
 		const daysInfo = MonthTasksHelper.taskToDayMapper(monthTasks);
 		const allDaysInfo = MonthTasksHelper.getAllDayInfo(daysInfo, selectedDate); // filled empty days with default information
 		const allWeeksInfo = MonthTasksHelper.dayToWeekMapper(daysInfo, selectedDate);
+		const calendarColumnCount = 8;
 
 		const calendarConfig: IReportsDayInfo[] = [];
 		let weekCounter = 0;
 		let dayCounter = 0;
 
 		for (let i = 0; i < allDaysInfo.length + allWeeksInfo.length; i++) {
-			if (i % 8 === 0) {
+			if (i % calendarColumnCount === 0) {
 				// week column
 				calendarConfig.push(allWeeksInfo[weekCounter]);
 				weekCounter++;
@@ -136,7 +137,6 @@ export class MonthTasksHelper {
 
 		const lastWeek = this.getWeek(new Date(date.getFullYear(), date.getMonth() + 1, 0));
 		const allWeeksInfo: IReportsDayInfo[] = [];
-		const msPerWeek = 6.048e8;
 
 		allDayInfo.forEach((dayInfo) => {
 			if (this.getWeek(dayInfo.date) === currentWeek) {
@@ -171,7 +171,7 @@ export class MonthTasksHelper {
 		for (let i = allWeeksInfo.length; i < lastWeek; i++) {
 			allWeeksInfo.push({
 				date: allWeeksInfo.length
-					? new Date(+allWeeksInfo[i - 1].date + msPerWeek)
+					? this.getFirstDayOfWeek(i + 1, date)
 					: new Date(date.getFullYear(), date.getMonth(), 1),
 				taskCount: 0,
 				total: 0,

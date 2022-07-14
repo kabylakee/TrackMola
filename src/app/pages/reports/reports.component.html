@@ -4,11 +4,13 @@
   (togglePeriod)="togglePeriod($event)" 
   (changeDate)="onChangeDate($event)" 
   (selectedFilters)="getFilters($event)"></app-table-filter>
-<app-reports-table 
-  [class.invisible]="period !== periods.Day" 
-  [columns]="columns" 
-  [dataSource]="tasks" 
-  (outChangeTime)="updateSumTime($event)"></app-reports-table>
-<app-reports-button [class.invisible]="period !== periods.Day"></app-reports-button>
-<app-month-table [class.invisible]="period !== periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
-<app-calendar-legend [class.invisible]="period !== periods.Month" [legendItems]="legendItems"></app-calendar-legend>
+<div [ngSwitch]="period">
+  <app-reports-table 
+    *ngSwitchCase="periods.Day" 
+    [columns]="columns" 
+    [dataSource]="tasks" 
+    (outChangeTime)="updateSumTime($event)"></app-reports-table>
+  <app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
+  <app-month-table *ngSwitchCase="periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
+  <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
+</div>
