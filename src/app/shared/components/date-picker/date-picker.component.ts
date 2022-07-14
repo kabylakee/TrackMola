@@ -13,9 +13,7 @@ import {MY_FORMATS} from 'src/app/entities/constants/formats.constants';
 import {Period} from 'src/app/entities/enums/period.enum';
 
 import * as moment from 'moment';
-// import {default as _rollupMoment} from 'moment';
 import {MatDatepicker} from '@angular/material/datepicker';
-// const moment = _rollupMoment || _moment;
 
 @Component({
 	selector: 'app-date-picker',
