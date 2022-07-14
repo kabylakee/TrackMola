@@ -1,5 +1,6 @@
 <app-header [pageTitle]="title"></app-header>
 <app-table-filter 
+  #tableFilter
   [sumTime]="sumTime" 
   (togglePeriod)="togglePeriod($event)" 
   (changeDate)="onChangeDate($event)" 
@@ -11,6 +12,10 @@
     [dataSource]="tasks" 
     (outChangeTime)="updateSumTime($event)"></app-reports-table>
   <app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
-  <app-month-table *ngSwitchCase="periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
+  <app-month-table 
+    *ngSwitchCase="periods.Month" 
+    [daysInfo]="calendarConfig" 
+    [selectedDate]="selectedDate" 
+    (selectDay)="tableFilter.onSelectCalendarDay($event)"></app-month-table>
   <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
 </div>

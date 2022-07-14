@@ -26,6 +26,7 @@ export class TableFilterComponent {
 	public readonly monthNormalTime = DEFAULT_MONTH_WORKTIME;
 	public periodRange: Period = Period.Day;
 	public projects: IProject[] = Object.values(PROJECT_MOCK);
+	public calendarDate: Date;
 
 	public changePeriod(element: Period): void {
 		this.periodRange = element;
@@ -34,5 +35,10 @@ export class TableFilterComponent {
 
 	public emitFilters(filters: IFilter): void {
 		this.selectedFilters.emit(filters);
+	}
+
+	public onSelectCalendarDay(date: Date) {
+		this.changePeriod(Period.Day);
+		this.calendarDate = date;
 	}
 }

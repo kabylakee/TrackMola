@@ -6,7 +6,6 @@
 
 	.header-bg {
 		position: absolute;
-		top: var(--offset);
 		width: calc(100% - $scroll-size);
 		height: $scroll-size;
 		background-color: white;
