@@ -14,22 +14,22 @@
 
 		<mat-menu #innerMatMenu="matMenu" class="inner-menu" [ngSwitch]="item">
 			<div *ngSwitchCase="'Project'">
-				<button mat-menu-item (click) = "$event.stopPropagation()">
+				<button mat-menu-item (click)="$event.stopPropagation()">
 					<ng-container *ngTemplateOutlet="setAllTemplate; context: project"></ng-container>
 				</button>
 				<button mat-menu-item *ngFor="let project of projectSource" 
-				class="project" (click) = "$event.stopPropagation()">
+				class="project" (click)="$event.stopPropagation()">
 					<mat-checkbox color="primary" [(ngModel)]="project.checked"
 					(ngModelChange)="onChange('project',$event)">{{project.title}}</mat-checkbox>
 				</button>
 			</div>
 
 			<div *ngSwitchCase="'Status'">
-			<button mat-menu-item (click) = "$event.stopPropagation()">
+			<button mat-menu-item (click)="$event.stopPropagation()">
 				<ng-container *ngTemplateOutlet="setAllTemplate; context: status"></ng-container>
 			</button>
 			<button mat-menu-item *ngFor="let status of statusSource" 
-			class="status" (click) = "$event.stopPropagation()">
+			class="status" (click)="$event.stopPropagation()">
 				<mat-checkbox color="primary" [(ngModel)]="status.checked"
 				(ngModelChange)="onChange('status',$event)"
 				(click)="$event.stopPropagation()">{{status.title}}</mat-checkbox>
