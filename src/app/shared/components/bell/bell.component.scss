@@ -1,4 +1,5 @@
 @import 'mixins/colors-mixin';
+@import 'mixins/common-mixin';
 
 $bell-icon-width-height: 3rem;
 $mat-card-width: 20rem;
@@ -41,9 +42,7 @@ $button-icons: 1.44rem;
 	}
 
 	.mat-flat-button {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+    @include flex-center;
 		width: $mat-flat-button-width;
 		height: $mat-flat-button-height;
 		font-size: var(--font-size-xs);
