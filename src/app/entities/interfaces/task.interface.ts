@@ -13,3 +13,8 @@ export interface ITask {
 	asanaLink: string;
 	bitbucketLink: string;
 }
+
+export interface IReportData {
+	date: string;
+	tasks: ITask[];
+}
