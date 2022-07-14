@@ -11,18 +11,18 @@ $button-icons: 1.44rem;
 	.bell-icon {
 		width: $bell-icon-width-height;
 		height: $bell-icon-width-height;
+		color: var(--dark-gray);
 		background: rgba-color(light-gray, 0.1);
 		border-radius: calc(var(--border-radius) * 0.5);
-		color: var(--dark-gray);
 	}
 
 	.mat-card {
 		position: absolute;
 		z-index: 1;
 		width: $mat-card-width;
+		margin-top: calc(var(--offset) * 0.3);
 		border: 1px solid var(--accent-200);
 		box-shadow: none;
-		margin-top: calc(var(--offset) * 0.3);
 	}
 
 	.mat-card-title {
@@ -40,17 +40,17 @@ $button-icons: 1.44rem;
 
 	.mat-card-actions {
 		display: flex;
-		justify-content: flex-end;
 		gap: var(--offset-xs);
+		justify-content: flex-end;
 		margin-right: calc(var(--offset) * 0.2);
 	}
 
 	.notification {
 		display: flex;
+		gap: calc(var(--offset) * 2.5);
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: calc(var(--offset) * 0.5);
-		gap: calc(var(--offset) * 2.5);
 	}
 
 	.notification-controllers {
