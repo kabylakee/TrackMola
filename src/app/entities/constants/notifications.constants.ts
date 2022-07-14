@@ -1,6 +1,6 @@
 import {INotification} from '../interfaces/notification.interface';
 
-export const NOTIFiCATION_CONTENT: INotification[] = [
+export const NOTIFICATION_CONTENT: INotification[] = [
 	{
 		content: 'Submit your weekly report',
 	},

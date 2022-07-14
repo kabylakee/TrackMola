@@ -20,13 +20,14 @@ export class BellComponent implements OnInit {
 	@Output() snoozedNotification = new EventEmitter<INotification[]>();
 	public isCardOpen = false;
 	public copyOfNotifications: INotification[];
+	public hour = 1000 * 3600;
 	constructor(private _cdr: ChangeDetectorRef) {}
 
 	public ngOnInit(): void {
 		this.copyOfNotifications = this.notifications;
 	}
 
-	showCard() {
+	public showCard(): void {
 		if (!this.isCardOpen) {
 			this.isCardOpen = true;
 		} else {
@@ -34,28 +35,28 @@ export class BellComponent implements OnInit {
 		}
 	}
 
-	snoozeNotification(i: number) {
+	public snoozeNotification(i: number): void {
 		const notification = this.copyOfNotifications.splice(i, 1);
 		setTimeout(() => {
 			this.copyOfNotifications.unshift(notification[0]);
 			this._cdr.detectChanges();
-		}, 1000 * 3600);
+		}, this.hour);
 	}
 
-	dismissNotification(i: number) {
+	public dismissNotification(i: number): void {
 		this.copyOfNotifications.splice(i, 1);
 	}
 
-	dismissNotificationAll() {
+	public dismissNotificationAll(): void {
 		this.copyOfNotifications = [];
 	}
 
-	snoozeNotificationAll() {
+	public snoozeNotificationAll(): void {
 		const notifications = this.copyOfNotifications;
 		this.copyOfNotifications = [];
 		setTimeout(() => {
 			this.copyOfNotifications = notifications;
 			this._cdr.detectChanges();
-		}, 1000 * 3600);
+		}, this.hour);
 	}
 }
