@@ -7,14 +7,15 @@ export class MonthTasksHelper {
 		const daysInfo = MonthTasksHelper.taskToDayMapper(monthTasks);
 		const allDaysInfo = MonthTasksHelper.getAllDayInfo(daysInfo, selectedDate); // filled empty days with default information
 		const allWeeksInfo = MonthTasksHelper.dayToWeekMapper(daysInfo, selectedDate);
+		const calendarColumnCount = 8;
 
 		const calendarConfig: IReportsDayInfo[] = [];
 		let weekCounter = 0;
 		let dayCounter = 0;
 
 		for (let i = 0; i < allDaysInfo.length + allWeeksInfo.length; i++) {
-			if (i % 8 === 0) {
-				// month column
+			if (i % calendarColumnCount === 0) {
+				// week column
 				calendarConfig.push(allWeeksInfo[weekCounter]);
 				weekCounter++;
 			} else {
@@ -143,34 +144,34 @@ export class MonthTasksHelper {
 			} else {
 				weeks.push(weekInfo);
 				weekInfo = [];
+				if (this.getWeek(dayInfo.date) > currentWeek + 1) {
+					this.fillEmptyWeek(weeks, this.getWeek(dayInfo.date) - currentWeek - 1);
+				}
 				currentWeek = this.getWeek(dayInfo.date);
 				weekInfo.push(dayInfo);
 			}
 		});
 
-		if (weeks.length) {
-			weeks.push(weekInfo);
+		weeks.push(weekInfo);
 
-			weeks.forEach((week) => {
-				allWeeksInfo.push({
-					date: week[0].date,
-					taskCount: week.length,
-					total: week.reduce((totalTime, day) => (totalTime += day.total), 0),
-					overtime: week.reduce((totalOvertime, day) => (totalOvertime += day.overtime), 0),
-					timeStatus: this.weekStatus(week),
-					isVacation: false,
-					paid: false,
-					disabled: false,
-					isWeekInfo: true,
-				});
+		weeks.forEach((week, weekIndex) => {
+			allWeeksInfo.push({
+				date: week[0] ? week[0].date : this.getFirstDayOfWeek(weekIndex + 1, date),
+				taskCount: week.length,
+				total: week.reduce((totalTime, day) => (totalTime += day.total), 0),
+				overtime: week.reduce((totalOvertime, day) => (totalOvertime += day.overtime), 0),
+				timeStatus: this.weekStatus(week),
+				isVacation: false,
+				paid: false,
+				disabled: false,
+				isWeekInfo: true,
 			});
-		}
+		});
 
-		const msPerWeek = 6.048e8;
 		for (let i = allWeeksInfo.length; i < lastWeek; i++) {
 			allWeeksInfo.push({
 				date: allWeeksInfo.length
-					? new Date(+allWeeksInfo[i - 1].date + msPerWeek)
+					? this.getFirstDayOfWeek(i + 1, date)
 					: new Date(date.getFullYear(), date.getMonth(), 1),
 				taskCount: 0,
 				total: 0,
@@ -182,8 +183,21 @@ export class MonthTasksHelper {
 				isWeekInfo: true,
 			});
 		}
+		if (allWeeksInfo[allWeeksInfo.length - 1].date.getMonth() !== date.getMonth()) {
+			allWeeksInfo[allWeeksInfo.length - 1].date = new Date(
+				date.getFullYear(),
+				date.getMonth() + 1,
+				0,
+			);
+		}
 
 		return allWeeksInfo;
+	}
+
+	private static fillEmptyWeek(weeks: IReportsDayInfo[][], emptyWeekCount: number): void {
+		for (let i = 0; i < emptyWeekCount; i++) {
+			weeks.push([]);
+		}
 	}
 
 	private static timeStatus(day: ITask[]): TimeStatus {
@@ -206,5 +220,16 @@ export class MonthTasksHelper {
 		const dateNumber = date.getDate();
 		const dayNumber = date.getDay() === 0 ? 7 : date.getDay();
 		return Math.ceil((dateNumber - dayNumber) / 7) + 1;
+	}
+
+	private static getFirstDayOfWeek(week: number, date: Date): Date {
+		const dateYear = date.getFullYear();
+		const dateMonth = date.getMonth();
+		const firstDayOfMonth = new Date(dateYear, dateMonth, 1);
+		const firstWeekDay = firstDayOfMonth.getDay() === 0 ? 7 : firstDayOfMonth.getDay();
+		const weekOffset = 8 - firstWeekDay;
+		if (week === 1) return firstDayOfMonth;
+		if (week === 2) return new Date(dateYear, dateMonth, 1 + weekOffset);
+		return new Date(dateYear, dateMonth, 1 + weekOffset + (week - 2) * 7);
 	}
 }
