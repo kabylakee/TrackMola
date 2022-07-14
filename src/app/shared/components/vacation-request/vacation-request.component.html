@@ -6,11 +6,11 @@
 </div>
   
 <mat-dialog-content class="mat-typography">
-    <form>
+    <form [formGroup]="requestForm" novalidate (ngSubmit)="onSend()">
         <div class="dialog-content-item">
             <mat-label class="label">From</mat-label>
             <mat-form-field class="example-full-width" appearance="fill" color="secondary">
-                <input matInput [matDatepicker]="picker1" placeholder="Choose a date" [(ngModel)]="data.dateFrom">
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="dateFrom">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                     <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
                         calendar_today
@@ -20,7 +20,7 @@
             </mat-form-field>
             <mat-label class="label">To</mat-label>
             <mat-form-field class="example-full-width" appearance="fill">
-                <input matInput [matDatepicker]="picker2" placeholder="Choose a date" [(ngModel)]="data.dateTo">
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="dateTo">
                 <mat-datepicker-toggle matSuffix [for]="picker2">
                     <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
                         calendar_today
@@ -33,10 +33,10 @@
         <mat-label class="label">Comments</mat-label>
     </div>
     <div class="dialog-content-item">
-        <textarea matInput class="textarea" placeholder="Leave your comment" [(ngModel)]="data.comment"></textarea>
+        <textarea matInput class="textarea" placeholder="Leave your comment" formControlName="comments"></textarea>
     </div>
     <div class="dialog-content-item last">
-        <mat-checkbox color="primary" [(ngModel)]="data.paid"></mat-checkbox>
+        <mat-checkbox color="primary" formControlName="paid"></mat-checkbox>
         <mat-label class="label last">Paid</mat-label>
     </div>
     
