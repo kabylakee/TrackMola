@@ -42,7 +42,7 @@ $button-icons: 1.44rem;
 	}
 
 	.mat-flat-button {
-    @include flex-center;
+		@include flex-center;
 		width: $mat-flat-button-width;
 		height: $mat-flat-button-height;
 		font-size: var(--font-size-xs);
@@ -60,17 +60,13 @@ $button-icons: 1.44rem;
 			width: $notification-controllers-width;
 			padding-right: var(--offset-xxxs);
 			& .mat-icon-button {
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				@include flex-center;
 				width: $button-icons;
 				height: $button-icons;
 				color: var(--accent-300);
 				border: 1px solid var(--accent-300);
 				& .mat-icon {
-					display: flex;
-					align-items: center;
-					justify-content: center;
+					@include flex-center;
 					font-size: calc(var(--font-size) * 1.2);
 					line-height: 1.45rem;
 				}
