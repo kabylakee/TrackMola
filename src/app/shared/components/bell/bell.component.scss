@@ -18,9 +18,12 @@ $button-icons: 1.44rem;
 	}
 
 	.mat-card {
-		position: absolute;
-		z-index: 1;
-		width: $mat-card-width;
+		position: fixed;
+		z-index: 2;
+		right: 3rem;
+		width: fit-content;
+		min-width: 20rem;
+		max-width: 50vw;
 		margin-top: calc(var(--offset) * 0.3);
 		border: 1px solid var(--accent-200);
 		box-shadow: none;
@@ -54,6 +57,9 @@ $button-icons: 1.44rem;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: calc(var(--offset) * 0.5);
+		& span {
+			white-space: nowrap;
+		}
 		&-controllers {
 			display: flex;
 			justify-content: space-between;
@@ -74,9 +80,18 @@ $button-icons: 1.44rem;
 		}
 	}
 
+	.notifications-container {
+		width: fit-content;
+	}
+
 	mat-card-actions .mat-flat-button ::ng-deep .mat-button-wrapper {
 		display: flex;
 		gap: var(--offset-xxxxs);
 		align-items: center;
+	}
+
+	.no-data {
+		display: flex;
+		justify-content: center;
 	}
 }
