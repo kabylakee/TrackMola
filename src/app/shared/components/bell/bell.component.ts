@@ -28,7 +28,7 @@ export class BellComponent implements OnInit {
 	}
 
 	public showCard(): void {
-    this.isCardOpen = !this.isCardOpen;
+		this.isCardOpen = !this.isCardOpen;
 	}
 
 	public snoozeNotification(i: number): void {
