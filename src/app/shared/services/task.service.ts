@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {OVERTIME} from 'src/app/entities/constants/overtime.constants';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {STATUSES} from 'src/app/entities/constants/status.constants';
@@ -20,6 +20,38 @@ export class TaskService {
 
 	constructor(private localStorageService: LocalStorageService) {
 		this.checkData();
+	}
+
+	public filterTasks(
+		filter: IFilter = {
+			projects: [],
+			statuses: [],
+			overtimes: [],
+		},
+	): Observable<ITask[]> {
+		if (!filter.projects.length) {
+			filter.projects = Object.values(PROJECT_MOCK);
+		}
+		if (!filter.statuses.length) {
+			filter.statuses = Object.values(STATUSES);
+		}
+		if (!filter.overtimes.length) {
+			filter.overtimes = Object.values(OVERTIME);
+		}
+
+		const arr = this.tasks$.value.filter((task) => {
+			return (
+				filter.projects.find((project) => task.project.title === project.title) &&
+				filter.statuses.find((status) => task.status === status.title) &&
+				filter.overtimes.find(
+					(overtime) =>
+						(task.paid && overtime.title === 'Paid' && task.overtime) ||
+						(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
+						(!task.overtime && overtime.title === 'No overtime' && !task.paid),
+				)
+			);
+		});
+		return of(arr);
 	}
 
 	public getTasks(): Observable<ITask[]> {
@@ -45,22 +77,20 @@ export class TaskService {
 			filter.overtimes = Object.values(OVERTIME);
 		}
 
-		this.tasks$.next(
-			TASKS_MOCK.filter(
-				(task) =>
-					task.date >= dateFrom &&
-					task.date < dateTo &&
-					filter.projects.find((project) => task.project.title === project.title) &&
-					filter.statuses.find((status) => task.status === status.title) &&
-					filter.overtimes.find(
-						(overtime) =>
-							(task.paid && overtime.title === 'Paid' && task.overtime) ||
-							(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
-							(!task.overtime && overtime.title === 'No overtime' && !task.paid),
-					),
-			),
+		const arr = this.tasks$.value.filter(
+			(task) =>
+				task.date >= dateFrom &&
+				task.date < dateTo &&
+				filter.projects.find((project) => task.project.title === project.title) &&
+				filter.statuses.find((status) => task.status === status.title) &&
+				filter.overtimes.find(
+					(overtime) =>
+						(task.paid && overtime.title === 'Paid' && task.overtime) ||
+						(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
+						(!task.overtime && overtime.title === 'No overtime' && !task.paid),
+				),
 		);
-		return this.tasks$;
+		return of(arr);
 	}
 
 	public checkData(): void {
@@ -72,7 +102,6 @@ export class TaskService {
 			this.mapData(localStorageData as ITask[]);
 			this.tasks$.next(localStorageData as ITask[]);
 		}
-		console.log('this.tasks$', this.tasks$.value);
 	}
 
 	public getDisabledOptionBtn(): Observable<boolean> {
@@ -104,7 +133,6 @@ export class TaskService {
 				});
 				newData.splice(findedIndex, 1);
 			});
-			console.log(newData);
 			this.tasks$.next(newData);
 		}
 		if (newAction.action === OptionsTitle.Move) {

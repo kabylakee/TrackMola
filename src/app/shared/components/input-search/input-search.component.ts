@@ -8,5 +8,5 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
 })
 export class InputSearchComponent {
 	@Output() searchValueChange = new EventEmitter<string>();
-	public value: string = '';
+	public value = '';
 }

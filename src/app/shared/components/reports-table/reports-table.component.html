@@ -45,12 +45,7 @@
 						</ng-container>
 						<ng-container *ngIf="column.field === 'overtime'">
 							<mat-form-field class="example-full-width" appearance="fill">
-								<input
-                  matInput
-                  formControlName="overtime"
-                  [value]="inputFormater(element['' + column.field])"
-                  [ngModel]="inputFormater(element['' + column.field])"
-                />
+								<input matInput formControlName="overtime"/>
 							</mat-form-field>
 						</ng-container>
 					</div>

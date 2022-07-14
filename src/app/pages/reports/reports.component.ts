@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DAY_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
@@ -11,6 +11,7 @@ import {DEFAULT_TIME} from '../../entities/constants/hours.constants';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
 import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 import {IOptionInterface} from '../../entities/interfaces/option.interface';
+import {takeWhile} from 'rxjs';
 
 @Component({
 	selector: 'app-reports',
@@ -18,13 +19,14 @@ import {IOptionInterface} from '../../entities/interfaces/option.interface';
 	styleUrls: ['./reports.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsComponent implements OnInit {
+export class ReportsComponent implements OnInit, OnDestroy {
 	@Input() selectedDate: Date = new Date();
 	public filters: IFilter;
 
 	public tasks: ITask[] = [];
 	public columns: ITableColumn[] = [];
 
+	private isSub = true;
 	public monthTasks: ITask[];
 	public calendarConfig: IReportsDayInfo[];
 	public sumTime: IHours = DEFAULT_TIME;
@@ -33,7 +35,7 @@ export class ReportsComponent implements OnInit {
 	public readonly title =
 		RouterPaths.Reports.charAt(0).toUpperCase() + RouterPaths.Reports.slice(1);
 
-	public searchValue: string = '';
+	public searchValue = '';
 	public actionHanding: IOptionInterface;
 	public day: Date = new Date(2022, 7, 12);
 
@@ -56,11 +58,14 @@ export class ReportsComponent implements OnInit {
 	}
 
 	private getTasks(): void {
-		this.taskService.getTasks().subscribe((tasks) => {
-			this.tasks = tasks.filter((task) => {
-				return +task.date === +this.day;
+		this.taskService
+			.getTasks()
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((tasks) => {
+				this.tasks = tasks.filter((task) => {
+					return +task.date === +this.day;
+				});
 			});
-		});
 	}
 
 	private getMonthTasks(): void {
@@ -69,6 +74,7 @@ export class ReportsComponent implements OnInit {
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 1),
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 1),
 			)
+			.pipe(takeWhile(() => this.isSub))
 			.subscribe((tasks) => (this.monthTasks = tasks));
 	}
 
@@ -78,6 +84,14 @@ export class ReportsComponent implements OnInit {
 
 	public getFilters(filters: IFilter): void {
 		this.filters = filters;
+		this.taskService
+			.filterTasks(filters)
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((tasks) => {
+				this.tasks = tasks.filter((task) => {
+					return +task.date === +this.day;
+				});
+			});
 		this.getMonthTasks();
 	}
 
@@ -87,5 +101,9 @@ export class ReportsComponent implements OnInit {
 
 	public onActionHanding(event: IOptionInterface): void {
 		this.actionHanding = event;
+	}
+
+	ngOnDestroy() {
+		this.isSub = false;
 	}
 }
