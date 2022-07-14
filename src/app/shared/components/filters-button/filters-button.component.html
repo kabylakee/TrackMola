@@ -37,10 +37,10 @@
 			</div>
 
 			<div *ngSwitchCase="'Overtime'">
-			<button mat-menu-item (click) = "$event.stopPropagation()">
+			<button mat-menu-item (click)="$event.stopPropagation()">
 				<ng-container *ngTemplateOutlet="setAllTemplate; context: overtime"></ng-container>
 			</button>
-			<button mat-menu-item *ngFor="let overtime of overtimeSource" (click) = "$event.stopPropagation()">
+			<button mat-menu-item *ngFor="let overtime of overtimeSource" (click)="$event.stopPropagation()">
 				<mat-checkbox color="primary" [(ngModel)]="overtime.checked"
 				(ngModelChange)="onChange('overtime',$event)"
 				(click)="$event.stopPropagation()">{{overtime.title}}</mat-checkbox>
