@@ -21,4 +21,19 @@
 		color: var(--accent-500);
 		border-color: var(--accent-500);
 	}
+
+	.hidden-input {
+		width: 0;
+		height: 0;
+	}
+}
+
+::ng-deep .hidden-mat-menu-item {
+	width: 0;
+	min-width: 0 !important;
+	height: 0;
+}
+
+::ng-deep .mat-menu-submenu-icon {
+	display: none;
 }

@@ -1,17 +1,23 @@
 <div class="button-group">
-  <mat-form-field appearance="fill" (click)="picker.open()">
-    <mat-datepicker-toggle matSuffix>
-      <mat-icon matDatepickerToggleIcon>
+	<mat-form-field appearance="fill" (click)="picker.open()">
+		<mat-datepicker-toggle matSuffix>
+			<mat-icon matDatepickerToggleIcon class="material-icons-outlined">
         calendar_today
       </mat-icon>
-    </mat-datepicker-toggle>
-    <input (dateChange)="changeDate.emit(date.value?.toDate())" matInput [matDatepicker]="picker" [formControl]="date" readonly>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <button mat-flat-button color="secondary" (click)="changeDateRange(-1)">
-    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_left</mat-icon>
-  </button>
-  <button mat-flat-button color="secondary" (click)="changeDateRange(1)">
-    <mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_right</mat-icon>
-  </button>
+		</mat-datepicker-toggle>
+		<input
+			(dateChange)="changeDate.emit(date.value?.startOf('day')?.toDate())"
+			matInput
+			[matDatepicker]="picker"
+			[formControl]="date"
+			readonly
+		/>
+		<mat-datepicker #picker></mat-datepicker>
+	</mat-form-field>
+	<button mat-flat-button color="secondary" (click)="changeDateRange(-1)">
+		<mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_left</mat-icon>
+	</button>
+	<button mat-flat-button color="secondary" (click)="changeDateRange(1)">
+		<mat-icon class="material-symbols-outlined arrow-icon">keyboard_arrow_right</mat-icon>
+	</button>
 </div>

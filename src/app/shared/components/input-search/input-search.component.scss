@@ -1,6 +1,6 @@
 :host {
 	$search-area-width: 17rem;
-	$search-area-height: 2.5rem;
+	$search-area-height: 2.375rem;
 
 	position: relative;
 	display: flex;
@@ -25,19 +25,15 @@
 		outline: none;
 	}
 
-	.search-clear {
+	.search-clear-icon {
 		width: calc($search-area-height * 0.5);
 		height: calc($search-area-height * 0.5);
-		margin-left: auto;
-		padding: 0;
-		color: var(--accent-500);
-		background: none;
-		border: none;
+		color: var(--accent-300);
+		font-size: var(--font-size-m);
+		cursor: pointer;
 
-		&-icon {
-			width: calc($search-area-height * 0.5);
-			height: calc($search-area-height * 0.5);
-			font-size: var(--font-size-m);
+		&:hover {
+			color: var(--accent-500);
 		}
 	}
 }
