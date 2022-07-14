@@ -5,10 +5,10 @@
 	$user-area-height: 3rem;
 	$user-img-size: 2rem;
 
-  .container-user-notification{
-    display:flex;
-    gap:var(--offset-xs);
-  }
+	.container-user-notification {
+		display: flex;
+		gap: var(--offset-xs);
+	}
 
 	app-bell {
 		margin-left: calc(var(--offset) * 50);
