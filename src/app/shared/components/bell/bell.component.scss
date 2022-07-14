@@ -23,21 +23,21 @@ $button-icons: 1.44rem;
 		margin-top: calc(var(--offset) * 0.3);
 		border: 1px solid var(--accent-200);
 		box-shadow: none;
-    &-title{
-      font-size: var(--font-size-s);
-    }
+		&-title {
+			font-size: var(--font-size-s);
+		}
 
-    &-actions{
-      display: flex;
-      gap: var(--offset-xs);
-      justify-content: flex-end;
-      margin-right: calc(var(--offset) * 0.2);
-      & .mat-flat-button mat-icon{
-        display: flex;
-        align-items: center;
-        font-size: calc(var(--font-size) * 1.13);
-      }
-    }
+		&-actions {
+			display: flex;
+			gap: var(--offset-xs);
+			justify-content: flex-end;
+			margin-right: calc(var(--offset) * 0.2);
+			& .mat-flat-button mat-icon {
+				display: flex;
+				align-items: center;
+				font-size: calc(var(--font-size) * 1.13);
+			}
+		}
 	}
 
 	.mat-flat-button {
@@ -55,28 +55,28 @@ $button-icons: 1.44rem;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: calc(var(--offset) * 0.5);
-    &-controllers{
-      display: flex;
-      justify-content: space-between;
-      width: $notification-controllers-width;
-      padding-right: var(--offset-xxxs);
-      & .mat-icon-button{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: $button-icons;
-        height: $button-icons;
-        color: var(--accent-300);
-        border: 1px solid var(--accent-300);
-        & .mat-icon{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: calc(var(--font-size) * 1.2);
-          line-height: 1.45rem;
-        }
-      }
-    }
+		&-controllers {
+			display: flex;
+			justify-content: space-between;
+			width: $notification-controllers-width;
+			padding-right: var(--offset-xxxs);
+			& .mat-icon-button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: $button-icons;
+				height: $button-icons;
+				color: var(--accent-300);
+				border: 1px solid var(--accent-300);
+				& .mat-icon {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					font-size: calc(var(--font-size) * 1.2);
+					line-height: 1.45rem;
+				}
+			}
+		}
 	}
 
 	mat-card-actions .mat-flat-button ::ng-deep .mat-button-wrapper {
