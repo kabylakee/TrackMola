@@ -13,6 +13,7 @@ $button-icons: 1.44rem;
 		height: $bell-icon-width-height;
 		background: rgba-color(light-gray, 0.1);
 		border-radius: calc(var(--border-radius) * 0.5);
+    color:var(--dark-gray);
 	}
 
 	.mat-card {
@@ -21,6 +22,7 @@ $button-icons: 1.44rem;
 		width: $mat-card-width;
 		border: 1px solid var(--accent-200);
 		box-shadow: none;
+    margin-top:calc(var(--offset) * 0.3);
 	}
 
 	.mat-card-title {
@@ -38,7 +40,9 @@ $button-icons: 1.44rem;
 
 	.mat-card-actions {
 		display: flex;
-		justify-content: space-around;
+		justify-content: flex-end;
+    gap:var(--offset-xs);
+    margin-right:calc(var(--offset) * 0.2);
 	}
 
 	.notification {
@@ -46,6 +50,7 @@ $button-icons: 1.44rem;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: calc(var(--offset) * 0.5);
+    gap:calc(var(--offset) * 2.5);
 	}
 
 	.notification-controllers {
@@ -70,6 +75,7 @@ $button-icons: 1.44rem;
 		align-items: center;
 		justify-content: center;
 		font-size: calc(var(--font-size) * 1.2);
+    line-height: 1.45rem;
 	}
 
 	mat-card-actions .mat-flat-button mat-icon {

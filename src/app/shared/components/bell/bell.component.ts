@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+} from '@angular/core';
 import {INotification} from 'src/app/entities/interfaces/notification.interface';
 
 @Component({
@@ -7,13 +15,20 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 	styleUrls: ['./bell.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BellComponent {
-	@Input() array: INotification[] = [];
+export class BellComponent implements OnInit {
+	@Input() notifications: INotification[] = [];
+	@Output() snoozedNotification = new EventEmitter<INotification[]>();
 	public isCardOpen = false;
-	public isShownNotification = true;
+	public copyOfNotifications: INotification[];
+	constructor(private _cdr: ChangeDetectorRef) {}
+
+	public ngOnInit(): void {
+		this.copyOfNotifications = this.notifications;
+	}
 
 	showCard() {
-		console.log(this.array);
+		console.log(this.copyOfNotifications);
+		console.log(this.notifications);
 		if (!this.isCardOpen) {
 			this.isCardOpen = true;
 		} else {
@@ -22,20 +37,27 @@ export class BellComponent {
 	}
 
 	snoozeNotification(i: number) {
-		this.array.splice(i, 1);
-		//TODO: snooze for 3 hours late;
+		const notification = this.copyOfNotifications.splice(i, 1);
+		setTimeout(() => {
+			this.copyOfNotifications.unshift(notification[0]);
+			this._cdr.detectChanges();
+		}, 2000);
 	}
 
 	dismissNotification(i: number) {
-		this.array.splice(i, 1);
+		this.copyOfNotifications.splice(i, 1);
 	}
 
 	dismissNotificationAll() {
-		this.array = [];
+		this.copyOfNotifications = [];
 	}
 
 	snoozeNotificationAll() {
-		this.array = [];
-		//TODO: snooze for 3 hours late;
+		const notifications = this.copyOfNotifications;
+		this.copyOfNotifications = [];
+		setTimeout(() => {
+			this.copyOfNotifications = notifications;
+			this._cdr.detectChanges();
+		}, 2000);
 	}
 }
