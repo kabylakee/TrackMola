@@ -26,6 +26,7 @@ import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
+import {NewTask} from '../../../entities/constants/new-task.class';
 
 @Component({
 	selector: 'app-reports-table',
@@ -128,19 +129,19 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public reportButtonHanding(button: ReportsButtonEnum): void {
 		if (button === ReportsButtonEnum.AddTask) {
 			const defaultProject: IProject = PROJECT_MOCK[0];
-			const newTask: ITask = {
-				date: this.day,
-				checked: false,
-				title: '',
-				project: defaultProject,
-				status: Status.InProgress,
-				time: 0,
-				overtime: 0,
-				paid: false,
-				asanaLink: '',
-				bitbucketLink: '',
-				newRow: true,
-			};
+			const newTask = new NewTask(
+				this.day,
+				false,
+				'',
+				defaultProject,
+				Status.InProgress,
+				0,
+				0,
+				false,
+				'',
+				'',
+				true,
+			);
 			this.dataSource = [...this.dataSource, newTask];
 			this.filterDataSource = this.dataSource;
 			this.setRowsForm();
