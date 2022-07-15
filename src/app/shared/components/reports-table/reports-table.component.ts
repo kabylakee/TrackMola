@@ -137,6 +137,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 				paid: false,
 				asanaLink: '',
 				bitbucketLink: '',
+				newRow: true,
 			};
 			this.dataSource = [...this.dataSource, newTask];
 			this.filterDataSource = this.dataSource;
@@ -147,11 +148,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			return;
 		}
 		if (button === ReportsButtonEnum.Save) {
-			this.filterDataSource.forEach((task) => {
-				if (task.title !== '') {
-					this.taskService.reportsBtnSave(this.filterDataSource);
-				}
-			});
+			const filterArr = this.filterDataSource.filter((task) => task.newRow);
+			this.taskService.reportsBtnSave(filterArr);
 			return;
 		}
 		// if (button === ReportsButtonEnum.Submit) {
