@@ -21,16 +21,16 @@ $mat-icon-line-height: 1.45rem;
 	.tooltip {
 		&-right {
 			position: absolute;
-			padding: calc(var(--offset) * 0.2);
-			width: max-content;
-			background-color: var(--light-black);
-			left: $tooltip-right-position-left;
 			top: $tooltip-right-position-top;
+			left: $tooltip-right-position-left;
+			width: max-content;
+			padding: calc(var(--offset) * 0.2);
+			background-color: var(--light-black);
 		}
 		&-down {
 			position: absolute;
-			left: $tooltip-down-position-left;
 			top: $tooltip-down-position-top;
+			left: $tooltip-down-position-left;
 			width: max-content;
 			padding: calc(var(--offset) * 0.2);
 			background-color: var(--light-black);
@@ -49,8 +49,8 @@ $mat-icon-line-height: 1.45rem;
 
 	.mat-card {
 		position: fixed;
-		z-index: 2;
 		right: $mat-card-position-right;
+		z-index: 1000;
 		width: fit-content;
 		min-width: $mat-card-min-width;
 		max-width: $mat-card-max-width;
@@ -65,8 +65,8 @@ $mat-icon-line-height: 1.45rem;
 			display: flex;
 			gap: var(--offset-xs);
 			justify-content: flex-end;
-			margin-right: calc(var(--offset) * 0.2);
 			margin-top: $actions-margin-top;
+			margin-right: calc(var(--offset) * 0.2);
 			& .mat-flat-button mat-icon {
 				display: flex;
 				align-items: center;
