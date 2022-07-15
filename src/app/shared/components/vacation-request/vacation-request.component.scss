@@ -14,7 +14,22 @@ $textarea-height: 4.375rem;
 			}
 			color: var(--accent-300);
 		}
-
+		// ::ng-deep {
+		// 	.ng-valid {
+		// 		.mat-form-field-appearance-fill {
+		// 			.mat-form-field-flex {
+		// 				border: 1px solid var(--accent-300);
+		// 			}
+		// 		}
+		// 	}
+		// 	.ng-invalid {
+		// 		.mat-form-field-appearance-fill {
+		// 			.mat-form-field-flex {
+		// 				border: 1px solid var(--red);
+		// 			}
+		// 		}
+		// 	}
+		// }
 		.mat-form-field {
 			height: calc(var(--offset-s) * 3);
 			margin: 0 var(--offset-s);
@@ -41,6 +56,9 @@ $textarea-height: 4.375rem;
 					font-size: var(--font-size-xs);
 					color: var(--accent-300);
 					font-weight: 500;
+					&.ng-touched.ng-invalid{
+						color: var(--red);
+					}
 				}
 			}
 
@@ -57,17 +75,24 @@ $textarea-height: 4.375rem;
 					background-color: var(--white);
 					border: 1px solid var(--accent-300);
 					border-radius: var(--border-radius-xs);
+					
 				}
-
 				.mat-form-field-infix {
 					padding-bottom: var(--offset);
 				}
 			}
+			
+				
 
 			&-suffix {
 				padding-top: calc(var(--offset) * 0.2);
 			}
 		}
+		
+		.mat-form-field.invalid .mat-form-field-flex {
+			border: 1px solid var(--red);
+		}
+
 	}
 
 	input.mat-input-element {

@@ -9,7 +9,8 @@
     <form [formGroup]="requestForm" novalidate (ngSubmit)="onSend()">
         <div class="dialog-content-item">
             <mat-label class="label">From</mat-label>
-            <mat-form-field class="example-full-width" appearance="fill" color="secondary">
+            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateFrom.valid"
+            appearance="fill" color="secondary">
                 <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="dateFrom">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                     <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
@@ -19,7 +20,8 @@
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
             <mat-label class="label">To</mat-label>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.valid"
+            appearance="fill">
                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="dateTo">
                 <mat-datepicker-toggle matSuffix [for]="picker2">
                     <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
