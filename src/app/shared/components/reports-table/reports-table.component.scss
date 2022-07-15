@@ -22,8 +22,8 @@
 	$header-height: 3rem;
 
 	.day-table {
-		$offsets: $window-margin + $page-offset + var(--offset-m) + var(--offset);
-		$components-size: (2 * $offsets) + (3 * $button-height) + $header-height;
+		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
 		max-height: calc(100vh - $components-size);
 		overflow: auto;
 	}
