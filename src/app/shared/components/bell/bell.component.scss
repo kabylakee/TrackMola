@@ -7,6 +7,36 @@ $mat-flat-button-width: 6.25rem;
 $mat-flat-button-height: 2rem;
 $notification-controllers-width: 3.5rem;
 $button-icons: 1.44rem;
+$mat-card-position-right: 3rem;
+$mat-card-min-width: 20rem;
+$mat-card-max-width: 50vw;
+$actions-margin-top: 0.63rem;
+$tooltip-right-position-left: -0.63rem;
+$tooltip-right-position-top: -1.7rem;
+$tooltip-down-position-left: -3.3rem;
+$tooltip-down-position-top: -0.63rem;
+$mat-icon-line-height: 1.45rem;
+
+::ng-deep {
+	.tooltip {
+		&-right {
+			position: absolute;
+			padding: calc(var(--offset) * 0.2);
+			width: max-content;
+			background-color: var(--light-black);
+			left: $tooltip-right-position-left;
+			top: $tooltip-right-position-top;
+		}
+		&-down {
+			position: absolute;
+			left: $tooltip-down-position-left;
+			top: $tooltip-down-position-top;
+			width: max-content;
+			padding: calc(var(--offset) * 0.2);
+			background-color: var(--light-black);
+		}
+	}
+}
 
 :host {
 	.bell-icon {
@@ -18,9 +48,12 @@ $button-icons: 1.44rem;
 	}
 
 	.mat-card {
-		position: absolute;
-		z-index: 1;
-		width: $mat-card-width;
+		position: fixed;
+		z-index: 2;
+		right: $mat-card-position-right;
+		width: fit-content;
+		min-width: $mat-card-min-width;
+		max-width: $mat-card-max-width;
 		margin-top: calc(var(--offset) * 0.3);
 		border: 1px solid var(--accent-200);
 		box-shadow: none;
@@ -33,6 +66,7 @@ $button-icons: 1.44rem;
 			gap: var(--offset-xs);
 			justify-content: flex-end;
 			margin-right: calc(var(--offset) * 0.2);
+			margin-top: $actions-margin-top;
 			& .mat-flat-button mat-icon {
 				display: flex;
 				align-items: center;
@@ -54,6 +88,9 @@ $button-icons: 1.44rem;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: calc(var(--offset) * 0.5);
+		& span {
+			white-space: nowrap;
+		}
 		&-controllers {
 			display: flex;
 			justify-content: space-between;
@@ -68,7 +105,7 @@ $button-icons: 1.44rem;
 				& .mat-icon {
 					@include flex-center;
 					font-size: calc(var(--font-size) * 1.2);
-					line-height: 1.45rem;
+					line-height: $mat-icon-line-height;
 				}
 			}
 		}
@@ -78,5 +115,11 @@ $button-icons: 1.44rem;
 		display: flex;
 		gap: var(--offset-xxxxs);
 		align-items: center;
+	}
+
+	.no-data {
+		display: flex;
+		justify-content: center;
+		padding: calc(var(--offset) * 0.2) 0 var(--offset) 0;
 	}
 }
