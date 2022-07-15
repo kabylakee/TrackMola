@@ -1,13 +1,14 @@
 import {
 	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
 	EventEmitter,
 	Input,
+	OnChanges,
+	OnDestroy,
 	OnInit,
 	Output,
-	OnChanges,
 	SimpleChanges,
-	OnDestroy,
 } from '@angular/core';
 import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {Status} from 'src/app/entities/enums/status.enum';
@@ -24,6 +25,8 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
+import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
+import {NewTask} from '../../../entities/constants/new-task.class';
 
 @Component({
 	selector: 'app-reports-table',
@@ -37,6 +40,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public day: Date;
 	@Input() public value: string = '';
 	@Input() public actionHanding: IOptionInterface;
+	@Input() public reportButtonAction: ReportsButtonEnum;
 
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() optionSelected = new EventEmitter<string>();
@@ -57,6 +61,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		public dialog: MatDialog,
 		private formBuilder: FormBuilder,
 		private taskService: TaskService,
+		private cd: ChangeDetectorRef,
 	) {}
 
 	public ngOnInit(): void {
@@ -106,8 +111,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			);
 		}
 		if (changes.dataSource?.currentValue) {
-			this.setRowsForm();
 			this.filterDataSource = this.dataSource;
+			this.setRowsForm();
 			this.updateAllChecked();
 			setTimeout(() => {
 				this.getSum(['time', 'overtime']);
@@ -116,6 +121,41 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.value) {
 			this.searchTaskField();
 		}
+		if (changes.reportButtonAction && changes.reportButtonAction.currentValue) {
+			this.reportButtonHanding(this.reportButtonAction);
+		}
+	}
+
+	public reportButtonHanding(button: ReportsButtonEnum): void {
+		if (button === ReportsButtonEnum.AddTask) {
+			const defaultProject: IProject = PROJECT_MOCK[0];
+			const newTask = new NewTask(
+				this.day,
+				false,
+				'',
+				defaultProject,
+				Status.InProgress,
+				0,
+				0,
+				false,
+				'',
+				'',
+				true,
+			);
+			this.dataSource = [...this.dataSource, newTask];
+			this.filterDataSource = this.dataSource;
+			this.setRowsForm();
+			this.cd.detectChanges();
+			return;
+		}
+		if (button === ReportsButtonEnum.Save) {
+			const filterArr = this.filterDataSource.filter((task) => task.newRow);
+			this.taskService.saveTask(filterArr);
+			return;
+		}
+		// if (button === ReportsButtonEnum.Submit) {
+		//To DO Submit
+		// }
 	}
 
 	// When you click subcheckbox update main checkbox

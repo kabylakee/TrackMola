@@ -1,15 +1,28 @@
 <div class="button-wrapper">
-  <button mat-flat-button color="secondary" (click)="onClick(buttons.AddTask)">
-    <mat-icon>add</mat-icon>
-    {{buttons.AddTask}}
-  </button>
-  <div class="right-button">
-    <span class="notifier" [class.invisible]="!notifierMassage">{{notifierMassage}}</span>
-    <button mat-flat-button color="secondary" (click)="onClick(buttons.Save)">
-      {{buttons.Save}}
-    </button>
-    <button mat-flat-button color="primary" [class.mat-button-disabled]="!canSubmit" (click)="onClick(buttons.Submit)">
-      {{buttons.Submit}}
-    </button>
-  </div>
+	<button
+		mat-flat-button
+		color="secondary"
+		(click)="onReportButtonAction(ReportsButtonEnum.AddTask)"
+	>
+		<mat-icon>add</mat-icon>
+		{{ ReportsButtonEnum.AddTask }}
+	</button>
+	<div class="right-button">
+		<span class="notifier" [class.invisible]="!notifierMassage">{{ notifierMassage }}</span>
+		<button
+			mat-flat-button
+			color="secondary"
+			(click)="onReportButtonAction(ReportsButtonEnum.Save)"
+		>
+			{{ ReportsButtonEnum.Save }}
+		</button>
+		<button
+			mat-flat-button
+			color="primary"
+			[class.mat-button-disabled]="!canSubmit"
+			(click)="onReportButtonAction(ReportsButtonEnum.Submit)"
+		>
+			{{ ReportsButtonEnum.Submit }}
+		</button>
+	</div>
 </div>

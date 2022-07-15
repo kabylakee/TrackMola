@@ -40,8 +40,8 @@
 			width: $user-img-size;
 			height: $user-img-size;
 			margin: 0 var(--offset-s) 0 var(--offset-xxxs);
-			background: url("../../../../assets/image/human.jpg") no-repeat;
-			background-size:contain;
+			background: url('../../../../assets/image/human.jpg') no-repeat;
+			background-size: contain;
 			border-radius: var(--border-radius-xs);
 		}
 

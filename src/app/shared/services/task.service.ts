@@ -148,4 +148,9 @@ export class TaskService {
 			this.tasks$.next(newData);
 		}
 	}
+
+	public saveTask(taskData: ITask[]) {
+		taskData.forEach((task) => (task.newRow = false));
+		this.tasks$.next(this.tasks$.value.concat(taskData));
+	}
 }

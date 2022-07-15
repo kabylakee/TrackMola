@@ -12,13 +12,13 @@
 								(change)="setAll($event.checked)"
 							></mat-checkbox>
 						</div>
-	
+
 						<div *ngSwitchDefault>
 							{{ column.title }}
 						</div>
 					</div>
 				</th>
-	
+
 				<td *cdkCellDef="let element let rowIndex = index" [formGroupName]="rowIndex">
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
 						<div *ngSwitchCase="columnType.CHECK_ALL">
@@ -28,15 +28,15 @@
 								(change)="updateChecked($event.checked, element)"
 							></mat-checkbox>
 						</div>
-	
+
 						<div *ngSwitchCase="columnType.CHECK">
 							<mat-checkbox [checked]="element.paid" color="primary"></mat-checkbox>
 						</div>
-	
+
 						<div *ngSwitchCase="columnType.INPUT">
 							<ng-container *ngIf="column.field === 'title'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="title"/>
+									<input matInput placeholder="New Task" formControlName="title"/>
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'time'">
@@ -50,7 +50,7 @@
 								</mat-form-field>
 							</ng-container>
 						</div>
-	
+
 					<div *ngSwitchCase="columnType.PROJECT">
 						<mat-form-field appearance="fill">
 							<mat-select [value]="element[''+column.field].title">
@@ -60,7 +60,7 @@
 							</mat-select>
 						</mat-form-field>
 					</div>
-	
+
 					<div *ngSwitchCase="columnType.STATUS">
 						<mat-form-field appearance="fill">
 							<mat-select [value]="element[''+column.field]">
@@ -70,16 +70,16 @@
 							</mat-select>
 						</mat-form-field>
 					</div>
-	
+
 					<div *ngSwitchCase="columnType.LINK">
 						<button class="add-link" mat-icon-button aria-label="Add Link"
 										(click)="openDialog($event.clientX, $event.clientY, element)">
-							<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
-								{{element.asanaLink ? 'link' : 'add_link'}}
+							<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink || element.bitbucketLink}">
+								{{element.asanaLink || element.bitbucketLink ? 'link' : 'add_link'}}
 							</mat-icon>
 						</button>
 					</div>
-	
+
 					<div *ngSwitchCase="columnType.OPTIONS">
 						<button mat-icon-button aria-label="Options" class="user-logout" [matMenuTriggerFor]="menu">
 							<mat-icon aria-hidden="false">more_horiz</mat-icon>
@@ -91,12 +91,12 @@
 							</button>
 						</mat-menu>
 					</div>
-	
+
 						<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
 					</div>
 				</td>
 			</ng-container>
-	
+
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr
 				mat-row
