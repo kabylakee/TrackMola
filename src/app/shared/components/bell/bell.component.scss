@@ -50,7 +50,7 @@ $mat-icon-line-height: 1.45rem;
 	.mat-card {
 		position: fixed;
 		right: $mat-card-position-right;
-		z-index: 2;
+		z-index: 1000;
 		width: fit-content;
 		min-width: $mat-card-min-width;
 		max-width: $mat-card-max-width;
