@@ -148,4 +148,13 @@ export class TaskService {
 			this.tasks$.next(newData);
 		}
 	}
+
+	public reportsBtnSave(taskData: ITask[]) {
+		this.tasks$.value.forEach((task) => {
+			taskData.filter((newTask) => {
+				return JSON.stringify(task) !== JSON.stringify(newTask);
+			});
+		});
+		this.tasks$.next(this.tasks$.value.concat(taskData));
+	}
 }

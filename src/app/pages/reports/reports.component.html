@@ -16,8 +16,10 @@
 	[value]="searchValue"
 	[day]="day"
 	[actionHanding]="actionHanding"
+  [reportButtonAction]="reportButtonAction"
 	(outChangeTime)="updateSumTime($event)"
 ></app-reports-table>
-<app-reports-button *ngSwitchCase="periods.Day"></app-reports-button>
+<app-reports-button *ngSwitchCase="periods.Day" (reportButtonAction)="onReportButtonAction($event)"></app-reports-button>
 <app-month-table *ngSwitchCase="periods.Month" [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
 <app-calendar-legend *ngSwitchCase="periods.Month" [legendItems]="legendItems"></app-calendar-legend>
+

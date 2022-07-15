@@ -35,7 +35,7 @@
 					<div *ngSwitchCase="columnType.INPUT">
 						<ng-container *ngIf="column.field === 'title'">
 							<mat-form-field class="example-full-width" appearance="fill">
-								<input matInput formControlName="title"/>
+								<input matInput placeholder="New Task" formControlName="title"/>
 							</mat-form-field>
 						</ng-container>
 						<ng-container *ngIf="column.field === 'time'">
@@ -73,8 +73,8 @@
         <div *ngSwitchCase="columnType.LINK">
           <button class="add-link" mat-icon-button aria-label="Add Link"
                   (click)="openDialog($event.clientX, $event.clientY, element)">
-						<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink}">
-							{{element.asanaLink ? 'link' : 'add_link'}}
+						<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink || element.bitbucketLink}">
+							{{element.asanaLink || element.bitbucketLink ? 'link' : 'add_link'}}
 						</mat-icon>
           </button>
         </div>
