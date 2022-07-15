@@ -9,6 +9,7 @@ import {IViewPeriod} from 'src/app/entities/interfaces/view-period.interface';
 })
 export class ToggleButtonComponent<T> {
 	@Input() config: IViewPeriod<T>[] = [];
+	@Input() period: T;
 
 	@Output() changeSelectedValue = new EventEmitter<T>();
 }

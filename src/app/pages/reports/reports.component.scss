@@ -10,8 +10,10 @@
 			position: relative;
 			display: flex;
 			flex-flow: column;
+			flex-grow: 1;
 			width: 100%;
 			height: 100%;
+			overflow-y: hidden;
 		}
 		&-day {
 			display: flex;
@@ -26,7 +28,8 @@
 		}
 	}
 
-	.invisible {
-		display: none;
+	.view-switcher {
+		flex-grow: 1;
+		overflow-y: hidden;
 	}
 }

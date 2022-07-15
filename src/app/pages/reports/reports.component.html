@@ -2,6 +2,7 @@
   <app-header [pageTitle]="title"></app-header>
 
   <app-table-filter
+    #tableFilter
     [sumTime]="sumTime"
     (togglePeriod)="togglePeriod($event)"
     (searchValueChange)="onSearchValueChange($event)"
@@ -22,9 +23,12 @@
       <app-reports-button></app-reports-button>
     </div>
   
-    <div *ngSwitchCase="periods.Month">
-      <app-month-table [daysInfo]="calendarConfig" [selectedDate]="selectedDate"></app-month-table>
-      <app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>
-    </div>
+
+    <app-month-table
+      *ngSwitchCase="periods.Month"
+      [daysInfo]="calendarConfig"
+      [selectedDate]="selectedDate"
+      (selectDay)="tableFilter.onSelectCalendarDay($event)"
+    ></app-month-table>
   </div>
 </div>
