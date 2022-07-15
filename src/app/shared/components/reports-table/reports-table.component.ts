@@ -30,6 +30,7 @@ import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: ITask[] = [];
