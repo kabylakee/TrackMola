@@ -7,6 +7,7 @@ import {
 	EventEmitter,
 	OnChanges,
 	SimpleChanges,
+	AfterViewInit,
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -31,7 +32,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 		{provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
 	],
 })
-export class DatePickerComponent implements OnChanges {
+export class DatePickerComponent implements OnChanges, AfterViewInit {
 	@ViewChild('picker') pick!: MatDatepicker<moment.Moment>;
 
 	@Input() periodRange: Period;
@@ -42,15 +43,12 @@ export class DatePickerComponent implements OnChanges {
 	public date = new FormControl(moment());
 	readonly period = Period;
 
+	public ngAfterViewInit(): void {
+		if (this.calendarDate && this.pick) this.setDate();
+	}
+
 	public ngOnChanges(changes: SimpleChanges): void {
-		if (changes.calendarDate) {
-			const changedDate = this.date.value?.set({
-				year: this.calendarDate.getFullYear(),
-				month: this.calendarDate.getMonth(),
-				date: this.calendarDate.getDate(),
-			});
-			this.pick.select(changedDate as moment.Moment);
-		}
+		if (changes.calendarDate && this.pick) this.setDate();
 	}
 
 	public changeDateRange(increment: number): void {
@@ -66,5 +64,14 @@ export class DatePickerComponent implements OnChanges {
 				break;
 			}
 		}
+	}
+
+	private setDate(): void {
+		const changedDate = this.date.value?.set({
+			year: this.calendarDate.getFullYear(),
+			month: this.calendarDate.getMonth(),
+			date: this.calendarDate.getDate(),
+		});
+		this.pick.select(changedDate as moment.Moment);
 	}
 }
