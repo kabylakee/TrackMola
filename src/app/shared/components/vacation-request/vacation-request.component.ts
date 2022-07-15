@@ -27,25 +27,25 @@ export class VacationRequestComponent {
 	) {
 		this.requestForm = new FormGroup(
 			{
-				dateFrom: new FormControl('', [Validators.required, this.dateFromValidator]),
-				dateTo: new FormControl('', [Validators.required]),
+				dateFrom: new FormControl('', [Validators.required, this.dateValidator]),
+				dateTo: new FormControl('', [Validators.required, this.dateValidator]),
 				comments: new FormControl(),
 				paid: new FormControl(),
 			},
 			{
-				validators: this.dateToValidator,
+				validators: this.formValidator,
 			},
 		);
 	}
 
-	private dateFromValidator(control: FormControl): {[s: string]: boolean} | null {
+	private dateValidator(control: FormControl): {[s: string]: boolean} | null {
 		if (control.value > new Date()) {
 			return null;
 		}
 		return {dateFrom: true};
 	}
 
-	dateToValidator(control: AbstractControl): ValidationErrors | null {
+	formValidator(control: AbstractControl): ValidationErrors | null {
 		if (!control.get('dateFrom')?.value || !control.get('dateTo')?.value) return {error: true};
 		if (control.get('dateTo')?.value >= control.get('dateFrom')?.value) {
 			return null;
@@ -56,6 +56,11 @@ export class VacationRequestComponent {
 	public onSend(): void {
 		if (!this.requestForm.controls.dateFrom.valid) {
 			this.field = 'Date from is invalid';
+			this.notification = true;
+			return;
+		}
+		if (!this.requestForm.controls.dateTo.valid) {
+			this.field = 'Date to is invalid';
 			this.notification = true;
 			return;
 		}

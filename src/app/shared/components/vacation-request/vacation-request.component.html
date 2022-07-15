@@ -6,7 +6,7 @@
 </div>
   
 <mat-dialog-content class="mat-typography">
-    <form [formGroup]="requestForm" novalidate (ngSubmit)="onSend()">
+    <form [formGroup]="requestForm" validate (ngSubmit)="onSend()">
         <div class="dialog-content-item">
             <mat-label class="label">From</mat-label>
             <mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateFrom.valid"
@@ -20,7 +20,7 @@
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
             <mat-label class="label">To</mat-label>
-            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.valid"
+            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateTo.valid"
             appearance="fill">
                 <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="dateTo">
                 <mat-datepicker-toggle matSuffix [for]="picker2">
