@@ -30,7 +30,7 @@
 						</div>
 	
 						<div *ngSwitchCase="columnType.CHECK">
-							<mat-checkbox  color="primary"></mat-checkbox>
+							<mat-checkbox [checked]="element.paid" color="primary"></mat-checkbox>
 						</div>
 	
 						<div *ngSwitchCase="columnType.INPUT">
