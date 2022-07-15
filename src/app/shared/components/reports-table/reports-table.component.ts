@@ -144,9 +144,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			this.dataSource = [...this.dataSource, newTask];
 			this.filterDataSource = this.dataSource;
 			this.setRowsForm();
-			setTimeout(() => {
-				this.cd.detectChanges();
-			}, 100);
+			this.cd.detectChanges();
 			return;
 		}
 		if (button === ReportsButtonEnum.Save) {
