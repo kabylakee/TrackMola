@@ -1,30 +1,33 @@
-<app-header [pageTitle]="title"></app-header>
-<app-table-filter
-	#tableFilter
-	[sumTime]="sumTime"
-	(togglePeriod)="togglePeriod($event)"
-	(changeDate)="onChangeDate($event)"
-	(selectedFilters)="getFilters($event)"
-	(searchValueChange)="onSearchValueChange($event)"
-	(actionHanding)="onActionHanding($event)"
-></app-table-filter>
-<div [ngSwitch]="period" class="view-switcher">
-	<app-reports-table
-		*ngSwitchCase="periods.Day"
-		[columns]="columns"
-		[dataSource]="tasks"
-		[value]="searchValue"
-		[day]="day"
-		[actionHanding]="actionHanding"
-    [reportButtonAction]="reportButtonAction"
-		(outChangeTime)="updateSumTime($event)"
-	></app-reports-table>
-	<app-reports-button *ngSwitchCase="periods.Day" (reportButtonAction)="onReportButtonAction($event)"></app-reports-button>
-	<app-month-table
-		*ngSwitchCase="periods.Month"
-		[daysInfo]="calendarConfig"
-		[selectedDate]="selectedDate"
-		(selectDay)="tableFilter.onSelectCalendarDay($event)"
-	></app-month-table>
-</div>
+<div class="reports">
+  <app-header [pageTitle]="title"></app-header>
 
+  <app-table-filter
+    #tableFilter
+    [sumTime]="sumTime"
+    (togglePeriod)="togglePeriod($event)"
+    (searchValueChange)="onSearchValueChange($event)"
+    (actionHanding)="onActionHanding($event)"
+    (changeDate)="onChangeDate($event)"
+    (selectedFilters)="getFilters($event)"
+  ></app-table-filter>
+  <div class="reports-container" [ngSwitch]="period">
+    <div class="reports-day" *ngSwitchCase="periods.Day">
+      <app-reports-table
+        [columns]="columns"
+        [dataSource]="tasks"
+        [value]="searchValue"
+        [day]="day"
+        [actionHanding]="actionHanding"
+        [reportButtonAction]="reportButtonAction"
+        (outChangeTime)="updateSumTime($event)"
+      ></app-reports-table>
+      <app-reports-button (reportButtonAction)="onReportButtonAction($event)"></app-reports-button>
+    </div>
+    <app-month-table
+      *ngSwitchCase="periods.Month"
+      [daysInfo]="calendarConfig"
+      [selectedDate]="selectedDate"
+      (selectDay)="tableFilter.onSelectCalendarDay($event)"
+    ></app-month-table>
+  </div>
+</div>

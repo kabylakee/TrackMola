@@ -16,6 +16,18 @@
 	$project-width: 5rem;
 	$status-width: 3rem;
 
+	$window-margin: 2rem;
+	$page-offset: 3rem;
+	$button-height: 3rem;
+	$header-height: 3rem;
+
+	.day-table {
+		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
+		max-height: calc(100vh - $components-size);
+		overflow: auto;
+	}
+
 	.project-column {
 		width: $project-width;
 		.mat-select {
