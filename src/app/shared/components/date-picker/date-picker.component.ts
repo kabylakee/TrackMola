@@ -44,25 +44,11 @@ export class DatePickerComponent implements OnChanges, AfterViewInit {
 	readonly period = Period;
 
 	public ngAfterViewInit(): void {
-		if (this.calendarDate && this.pick) {
-			const changedDate = this.date.value?.set({
-				year: this.calendarDate.getFullYear(),
-				month: this.calendarDate.getMonth(),
-				date: this.calendarDate.getDate(),
-			});
-			this.pick.select(changedDate as moment.Moment);
-		}
+		if (this.calendarDate && this.pick) this.setDate();
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {
-		if (changes.calendarDate && this.pick) {
-			const changedDate = this.date.value?.set({
-				year: this.calendarDate.getFullYear(),
-				month: this.calendarDate.getMonth(),
-				date: this.calendarDate.getDate(),
-			});
-			this.pick.select(changedDate as moment.Moment);
-		}
+		if (changes.calendarDate && this.pick) this.setDate();
 	}
 
 	public changeDateRange(increment: number): void {
@@ -78,5 +64,14 @@ export class DatePickerComponent implements OnChanges, AfterViewInit {
 				break;
 			}
 		}
+	}
+
+	private setDate(): void {
+		const changedDate = this.date.value?.set({
+			year: this.calendarDate.getFullYear(),
+			month: this.calendarDate.getMonth(),
+			date: this.calendarDate.getDate(),
+		});
+		this.pick.select(changedDate as moment.Moment);
 	}
 }
