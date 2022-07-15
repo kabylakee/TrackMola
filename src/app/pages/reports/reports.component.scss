@@ -1,5 +1,10 @@
 :host {
-	.invisible {
-		display: none;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	.view-switcher {
+		flex-grow: 1;
+		overflow-y: hidden;
 	}
 }

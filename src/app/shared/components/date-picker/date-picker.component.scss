@@ -41,15 +41,20 @@ $arrows-height: 2.313rem;
 				display: none;
 			}
 
-			&-appearance-fill .mat-form-field-flex {
-				display: flex;
-				align-items: center;
-				padding: 0 calc(var(--offset) * 0.63) 0 calc(var(--offset) * 1.13);
-				background-color: var(--white);
-				border-radius: var(--border-radius-xs);
+			&-appearance-fill .mat-form-field {
+				&-flex {
+					display: flex;
+					align-items: center;
+					padding: 0 calc(var(--offset) * 0.5) 0 calc(var(--offset) * 0.9);
+					background-color: var(--white);
+					border-radius: var(--border-radius-xs);
+				}
+				&-infix {
+					padding: 0 0 0.7em 0;
+				}
 			}
 			&-suffix {
-				padding-top: calc(var(--offset) * 0.2);
+				padding-top: calc(var(--offset) * 0.005);
 			}
 		}
 	}
