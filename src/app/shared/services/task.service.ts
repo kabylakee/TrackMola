@@ -149,7 +149,7 @@ export class TaskService {
 		}
 	}
 
-	public reportsBtnSave(taskData: ITask[]) {
+	public saveTask(taskData: ITask[]) {
 		taskData.forEach((task) => (task.newRow = false));
 		this.tasks$.next(this.tasks$.value.concat(taskData));
 	}

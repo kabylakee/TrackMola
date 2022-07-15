@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	EventEmitter,
@@ -30,7 +31,7 @@ import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	// changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: ITask[] = [];
@@ -150,7 +151,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 		if (button === ReportsButtonEnum.Save) {
 			const filterArr = this.filterDataSource.filter((task) => task.newRow);
-			this.taskService.reportsBtnSave(filterArr);
+			this.taskService.saveTask(filterArr);
 			return;
 		}
 		// if (button === ReportsButtonEnum.Submit) {
