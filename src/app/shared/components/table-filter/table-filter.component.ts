@@ -38,6 +38,7 @@ export class TableFilterComponent implements OnInit {
 	public readonly monthNormalTime = DEFAULT_MONTH_WORKTIME;
 	public periodRange: Period = Period.Day;
 	public projects: IProject[] = Object.values(PROJECT_MOCK);
+	public calendarDate: Date;
 	public isDisabled$: Observable<boolean>;
 
 	constructor(private taskService: TaskService) {}
@@ -53,5 +54,10 @@ export class TableFilterComponent implements OnInit {
 
 	public emitFilters(filters: IFilter): void {
 		this.selectedFilters.emit(filters);
+	}
+
+	public onSelectCalendarDay(date: Date): void {
+		this.changePeriod(Period.Day);
+		this.calendarDate = date;
 	}
 }

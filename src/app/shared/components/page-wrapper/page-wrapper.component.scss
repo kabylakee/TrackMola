@@ -4,7 +4,7 @@
 		height: calc(100vh - var(--offset-xl));
 		margin: var(--offset-l);
 		margin-left: 0rem;
-		padding: calc(3 * var(--offset));
+		padding: var(--offset-l) var(--offset-l) var(--offset-l) calc(3 * var(--offset));
 		overflow: hidden;
 		background-color: var(--white);
 		border-radius: var(--offset-xs);

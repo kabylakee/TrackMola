@@ -5,6 +5,8 @@ import {
 	Input,
 	Output,
 	EventEmitter,
+	OnChanges,
+	SimpleChanges,
 } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
@@ -29,12 +31,27 @@ import {MatDatepicker} from '@angular/material/datepicker';
 		{provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
 	],
 })
-export class DatePickerComponent {
+export class DatePickerComponent implements OnChanges {
 	@ViewChild('picker') pick!: MatDatepicker<moment.Moment>;
+
+	@Input() periodRange: Period;
+	@Input() calendarDate: Date;
+
+	@Output() changeDate = new EventEmitter();
+
 	public date = new FormControl(moment());
 	readonly period = Period;
-	@Input() periodRange: Period;
-	@Output() changeDate = new EventEmitter();
+
+	public ngOnChanges(changes: SimpleChanges): void {
+		if (changes.calendarDate) {
+			const changedDate = this.date.value?.set({
+				year: this.calendarDate.getFullYear(),
+				month: this.calendarDate.getMonth(),
+				date: this.calendarDate.getDate(),
+			});
+			this.pick.select(changedDate as moment.Moment);
+		}
+	}
 
 	public changeDateRange(increment: number): void {
 		switch (this.periodRange) {
