@@ -2,19 +2,19 @@ import {IProject} from '../interfaces/project.interface';
 
 export const PROJECT_MOCK: IProject[] = [
 	{
-		title: 'AMCN PSVOD',
+		title: 'Project A',
 		percentage: 55,
 	},
 	{
-		title: 'AMCN iCAST',
+		title: 'Project B',
 		percentage: 22,
 	},
 	{
-		title: 'AMCN PPM',
+		title: 'Project C',
 		percentage: 13,
 	},
 	{
-		title: 'AMCN PVOD',
+		title: 'Project D',
 		percentage: 10,
 	},
 ];
