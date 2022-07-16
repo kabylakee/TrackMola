@@ -1,5 +1,9 @@
 :host {
 	$header-size: 2rem;
+	$img-height-asana: calc(1.5rem - 1px);
+	$img-height-bitbucket: calc(1.5rem - 3px);
+	$img-width: 1.5rem;
+
 
 	.mat-icon {
 		cursor: pointer;
@@ -54,9 +58,22 @@
 
 		.image {
 			display: flex;
-
-			&-img {
-				margin-right: var(--offset-s);
+			
+			&.image-img {
+				&-asana{
+					margin-right: var(--offset-s);
+					height: $img-height-asana;
+					min-width: $img-width;
+					background: url("../../../../assets/image/asana.svg") no-repeat;
+					background-size: contain;
+				}
+				&-bitbucket{
+					margin-right: var(--offset-s);
+					height: $img-height-bitbucket;
+					min-width: $img-width;
+					background: url("../../../../assets/image/bitbucket.svg") no-repeat;
+					background-size: contain;
+				}
 			}
 
 			.mat-icon {
