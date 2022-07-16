@@ -17,26 +17,26 @@ $tooltip-down-position-left: -3.3rem;
 $tooltip-down-position-top: -0.63rem;
 $mat-icon-line-height: 1.45rem;
 
-::ng-deep {
-	.tooltip {
-		&-right {
-			position: absolute;
-			top: $tooltip-right-position-top;
-			left: $tooltip-right-position-left;
-			width: max-content;
-			padding: calc(var(--offset) * 0.2);
-			background-color: var(--light-black);
-		}
-		&-down {
-			position: absolute;
-			top: $tooltip-down-position-top;
-			left: $tooltip-down-position-left;
-			width: max-content;
-			padding: calc(var(--offset) * 0.2);
-			background-color: var(--light-black);
-		}
-	}
-}
+// ::ng-deep {
+// 	.tooltip {
+// 		&-right {
+// 			position: absolute;
+// 			top: $tooltip-right-position-top;
+// 			left: $tooltip-right-position-left;
+// 			width: max-content;
+// 			padding: calc(var(--offset) * 0.2);
+// 			background-color: var(--light-black);
+// 		}
+// 		&-down {
+// 			position: absolute;
+// 			top: $tooltip-down-position-top;
+// 			left: $tooltip-down-position-left;
+// 			width: max-content;
+// 			padding: calc(var(--offset) * 0.2);
+// 			background-color: var(--light-black);
+// 		}
+// 	}
+// }
 
 :host {
 	.bell-icon {
@@ -47,79 +47,79 @@ $mat-icon-line-height: 1.45rem;
 		border-radius: calc(var(--border-radius) * 0.5);
 	}
 
-	.mat-card {
-		position: fixed;
-		right: $mat-card-position-right;
-		z-index: 1000;
-		width: fit-content;
-		min-width: $mat-card-min-width;
-		max-width: $mat-card-max-width;
-		margin-top: calc(var(--offset) * 0.3);
-		border: 1px solid var(--accent-200);
-		box-shadow: none;
-		&-title {
-			font-size: var(--font-size-s);
-		}
+	// .mat-card {
+	// 	position: fixed;
+	// 	right: $mat-card-position-right;
+	// 	z-index: 1000;
+	// 	width: fit-content;
+	// 	min-width: $mat-card-min-width;
+	// 	max-width: $mat-card-max-width;
+	// 	margin-top: calc(var(--offset) * 0.3);
+	// 	border: 1px solid var(--accent-200);
+	// 	box-shadow: none;
+	// 	&-title {
+	// 		font-size: var(--font-size-s);
+	// 	}
 
-		&-actions {
-			display: flex;
-			gap: var(--offset-xs);
-			justify-content: flex-end;
-			margin-top: $actions-margin-top;
-			margin-right: calc(var(--offset) * 0.2);
-			& .mat-flat-button mat-icon {
-				display: flex;
-				align-items: center;
-				font-size: calc(var(--font-size) * 1.13);
-			}
-		}
-	}
+	// 	&-actions {
+	// 		display: flex;
+	// 		gap: var(--offset-xs);
+	// 		justify-content: flex-end;
+	// 		margin-top: $actions-margin-top;
+	// 		margin-right: calc(var(--offset) * 0.2);
+	// 		& .mat-flat-button mat-icon {
+	// 			display: flex;
+	// 			align-items: center;
+	// 			font-size: calc(var(--font-size) * 1.13);
+	// 		}
+	// 	}
+	// }
 
-	.mat-flat-button {
-		@include flex-center;
-		width: $mat-flat-button-width;
-		height: $mat-flat-button-height;
-		font-size: var(--font-size-xs);
-	}
+	// .mat-flat-button {
+	// 	@include flex-center;
+	// 	width: $mat-flat-button-width;
+	// 	height: $mat-flat-button-height;
+	// 	font-size: var(--font-size-xs);
+	// }
 
-	.notification {
-		display: flex;
-		gap: calc(var(--offset) * 2.5);
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: calc(var(--offset) * 0.5);
-		& span {
-			white-space: nowrap;
-		}
-		&-controllers {
-			display: flex;
-			justify-content: space-between;
-			width: $notification-controllers-width;
-			padding-right: var(--offset-xxxs);
-			& .mat-icon-button {
-				@include flex-center;
-				width: $button-icons;
-				height: $button-icons;
-				color: var(--accent-300);
-				border: 1px solid var(--accent-300);
-				& .mat-icon {
-					@include flex-center;
-					font-size: calc(var(--font-size) * 1.2);
-					line-height: $mat-icon-line-height;
-				}
-			}
-		}
-	}
+	// .notification {
+	// 	display: flex;
+	// 	gap: calc(var(--offset) * 2.5);
+	// 	align-items: center;
+	// 	justify-content: space-between;
+	// 	margin-bottom: calc(var(--offset) * 0.5);
+	// 	& span {
+	// 		white-space: nowrap;
+	// 	}
+	// 	&-controllers {
+	// 		display: flex;
+	// 		justify-content: space-between;
+	// 		width: $notification-controllers-width;
+	// 		padding-right: var(--offset-xxxs);
+	// 		& .mat-icon-button {
+	// 			@include flex-center;
+	// 			width: $button-icons;
+	// 			height: $button-icons;
+	// 			color: var(--accent-300);
+	// 			border: 1px solid var(--accent-300);
+	// 			& .mat-icon {
+	// 				@include flex-center;
+	// 				font-size: calc(var(--font-size) * 1.2);
+	// 				line-height: $mat-icon-line-height;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-	mat-card-actions .mat-flat-button ::ng-deep .mat-button-wrapper {
-		display: flex;
-		gap: var(--offset-xxxxs);
-		align-items: center;
-	}
+	// mat-card-actions .mat-flat-button ::ng-deep .mat-button-wrapper {
+	// 	display: flex;
+	// 	gap: var(--offset-xxxxs);
+	// 	align-items: center;
+	// }
 
-	.no-data {
-		display: flex;
-		justify-content: center;
-		padding: calc(var(--offset) * 0.2) 0 var(--offset) 0;
-	}
+	// .no-data {
+	// 	display: flex;
+	// 	justify-content: center;
+	// 	padding: calc(var(--offset) * 0.2) 0 var(--offset) 0;
+	// }
 }

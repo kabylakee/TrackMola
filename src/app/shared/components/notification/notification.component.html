@@ -1,10 +1,4 @@
-<button mat-icon-button class="bell-icon" (click)="showCard()">
-  <mat-icon>
-    notifications_none
-  </mat-icon>
-</button>
-<app-notification *ngIf="isCardOpen" [notifications]="config"></app-notification>
-<!-- <mat-card *ngIf="isCardOpen">
+<mat-card>
   <div class="notifications-container">
     <mat-card-title>Notifications</mat-card-title>
     <ng-container *ngFor="let element of copyOfNotifications; index as i">
@@ -43,5 +37,4 @@
     </button>
   </mat-card-actions>
   <app-no-data class="no-data" *ngIf="!copyOfNotifications.length"></app-no-data>
-</mat-card> -->
-
+</mat-card>
