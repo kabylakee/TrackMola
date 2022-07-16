@@ -1,11 +1,13 @@
 <div class="container">
   <h2 class="header">Project teams</h2>
-  <mat-form-field appearance="fill">
-    <mat-select [value]="currentProject.title">
-      <mat-option [value]="project.title" *ngFor="let project of projects">
-        <app-project-component projectName="{{project.title}}"></app-project-component>
-      </mat-option>
-    </mat-select>
-    <mat-icon matSuffix class="arrow">expand_more</mat-icon>
-  </mat-form-field>
+  <div class="select">
+    <mat-form-field class="project-teams" appearance="fill">
+      <mat-select [value]="currentProject.title">
+        <mat-option [value]="project.title" *ngFor="let project of projects">
+          <app-project-component projectName="{{project.title}}"></app-project-component>
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix class="arrow">expand_more</mat-icon>
+    </mat-form-field>
+  </div>
 </div>

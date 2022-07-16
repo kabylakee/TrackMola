@@ -21,23 +21,24 @@
 			font-size: var(--font-size-xs);
 			border-radius: var(--border-radius-xs);
 		}
+
+		.select {
+			width: max-content;
+			padding: var(--offset-xxs) var(--offset-s) !important;
+			border: 1px solid var(--accent-100);
+			border-radius: var(--border-radius-xs);
+		}
 	}
 }
 
 ::ng-deep {
-	.mat-form-field {
-		position: relative;
-		.arrow {
-			position: absolute;
-			top: calc(-1 * var(--offset));
-			right: 0;
-			color: var(--light-black);
+	.project-teams .mat-form-field {
+		&-wrapper {
+			padding: 0;
 		}
-
 		&-flex {
-			padding: var(--offset-xxs) var(--offset-s) !important;
+			padding: 0 !important;
 			background: none !important;
-			border: 1px solid var(--accent-100);
 			border-radius: var(--border-radius-xs) !important;
 		}
 		&-infix {
@@ -46,6 +47,16 @@
 		}
 		&-underline {
 			display: none;
+		}
+	}
+
+	.mat-form-field {
+		position: relative;
+		.arrow {
+			position: absolute;
+			top: calc(-1 * var(--offset));
+			right: 0;
+			color: var(--light-black);
 		}
 	}
 
