@@ -1,0 +1,15 @@
+:host {
+	.container {
+		border: 1px solid var(--accent-200);
+		border-radius: var(--border-radius-xs);
+		padding: calc(1.5 * var(--offset));
+		width: 100%;
+
+		.header {
+			color: var(--black);
+			font-size: var(--font-size-s);
+			font-weight: 500;
+			margin-bottom: var(--offset-s);
+		}
+	}
+}
