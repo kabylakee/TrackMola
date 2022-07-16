@@ -43,7 +43,7 @@
     </div>
     
     <mat-dialog-actions>
-        <label class="error" [hidden]="!notification">{{ field }}</label>
+        <label class="error" [hidden]="requestForm.valid">{{ message }}</label>
         <button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Cancel</button>
         <button mat-flat-button class="action-button" color="primary" (click)="onSend()">Send</button>
     </mat-dialog-actions>
