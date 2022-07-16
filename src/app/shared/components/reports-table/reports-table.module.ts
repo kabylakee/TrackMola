@@ -11,12 +11,12 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
 import {ReportsTableComponent} from './reports-table.component';
-import {ProjectComponent} from '../../components/project/project.component';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {CdkTableModule} from '@angular/cdk/table';
+import {ProjectModule} from '../project/projects.module';
 
 @NgModule({
-	declarations: [ReportsTableComponent, ProjectComponent, LinkDialogComponent],
+	declarations: [ReportsTableComponent, LinkDialogComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,
@@ -30,6 +30,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 		CdkTableModule,
 		MatSelectModule,
 		MatDialogModule,
+		ProjectModule,
 	],
 	exports: [ReportsTableComponent],
 })
