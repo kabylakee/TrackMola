@@ -1,13 +1,14 @@
 @import 'mixins/common-mixin';
 
 :host{
-	.card{
+	.card {
 		border: 1px solid var(--accent-200);
 		border-radius: var(--offset-xs);
 		width: 55%;
-		max-height: 223px;		
+		max-height: calc(14 * var(--offset));		
+		padding-bottom: var(--offset-xxs);
 	}
-	.label{
+	.label {
 		font-size: var(--font-size-s);
 		margin: var(--offset-s) 0 0 var(--offset-m);
 	}

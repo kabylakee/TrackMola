@@ -46,7 +46,7 @@ export class SemiCircleDonutComponent {
 				fontWeight: '400',
 				fontSize: 'var(--font-size-xs)',
 			},
-			itemMarginBottom: 12.5,
+			itemMarginBottom: 12,
 			margin: 16,
 			squareSymbol: true,
 			symbolRadius: 3,
