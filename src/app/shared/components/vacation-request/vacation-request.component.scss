@@ -14,22 +14,7 @@ $textarea-height: 4.375rem;
 			}
 			color: var(--accent-300);
 		}
-		// ::ng-deep {
-		// 	.ng-valid {
-		// 		.mat-form-field-appearance-fill {
-		// 			.mat-form-field-flex {
-		// 				border: 1px solid var(--accent-300);
-		// 			}
-		// 		}
-		// 	}
-		// 	.ng-invalid {
-		// 		.mat-form-field-appearance-fill {
-		// 			.mat-form-field-flex {
-		// 				border: 1px solid var(--red);
-		// 			}
-		// 		}
-		// 	}
-		// }
+		
 		.mat-form-field {
 			height: calc(var(--offset-s) * 3);
 			margin: 0 var(--offset-s);
