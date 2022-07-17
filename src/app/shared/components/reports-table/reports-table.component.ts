@@ -27,6 +27,7 @@ import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 import {NewTask} from '../../../entities/constants/new-task.class';
+import {Size} from 'src/app/entities/enums/size.enum';
 
 @Component({
 	selector: 'app-reports-table',
@@ -55,6 +56,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public readonly columnType = ColumnType;
 	public readonly projects: IProject[] = PROJECT_MOCK;
 	public readonly status = Status;
+	public readonly size = Size;
 	public readonly options = Object.values(OPTIONS_CONFIG);
 
 	constructor(
