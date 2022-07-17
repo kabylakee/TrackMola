@@ -4,6 +4,8 @@
 		padding: calc(1.5 * var(--offset));
 		border: 1px solid var(--accent-200);
 		border-radius: var(--border-radius-xs);
+		font-size: var(--font-size-s);
+		font-weight: 400;
 
 		.header {
 			margin-bottom: var(--offset-s);
@@ -20,9 +22,19 @@
 			&-item {
 				display: flex;
 				justify-content: space-between;
+				padding-bottom: var(--offset-s);
+			}
+			&-title {
+				max-width: 60%;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
 			}
 			&-right {
 				display: flex;
+			}
+			&-hours {
+				padding-right: var(--offset-s);
 			}
 		}
 	}

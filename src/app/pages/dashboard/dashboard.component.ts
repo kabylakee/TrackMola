@@ -28,11 +28,13 @@ export class DashboardComponent implements OnInit {
 			.getTaskFromTo(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6), today)
 			.subscribe((tasks) => (this.tasks = tasks));
 
-		this.taskService.getTasks().subscribe(
-			(t) =>
-				(this.progressTasks = t.filter((task) => {
-					return task.status === Status.InProgress;
-				})),
-		);
+		this.taskService
+			.getTaskFromTo(new Date(today.getFullYear(), today.getMonth(), today.getDate() - 20), today)
+			.subscribe(
+				(t) =>
+					(this.progressTasks = t.filter((task) => {
+						return task.status === Status.InProgress;
+					})),
+			);
 	}
 }

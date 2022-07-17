@@ -4,16 +4,16 @@
   </h2>
   <div class="tasks">
     <div class="tasks-item" *ngFor="let task of tasks">
-      <div class="tasks-title">
+      <div class="tasks-title"
+           matTooltip="{{task.title}}" 
+           matTooltipClass="tooltip-down">
         {{task.title}}
       </div>
       <div class="tasks-right">
         <div class="tasks-hours">
           {{task.time}}h
         </div>
-        <div class="tasks-project">
-          {{task.project.title}}
-        </div>
+        <app-project-component projectName="{{task.project.title}}"></app-project-component>
       </div>
     </div>
   </div>
