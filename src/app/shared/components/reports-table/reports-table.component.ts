@@ -27,6 +27,7 @@ import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
 import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 import {NewTask} from '../../../entities/constants/new-task.class';
+import {OptionsTitle} from '../../../entities/enums/options.enum';
 
 @Component({
 	selector: 'app-reports-table',
@@ -43,8 +44,10 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public reportButtonAction: ReportsButtonEnum;
 
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
-	@Output() optionSelected = new EventEmitter<string>();
+	@Output() public optionSelected = new EventEmitter<string>();
+	@Output() public disableSave = new EventEmitter<boolean>();
 
+	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
 	public filterDataSource: ITask[] = [];
 	public allChecked: boolean = false;
@@ -99,12 +102,19 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			rowIndex: [index],
 			title: [row.title, Validators.required],
 			time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
-			overtime: [row.overtime, [Validators.required, Validators.pattern('[0-9]+')]],
+			overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
+			project: [row.project, Validators.required],
 		});
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {
 		if (changes.actionHanding && this.actionHanding) {
+			this.taskService.ChangeActionBtn(
+				this.actionHanding,
+				this.filterDataSource.filter((tasks) => tasks.checked),
+			);
+		}
+		if (changes.optionSelected && this.optionSelected) {
 			this.taskService.ChangeActionBtn(
 				this.actionHanding,
 				this.filterDataSource.filter((tasks) => tasks.checked),
@@ -145,6 +155,11 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			this.dataSource = [...this.dataSource, newTask];
 			this.filterDataSource = this.dataSource;
 			this.setRowsForm();
+			(this.tableForm.get('rows') as FormArray).controls[
+				this.dataSource.length - 1
+			].statusChanges.subscribe((status) => {
+				this.disableSave.emit(status === 'INVALID');
+			});
 			this.cd.detectChanges();
 			return;
 		}
@@ -190,6 +205,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			if (result) {
 				element.asanaLink = result.asanaLink;
 				element.bitbucketLink = result.bitbucketLink;
+				this.cd.detectChanges();
 			}
 		});
 	}
@@ -214,10 +230,13 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			title: newData.title,
 			time: +newData.time,
 			overtime: +newData.overtime,
+			project: newData.project,
 		};
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
 		}
+		// this.filterDataSource = [...this.dataSource];
+		this.cd.detectChanges();
 	}
 
 	public getSum(fields: HoursKeys[]): void {
@@ -243,7 +262,19 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
+	public onActionHandingBtn(date: Date | null, action: OptionsTitle, row: ITask): void {
+		this.taskService.ChangeActionBtn({date: date as Date, action}, [row]);
+	}
+
+	public getColor(projectColor: string): {[k: string]: string} {
+		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
+	}
+
 	ngOnDestroy() {
 		this.isSub = false;
+	}
+
+	public compareProjectObjects(o1: IProject, o2: IProject): boolean {
+		return o1.title === o2.title;
 	}
 }

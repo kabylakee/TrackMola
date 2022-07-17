@@ -20,8 +20,9 @@
         [actionHanding]="actionHanding"
         [reportButtonAction]="reportButtonAction"
         (outChangeTime)="updateSumTime($event)"
+        (disableSave)="disabledSave = $event"
       ></app-reports-table>
-      <app-reports-button (reportButtonAction)="onReportButtonAction($event)"></app-reports-button>
+      <app-reports-button [disabledSave]="disabledSave" (reportButtonAction)="onReportButtonAction($event)"></app-reports-button>
     </div>
     <app-month-table
       *ngSwitchCase="periods.Month"

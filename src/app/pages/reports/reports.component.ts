@@ -42,7 +42,8 @@ export class ReportsComponent implements OnInit, OnDestroy {
 	public searchValue = '';
 	public actionHanding: IOptionInterface;
 	public reportButtonAction: ReportsButtonEnum;
-	public day: Date = new Date(2022, 7, 12);
+	public day: Date = new Date();
+	public disabledSave = true;
 
 	constructor(private taskService: TaskService) {}
 
@@ -86,7 +87,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
 	}
 
 	private calculateMonthSumTime(days: IReportsDayInfo[]): IHours {
-		const weeks = days.filter((day) => day.isWeekInfo === true);
+		const weeks = days.filter((day) => day.isWeekInfo);
 		return {
 			time: weeks.reduce((monthTime, week) => (monthTime += week.total), 0),
 			overtime: weeks.reduce((monthOvertime, week) => (monthOvertime += week.overtime), 0),

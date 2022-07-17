@@ -12,6 +12,8 @@
 		<button
 			mat-flat-button
 			color="secondary"
+      [class.mat-button-disabled]="disabledSave"
+      [disabled]="disabledSave"
 			(click)="onReportButtonAction(ReportsButtonEnum.Save)"
 		>
 			{{ ReportsButtonEnum.Save }}
