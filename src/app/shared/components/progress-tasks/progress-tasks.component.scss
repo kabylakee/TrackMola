@@ -1,0 +1,29 @@
+:host {
+	.container {
+		width: 100%;
+		padding: calc(1.5 * var(--offset));
+		border: 1px solid var(--accent-200);
+		border-radius: var(--border-radius-xs);
+
+		.header {
+			margin-bottom: var(--offset-s);
+			color: var(--black);
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		.tasks {
+			display: flex;
+			flex-flow: column;
+			overflow-y: auto;
+
+			&-item {
+				display: flex;
+				justify-content: space-between;
+			}
+			&-right {
+				display: flex;
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="header">
+    In progress tasks
+  </h2>
+  <div class="tasks">
+    <div class="tasks-item" *ngFor="let task of tasks">
+      <div class="tasks-title">
+        {{task.title}}
+      </div>
+      <div class="tasks-right">
+        <div class="tasks-hours">
+          {{task.time}}h
+        </div>
+        <div class="tasks-project">
+          {{task.project.title}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
