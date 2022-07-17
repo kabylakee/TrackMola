@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-// import {NOTIFICATION_CONTENT} from 'src/app/entities/constants/notifications.constants';
-// import {INotification} from 'src/app/entities/interfaces/notification.interface';
+import {INotification} from 'src/app/entities/interfaces/notification.interface';
+import {NOTIFICATION_CONTENT} from 'src/app/entities/constants/notifications.constants';
 
 @Component({
 	selector: 'app-header',
@@ -11,4 +11,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 export class HeaderComponent {
 	// public readonly config: INotification[] = NOTIFICATION_CONTENT;
 	@Input() pageTitle: string;
+	testValue: INotification[] = NOTIFICATION_CONTENT;
+	public changeTest(value: INotification[]) {
+		this.testValue = value;
+	}
 }

@@ -1,0 +1,25 @@
+:host {
+	app-notification ::ng-deep .mat-card {
+		position: static;
+		min-width: 37.6875rem;
+		padding: 24px;
+	}
+	app-notification ::ng-deep .mat-card-title {
+		margin-bottom: 1rem;
+	}
+
+	app-notification ::ng-deep .notification {
+		margin-bottom: 19px;
+	}
+
+	app-notification ::ng-deep .mat-card-actions {
+		margin-bottom: 0;
+		& button {
+			min-width: 118px;
+			min-height: 36px;
+			& .mat-button-wrapper {
+				gap: var(--offset-s) !important;
+			}
+		}
+	}
+}

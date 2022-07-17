@@ -3,7 +3,7 @@ import {
 	// ChangeDetectorRef,
 	Component,
 	// EventEmitter,
-	// Input,
+	Input,
 	// OnInit,
 	// Output,
 } from '@angular/core';
@@ -18,6 +18,7 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BellComponent {
+	@Input() bellTest: INotification[] = NOTIFICATION_CONTENT;
 	// @Input() notifications: INotification[] = [];
 	// @Output() snoozedNotification = new EventEmitter<INotification[]>();
 	public readonly config: INotification[] = NOTIFICATION_CONTENT;
