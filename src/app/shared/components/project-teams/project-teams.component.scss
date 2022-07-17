@@ -1,0 +1,112 @@
+@import 'mixins/colors-mixin';
+
+:host {
+	$img-size: 2rem;
+	$max-height: 14.6rem;
+
+	.container {
+		width: 100%;
+		padding: calc(1.5 * var(--offset));
+		border: 1px solid var(--accent-200);
+		border-radius: var(--border-radius-xs);
+
+		.header {
+			margin-bottom: var(--offset-s);
+			color: var(--black);
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		.mat-select {
+			padding: var(--offset-xxs) calc(0.375 * var(--offset));
+			color: var(--accent-300) !important;
+			font-weight: 500;
+			font-size: var(--font-size-xs);
+			border-radius: var(--border-radius-xs);
+		}
+
+		.select {
+			width: max-content;
+			padding: var(--offset-xxs) var(--offset-s) !important;
+			border: 1px solid var(--accent-100);
+			border-radius: var(--border-radius-xs);
+		}
+
+		.team {
+			display: flex;
+			flex-flow: column;
+			max-height: $max-height;
+			padding-top: var(--offset-s);
+			overflow-y: auto;
+		}
+
+		.employee {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			color: var(--black);
+			font-size: var(--font-size-s);
+
+			&-image {
+				margin-right: var(--offset-s);
+
+				img {
+					width: $img-size;
+					height: $img-size;
+					border-radius: var(--border-radius-xs);
+				}
+			}
+
+			&-left {
+				display: flex;
+				align-items: center;
+			}
+
+			&-role {
+				padding-right: var(--offset-s);
+			}
+		}
+	}
+}
+
+::ng-deep {
+	.project-teams .mat-form-field {
+		&-wrapper {
+			padding: 0;
+		}
+		&-flex {
+			padding: 0 !important;
+			background: none !important;
+			border-radius: var(--border-radius-xs) !important;
+		}
+		&-infix {
+			padding: 0 !important;
+			border: none;
+		}
+		&-underline {
+			display: none;
+		}
+	}
+
+	.mat-form-field {
+		position: relative;
+		.arrow {
+			position: absolute;
+			top: calc(-1 * var(--offset));
+			right: 0;
+			color: var(--light-black);
+		}
+	}
+
+	.mat-select {
+		&-arrow {
+			display: none !important;
+		}
+		&-arrow-wrapper {
+			display: none !important;
+		}
+		&-value {
+			color: inherit;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="header">Project teams</h2>
+  <div class="select">
+    <mat-form-field class="project-teams" appearance="fill">
+      <mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
+        <mat-option [value]="project.title" *ngFor="let project of projects">
+          <app-project-component projectName="{{project.title}}"></app-project-component>
+        </mat-option>
+      </mat-select>
+      <mat-icon matSuffix class="arrow">expand_more</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="team">
+    <div class="employee" *ngFor="let employee of currentProject.employees">
+      <div class="employee-left">
+        <div class="employee-image">
+          <img src="{{employee.image}}" alt="photo">
+        </div>
+        <div class="employee-name">
+          {{employee.firstName}} {{employee.secondName}}
+        </div>
+      </div>
+      <div class="employee-role">
+        {{employee.role}}
+      </div>
+    </div>
+  </div>
+</div>
