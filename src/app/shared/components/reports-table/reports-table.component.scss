@@ -1,3 +1,4 @@
+@import 'mixins/common-mixin';
 @import 'mixins/colors-mixin';
 
 ::ng-deep {
@@ -82,5 +83,10 @@
 		.mat-icon {
 			color: var(--dark-gray);
 		}
+	}
+	.no-data-container {
+		@include flex-center;
+		padding-top: var(--offset);
+		padding-bottom: var(--offset);
 	}
 }
