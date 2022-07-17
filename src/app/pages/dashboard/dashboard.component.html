@@ -1,5 +1,10 @@
 <app-header [pageTitle]="title"></app-header>
 <div class="container">
-  <app-semi-circle-donut></app-semi-circle-donut>
-  <app-project-teams></app-project-teams>
+  <div class="container-left">
+    <app-tasks-statistic [tasks]="tasks"></app-tasks-statistic>
+    <app-semi-circle-donut></app-semi-circle-donut>
+  </div>
+  <div class="container-right">
+    <app-project-teams></app-project-teams>
+  </div>
 </div>

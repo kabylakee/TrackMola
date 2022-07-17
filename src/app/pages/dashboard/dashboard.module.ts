@@ -5,6 +5,7 @@ import {DashboardComponent} from './dashboard.component';
 import {NoDataModule} from 'src/app/shared/components/no-data/no-data.module';
 import {HeaderModule} from 'src/app/shared/components/header/header.module';
 import {ProjectTeamsModule} from 'src/app/shared/components/project-teams/project-teams.module';
+import {TasksStatisticModule} from 'src/app/shared/components/tasks-statistic/tasks-statistic.module';
 import {SemiCircleDonutModule} from 'src/app/shared/components/half-pie-chart/semi-circle-donut.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {SemiCircleDonutModule} from 'src/app/shared/components/half-pie-chart/se
 		NoDataModule,
 		SemiCircleDonutModule,
 		ProjectTeamsModule,
+		TasksStatisticModule,
 	],
 })
 export class DashboardModule {}
