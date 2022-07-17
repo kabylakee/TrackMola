@@ -1,8 +1,8 @@
 <button mat-icon-button class="bell-icon" (click)="showCard()">
-  <mat-icon *ngIf="!copyOfNotifications.length; else elseBell">
+  <mat-icon *ngIf="!copyOfNotifications.length; else activeBell">
     notifications_none
   </mat-icon>
-  <ng-template #elseBell>
+  <ng-template #activeBell>
     <div class="bell-icon-active"></div>
   </ng-template>
 </button>
