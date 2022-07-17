@@ -31,11 +31,8 @@ import {ProjectModule} from '../project/projects.module';
 		CdkTableModule,
 		MatSelectModule,
 		MatDialogModule,
-<<<<<<< HEAD
 		NoDataModule,
-=======
 		ProjectModule,
->>>>>>> master
 	],
 	exports: [ReportsTableComponent],
 })
