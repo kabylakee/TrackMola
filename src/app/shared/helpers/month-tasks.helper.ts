@@ -30,6 +30,7 @@ export class MonthTasksHelper {
 
 	private static taskToDayMapper(tasks: ITask[]): IReportsDayInfo[] {
 		if (tasks.length === 0) return [];
+		tasks = tasks.sort((a, b) => +a.date - +b.date);
 		let days: ITask[][] = []; // array of day tasks arrays
 		let dayTasks: ITask[] = []; // one day tasks
 		let currentDate = tasks[0].date;
@@ -97,9 +98,10 @@ export class MonthTasksHelper {
 			allDaysInfo[i].date = new Date(selectedYear, selectedMonth, i - paddingDaysStart + 1); // add correct day of month
 
 			if (
-				i - paddingDaysStart + 1 < currentDay &&
-				selectedMonth === currentMonth &&
-				selectedYear === currentYear
+				(i - paddingDaysStart + 1 < currentDay &&
+					selectedMonth === currentMonth &&
+					selectedYear === currentYear) ||
+				(selectedMonth < currentMonth && selectedYear <= currentYear)
 			) {
 				allDaysInfo[i].timeStatus = TimeStatus.Unfinished; // mark missed days
 			}
@@ -131,6 +133,7 @@ export class MonthTasksHelper {
 	}
 
 	private static dayToWeekMapper(allDayInfo: IReportsDayInfo[], date: Date): IReportsDayInfo[] {
+		allDayInfo = allDayInfo.sort((a, b) => +a.date - +b.date);
 		let weeks: IReportsDayInfo[][] = [];
 		let weekInfo: IReportsDayInfo[] = [];
 		let currentWeek = this.getWeek(new Date(date.getFullYear(), date.getMonth(), 1));
@@ -157,10 +160,10 @@ export class MonthTasksHelper {
 		weeks.forEach((week, weekIndex) => {
 			allWeeksInfo.push({
 				date: week[0] ? week[0].date : this.getFirstDayOfWeek(weekIndex + 1, date),
-				taskCount: week.length,
+				taskCount: week.reduce((totalCount, day) => (totalCount += day.taskCount), 0),
 				total: week.reduce((totalTime, day) => (totalTime += day.total), 0),
 				overtime: week.reduce((totalOvertime, day) => (totalOvertime += day.overtime), 0),
-				timeStatus: this.weekStatus(week),
+				timeStatus: TimeStatus.Enough,
 				isVacation: false,
 				paid: false,
 				disabled: false,
@@ -191,6 +194,8 @@ export class MonthTasksHelper {
 			);
 		}
 
+		MonthTasksHelper.setWeekStatus(allWeeksInfo);
+
 		return allWeeksInfo;
 	}
 
@@ -208,12 +213,29 @@ export class MonthTasksHelper {
 		return TimeStatus.Enough;
 	}
 
-	private static weekStatus(week: IReportsDayInfo[]): TimeStatus {
-		const totalTime = week.reduce((total, day) => (total += day.total), 0);
+	private static setWeekStatus(weeks: IReportsDayInfo[]): void {
+		const workHours = 8;
+		const lastDayOfWeek = new Date(
+			weeks[weeks.length - 1].date.getFullYear(),
+			weeks[weeks.length - 1].date.getMonth() + 1,
+			0,
+		).getDate();
+		const firstDayOfLastWeek = MonthTasksHelper.getFirstDayOfWeek(
+			weeks.length,
+			weeks[weeks.length - 1].date,
+		).getDate();
+		let weekHours: number;
 
-		if (totalTime < 40) return TimeStatus.Unfinished;
-		if (totalTime > 40) return TimeStatus.Overwork;
-		return TimeStatus.Enough;
+		for (let i = 0; i < weeks.length; i++) {
+			if (i === 0) weekHours = workHours * (6 - weeks[i].date.getDay());
+			else if (i === weeks.length - 1)
+				weekHours = workHours * (lastDayOfWeek - firstDayOfLastWeek + 1);
+			else weekHours = 40;
+
+			if (weeks[i].total < weekHours) weeks[i].timeStatus = TimeStatus.Unfinished;
+			else if (weeks[i].total > weekHours) weeks[i].timeStatus = TimeStatus.Overwork;
+			else weeks[i].timeStatus = TimeStatus.Enough;
+		}
 	}
 
 	private static getWeek(date: Date): number {

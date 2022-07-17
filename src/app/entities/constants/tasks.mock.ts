@@ -90,7 +90,7 @@ export const TASKS_MOCK: ITask[] = [
 	{
 		date: new Date(2022, 6, 13),
 		checked: false,
-		title: 'Task 44',
+		title: 'Very loooooooooong name Task 44',
 		project: PROJECT_MOCK[2],
 		status: Status.Done,
 		time: 3,
