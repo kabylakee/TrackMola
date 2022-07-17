@@ -1,6 +1,9 @@
 @import 'mixins/colors-mixin';
 
 :host {
+	$img-size: 2rem;
+	$max-height: 14.6rem;
+
 	.container {
 		width: 100%;
 		padding: calc(1.5 * var(--offset));
@@ -27,6 +30,40 @@
 			padding: var(--offset-xxs) var(--offset-s) !important;
 			border: 1px solid var(--accent-100);
 			border-radius: var(--border-radius-xs);
+		}
+
+		.team {
+			display: flex;
+			flex-flow: column;
+			max-height: $max-height;
+			padding-top: var(--offset-s);
+			overflow-y: auto;
+		}
+
+		.employee {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			color: var(--black);
+			font-size: var(--font-size-s);
+
+			&-image {
+				margin-right: var(--offset-s);
+
+				img {
+					width: $img-size;
+					height: $img-size;
+				}
+			}
+
+			&-left {
+				display: flex;
+				align-items: center;
+			}
+
+			&-role {
+				padding-right: var(--offset-s);
+			}
 		}
 	}
 }
