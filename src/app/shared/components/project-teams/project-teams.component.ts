@@ -40,7 +40,7 @@ export class ProjectTeamsComponent {
 		return result;
 	}
 
-	selectProject(value: Event) {
+	public selectProject(value: Event): void {
 		this.projects.forEach((project) => {
 			if (project.title === `${value}`) {
 				this.currentProject = project;
