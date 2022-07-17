@@ -1,1 +1,7 @@
-<div [chart]="chart" class="chart"></div>
+<div class="card">
+	<div class="card-header">
+		<h2 class="label">Task statistic by week</h2>
+		<app-hours-card [normalHoursCount]="weekNormalTime" [sumTime]="sumTime"></app-hours-card>
+	</div>
+	<div [chart]="chart"></div>
+</div>
