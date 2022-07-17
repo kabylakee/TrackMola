@@ -53,6 +53,7 @@
 				img {
 					width: $img-size;
 					height: $img-size;
+					border-radius: var(--border-radius-xs);
 				}
 			}
 
