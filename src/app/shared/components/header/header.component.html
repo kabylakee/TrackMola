@@ -1,7 +1,9 @@
 <div class="container">
   <div class="title">{{pageTitle}}</div>
   <div class="container-user-notification">
-    <app-bell [bellTest]="testValue"></app-bell>
+    <app-bell>
+      <app-notification [notifications]="testValue | async" (test)="changeTest($event)"></app-notification>
+    </app-bell>
     <div class="user">
       <div class="user-img"></div>
       <div class="user-name">Desirae Workman</div>
