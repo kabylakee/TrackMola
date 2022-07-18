@@ -10,15 +10,15 @@
 	&-left {
 		display: flex;
 		flex-direction: column;
+		gap: var(--offset-m);
 		width: 58%;
 		padding-right: var(--offset-m);
-		gap: var(--offset-m);
 	}
 
 	&-right {
 		display: flex;
 		flex-direction: column;
-		width: 42%;
 		gap: var(--offset-m);
+		width: 42%;
 	}
 }

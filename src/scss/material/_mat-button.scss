@@ -22,8 +22,8 @@ app-root {
 		.mat-button-wrapper {
 			display: flex;
 			gap: var(--offset-s);
-			justify-content: center;
 			align-items: center;
+			justify-content: center;
 		}
 
 		&.mat-secondary {

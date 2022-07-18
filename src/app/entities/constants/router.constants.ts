@@ -7,11 +7,6 @@ export const NAVIGATION_LINKS = [
 		icon: NavigationIcons.Dashboard,
 	},
 	{
-		path: RouterPaths.Projects,
-		title: 'Projects',
-		icon: NavigationIcons.Projects,
-	},
-	{
 		path: RouterPaths.Reports,
 		title: 'Reports',
 		icon: NavigationIcons.Reports,
