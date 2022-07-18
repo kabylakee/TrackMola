@@ -54,10 +54,8 @@
 		width: $project-width;
 		.mat-select {
 			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			//color: var(--accent-300) !important;
 			font-weight: 500;
 			font-size: var(--font-size-xs);
-			//background-color: rgba-color(accent-300, 0.2);
 			border-radius: var(--border-radius-xs);
 		}
 	}
