@@ -99,4 +99,16 @@ export const TASKS_MOCK: ITask[] = [
 		asanaLink: '',
 		bitbucketLink: '',
 	},
+	{
+		date: new Date(2022, 6, 1),
+		checked: false,
+		title: 'Veryyyy looooooong taaaaaaaaaask',
+		project: PROJECT_MOCK[1],
+		status: Status.InProgress,
+		time: 3,
+		overtime: 0,
+		paid: false,
+		asanaLink: 'https://api.chucknorris.io/jokes/CF0vMe-zRTWEbaYEy6LJ1A',
+		bitbucketLink: '',
+	},
 ];
