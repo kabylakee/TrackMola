@@ -85,8 +85,8 @@ $mat-icon-line-height: 1.45rem;
 	.notification {
 		display: flex;
 		gap: calc(var(--offset) * 2.5);
-		align-items: center;
 		justify-content: space-between;
+		align-items: center;
 		margin-bottom: calc(var(--offset) * 0.5);
 		& span {
 			white-space: nowrap;

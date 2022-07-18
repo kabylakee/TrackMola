@@ -1,0 +1,34 @@
+<mat-card>
+	<mat-card-title>Vacation request</mat-card-title>
+	<mat-card-content>
+		<ng-container *ngFor="let vacation of vacations; index as i">
+			<div class="vacation">
+				{{ vacation.dateFromFormat }}-{{ vacation.dateToFormat }} ({{
+					vacation.dateTo.getDate() - vacation.dateFrom.getDate()
+				}}
+				days)
+				<div class="confirmation">
+					<mat-icon
+						class="material-icons-outlined icon"
+						*ngIf="vacation.status === VacationRequest.Approved"
+						[class.approved]="vacation.status === VacationRequest.Approved"
+						>handshake</mat-icon
+					>
+					<mat-icon
+						class="material-icons-outlined icon"
+						*ngIf="vacation.status === VacationRequest.Unapproved"
+						[class.unapproved]="vacation.status === VacationRequest.Unapproved"
+						>cancel</mat-icon
+					>
+					<span
+						[ngClass]="{
+							approved: vacation.status === VacationRequest.Approved,
+							unapproved: vacation.status === VacationRequest.Unapproved
+						}"
+						>{{ vacation.status }}</span
+					>
+				</div>
+			</div>
+		</ng-container>
+	</mat-card-content>
+</mat-card>
