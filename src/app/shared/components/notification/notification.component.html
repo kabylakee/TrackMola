@@ -1,0 +1,40 @@
+<mat-card>
+  <div class="notifications-container">
+    <mat-card-title>Notifications</mat-card-title>
+    <ng-container *ngFor="let element of notifications; index as i">
+      <div class="notification">
+        <span>{{element.content}}</span>
+        <div class="notification-controllers">
+          <button
+            mat-icon-button
+            matTooltip="Snooze for 1h"
+            matTooltipClass="tooltip-right"
+            matTooltipPosition="right"
+            (click)="snoozeNotification(i)">
+              <mat-icon>schedule</mat-icon>
+          </button>
+          <button mat-icon-button (click)="dismissNotification(i)">
+            <mat-icon class="material-icons-outlined">notifications_off</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <mat-card-actions *ngIf="notifications?.length">
+    <button
+      matTooltip="Snooze for 1h"
+      matTooltipClass="tooltip-down"
+      class="shedules"
+      mat-flat-button
+      color="secondary"
+      (click)="snoozeNotificationAll()">
+        <mat-icon class="shedule">schedule</mat-icon>
+        <span>Snooze All</span>
+    </button>
+    <button mat-flat-button color="secondary" (click)="dismissNotificationAll()">
+      <mat-icon class="material-icons-outlined">notifications_off</mat-icon>
+      <span>Dismiss All</span>
+    </button>
+  </mat-card-actions>
+  <app-no-data class="no-data" *ngIf="!notifications?.length"></app-no-data>
+</mat-card>
