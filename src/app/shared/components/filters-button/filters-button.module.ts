@@ -7,6 +7,7 @@ import {CommonModule} from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormsModule} from '@angular/forms';
 import {ReportsTableModule} from '../reports-table/reports-table.module';
+import {ProjectModule} from '../project/projects.module';
 
 @NgModule({
 	declarations: [FiltersButtonComponent],
@@ -18,6 +19,7 @@ import {ReportsTableModule} from '../reports-table/reports-table.module';
 		MatCheckboxModule,
 		FormsModule,
 		ReportsTableModule,
+		ProjectModule,
 	],
 	exports: [FiltersButtonComponent],
 })
