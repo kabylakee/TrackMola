@@ -2,10 +2,10 @@
 	.container {
 		width: 100%;
 		padding: calc(1.5 * var(--offset));
+		font-weight: 400;
+		font-size: var(--font-size-s);
 		border: 1px solid var(--accent-200);
 		border-radius: var(--border-radius-xs);
-		font-size: var(--font-size-s);
-		font-weight: 400;
 
 		.header {
 			margin-bottom: var(--offset-s);

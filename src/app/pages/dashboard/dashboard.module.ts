@@ -8,6 +8,7 @@ import {ProjectTeamsModule} from 'src/app/shared/components/project-teams/projec
 import {TasksStatisticModule} from 'src/app/shared/components/tasks-statistic/tasks-statistic.module';
 import {SemiCircleDonutModule} from 'src/app/shared/components/half-pie-chart/semi-circle-donut.module';
 import {ProgressTasksModule} from 'src/app/shared/components/progress-tasks/progress-tasks.module';
+import {VacationRequestModule} from '../../shared/components/vacation-request/vacation-request.module';
 
 @NgModule({
 	declarations: [DashboardComponent],
@@ -20,6 +21,7 @@ import {ProgressTasksModule} from 'src/app/shared/components/progress-tasks/prog
 		ProjectTeamsModule,
 		TasksStatisticModule,
 		ProgressTasksModule,
+		VacationRequestModule,
 	],
 })
 export class DashboardModule {}
