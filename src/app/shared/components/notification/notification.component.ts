@@ -23,7 +23,17 @@ export class NotificationComponent {
 	constructor(private _cdr: ChangeDetectorRef, public dataService: TestService) {}
 
 	public snoozeNotification(i: number): void {
-		this.test.emit(this.notifications?.filter((notification, index) => index !== i));
+		this.test.emit(
+			this.notifications?.filter((notification, index) => {
+				if (index === i) {
+					setTimeout(() => {
+						this.notifications?.push(notification);
+						this.test.emit(this.notifications?.filter(() => true));
+					}, this.hour);
+				}
+				return index !== i;
+			}),
+		);
 	}
 
 	public dismissNotification(i: number): void {
@@ -35,6 +45,10 @@ export class NotificationComponent {
 	}
 
 	public snoozeNotificationAll(): void {
+		let test = this.notifications?.filter(() => true);
 		this.test.emit([]);
+		setTimeout(() => {
+			this.test.emit(test);
+		}, this.hour);
 	}
 }

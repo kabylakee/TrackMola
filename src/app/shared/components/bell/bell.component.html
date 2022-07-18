@@ -3,5 +3,6 @@
     notifications_none
   </mat-icon>
 </button>
-<app-notification *ngIf="isCardOpen" [notifications]="bellTest"></app-notification>
+<ng-content *ngIf="isCardOpen"></ng-content>
+<!-- <app-notification *ngIf="isCardOpen" [notifications]="bellTest"></app-notification> -->
 
