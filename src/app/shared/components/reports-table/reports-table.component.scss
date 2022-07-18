@@ -2,6 +2,9 @@
 @import 'mixins/colors-mixin';
 
 ::ng-deep {
+	$picker-top: -1.5rem;
+	$picker-right: 6.8rem;
+
 	.mat-select {
 		&-arrow-wrapper {
 			display: none !important;
@@ -9,6 +12,24 @@
 		&-value {
 			color: inherit;
 		}
+	}
+
+	.hidden-mat-menu-item {
+		width: 0;
+		min-width: 0 !important;
+		height: 0;
+	}
+
+	.mat-menu-submenu-icon {
+		display: none;
+	}
+
+	.left-position-datepicker {
+		position: absolute;
+		top: $picker-top;
+		right: $picker-right;
+		background-color: var(--white);
+		box-shadow: 0px 4px 4px 0px rgba-color(black, 0.25);
 	}
 }
 
@@ -33,10 +54,8 @@
 		width: $project-width;
 		.mat-select {
 			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			color: var(--accent-300) !important;
 			font-weight: 500;
 			font-size: var(--font-size-xs);
-			background-color: rgba-color(accent-300, 0.2);
 			border-radius: var(--border-radius-xs);
 		}
 	}

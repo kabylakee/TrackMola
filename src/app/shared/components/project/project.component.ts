@@ -8,4 +8,9 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class ProjectComponent {
 	@Input() projectName: string;
+	@Input() projectColor: string;
+
+	public getColor(projectColor: string): {[k: string]: string} {
+		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
+	}
 }

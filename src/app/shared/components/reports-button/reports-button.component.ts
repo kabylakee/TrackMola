@@ -11,6 +11,7 @@ import {ReportsErrorEnum} from 'src/app/entities/enums/reports-error.enum';
 export class ReportsButtonComponent {
 	@Input() canSubmit = false;
 	@Input() notifierMassage: ReportsErrorEnum;
+	@Input() disabledSave = true;
 
 	@Output() reportButtonAction = new EventEmitter<ReportsButtonEnum>();
 

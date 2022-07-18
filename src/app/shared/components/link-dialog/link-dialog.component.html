@@ -1,36 +1,51 @@
 <div mat-dialog-title>
-  <h2 class="title">Add Task Links</h2>
-  <mat-dialog-actions>
-    <mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
-  </mat-dialog-actions>
+	<h2 class="title">Add Task Links</h2>
+	<mat-dialog-actions>
+		<mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
+	</mat-dialog-actions>
 </div>
 
 <mat-dialog-content class="mat-typography">
-  <div class="asana">
-    <div class="image">
-      <img class="image-img" src="assets/image/asana.svg" alt="asana">
-    </div>
+	<div class="asana">
+		<div class="image">
+			<img class="image-img" src="assets/image/asana.svg" alt="asana" />
+		</div>
 
-    <input matInput placeholder="Asana link" class="link-input" [(ngModel)]="data.asanaLink">
-    
-    <a [href]="data.asanaLink" class="image" [ngClass]="{'active' : data.asanaLink, 'disabled' : !data.asanaLink}">
-      <mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
-    </a>
-  </div>
+		<input matInput placeholder="Asana link" class="link-input" [(ngModel)]="data.asanaLink" />
 
-  <div class="bitbucket">
-    <div class="image">
-      <img class="image-img" src="assets/image/bitbucket.svg" alt="bitbucket">
-    </div>
+		<a
+			[href]="data.asanaLink"
+			target="_blank"
+			class="image"
+			[ngClass]="{active: data.asanaLink, disabled: !data.asanaLink}"
+		>
+			<mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
+		</a>
+	</div>
 
-    <input matInput placeholder="Bitbucket link" class="link-input" [(ngModel)]="data.bitbucketLink">
+	<div class="bitbucket">
+		<div class="image">
+			<img class="image-img" src="assets/image/bitbucket.svg" alt="bitbucket" />
+		</div>
 
-    <a [href]="data.bitbucketLink" class="image" [ngClass]="{'active' : data.bitbucketLink, 'disabled' : !data.bitbucketLink}">
-      <mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
-    </a>
-  </div>
+		<input
+			matInput
+			placeholder="Bitbucket link"
+			class="link-input"
+			[(ngModel)]="data.bitbucketLink"
+		/>
+
+		<a
+			[href]="data.bitbucketLink"
+			target="_blank"
+			class="image"
+			[ngClass]="{active: data.bitbucketLink, disabled: !data.bitbucketLink}"
+		>
+			<mat-icon aria-hidden="false" [mat-dialog-close]="links">open_in_new</mat-icon>
+		</a>
+	</div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" [mat-dialog-close]="links">Save</button>
+	<button mat-raised-button color="primary" [mat-dialog-close]="links">Save</button>
 </mat-dialog-actions>

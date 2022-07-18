@@ -19,7 +19,7 @@
 					</div>
 				</th>
 
-				<td *cdkCellDef="let element let rowIndex = index" [formGroupName]="rowIndex">
+				<td *cdkCellDef="let element; let rowIndex = index" [formGroupName]="rowIndex">
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
 						<div *ngSwitchCase="columnType.CHECK_ALL">
 							<mat-checkbox
@@ -51,46 +51,108 @@
 							</ng-container>
 						</div>
 
-					<div *ngSwitchCase="columnType.PROJECT">
-						<mat-form-field appearance="fill">
-							<mat-select [value]="element[''+column.field].title">
-								<mat-option [value]="project.title" *ngFor="let project of projects">
-									<app-project-component projectName="{{project.title}}"></app-project-component>
-								</mat-option>
-							</mat-select>
-						</mat-form-field>
-					</div>
+						<div *ngSwitchCase="columnType.PROJECT">
+							<mat-form-field appearance="fill">
+								<mat-select
+									[value]="element['' + column.field].title"
+                  [compareWith]="compareProjectObjects"
+									formControlName="project"
+									[ngStyle]="getColor(element['' + column.field].color)"
+								>
+									<mat-option [value]="project" *ngFor="let project of projects">
+										<app-project-component
+											[projectName]="project.title"
+											[projectColor]="project.color"
+										></app-project-component>
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
 
-					<div *ngSwitchCase="columnType.STATUS">
-						<mat-form-field appearance="fill">
-							<mat-select [value]="element[''+column.field]">
-								<mat-option [value]="status.Done">{{ status.Done }}</mat-option>
-								<mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
-								<mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
-							</mat-select>
-						</mat-form-field>
-					</div>
+						<div *ngSwitchCase="columnType.STATUS">
+							<mat-form-field appearance="fill">
+								<mat-select [value]="element['' + column.field]">
+									<mat-option [value]="status.Done">{{ status.Done }}</mat-option>
+									<mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
+									<mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
 
-					<div *ngSwitchCase="columnType.LINK">
-						<button class="add-link" mat-icon-button aria-label="Add Link"
-										(click)="openDialog($event.clientX, $event.clientY, element)">
-							<mat-icon aria-hidden="false" [ngClass]="{'active-links': element.asanaLink || element.bitbucketLink}">
-								{{element.asanaLink || element.bitbucketLink ? 'link' : 'add_link'}}
-							</mat-icon>
-						</button>
-					</div>
-
-					<div *ngSwitchCase="columnType.OPTIONS">
-						<button mat-icon-button aria-label="Options" class="user-logout" [matMenuTriggerFor]="menu">
-							<mat-icon aria-hidden="false">more_horiz</mat-icon>
-						</button>
-						<mat-menu #menu="matMenu" class="menu">
-							<button mat-menu-item *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
-								<mat-icon class="material-icons-outlined menu-item-icon">{{option.icon}}</mat-icon>
-								<span class="menu-item-text">{{option.title}}</span>
+						<div *ngSwitchCase="columnType.LINK">
+							<button
+								class="add-link"
+								mat-icon-button
+								aria-label="Add Link"
+								(click)="openDialog($event.clientX, $event.clientY, element)"
+							>
+								<mat-icon
+									aria-hidden="false"
+									[ngClass]="{'active-links': element.asanaLink || element.bitbucketLink}"
+								>
+									{{ element.asanaLink || element.bitbucketLink ? 'link' : 'add_link' }}
+								</mat-icon>
 							</button>
-						</mat-menu>
-					</div>
+						</div>
+
+						<div *ngSwitchCase="columnType.OPTIONS">
+							<button
+								mat-icon-button
+								aria-label="Options"
+								class="user-logout"
+								[matMenuTriggerFor]="menu"
+							>
+								<mat-icon aria-hidden="false">more_horiz</mat-icon>
+							</button>
+							<mat-menu #menu="matMenu" class="menu">
+								<button mat-menu-item (click)="pickerCopyTo.open()" [matMenuTriggerFor]="copyTo">
+									<mat-icon class="material-icons-outlined menu-item-icon">{{
+										options[0].icon
+									}}</mat-icon>
+									<span class="menu-item-text">{{ options[0].title }}</span>
+								</button>
+
+								<mat-menu #copyTo="matMenu" class="hidden-mat-menu-item">
+									<input
+										matInput
+										[matDatepicker]="pickerCopyTo"
+										(dateChange)="onActionHandingBtn($event.value!, OptionsTitle.Copy, element)"
+									/>
+									<mat-datepicker
+										#pickerCopyTo
+										panelClass="left-position-datepicker"
+									></mat-datepicker>
+								</mat-menu>
+
+								<button
+									mat-menu-item
+									(click)="onActionHandingBtn(null, OptionsTitle.Remove, element)"
+								>
+									<mat-icon class="material-icons-outlined menu-item-icon">{{
+										options[1].icon
+									}}</mat-icon>
+									<span class="menu-item-text">{{ options[1].title }}</span>
+								</button>
+								<button mat-menu-item (click)="pickerMoveTo.open()" [matMenuTriggerFor]="moveTo">
+									<mat-icon class="material-icons-outlined menu-item-icon">{{
+										options[2].icon
+									}}</mat-icon>
+									<span class="menu-item-text">{{ options[2].title }}</span>
+								</button>
+
+								<mat-menu #moveTo="matMenu" class="hidden-mat-menu-item">
+									<input
+										matInput
+										[matDatepicker]="pickerMoveTo"
+										(dateChange)="onActionHandingBtn($event.value!, OptionsTitle.Move, element)"
+									/>
+									<mat-datepicker
+										#pickerMoveTo
+										panelClass="left-position-datepicker"
+									></mat-datepicker>
+								</mat-menu>
+							</mat-menu>
+						</div>
 
 						<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
 					</div>
@@ -98,6 +160,7 @@
 			</ng-container>
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
 			<tr
 				mat-row
 				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
