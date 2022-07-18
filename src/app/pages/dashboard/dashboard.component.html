@@ -1,6 +1,7 @@
 <app-header [pageTitle]="title"></app-header>
 <div class="container">
   <div class="container-left">
+    <app-notification [notifications]="config | async" (eventChangeNotification)="changeListOfNotifications($event)"></app-notification>
     <app-tasks-statistic [tasks]="tasks"></app-tasks-statistic>
     <app-semi-circle-donut></app-semi-circle-donut>
   </div>

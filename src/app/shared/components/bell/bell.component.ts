@@ -1,13 +1,8 @@
-import {
-	ChangeDetectionStrategy,
-	ChangeDetectorRef,
-	Component,
-	EventEmitter,
-	Input,
-	OnInit,
-	Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {Observable} from 'rxjs';
+import {NOTIFICATION_CONTENT} from 'src/app/entities/constants/notifications.constants';
 import {INotification} from 'src/app/entities/interfaces/notification.interface';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
 	selector: 'app-bell',
@@ -15,44 +10,18 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 	styleUrls: ['./bell.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BellComponent implements OnInit {
-	@Input() notifications: INotification[] = [];
-	@Output() snoozedNotification = new EventEmitter<INotification[]>();
+export class BellComponent {
+	@Input() bellTest: INotification[] = NOTIFICATION_CONTENT;
+	public readonly config: INotification[] = NOTIFICATION_CONTENT;
 	public isCardOpen = false;
-	public copyOfNotifications: INotification[];
-	public hour = 1000 * 3600;
-	constructor(private _cdr: ChangeDetectorRef) {}
+	@Input() notifications: INotification[] | null = [];
 
-	public ngOnInit(): void {
-		this.copyOfNotifications = this.notifications;
+	listOfNotifications: Observable<INotification[]>;
+
+	constructor(public notificationService: NotificationService) {
+		this.listOfNotifications = this.notificationService.getData();
 	}
-
 	public showCard(): void {
 		this.isCardOpen = !this.isCardOpen;
-	}
-
-	public snoozeNotification(i: number): void {
-		const notification = this.copyOfNotifications.splice(i, 1);
-		setTimeout(() => {
-			this.copyOfNotifications.unshift(notification[0]);
-			this._cdr.detectChanges();
-		}, this.hour);
-	}
-
-	public dismissNotification(i: number): void {
-		this.copyOfNotifications.splice(i, 1);
-	}
-
-	public dismissNotificationAll(): void {
-		this.copyOfNotifications = [];
-	}
-
-	public snoozeNotificationAll(): void {
-		const notifications = this.copyOfNotifications;
-		this.copyOfNotifications = [];
-		setTimeout(() => {
-			this.copyOfNotifications = notifications;
-			this._cdr.detectChanges();
-		}, this.hour);
 	}
 }
