@@ -151,7 +151,7 @@ export const TASKS_MOCK: ITask[] = [
 		date: new Date(2022, 6, 13),
 		checked: false,
 		title: 'Add colors to root',
-		project: PROJECT_MOCK[2],
+		project: PROJECT_MOCK[1],
 		status: Status.Done,
 		time: 2,
 		overtime: 0,
