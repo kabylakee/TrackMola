@@ -1,3 +1,5 @@
+@import 'mixins/common-mixin';
+
 :host {
 	$mat-card-min-width: 37.7rem;
 	$button-min-width: 7.4rem;
@@ -26,6 +28,7 @@
 		}
 	}
 }
+
 .container {
 	display: flex;
 	justify-content: space-between;
@@ -34,11 +37,17 @@
 	padding-top: var(--offset-l);
 
 	&-left {
+		display: flex;
+		flex-direction: column;
 		width: 58%;
 		padding-right: var(--offset-m);
+		gap: var(--offset-m);
 	}
 
 	&-right {
+		display: flex;
+		flex-direction: column;
 		width: 42%;
+		gap: var(--offset-m);
 	}
 }
