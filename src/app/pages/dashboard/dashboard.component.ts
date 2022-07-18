@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
 		this.config = notificationService.getData();
 	}
 
-	public changeListOfNotifications(value: INotification[]) {
+	public changeListOfNotifications(value: INotification[]): void {
 		this.notificationService.changeConfig(value);
 	}
 	public tasks: ITask[];

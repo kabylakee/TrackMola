@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
 })
 export class HeaderComponent {
 	@Input() pageTitle: string;
-	listOfNotifications: Observable<INotification[]>;
+	public listOfNotifications: Observable<INotification[]>;
 
 	constructor(public notificationService: NotificationService) {
 		this.listOfNotifications = this.notificationService.getData();
