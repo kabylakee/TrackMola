@@ -1,7 +1,7 @@
 @import 'mixins/common-mixin';
 
 :host {
-	$mat-card-min-width: 37.7rem;
+	$mat-card-min-width: 100%;
 	$button-min-width: 7.4rem;
 	$button-min-height: 2.25rem;
 	app-notification ::ng-deep {
@@ -39,15 +39,15 @@
 	&-left {
 		display: flex;
 		flex-direction: column;
+		gap: var(--offset-m);
 		width: 58%;
 		padding-right: var(--offset-m);
-		gap: var(--offset-m);
 	}
 
 	&-right {
 		display: flex;
 		flex-direction: column;
-		width: 42%;
 		gap: var(--offset-m);
+		width: 42%;
 	}
 }

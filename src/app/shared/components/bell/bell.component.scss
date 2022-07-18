@@ -2,6 +2,7 @@
 @import 'mixins/common-mixin';
 
 $bell-icon-width-height: 3rem;
+$bell-icon-active: 1.5rem;
 
 :host {
 	.bell-icon {
@@ -13,8 +14,8 @@ $bell-icon-width-height: 3rem;
 		border-radius: calc(var(--border-radius) * 0.5);
 
 		&-active {
-			width: var(--offset-m);
-			height: var(--offset-m);
+			width: $bell-icon-active;
+			height: $bell-icon-active;
 			background: url('../../../../assets/image/notification-active.svg') no-repeat;
 			background-size: contain;
 		}

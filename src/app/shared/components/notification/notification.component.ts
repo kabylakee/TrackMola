@@ -10,7 +10,7 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 export class NotificationComponent {
 	@Input() notifications: INotification[] | null = [];
 	@Output() eventChangeNotification = new EventEmitter<INotification[]>();
-	public hour = 5000;
+	public hour = 1000 * 3600;
 
 	public snoozeNotification(i: number): void {
 		this.eventChangeNotification.emit(

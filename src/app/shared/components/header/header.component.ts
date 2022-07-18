@@ -17,7 +17,7 @@ export class HeaderComponent {
 		this.listOfNotifications = this.notificationService.getData();
 	}
 
-	public changeListOfNotifications(value: INotification[]) {
+	public changeListOfNotifications(value: INotification[]): void {
 		this.notificationService.changeConfig(value);
 	}
 }
