@@ -1,0 +1,48 @@
+@import 'mixins/common-mixin';
+
+:host {
+	.mat-card {
+		width: 100%;
+		padding: var(--offset-m);
+		color: var(--black);
+		font-weight: 400;
+		font-size: var(--font-size-s);
+		border: 1px solid var(--accent-200);
+		border-radius: var(--border-radius-xs);
+		box-shadow: none;
+
+		.mat-card-title {
+			margin-bottom: var(--offset-s);
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		.mat-card-content {
+			display: flex;
+			flex-direction: column;
+			gap: var(--offset-s);
+
+			.vacation {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.confirmation {
+					display: flex;
+					align-items: center;
+
+					.mat-icon {
+						@include icon-size(--icon-size-m);
+						margin-right: var(--offset-xxs);
+					}
+				}
+			}
+		}
+	}
+	.approved {
+		color: var(--secondary-200);
+	}
+	.unapproved {
+		color: var(--red);
+	}
+}
