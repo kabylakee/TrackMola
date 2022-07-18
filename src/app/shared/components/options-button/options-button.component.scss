@@ -37,3 +37,14 @@
 ::ng-deep .mat-menu-submenu-icon {
 	display: none;
 }
+
+::ng-deep .mat-snack-bar-container {
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	color: var(--black);
+	background-color: var(--white);
+	.mat-button-wrapper {
+		color: var(--black);
+	}
+}

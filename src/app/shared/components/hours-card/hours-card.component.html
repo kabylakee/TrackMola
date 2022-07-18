@@ -1,10 +1,12 @@
 <div class="cards-wrapper">
-  <mat-card [class.transparent-bg]="!hasBackground">
-    <span class="title">Total Hours</span>
-    <span class="hours" [ngClass]="currentTimeStatus">{{sumTime.time | appCommaSeparated}}</span>
-  </mat-card>
-  <mat-card [class.transparent-bg]="!hasBackground" *ngIf="currentTimeStatus === timeStatus.Overwork">
-    <span class="title">Overtime Hours</span>
-    <span class="hours" [ngClass]="timeStatus.Overwork">{{sumTime.overtime | appCommaSeparated}}</span>
-  </mat-card>
+	<mat-card [class.transparent-bg]="!hasBackground">
+		<span class="title">Total Hours</span>
+		<span class="hours" [ngClass]="currentTimeStatus">{{ sumTime.time | appCommaSeparated }}</span>
+	</mat-card>
+	<mat-card [class.transparent-bg]="!hasBackground" *ngIf="sumTime.overtime > 0">
+		<span class="title">Overtime Hours</span>
+		<span class="hours" [ngClass]="currentTimeStatus">{{
+			sumTime.overtime | appCommaSeparated
+		}}</span>
+	</mat-card>
 </div>

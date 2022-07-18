@@ -7,15 +7,18 @@ export const OPTIONS_CONFIG: AssociativeObject<IOptionConfig> = {
 		title: OptionsTitle.Copy,
 		icon: 'content_copy',
 		event: 'copyTo',
+		notifier: 'Copied!',
 	},
 	[OptionsTitle.Remove]: {
 		title: OptionsTitle.Remove,
 		icon: 'delete',
 		event: 'remove',
+		notifier: 'Removed!',
 	},
 	[OptionsTitle.Move]: {
 		title: OptionsTitle.Move,
 		icon: 'autorenew',
 		event: 'moveTo',
+		notifier: 'Moved!',
 	},
 };
