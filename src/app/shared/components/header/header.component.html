@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">{{pageTitle}}</div>
   <div class="container-user-notification">
-    <app-bell>
+    <app-bell [notifications]="listOfNotifications | async">
       <app-notification
         [notifications]="listOfNotifications | async"
         (eventChangeNotification)="changeListOfNotifications($event)">

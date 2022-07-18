@@ -1,2 +1,12 @@
-<app-header [pageTitle]="title" #header></app-header>
-<app-notification [notifications]="config | async" (eventChangeNotification)="changeListOfNotifications($event)"></app-notification>
+<app-header [pageTitle]="title"></app-header>
+<div class="container">
+  <div class="container-left">
+    <app-notification [notifications]="config | async" (eventChangeNotification)="changeListOfNotifications($event)"></app-notification>
+    <app-tasks-statistic [tasks]="tasks"></app-tasks-statistic>
+    <app-semi-circle-donut></app-semi-circle-donut>
+  </div>
+  <div class="container-right">
+    <app-progress-tasks [tasks]="progressTasks"></app-progress-tasks>
+    <app-project-teams></app-project-teams>
+  </div>
+</div>

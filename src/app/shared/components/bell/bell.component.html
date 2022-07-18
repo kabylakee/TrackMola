@@ -1,7 +1,10 @@
 <button mat-icon-button class="bell-icon" (click)="showCard()">
-  <mat-icon>
+  <mat-icon *ngIf="!notifications?.length; else activeBell">
     notifications_none
   </mat-icon>
+  <ng-template #activeBell>
+    <div class="bell-icon-active"></div>
+  </ng-template>
 </button>
 <ng-content *ngIf="isCardOpen"></ng-content>
 

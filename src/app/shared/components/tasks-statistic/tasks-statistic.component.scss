@@ -1,0 +1,19 @@
+:host {
+	.card {
+		width: 100%;
+		padding-bottom: var(--offset-xxs);
+		border: 1px solid var(--accent-200);
+		border-radius: var(--border-radius-xs);
+
+		.card-header {
+			display: flex;
+			justify-content: space-between;
+			margin: var(--offset-m) var(--offset-m) var(--offset-s) var(--offset-m);
+		}
+	}
+	.label {
+		margin: 0;
+		font-size: var(--font-size-s);
+		line-height: var(--font-size);
+	}
+}

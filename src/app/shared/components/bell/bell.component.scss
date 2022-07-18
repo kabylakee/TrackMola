@@ -5,10 +5,18 @@ $bell-icon-width-height: 3rem;
 
 :host {
 	.bell-icon {
+		@include flex-center;
 		width: $bell-icon-width-height;
 		height: $bell-icon-width-height;
 		color: var(--dark-gray);
 		background: rgba-color(light-gray, 0.1);
 		border-radius: calc(var(--border-radius) * 0.5);
+
+		&-active {
+			background: url('../../../../assets/image/notification-active.svg') no-repeat;
+			background-size: contain;
+			width: var(--offset-m);
+			height: var(--offset-m);
+		}
 	}
 }
