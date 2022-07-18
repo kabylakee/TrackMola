@@ -7,8 +7,8 @@
 
 	.mat-dialog-title {
 		display: flex;
-		align-items: flex-start;
 		justify-content: space-between;
+		align-items: flex-start;
 		margin: 0;
 
 		.title {
@@ -28,8 +28,8 @@
 			padding: 0;
 			.mat-icon {
 				display: flex;
-				align-items: center;
 				justify-content: flex-end;
+				align-items: center;
 			}
 		}
 	}
@@ -37,8 +37,8 @@
 	.asana,
 	.bitbucket {
 		display: flex;
-		align-items: center;
 		justify-content: space-between;
+		align-items: center;
 		padding: var(--offset-xs) 0;
 
 		.link-input {

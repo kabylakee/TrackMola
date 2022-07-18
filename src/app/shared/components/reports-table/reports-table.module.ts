@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
+import {NoDataModule} from 'src/app/shared/components/no-data/no-data.module';
 import {ReportsTableComponent} from './reports-table.component';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {CdkTableModule} from '@angular/cdk/table';
@@ -31,9 +32,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 		CdkTableModule,
 		MatSelectModule,
 		MatDialogModule,
+		NoDataModule,
 		MatDatepickerModule,
 		ProjectModule,
 	],
-	exports: [ReportsTableComponent, ProjectComponent],
+	exports: [ReportsTableComponent],
 })
 export class ReportsTableModule {}

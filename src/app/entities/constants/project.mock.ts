@@ -2,27 +2,33 @@ import {IProject} from '../interfaces/project.interface';
 
 export const PROJECT_MOCK: IProject[] = [
 	{
-		title: 'Project A',
+		title: 'AMCN PSVOD',
 		color: '65, 94, 182',
-		percentage: 55,
+		percentage: 22,
 		employees: [],
 	},
 	{
-		title: 'Project B',
+		title: 'AMCN iCAST',
 		color: '125, 214, 165',
 		percentage: 22,
 		employees: [],
 	},
 	{
-		title: 'Project C',
+		title: 'AMCN PPM',
 		color: '241, 186, 102',
 		percentage: 13,
 		employees: [],
 	},
 	{
-		title: 'Project D',
+		title: 'AMCN PPM',
 		color: '88, 174, 223',
 		percentage: 10,
+		employees: [],
+	},
+	{
+		title: 'Vacation',
+		color: '182, 200, 235',
+		percentage: 33,
 		employees: [],
 	},
 ];

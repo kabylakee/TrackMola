@@ -36,17 +36,17 @@
 						<div *ngSwitchCase="columnType.INPUT">
 							<ng-container *ngIf="column.field === 'title'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput placeholder="New Task" formControlName="title" />
+									<input matInput placeholder="New Task" formControlName="title"/>
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'time'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="time" />
+									<input matInput formControlName="time"/>
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'overtime'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="overtime" />
+									<input matInput formControlName="overtime"/>
 								</mat-form-field>
 							</ng-container>
 						</div>
@@ -161,6 +161,18 @@
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
+			<tr
+				mat-row
+				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
+			></tr>
+
+			<tr class="mat-row" *matNoDataRow>
+				<td class="mat-cell" colspan="8">
+					<div class="no-data-container">
+						<app-no-data [size]="size.S"></app-no-data>
+					</div>
+				</td>
+			</tr>
 		</table>
 	</div>
 </form>
