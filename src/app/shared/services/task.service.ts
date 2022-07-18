@@ -89,7 +89,7 @@ export class TaskService {
 					(overtime) =>
 						(task.paid && overtime.title === 'Paid' && task.overtime) ||
 						(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
-						(!task.overtime && overtime.title === 'No overtime' && !task.paid),
+						(!task.overtime && overtime.title === 'No overtime'),
 				),
 		);
 		return of(arr);
