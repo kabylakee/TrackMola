@@ -4,7 +4,7 @@ import {INotification} from 'src/app/entities/interfaces/notification.interface'
 import {Observable, Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class TestService {
+export class NotificationService {
 	public readonly config$ = new Subject<INotification[]>();
 
 	constructor() {

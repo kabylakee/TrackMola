@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {Type} from 'src/app/entities/enums/type.enum';
 import {INotification} from 'src/app/entities/interfaces/notification.interface';
-import {TestService} from 'src/app/shared/services/test.service';
+import {NotificationService} from 'src/app/shared/services/notification.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -19,11 +19,11 @@ export class DashboardComponent {
 		RouterPaths.Dashboard.charAt(0).toUpperCase() + RouterPaths.Dashboard.slice(1);
 	public config: Observable<INotification[]>;
 
-	constructor(private _cdr: ChangeDetectorRef, public notificationService: TestService) {
+	constructor(public notificationService: NotificationService) {
 		this.config = notificationService.getData();
 	}
 
-	public changeTest(value: INotification[]) {
+	public changeListOfNotifications(value: INotification[]) {
 		this.notificationService.changeConfig(value);
 	}
 }

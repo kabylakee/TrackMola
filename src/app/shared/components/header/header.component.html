@@ -2,7 +2,10 @@
   <div class="title">{{pageTitle}}</div>
   <div class="container-user-notification">
     <app-bell>
-      <app-notification [notifications]="testValue | async" (test)="changeTest($event)"></app-notification>
+      <app-notification
+        [notifications]="listOfNotifications | async"
+        (eventChangeNotification)="changeListOfNotifications($event)">
+      </app-notification>
     </app-bell>
     <div class="user">
       <div class="user-img"></div>

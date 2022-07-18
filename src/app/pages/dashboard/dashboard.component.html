@@ -1,3 +1,2 @@
 <app-header [pageTitle]="title" #header></app-header>
-<app-notification [notifications]="config | async" (test)="changeTest($event)"></app-notification>
-<!-- <app-no-data [type]="type.Full" [size]="size.Xl"></app-no-data> -->
+<app-notification [notifications]="config | async" (eventChangeNotification)="changeListOfNotifications($event)"></app-notification>

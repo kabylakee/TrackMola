@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {INotification} from 'src/app/entities/interfaces/notification.interface';
-import {TestService} from '../../services/test.service';
+import {NotificationService} from '../../services/notification.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -10,15 +10,14 @@ import {Observable} from 'rxjs';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-	// public readonly config: INotification[] = NOTIFICATION_CONTENT;
 	@Input() pageTitle: string;
-	testValue: Observable<INotification[]>;
+	listOfNotifications: Observable<INotification[]>;
 
-	constructor(public notificationService: TestService) {
-		this.testValue = this.notificationService.getData();
+	constructor(public notificationService: NotificationService) {
+		this.listOfNotifications = this.notificationService.getData();
 	}
 
-	public changeTest(value: INotification[]) {
+	public changeListOfNotifications(value: INotification[]) {
 		this.notificationService.changeConfig(value);
 	}
 }
