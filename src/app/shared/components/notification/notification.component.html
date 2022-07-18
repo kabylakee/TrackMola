@@ -1,7 +1,7 @@
 <mat-card>
   <div class="notifications-container">
     <mat-card-title>Notifications</mat-card-title>
-    <ng-container *ngFor="let element of copyOfNotifications; index as i">
+    <ng-container *ngFor="let element of notifications; index as i">
       <div class="notification">
         <span>{{element.content}}</span>
         <div class="notification-controllers">
@@ -20,7 +20,7 @@
       </div>
     </ng-container>
   </div>
-  <mat-card-actions *ngIf="copyOfNotifications.length">
+  <mat-card-actions *ngIf="notifications?.length">
     <button
       matTooltip="Snooze for 1h"
       matTooltipClass="tooltip-down"
@@ -36,5 +36,5 @@
       <span>Dismiss All</span>
     </button>
   </mat-card-actions>
-  <app-no-data class="no-data" *ngIf="!copyOfNotifications.length"></app-no-data>
+  <app-no-data class="no-data" *ngIf="!notifications?.length"></app-no-data>
 </mat-card>
