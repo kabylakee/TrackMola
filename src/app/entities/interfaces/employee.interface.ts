@@ -7,4 +7,5 @@ export interface IEmployee {
 	projects: IProject[];
 	role?: Role;
 	image?: string;
+	vacationDay?: number;
 }
