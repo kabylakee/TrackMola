@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {VacationRequestComponent} from 'src/app/shared/components/vacation-request/vacation-request.component';
+import {VacationRequestFormComponent} from 'src/app/shared/components/vacation-request-form/vacation-request-form.component';
 
 @Component({
 	selector: 'app-vacation',
@@ -16,7 +16,7 @@ export class VacationComponent {
 	constructor(public dialog: MatDialog) {}
 
 	public dialogOpen(): void {
-		this.dialog.open(VacationRequestComponent, {
+		this.dialog.open(VacationRequestFormComponent, {
 			position: {
 				top: 'calc(50vh - 10.875 * var(--offset))',
 				left: 'calc(50vw - 14.125 * var(--offset))',

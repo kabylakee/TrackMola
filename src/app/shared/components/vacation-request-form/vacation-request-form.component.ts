@@ -9,19 +9,19 @@ import {
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
-	selector: 'app-vacation-request',
-	templateUrl: './vacation-request.component.html',
-	styleUrls: ['./vacation-request.component.scss'],
+	selector: 'app-vacation-request-form',
+	templateUrl: './vacation-request-form.component.html',
+	styleUrls: ['./vacation-request-form.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationRequestComponent {
+export class VacationRequestFormComponent {
 	@Output() sendRequest = new EventEmitter();
 
 	public requestForm: FormGroup;
 	public message: string;
 
 	constructor(
-		private dialogRef: MatDialogRef<VacationRequestComponent>,
+		private dialogRef: MatDialogRef<VacationRequestFormComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
 	) {
 		this.requestForm = new FormGroup(
