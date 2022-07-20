@@ -27,6 +27,8 @@
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "angular-highcharts": "^14.1.5",
+    "exceljs": "^4.3.0",
+    "filesaver": "^0.0.13",
     "highcharts": "^10.2.0",
     "moment": "2.29.3",
     "rxjs": "~7.5.0",
