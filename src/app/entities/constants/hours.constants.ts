@@ -6,4 +6,5 @@ export const DEFAULT_TIME: IHours = {
 };
 
 export const DEFAULT_DAY_WORKTIME: number = 8;
-export const DEFAULT_MONTH_WORKTIME: number = 40;
+export const DEFAULT_WEEK_WORKTIME: number = 40;
+export const DEFAULT_MONTH_WORKTIME: number = 168;

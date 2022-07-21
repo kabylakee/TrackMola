@@ -12,4 +12,10 @@ export interface ITask {
 	paid: boolean;
 	asanaLink: string;
 	bitbucketLink: string;
+	newRow?: boolean;
+}
+
+export interface IReportData {
+	date: string;
+	tasks: ITask[];
 }

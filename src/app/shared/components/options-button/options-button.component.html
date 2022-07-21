@@ -1,15 +1,50 @@
-<button class="menu-button"
-  mat-flat-button color="secondary"
-  [matMenuTriggerFor]="menu"
-  (menuClosed)="switchFocus()"
-  (menuOpened)="switchFocus()"
-  [class.focused]="isMenuOpen">
-  <mat-icon class="material-icons-outlined menu-button-icon" [class.focused]="isMenuOpen">settings</mat-icon>
-  <span class="menu-button-text" [class.focused]="isMenuOpen">Options</span>
+<button
+	class="menu-button"
+	mat-flat-button
+	color="secondary"
+	[matMenuTriggerFor]="menu"
+	(menuClosed)="switchFocus()"
+	(menuOpened)="switchFocus()"
+	[class.focused]="isMenuOpen"
+	[disabled]="isDisabled"
+>
+	<mat-icon class="material-icons-outlined menu-button-icon" [class.focused]="isMenuOpen"
+		>settings</mat-icon
+	>
+	<span class="menu-button-text" [class.focused]="isMenuOpen">Options</span>
 </button>
 <mat-menu #menu="matMenu" class="menu">
-  <button mat-menu-item *ngFor="let option of options" (click)="optionSelected.emit(option.event)">
-    <mat-icon class="material-icons-outlined menu-item-icon">{{option.icon}}</mat-icon>
-    <span class="menu-item-text">{{option.title}}</span>
-  </button>
+	<button mat-menu-item (click)="pickerCopyTo.open()" [matMenuTriggerFor]="copyTo">
+		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[0].icon }}</mat-icon>
+		<span class="menu-item-text">{{ options[0].title }}</span>
+	</button>
+
+	<mat-menu #copyTo="matMenu" class="hidden-mat-menu-item">
+		<input
+			matInput
+			[matDatepicker]="pickerCopyTo"
+			[(ngModel)]="datepickerValue"
+			(dateChange)="onActionHanding(datepickerValue, OptionsTitle.Copy)"
+		/>
+		<mat-datepicker #pickerCopyTo panelClass="right-position-datepicker"></mat-datepicker>
+	</mat-menu>
+
+	<button mat-menu-item (click)="onActionHanding(datepickerValue, OptionsTitle.Remove)">
+		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[1].icon }}</mat-icon>
+		<span class="menu-item-text">{{ options[1].title }}</span>
+	</button>
+	<button mat-menu-item (click)="pickerMoveTo.open()" [matMenuTriggerFor]="moveTo">
+		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[2].icon }}</mat-icon>
+		<span class="menu-item-text">{{ options[2].title }}</span>
+	</button>
+
+	<mat-menu #moveTo="matMenu" class="hidden-mat-menu-item">
+		<input
+			matInput
+			[matDatepicker]="pickerMoveTo"
+			[(ngModel)]="datepickerValue"
+			(dateChange)="onActionHanding(datepickerValue, OptionsTitle.Move)"
+		/>
+		<mat-datepicker #pickerMoveTo panelClass="right-position-datepicker"></mat-datepicker>
+	</mat-menu>
 </mat-menu>

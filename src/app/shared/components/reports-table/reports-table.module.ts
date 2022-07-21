@@ -4,18 +4,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
+import {NoDataModule} from 'src/app/shared/components/no-data/no-data.module';
 import {ReportsTableComponent} from './reports-table.component';
-import {ProjectComponent} from '../../components/project/project.component';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
+import {CdkTableModule} from '@angular/cdk/table';
+import {ProjectModule} from '../project/projects.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
-	declarations: [ReportsTableComponent, ProjectComponent, LinkDialogComponent],
+	declarations: [ReportsTableComponent, LinkDialogComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,
@@ -25,8 +28,13 @@ import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 		FormsModule,
 		MatInputModule,
 		MatMenuModule,
+		ReactiveFormsModule,
+		CdkTableModule,
 		MatSelectModule,
 		MatDialogModule,
+		NoDataModule,
+		MatDatepickerModule,
+		ProjectModule,
 	],
 	exports: [ReportsTableComponent],
 })

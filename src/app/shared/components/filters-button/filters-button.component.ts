@@ -29,6 +29,7 @@ export class FiltersButtonComponent {
 	public project: IProject = {
 		checked: false,
 		title: 'project',
+		color: '',
 	};
 	public overtime: IFilterItem = {
 		checked: false,
@@ -42,8 +43,7 @@ export class FiltersButtonComponent {
 		switch (title) {
 			case FilterItems.Overtime:
 				this.overtime.checked =
-					this.overtimeSource.filter((t) => t.checked == true).length ===
-					this.overtimeSource.length;
+					this.overtimeSource.filter((t) => t.checked).length === this.overtimeSource.length;
 				break;
 
 			case FilterItems.Project:
@@ -53,9 +53,10 @@ export class FiltersButtonComponent {
 
 			case FilterItems.Status:
 				this.status.checked =
-					this.statusSource.filter((t) => t.checked == true).length === this.statusSource.length;
+					this.statusSource.filter((t) => t.checked).length === this.statusSource.length;
 				break;
 		}
+		this.emitFilter();
 	}
 
 	public setAll(title: string): void {
@@ -102,6 +103,7 @@ export class FiltersButtonComponent {
 				}
 				break;
 		}
+		this.emitFilter();
 	}
 
 	protected emitFilter(): void {
