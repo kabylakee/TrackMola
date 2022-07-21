@@ -194,4 +194,16 @@ $textarea-height: 4.375rem;
 			font-size: var(--font-size-s);
 		}
 	}
+
+	.mat-icon {
+		color: var(--accent-200);
+		margin-right: var(--offset-xs);
+	}
+	.days-left {
+		color: var(--accent-300);
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+		margin-bottom: var(--offset-s);
+	}
 }

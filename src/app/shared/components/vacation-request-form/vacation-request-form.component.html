@@ -6,6 +6,10 @@
 </div>
   
 <mat-dialog-content class="mat-typography">
+    <div class="days-left">
+        <mat-icon class="mat-icon">error</mat-icon>
+        Vacation days left: {{daysUsed}}/{{totalDays}}
+    </div>
     <form [formGroup]="requestForm" validate (ngSubmit)="onSend()">
         <div class="dialog-content-item">
             <mat-label class="label">From</mat-label>
@@ -43,7 +47,7 @@
     </div>
     
     <mat-dialog-actions>
-        <label class="error" [hidden]="requestForm.valid">{{ message }}</label>
+        <label class="error" [hidden]="requestForm.valid && daysNumber">{{ message }}</label>
         <button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Cancel</button>
         <button mat-flat-button class="action-button" color="primary" (click)="onSend()">Send</button>
     </mat-dialog-actions>
