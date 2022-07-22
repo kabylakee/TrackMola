@@ -1,8 +1,10 @@
-// TODO: import {IEmployee} from './employee.interface';
+import {IEmployee} from './employee.interface';
 
 export interface IProject {
 	title: string;
 	checked?: boolean;
-	// TODO: employees: IEmployee[];
-	// TODO: lead: IEmployee;
+	color: string;
+	percentage?: number;
+	employees?: IEmployee[];
+	lead?: IEmployee;
 }

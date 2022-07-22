@@ -1,2 +1,13 @@
 <app-header [pageTitle]="title"></app-header>
-<app-no-data [type]="type.Full" [size]="size.Xl"></app-no-data>
+<div class="container">
+  <div class="container-left">
+    <app-notification [notifications]="config | async" (eventChangeNotification)="changeListOfNotifications($event)"></app-notification>
+    <app-tasks-statistic [tasks]="tasks"></app-tasks-statistic>
+    <app-semi-circle-donut></app-semi-circle-donut>
+  </div>
+  <div class="container-right">
+    <app-progress-tasks [tasks]="progressTasks"></app-progress-tasks>
+    <app-vacation-request></app-vacation-request>
+    <app-project-teams></app-project-teams>
+  </div>
+</div>

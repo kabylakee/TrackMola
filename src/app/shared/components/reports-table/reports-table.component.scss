@@ -1,6 +1,10 @@
+@import 'mixins/common-mixin';
 @import 'mixins/colors-mixin';
 
 ::ng-deep {
+	$picker-top: -1.5rem;
+	$picker-right: 6.8rem;
+
 	.mat-select {
 		&-arrow-wrapper {
 			display: none !important;
@@ -9,6 +13,24 @@
 			color: inherit;
 		}
 	}
+
+	.hidden-mat-menu-item {
+		width: 0;
+		min-width: 0 !important;
+		height: 0;
+	}
+
+	.mat-menu-submenu-icon {
+		display: none;
+	}
+
+	.left-position-datepicker {
+		position: absolute;
+		top: $picker-top;
+		right: $picker-right;
+		background-color: var(--white);
+		box-shadow: 0px 4px 4px 0px rgba-color(black, 0.25);
+	}
 }
 
 :host {
@@ -16,14 +38,24 @@
 	$project-width: 5rem;
 	$status-width: 3rem;
 
+	$window-margin: 2rem;
+	$page-offset: 3rem;
+	$button-height: 3rem;
+	$header-height: 3rem;
+
+	.day-table {
+		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
+		max-height: calc(100vh - $components-size);
+		overflow: auto;
+	}
+
 	.project-column {
 		width: $project-width;
 		.mat-select {
 			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			color: var(--accent-300) !important;
 			font-weight: 500;
 			font-size: var(--font-size-xs);
-			background-color: rgba-color(accent-300, 0.2);
 			border-radius: var(--border-radius-xs);
 		}
 	}
@@ -70,5 +102,10 @@
 		.mat-icon {
 			color: var(--dark-gray);
 		}
+	}
+	.no-data-container {
+		@include flex-center;
+		padding-top: var(--offset);
+		padding-bottom: var(--offset);
 	}
 }

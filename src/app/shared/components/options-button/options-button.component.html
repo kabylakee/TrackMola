@@ -14,11 +14,7 @@
 	<span class="menu-button-text" [class.focused]="isMenuOpen">Options</span>
 </button>
 <mat-menu #menu="matMenu" class="menu">
-	<button
-		mat-menu-item
-		(click)="pickerCopyTo.open()"
-		[matMenuTriggerFor]="copyTo"
-	>
+	<button mat-menu-item (click)="pickerCopyTo.open()" [matMenuTriggerFor]="copyTo">
 		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[0].icon }}</mat-icon>
 		<span class="menu-item-text">{{ options[0].title }}</span>
 	</button>
@@ -30,18 +26,14 @@
 			[(ngModel)]="datepickerValue"
 			(dateChange)="onActionHanding(datepickerValue, OptionsTitle.Copy)"
 		/>
-		<mat-datepicker #pickerCopyTo panelClass="[datepicker]"></mat-datepicker>
+		<mat-datepicker #pickerCopyTo panelClass="right-position-datepicker"></mat-datepicker>
 	</mat-menu>
 
 	<button mat-menu-item (click)="onActionHanding(datepickerValue, OptionsTitle.Remove)">
 		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[1].icon }}</mat-icon>
 		<span class="menu-item-text">{{ options[1].title }}</span>
 	</button>
-	<button
-		mat-menu-item
-		(click)="pickerMoveTo.open()"
-		[matMenuTriggerFor]="moveTo"
-	>
+	<button mat-menu-item (click)="pickerMoveTo.open()" [matMenuTriggerFor]="moveTo">
 		<mat-icon class="material-icons-outlined menu-item-icon">{{ options[2].icon }}</mat-icon>
 		<span class="menu-item-text">{{ options[2].title }}</span>
 	</button>
@@ -53,9 +45,6 @@
 			[(ngModel)]="datepickerValue"
 			(dateChange)="onActionHanding(datepickerValue, OptionsTitle.Move)"
 		/>
-		<mat-datepicker #pickerMoveTo panelClass="[datepicker]"></mat-datepicker>
+		<mat-datepicker #pickerMoveTo panelClass="right-position-datepicker"></mat-datepicker>
 	</mat-menu>
-
 </mat-menu>
-
-

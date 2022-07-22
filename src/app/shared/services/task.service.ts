@@ -14,6 +14,8 @@ import {OptionsTitle} from '../../entities/enums/options.enum';
 	providedIn: 'root',
 })
 export class TaskService {
+	public tasks: Observable<ITask[]>;
+
 	public tasks$: BehaviorSubject<ITask[]> = new BehaviorSubject<ITask[]>([]);
 	public isDisabledOptionBtn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 	public readonly REPORTS_DATA_KEY: string = 'REPORTS_DATA_KEY';
@@ -87,7 +89,7 @@ export class TaskService {
 					(overtime) =>
 						(task.paid && overtime.title === 'Paid' && task.overtime) ||
 						(!task.paid && overtime.title === 'Unpaid' && task.overtime) ||
-						(!task.overtime && overtime.title === 'No overtime' && !task.paid),
+						(!task.overtime && overtime.title === 'No overtime'),
 				),
 		);
 		return of(arr);
@@ -147,5 +149,14 @@ export class TaskService {
 			});
 			this.tasks$.next(newData);
 		}
+	}
+
+	public saveTask(taskData: ITask[]) {
+		taskData.forEach((task) => (task.newRow = false));
+		this.tasks$.next(this.tasks$.value.concat(taskData));
+	}
+
+	public getTaskFromTo(from: Date, to: Date): Observable<ITask[]> {
+		return (this.tasks = of(TASKS_MOCK.filter((task) => task.date >= from && task.date < to)));
 	}
 }

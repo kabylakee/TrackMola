@@ -13,6 +13,7 @@ import {Period} from 'src/app/entities/enums/period.enum';
 import {IFilter} from 'src/app/entities/interfaces/filter.interface';
 import {IOptionInterface} from '../../entities/interfaces/option.interface';
 import {takeWhile} from 'rxjs';
+import {ReportsButtonEnum} from '../../entities/enums/reports-button.enum';
 
 @Component({
 	selector: 'app-reports',
@@ -40,7 +41,9 @@ export class ReportsComponent implements OnInit, OnDestroy {
 
 	public searchValue = '';
 	public actionHanding: IOptionInterface;
-	public day: Date = new Date(2022, 7, 12);
+	public reportButtonAction: ReportsButtonEnum;
+	public day: Date = new Date();
+	public disabledSave = true;
 
 	constructor(private taskService: TaskService) {}
 
@@ -84,7 +87,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
 	}
 
 	private calculateMonthSumTime(days: IReportsDayInfo[]): IHours {
-		const weeks = days.filter((day) => day.isWeekInfo === true);
+		const weeks = days.filter((day) => day.isWeekInfo);
 		return {
 			time: weeks.reduce((monthTime, week) => (monthTime += week.total), 0),
 			overtime: weeks.reduce((monthOvertime, week) => (monthOvertime += week.overtime), 0),
@@ -119,6 +122,10 @@ export class ReportsComponent implements OnInit, OnDestroy {
 
 	public onActionHanding(event: IOptionInterface): void {
 		this.actionHanding = event;
+	}
+
+	public onReportButtonAction(event: ReportsButtonEnum): void {
+		this.reportButtonAction = event;
 	}
 
 	ngOnDestroy() {
