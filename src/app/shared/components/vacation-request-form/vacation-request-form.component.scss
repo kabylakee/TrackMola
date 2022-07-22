@@ -5,6 +5,7 @@ $wrapper-width: calc(10rem - 1px);
 $buttons-height: 2.44rem;
 $last-padding: calc(var(--offset-s) - 7px);
 $textarea-height: 4.375rem;
+$mat-dialog-actions-height: 1.5rem;
 
 :host {
 	::ng-deep {
@@ -100,7 +101,7 @@ $textarea-height: 4.375rem;
 		}
 
 		.mat-dialog-actions {
-			min-height: 1.5rem;
+			min-height: $mat-dialog-actions-height;
 		}
 	}
 

@@ -48,7 +48,7 @@ export class VacationRequestFormComponent {
 		return {dateFrom: true};
 	}
 
-	formValidator(control: AbstractControl): ValidationErrors | null {
+	private formValidator(control: AbstractControl): ValidationErrors | null {
 		if (!control.get('dateFrom')?.value || !control.get('dateTo')?.value) {
 			return {error: true};
 		}
