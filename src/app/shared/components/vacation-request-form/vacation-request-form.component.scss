@@ -6,6 +6,7 @@ $buttons-height: 2.44rem;
 $last-padding: calc(var(--offset-s) - 7px);
 $textarea-height: 4.375rem;
 $mat-dialog-actions-height: 1.5rem;
+$content-item-height: 25.25rem;
 
 :host {
 	::ng-deep {
@@ -112,9 +113,9 @@ $mat-dialog-actions-height: 1.5rem;
 		padding: 0;
 	}
 
+	::ng-deep {
 	.mat-dialog-content {
 		overflow: hidden;
-		::ng-deep {
 			.mat-checkbox {
 				margin-right: var(--offset-s);
 				&-frame {
@@ -128,7 +129,7 @@ $mat-dialog-actions-height: 1.5rem;
 			}
 
 			.dialog-content-item {
-				width: 25.25rem;
+				min-width: $content-item-height;
 				padding-bottom: var(--offset-s);
 
 				&.last {
@@ -196,15 +197,16 @@ $mat-dialog-actions-height: 1.5rem;
 		}
 	}
 
-	.mat-icon {
-		color: var(--accent-200);
-		margin-right: var(--offset-xs);
-	}
 	.days-left {
 		color: var(--accent-300);
 		font-weight: 500;
 		display: flex;
 		align-items: center;
 		margin-bottom: var(--offset-s);
+		
+		.mat-icon {
+			color: var(--accent-200);
+			margin-right: var(--offset-xs);
+		}
 	}
 }
