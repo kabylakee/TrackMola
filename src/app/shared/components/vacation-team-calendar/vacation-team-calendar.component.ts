@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
+import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
 import {IVacationWeek} from 'src/app/entities/interfaces/vacation-week.interface';
@@ -21,6 +22,7 @@ export class VacationTeamCalendarComponent implements OnInit {
 	public weeks: IVacationWeek[] = [];
 	public initialOffset = 32;
 	public standardOffset = 20;
+	public readonly legendItems = [DayTypeEnum.Vacation, DayTypeEnum.DayOff];
 
 	private selectedMonth = this.date.getMonth();
 	private selectedYear = this.date.getFullYear();
