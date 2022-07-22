@@ -5,6 +5,7 @@ import {VacationRoutingModule} from './vacation-routing.module';
 import {HeaderModule} from 'src/app/shared/components/header/header.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {VacationRequestFormComponent} from 'src/app/shared/components/vacation-request-form/vacation-request-form.component';
+import {VacationTeamCalendarModule} from 'src/app/shared/components/vacation-team-calendar/vacation-team-calendar.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -20,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 		CommonModule,
 		HeaderModule,
 		VacationRoutingModule,
+		VacationTeamCalendarModule,
 		MatDialogModule,
 		MatDatepickerModule,
 		MatNativeDateModule,
