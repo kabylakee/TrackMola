@@ -13,16 +13,14 @@
 				*ngFor="let vacation of week.vacationInfo; index as i"
 				[ngStyle]="{
 					top: initialOffset + i * standardOffset + 'px',
-					'background-color': vacation.paid
-						? 'rgba(88, 174, 223, 0.2)'
-						: 'rgba(125, 214, 165, 0.2)',
+					'background-color': getBackgroundColor(vacation),
 					left: getLeftOffset(vacation.dateFrom, week),
 					right: getRightOffset(vacation.dateTo, week),
-					'border-left': getBorder(vacation.dateFrom, week, vacation.paid),
-					'border-right': getBorder(vacation.dateTo, week, vacation.paid)
+					'border-left': getBorder(vacation.dateFrom, week, vacation),
+					'border-right': getBorder(vacation.dateTo, week, vacation)
 				}"
 			>
-				{{ vacation.employee.firstName }}
+				{{ vacation.employee.firstName }} ({{ vacation.employee.department }})
 			</div>
 		</div>
 	</div>

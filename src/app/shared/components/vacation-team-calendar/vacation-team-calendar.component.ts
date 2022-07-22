@@ -4,6 +4,7 @@ import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
 import {IVacationWeek} from 'src/app/entities/interfaces/vacation-week.interface';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 
 @Component({
@@ -20,9 +21,13 @@ export class VacationTeamCalendarComponent implements OnInit {
 		new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0),
 	);
 	public weeks: IVacationWeek[] = [];
-	public initialOffset = 32;
+	public initialOffset = 34;
 	public standardOffset = 20;
-	public readonly legendItems = [DayTypeEnum.Vacation, DayTypeEnum.DayOff];
+	public readonly legendItems = [
+		DayTypeEnum.Vacation,
+		DayTypeEnum.DayOff,
+		'Unapproved' as DayTypeEnum,
+	];
 
 	private selectedMonth = this.date.getMonth();
 	private selectedYear = this.date.getFullYear();
@@ -32,13 +37,12 @@ export class VacationTeamCalendarComponent implements OnInit {
 	private sundayIndex = 7;
 	private readonly vacations = VACATION.filter(
 		(vacation) =>
-			vacation.status === VacationRequest.Approved &&
-			((vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+			(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
 				vacation.dateFrom.getMonth() === this.date.getMonth()) ||
-				(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
-					vacation.dateFrom.getMonth() === this.date.getMonth() - 1) ||
-				(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
-					vacation.dateFrom.getMonth() === this.date.getMonth() + 1)),
+			(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+				vacation.dateFrom.getMonth() === this.date.getMonth() - 1) ||
+			(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+				vacation.dateFrom.getMonth() === this.date.getMonth() + 1),
 	);
 
 	public ngOnInit(): void {
@@ -76,9 +80,20 @@ export class VacationTeamCalendarComponent implements OnInit {
 		return '0px';
 	}
 
-	public getBorder(date: Date, week: IVacationWeek, isVacation: boolean): string {
-		const borderColor = isVacation ? 'rgba(88, 174, 223, 1)' : 'rgba(125, 214, 165, 1)';
+	public getBorder(date: Date, week: IVacationWeek, vacation: IVacation): string {
+		let borderColor = vacation.paid ? 'rgba(88, 174, 223, 1)' : 'rgba(125, 214, 165, 1)';
+		if (vacation.status === VacationRequest.Unapproved) borderColor = 'rgba(201, 203, 214, 1)';
 		if (week.dates.some((day) => +day === +date)) return `2px solid ${borderColor}`;
 		return 'none';
+	}
+
+	public getBackgroundColor(vacation: IVacation): string {
+		const vacationColor = 'rgba(88, 174, 223, 0.2)';
+		const dayOffColor = 'rgba(125, 214, 165, 0.2)';
+		const unapprovedColor = 'rgba(201, 203, 214, 0.2)';
+		if (vacation.status === VacationRequest.Approved) {
+			return vacation.paid ? vacationColor : dayOffColor;
+		}
+		return unapprovedColor;
 	}
 }
