@@ -29,7 +29,7 @@ export class VacationTeamCalendarComponent implements OnInit {
 	private firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 	private paddingDaysStart =
 		this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
-
+	private sundayIndex = 7;
 	private readonly vacations = VACATION.filter(
 		(vacation) =>
 			vacation.status === VacationRequest.Approved &&
@@ -44,7 +44,7 @@ export class VacationTeamCalendarComponent implements OnInit {
 	public ngOnInit(): void {
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
 			const week: IVacationWeek = {dates: [], vacationInfo: []};
-			for (let j = 0; j < 7; j++) {
+			for (let j = 0; j < this.sundayIndex; j++) {
 				week.dates.push(
 					new Date(this.selectedYear, this.selectedMonth, dayCounter - this.paddingDaysStart + 1),
 				);
@@ -65,13 +65,13 @@ export class VacationTeamCalendarComponent implements OnInit {
 	}
 
 	public getLeftOffset(dateFrom: Date, week: IVacationWeek): string {
-		const day = dateFrom.getDay() === 0 ? 7 : dateFrom.getDay();
+		const day = dateFrom.getDay() === 0 ? this.sundayIndex : dateFrom.getDay();
 		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${day - 1})`;
 		return '0';
 	}
 
 	public getRightOffset(dateFrom: Date, week: IVacationWeek): string {
-		const day = dateFrom.getDay() === 0 ? 7 : dateFrom.getDay();
+		const day = dateFrom.getDay() === 0 ? this.sundayIndex : dateFrom.getDay();
 		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${7 - day + 1})`;
 		return '0px';
 	}
