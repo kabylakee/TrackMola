@@ -1,4 +1,5 @@
 <div class="item-wrapper">
-	<div class="date">{{ dayInfo.date | date: 'd MMMM' }}</div>
-	<div class="info"></div>
+	<div class="date" *ngFor="let date of dates">
+		<div class="date-header">{{ date | date: 'd MMMM' }}</div>
+	</div>
 </div>

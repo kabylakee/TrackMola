@@ -1,9 +1,30 @@
 <div class="header-bg"></div>
 <div class="component-wrapper">
 	<div class="grid-wrapper">
-		<div class="header">Week</div>
 		<div class="header" *ngFor="let day of weekDay">{{ day }}</div>
-		<section class="item"></section>
+		<div
+			class="week"
+			*ngFor="let week of weeks"
+			[ngStyle]="{height: initialOffset + week.vacationInfo.length * standardOffset + 'px'}"
+		>
+			<app-vacation-calendar-item [dates]="week.dates"></app-vacation-calendar-item>
+			<div
+				class="vacation"
+				*ngFor="let vacation of week.vacationInfo; index as i"
+				[ngStyle]="{
+					top: initialOffset + i * standardOffset + 'px',
+					'background-color': vacation.paid
+						? 'rgba(88, 174, 223, 0.2)'
+						: 'rgba(125, 214, 165, 0.2)',
+					left: getLeftOffset(vacation.dateFrom, week),
+					right: getRightOffset(vacation.dateTo, week),
+					'border-left': getBorder(vacation.dateFrom, week, vacation.paid),
+					'border-right': getBorder(vacation.dateTo, week, vacation.paid)
+				}"
+			>
+				{{ vacation.employee.firstName }}
+			</div>
+		</div>
 	</div>
 	<div class="legends"></div>
 </div>

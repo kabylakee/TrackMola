@@ -7,7 +7,7 @@ export interface IVacation {
 	dateFromFormat: string;
 	dateToFormat: string;
 	comments?: string;
-	paid?: boolean;
+	paid: boolean;
 	status: VacationRequest;
 	employee: IEmployee;
 }
