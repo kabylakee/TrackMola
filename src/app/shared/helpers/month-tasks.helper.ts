@@ -238,7 +238,7 @@ export class MonthTasksHelper {
 		}
 	}
 
-	private static getWeek(date: Date): number {
+	public static getWeek(date: Date): number {
 		const dateNumber = date.getDate();
 		const dayNumber = date.getDay() === 0 ? 7 : date.getDay();
 		return Math.ceil((dateNumber - dayNumber) / 7) + 1;

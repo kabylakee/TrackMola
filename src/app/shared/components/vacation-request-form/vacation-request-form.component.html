@@ -1,0 +1,56 @@
+<div mat-dialog-title>
+    <h2 class="title">Vacation request</h2>
+    <mat-dialog-actions>
+      <mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
+    </mat-dialog-actions>
+</div>
+  
+<mat-dialog-content class="mat-typography">
+    <div class="days-left">
+        <mat-icon class="mat-icon">error</mat-icon>
+        Vacation days left: {{daysUsed}}/{{totalDays}}
+    </div>
+    <form [formGroup]="requestForm" validate (ngSubmit)="onSend()">
+        <div class="dialog-content-item">
+            <mat-label class="label">From</mat-label>
+            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateFrom.valid"
+            appearance="fill" color="secondary">
+                <input matInput [matDatepicker]="picker1" placeholder="Choose a date" formControlName="dateFrom">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                    <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+                        calendar_today
+                    </mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-label class="label">To</mat-label>
+            <mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateTo.valid"
+            appearance="fill">
+                <input matInput [matDatepicker]="picker2" placeholder="Choose a date" formControlName="dateTo">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
+                    <mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+                        calendar_today
+                    </mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+    </div>
+    <div class="dialog-content-item">
+        <mat-label class="label">Comments</mat-label>
+    </div>
+    <div class="dialog-content-item">
+        <textarea matInput class="textarea" placeholder="Leave your comment" formControlName="comments"></textarea>
+    </div>
+    <div class="dialog-content-item last">
+        <mat-checkbox color="primary" formControlName="paid"></mat-checkbox>
+        <mat-label class="label last">Paid</mat-label>
+    </div>
+    
+    <mat-dialog-actions>
+        <label class="error" [hidden]="requestForm.valid && daysNumber">{{ message }}</label>
+        <button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Cancel</button>
+        <button mat-flat-button class="action-button" color="primary" (click)="onSend()">Send</button>
+    </mat-dialog-actions>
+    </form>
+</mat-dialog-content>
+  
