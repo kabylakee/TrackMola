@@ -45,4 +45,8 @@ export class ExportExcelComponent implements OnInit {
 			},
 		];
 	}
+
+	public export(): void {
+		this.excelService.exportAsExcelFile(this.excelConfig, this.excelData, 'newFile', 'newSheet');
+	}
 }
