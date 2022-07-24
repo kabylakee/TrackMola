@@ -11,13 +11,18 @@ const EXCEL_EXTENSION = '.xlsx';
 	providedIn: 'root',
 })
 export class ExcelService {
+	private fgColor = 'FFFFFF00';
+	private bgColor = 'FF0000FF';
+	private fontSize = 12;
+	private minCellLength = 20;
+
 	public exportAsExcelFile(
-		headingArray: string[],
-		json: IExcelData[],
+		excelConfig: string[],
+		excelData: IExcelData[],
 		excelFileName: string,
 		sheetName: string,
 	) {
-		const data = json;
+		const data = excelData;
 
 		const workbook = new Workbook();
 		workbook.creator = 'NewUser';
@@ -26,14 +31,15 @@ export class ExcelService {
 		workbook.modified = new Date();
 		const worksheet = workbook.addWorksheet(sheetName);
 
-		const headerRow = worksheet.addRow(headingArray);
+		// Get all titles
+		const headerRow = worksheet.addRow(excelConfig);
 
 		headerRow.eachCell((cell, index) => {
 			cell.fill = {
 				type: 'pattern',
 				pattern: 'solid',
-				fgColor: {argb: 'FFFFFF00'},
-				bgColor: {argb: 'FF0000FF'},
+				fgColor: {argb: this.fgColor},
+				bgColor: {argb: this.bgColor},
 			};
 			cell.border = {
 				top: {style: 'thin'},
@@ -41,25 +47,27 @@ export class ExcelService {
 				bottom: {style: 'thin'},
 				right: {style: 'thin'},
 			};
-			cell.font = {size: 12, bold: true};
+			cell.font = {size: this.fontSize, bold: true};
 
 			worksheet.getColumn(index).width =
-				headingArray[index - 1].length < 20 ? 20 : headingArray[index - 1].length;
+				excelConfig[index - 1].length < this.minCellLength
+					? this.minCellLength
+					: excelConfig[index - 1].length;
 		});
 
-		// Get all columns from JSON
+		// Get all columns
 		let columnsArray: string[];
-		for (const key in json) {
-			if (json.hasOwnProperty(key)) {
-				columnsArray = Object.keys(json[key]);
+		for (const key in excelData) {
+			if (excelData.hasOwnProperty(key)) {
+				columnsArray = Object.keys(excelData[key]);
 			}
 		}
 
 		// Add Data and Conditional Formating
-		data.forEach((element: IExcelData) => {
+		data.forEach((row: IExcelData) => {
 			const eachRow: string[] = [];
 			columnsArray.forEach((column: string) => {
-				eachRow.push(element[column as keyof IExcelData]);
+				eachRow.push(row[column as keyof IExcelData]);
 			});
 			worksheet.addRow(eachRow);
 		});

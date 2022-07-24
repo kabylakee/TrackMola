@@ -14,7 +14,7 @@ export class ExportExcelComponent implements OnInit {
 
 	constructor(public excelService: ExcelService) {}
 
-	ngOnInit() {
+	public ngOnInit(): void {
 		this.excelConfig = [
 			'Project',
 			'Deliverables',
