@@ -40,9 +40,9 @@ $content-item-height: 25.25rem;
 				}
 
 				.mat-input-element {
-					font-size: var(--font-size-xs);
 					color: var(--accent-300);
 					font-weight: 500;
+					font-size: var(--font-size-xs);
 					&.ng-touched.ng-invalid {
 						color: var(--red);
 					}
@@ -193,15 +193,15 @@ $content-item-height: 25.25rem;
 	}
 
 	.days-left {
-		color: var(--accent-300);
-		font-weight: 500;
 		display: flex;
 		align-items: center;
 		margin-bottom: var(--offset-s);
+		color: var(--accent-300);
+		font-weight: 500;
 
 		.mat-icon {
-			color: var(--accent-200);
 			margin-right: var(--offset-xs);
+			color: var(--accent-200);
 		}
 	}
 }
