@@ -1,1 +1,31 @@
-<app-date-picker [periodRange]="periodRange"></app-date-picker>
+<div> </div>
+<div class="container">
+  <div class="inline-block">
+    <app-date-picker (changeDate)="changeDate.emit($event)" [calendarDate]="calendarDate"
+    [periodRange]="periodRange" class="inline-block"></app-date-picker>
+    <div class="select">
+      <mat-form-field class="project-teams" appearance="fill">
+        <mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
+          <mat-option [value]="project.title" *ngFor="let project of projects">
+            <app-project-component projectName="{{project.title}}"></app-project-component>
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="arrow">expand_more</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="select">
+        <mat-form-field class="project-teams" appearance="fill">
+          <mat-select [value]="currentDepartment" (valueChange)="selectDepartment($event)">
+            <mat-option [value]="department" *ngFor="let department of departments">
+              <span> {{department}}</span>
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix class="arrow">expand_more</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+      <button mat-flat-button color="primary" (click)="dialogOpen()">Vacation request</button>
+    </div>
+    
+    

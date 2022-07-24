@@ -5,6 +5,7 @@ export interface IEmployee {
 	firstName: string;
 	secondName: string;
 	projects: IProject[];
+	department: string;
 	role?: Role;
 	image?: string;
 	vacationDay?: number;
