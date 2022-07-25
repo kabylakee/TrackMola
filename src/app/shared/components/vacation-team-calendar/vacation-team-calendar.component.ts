@@ -15,6 +15,7 @@ import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 })
 export class VacationTeamCalendarComponent implements OnInit {
 	@Input() date: Date = new Date();
+	@Input() filteredByDepartment = false;
 
 	public readonly weekDay = Object.values(WeekDayEnum);
 	public weekCount = MonthTasksHelper.getWeek(

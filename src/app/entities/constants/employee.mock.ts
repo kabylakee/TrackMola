@@ -34,7 +34,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
-		department: DepartmentEnum.FE,
+		department: DepartmentEnum.BE,
 	},
 	{
 		firstName: 'Wilson',
@@ -42,7 +42,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
-		department: DepartmentEnum.FE,
+		department: DepartmentEnum.QA,
 	},
 	{
 		firstName: 'Workman',

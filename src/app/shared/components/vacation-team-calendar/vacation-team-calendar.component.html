@@ -20,7 +20,10 @@
 					'border-right': getBorder(vacation.dateTo, week, vacation)
 				}"
 			>
-				{{ vacation.employee.firstName }} ({{ vacation.employee.department }})
+				{{ vacation.employee.firstName + ' ' + vacation.employee.secondName }}
+				<span class="department" *ngIf="!filteredByDepartment">
+					({{ vacation.employee.department }})
+				</span>
 			</div>
 		</div>
 	</div>
