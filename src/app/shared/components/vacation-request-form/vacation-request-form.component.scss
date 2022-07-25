@@ -1,0 +1,207 @@
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
+
+$wrapper-width: calc(10rem - 1px);
+$buttons-height: 2.44rem;
+$last-padding: calc(var(--offset-s) - 7px);
+$textarea-height: 4.375rem;
+$mat-dialog-actions-height: 1.5rem;
+$content-item-height: 25.25rem;
+
+:host {
+	::ng-deep {
+		mat-datepicker-toggle {
+			& .mat-ripple {
+				display: none;
+			}
+			color: var(--accent-300);
+		}
+
+		.mat-form-fie .mat-form-field {
+			height: calc(var(--offset-s) * 3);
+			margin: 0 var(--offset-s);
+
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				@include flex-center;
+				width: $wrapper-width;
+				height: $buttons-height;
+				padding: 0;
+				font-size: var(--font-size-xs);
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				.mat-input-element {
+					color: var(--accent-300);
+					font-weight: 500;
+					font-size: var(--font-size-xs);
+					&.ng-touched.ng-invalid {
+						color: var(--red);
+					}
+				}
+			}
+
+			&-underline {
+				display: none;
+			}
+
+			&-appearance-fill {
+				.mat-form-field-flex {
+					display: flex;
+					align-items: center;
+					max-height: calc(2.25 * var(--offset));
+					padding: 0 var(--offset-s);
+					background-color: var(--white);
+					border: 1px solid var(--accent-300);
+					border-radius: var(--border-radius-xs);
+				}
+				.mat-form-field-infix {
+					padding-bottom: var(--offset);
+				}
+			}
+
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
+			}
+		}
+
+		.mat-form-field.invalid .mat-form-field-flex {
+			border: 1px solid var(--red);
+		}
+
+		.label {
+			color: var(--light-black);
+			font-weight: 500;
+			font-size: var(--font-size-xs);
+			&.last {
+				font-weight: 400;
+				font-size: var(--font-size-s);
+			}
+		}
+
+		.mat-dialog-content {
+			overflow: hidden;
+			.mat-checkbox {
+				margin-right: var(--offset-s);
+				&-frame {
+					border: 1px solid var(--light-gray);
+					border-radius: var(--border-radius-xxs);
+				}
+
+				&-background {
+					border-radius: var(--border-radius-xxs);
+				}
+			}
+
+			.dialog-content-item {
+				min-width: $content-item-height;
+				padding-bottom: var(--offset-s);
+
+				&.last {
+					padding-bottom: $last-padding;
+				}
+			}
+		}
+
+		.mat-dialog-actions {
+			justify-content: flex-end;
+		}
+	}
+
+	input.mat-input-element {
+		cursor: pointer;
+	}
+
+	.mat-dialog-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0;
+		padding-bottom: var(--offset-s);
+
+		.title {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		.mat-dialog-actions {
+			min-height: $mat-dialog-actions-height;
+		}
+	}
+
+	.mat-dialog-actions {
+		display: flex;
+		align-items: center;
+		margin: 0;
+		padding: 0;
+	}
+
+	.textarea {
+		max-width: calc(100% - var(--offset));
+		height: $textarea-height;
+		padding: var(--offset-xs);
+		color: var(--light-black);
+		font-size: var(--font-size-s);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--offset-xxs);
+		resize: none;
+	}
+
+	.mat-flat-button {
+		padding: calc(var(--offset-xs) + var(--offset-xxxs)) var(--offset-m);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
+		border-radius: var(--border-radius-xs);
+		transition: var(--transition-xxs);
+
+		&.mat-secondary {
+			color: var(--accent-300);
+			border: 1px solid var(--accent-300);
+			&:hover {
+				color: var(--accent-500);
+				border-color: var(--accent-500);
+			}
+		}
+
+		&.mat-primary {
+			&:hover {
+				background-color: var(--accent-500);
+			}
+			border: 1px solid var(--accent-300);
+		}
+	}
+
+	.error {
+		margin-right: var(--offset-s);
+		color: var(--red);
+	}
+
+	.invisible {
+		display: none;
+	}
+
+	.days-left {
+		display: flex;
+		align-items: center;
+		margin-bottom: var(--offset-s);
+		color: var(--accent-300);
+		font-weight: 500;
+
+		.mat-icon {
+			margin-right: var(--offset-xs);
+			color: var(--accent-200);
+		}
+	}
+}
