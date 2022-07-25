@@ -1,6 +1,6 @@
 <form [formGroup]="tableForm">
 	<div class="day-table">
-		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8" multiTemplateDataRows>
 			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
 				<th mat-header-cell *matHeaderCellDef>
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
