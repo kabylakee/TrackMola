@@ -1,7 +1,7 @@
 export enum DepartmentEnum {
-	FE = 'Front-end',
-	BE = 'Back-end',
-	DWH = 'Data Warehouse',
+	FE = 'FE',
+	BE = 'BE',
+	DWH = 'DWH',
 	Design = 'Design',
-	QA = 'Quality Assurance',
+	QA = 'QA',
 }

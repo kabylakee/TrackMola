@@ -9,79 +9,6 @@ $mat-dialog-actions-height: 1.5rem;
 $content-item-height: 25.25rem;
 
 :host {
-	::ng-deep {
-		mat-datepicker-toggle {
-			& .mat-ripple {
-				display: none;
-			}
-			color: var(--accent-300);
-		}
-		
-		.mat-form-field {
-			height: calc(var(--offset-s) * 3);
-			margin: 0 var(--offset-s);
-
-			&:last-child {
-				margin-right: 0;
-			}
-			&:hover {
-				background: none;
-				border-radius: var(--border-radius-xs);
-			}
-			&-wrapper {
-				@include flex-center;
-				width: $wrapper-width;
-				height: $buttons-height;
-				padding: 0;
-				font-size: var(--font-size-xs);
-
-				&:hover {
-					cursor: pointer;
-				}
-
-				.mat-input-element {
-					font-size: var(--font-size-xs);
-					color: var(--accent-300);
-					font-weight: 500;
-					&.ng-touched.ng-invalid{
-						color: var(--red);
-					}
-				}
-			}
-
-			&-underline {
-				display: none;
-			}
-
-			&-appearance-fill {
-				.mat-form-field-flex {
-					display: flex;
-					align-items: center;
-					max-height: calc(2.25 * var(--offset));
-					padding: 0 var(--offset-s);
-					background-color: var(--white);
-					border: 1px solid var(--accent-300);
-					border-radius: var(--border-radius-xs);
-					
-				}
-				.mat-form-field-infix {
-					padding-bottom: var(--offset);
-				}
-			}
-			
-				
-
-			&-suffix {
-				padding-top: calc(var(--offset) * 0.2);
-			}
-		}
-		
-		.mat-form-field.invalid .mat-form-field-flex {
-			border: 1px solid var(--red);
-		}
-
-	}
-
 	input.mat-input-element {
 		cursor: pointer;
 	}
@@ -114,8 +41,8 @@ $content-item-height: 25.25rem;
 	}
 
 	::ng-deep {
-	.mat-dialog-content {
-		overflow: hidden;
+		.mat-dialog-content {
+			overflow: hidden;
 			.mat-checkbox {
 				margin-right: var(--offset-s);
 				&-frame {
@@ -203,10 +130,79 @@ $content-item-height: 25.25rem;
 		display: flex;
 		align-items: center;
 		margin-bottom: var(--offset-s);
-		
+
 		.mat-icon {
 			color: var(--accent-200);
 			margin-right: var(--offset-xs);
 		}
+	}
+}
+
+::ng-deep {
+	mat-datepicker-toggle {
+		& .mat-ripple {
+			display: none;
+		}
+		color: var(--accent-300);
+	}
+
+	.mat-form-field {
+		height: calc(var(--offset-s) * 3);
+		margin: 0 var(--offset-s);
+
+		&:last-child {
+			margin-right: 0;
+		}
+		&:hover {
+			background: none;
+			border-radius: var(--border-radius-xs);
+		}
+		&-wrapper {
+			@include flex-center;
+			width: $wrapper-width;
+			height: $buttons-height;
+			padding: 0;
+			font-size: var(--font-size-xs);
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			.mat-input-element {
+				font-size: var(--font-size-xs);
+				color: var(--accent-300);
+				font-weight: 500;
+				&.ng-touched.ng-invalid {
+					color: var(--red);
+				}
+			}
+		}
+
+		&-underline {
+			display: none;
+		}
+
+		&-appearance-fill {
+			.mat-form-field-flex {
+				display: flex;
+				align-items: center;
+				max-height: calc(2.25 * var(--offset));
+				padding: 0 var(--offset-s);
+				background-color: var(--white);
+				border: 1px solid var(--accent-300);
+				border-radius: var(--border-radius-xs);
+			}
+			.mat-form-field-infix {
+				padding-bottom: var(--offset);
+			}
+		}
+
+		&-suffix {
+			padding-top: calc(var(--offset) * 0.2);
+		}
+	}
+
+	.mat-form-field.invalid .mat-form-field-flex {
+		border: 1px solid var(--red);
 	}
 }
