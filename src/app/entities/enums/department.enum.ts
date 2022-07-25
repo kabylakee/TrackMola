@@ -1,7 +1,7 @@
-export enum Department {
+export enum DepartmentEnum {
 	FE = 'FE',
 	BE = 'BE',
 	DWH = 'DWH',
-	DESIGN = 'Design',
+	Design = 'Design',
 	QA = 'QA',
 }

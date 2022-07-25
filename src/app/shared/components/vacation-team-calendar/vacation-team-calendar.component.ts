@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {COLOR_CONSTANTS} from 'src/app/entities/constants/color.constants';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
@@ -16,15 +17,16 @@ import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 export class VacationTeamCalendarComponent implements OnInit {
 	@Input() date: Date = new Date();
 	@Input() dataSource: IVacation[];
+	@Input() filteredByDepartment = false;
 
 	public readonly weekDay = Object.values(WeekDayEnum);
 	public weekCount = MonthTasksHelper.getWeek(
 		new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0),
 	);
 	public weeks: IVacationWeek[] = [];
-	public initialOffset = 32;
+	public initialOffset = 34;
 	public standardOffset = 20;
-	public readonly legendItems = [DayTypeEnum.Vacation, DayTypeEnum.DayOff];
+	public readonly legendItems = [DayTypeEnum.Vacation, DayTypeEnum.DayOff, DayTypeEnum.Unapproved];
 
 	private selectedMonth = this.date.getMonth();
 	private selectedYear = this.date.getFullYear();
@@ -78,9 +80,23 @@ export class VacationTeamCalendarComponent implements OnInit {
 		return '0px';
 	}
 
-	public getBorder(date: Date, week: IVacationWeek, isVacation: boolean): string {
-		const borderColor = isVacation ? 'rgba(88, 174, 223, 1)' : 'rgba(125, 214, 165, 1)';
+	public getBorder(date: Date, week: IVacationWeek, vacation: IVacation): string {
+		let borderColor = vacation.paid
+			? COLOR_CONSTANTS[DayTypeEnum.Holiday].standard
+			: COLOR_CONSTANTS[DayTypeEnum.DayOff].standard;
+		if (vacation.status === VacationRequest.Unapproved) {
+			borderColor = COLOR_CONSTANTS[DayTypeEnum.Unapproved].standard;
+		}
 		if (week.dates.some((day) => +day === +date)) return `2px solid ${borderColor}`;
 		return 'none';
+	}
+
+	public getBackgroundColor(vacation: IVacation): string {
+		if (vacation.status === VacationRequest.Approved) {
+			return vacation.paid
+				? COLOR_CONSTANTS[DayTypeEnum.Holiday].transparent
+				: COLOR_CONSTANTS[DayTypeEnum.DayOff].transparent;
+		}
+		return COLOR_CONSTANTS[DayTypeEnum.Unapproved].transparent;
 	}
 }

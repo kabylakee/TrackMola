@@ -67,6 +67,9 @@
 				line-height: var(--font-size);
 				background-color: red;
 				border-radius: var(--border-radius-xxxs);
+				.department {
+					font-style: italic;
+				}
 			}
 		}
 	}
