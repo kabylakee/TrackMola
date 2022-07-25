@@ -16,8 +16,8 @@ $content-item-height: 25.25rem;
 			}
 			color: var(--accent-300);
 		}
-		
-		.mat-form-field {
+
+		.mat-form-fie .mat-form-field {
 			height: calc(var(--offset-s) * 3);
 			margin: 0 var(--offset-s);
 
@@ -40,10 +40,10 @@ $content-item-height: 25.25rem;
 				}
 
 				.mat-input-element {
-					font-size: var(--font-size-xs);
 					color: var(--accent-300);
 					font-weight: 500;
-					&.ng-touched.ng-invalid{
+					font-size: var(--font-size-xs);
+					&.ng-touched.ng-invalid {
 						color: var(--red);
 					}
 				}
@@ -62,24 +62,58 @@ $content-item-height: 25.25rem;
 					background-color: var(--white);
 					border: 1px solid var(--accent-300);
 					border-radius: var(--border-radius-xs);
-					
 				}
 				.mat-form-field-infix {
 					padding-bottom: var(--offset);
 				}
 			}
-			
-				
 
 			&-suffix {
 				padding-top: calc(var(--offset) * 0.2);
 			}
 		}
-		
+
 		.mat-form-field.invalid .mat-form-field-flex {
 			border: 1px solid var(--red);
 		}
 
+		.label {
+			color: var(--light-black);
+			font-weight: 500;
+			font-size: var(--font-size-xs);
+			&.last {
+				font-weight: 400;
+				font-size: var(--font-size-s);
+			}
+		}
+
+		.mat-dialog-content {
+			overflow: hidden;
+			.mat-checkbox {
+				margin-right: var(--offset-s);
+				&-frame {
+					border: 1px solid var(--light-gray);
+					border-radius: var(--border-radius-xxs);
+				}
+
+				&-background {
+					border-radius: var(--border-radius-xxs);
+				}
+			}
+
+			.dialog-content-item {
+				min-width: $content-item-height;
+				padding-bottom: var(--offset-s);
+
+				&.last {
+					padding-bottom: $last-padding;
+				}
+			}
+		}
+
+		.mat-dialog-actions {
+			justify-content: flex-end;
+		}
 	}
 
 	input.mat-input-element {
@@ -111,36 +145,6 @@ $content-item-height: 25.25rem;
 		align-items: center;
 		margin: 0;
 		padding: 0;
-	}
-
-	::ng-deep {
-	.mat-dialog-content {
-		overflow: hidden;
-			.mat-checkbox {
-				margin-right: var(--offset-s);
-				&-frame {
-					border: 1px solid var(--light-gray);
-					border-radius: var(--border-radius-xxs);
-				}
-
-				&-background {
-					border-radius: var(--border-radius-xxs);
-				}
-			}
-
-			.dialog-content-item {
-				min-width: $content-item-height;
-				padding-bottom: var(--offset-s);
-
-				&.last {
-					padding-bottom: $last-padding;
-				}
-			}
-		}
-
-		.mat-dialog-actions {
-			justify-content: flex-end;
-		}
 	}
 
 	.textarea {
@@ -187,26 +191,17 @@ $content-item-height: 25.25rem;
 	.invisible {
 		display: none;
 	}
-	::ng-deep .label {
-		color: var(--light-black);
-		font-weight: 500;
-		font-size: var(--font-size-xs);
-		&.last {
-			font-weight: 400;
-			font-size: var(--font-size-s);
-		}
-	}
 
 	.days-left {
-		color: var(--accent-300);
-		font-weight: 500;
 		display: flex;
 		align-items: center;
 		margin-bottom: var(--offset-s);
-		
+		color: var(--accent-300);
+		font-weight: 500;
+
 		.mat-icon {
-			color: var(--accent-200);
 			margin-right: var(--offset-xs);
+			color: var(--accent-200);
 		}
 	}
 }
