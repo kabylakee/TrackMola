@@ -4,7 +4,7 @@ import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {VacationRequestFormComponent} from '../vacation-request-form/vacation-request-form.component';
-import {Department} from 'src/app/entities/enums/department.enum';
+import {DepartmentEnum} from 'src/app/entities/enums/department.enum';
 
 @Component({
 	selector: 'app-vacation-header',
@@ -17,13 +17,16 @@ export class VacationHeaderComponent {
 	@Output() changeFilters = new EventEmitter<Object>();
 
 	public filters = {department: '', project: ''};
-	public departments = Object.values(Department);
+	public departments = Object.values(DepartmentEnum);
 	public projects: IProject[] = PROJECT_MOCK;
 	public currentProject: IProject = PROJECT_MOCK[0];
-	public currentDepartment: Department = Department.FE;
+	public currentDepartment = 'Select all';
 	public periodRange: Period = Period.Month;
 
-	constructor(public dialog: MatDialog) {}
+	constructor(public dialog: MatDialog) {
+		this.filters.department = this.currentDepartment;
+		this.filters.project = this.currentProject.title;
+	}
 
 	public dialogOpen(): void {
 		this.dialog.open(VacationRequestFormComponent, {
@@ -42,14 +45,19 @@ export class VacationHeaderComponent {
 			}
 		});
 		this.filters.project = this.currentProject.title;
+		this.changeFilters.emit(this.filters);
 	}
 
 	public selectDepartment(value: Event): void {
-		this.departments.forEach((department) => {
-			if (department === `${value}`) {
-				this.currentDepartment = department;
-			}
-		});
+		if (value + '' === 'Select all') {
+			this.currentDepartment = value + '';
+		} else {
+			this.departments.forEach((department) => {
+				if (department === `${value}`) {
+					this.currentDepartment = department;
+				}
+			});
+		}
 		this.filters.department = this.currentDepartment;
 		this.changeFilters.emit(this.filters);
 	}

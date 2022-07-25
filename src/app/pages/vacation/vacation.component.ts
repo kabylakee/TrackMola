@@ -43,7 +43,6 @@ export class VacationComponent implements OnInit {
 		this.vacationService
 			.getMonthVacations(
 				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 1),
-				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 1),
 				this.filters,
 			)
 			.pipe(takeWhile(() => this.isSub))

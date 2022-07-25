@@ -16,7 +16,7 @@ export class VacationService {
 
 	public getMonthVacations(
 		dateFrom: Date = new Date(0),
-		dateTo: Date = new Date(),
+		//dateTo: Date = new Date(),
 		filter = {
 			project: PROJECT_MOCK[0].title,
 			department: 'Select all',
@@ -24,8 +24,14 @@ export class VacationService {
 	): Observable<IVacation[]> {
 		const arr = VACATION.filter((vacation) => {
 			return (
-				vacation.dateFrom >= dateFrom &&
-				vacation.dateTo < dateTo &&
+				((vacation.dateFrom.getFullYear() === dateFrom.getFullYear() &&
+					vacation.dateFrom.getMonth() === dateFrom.getMonth()) ||
+					(vacation.dateFrom.getFullYear() === dateFrom.getFullYear() &&
+						vacation.dateFrom.getMonth() === dateFrom.getMonth() - 1) ||
+					(vacation.dateFrom.getFullYear() === dateFrom.getFullYear() &&
+						vacation.dateFrom.getMonth() === dateFrom.getMonth() + 1)) &&
+				// vacation.dateFrom >= dateFrom &&
+				// vacation.dateTo < dateTo &&
 				(vacation.employee.department === filter.department ||
 					filter.department === 'Select all') &&
 				vacation.employee.projects.find((project) => project.title === filter.project)
@@ -33,5 +39,4 @@ export class VacationService {
 		});
 		return of(arr);
 	}
-}
 }

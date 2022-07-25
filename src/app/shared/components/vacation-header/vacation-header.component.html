@@ -6,7 +6,7 @@
     <div class="select">
       <mat-form-field class="project-teams" appearance="fill">
         <mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
-          <mat-option [value]="project.title" *ngFor="let project of projects">
+          <mat-option [value]="project.title" *ngFor="let project of projects | slice:0:projects.length-1">
             <app-project-component projectName="{{project.title}}"></app-project-component>
             </mat-option>
           </mat-select>
@@ -16,7 +16,7 @@
       <div class="select">
         <mat-form-field class="project-teams" appearance="fill">
           <mat-select [value]="currentDepartment" (valueChange)="selectDepartment($event)">
-            <mat-option>
+            <mat-option [value]="'Select all'">
               <span>Select all</span>
             </mat-option>
             <mat-option [value]="department" *ngFor="let department of departments">
