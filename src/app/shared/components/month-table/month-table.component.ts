@@ -17,7 +17,13 @@ export class MonthTableComponent {
 	@Output() selectDay = new EventEmitter<Date>();
 
 	public readonly weekDay = Object.values(WeekDayEnum);
-	public readonly legendItems = Object.values(DayTypeEnum);
+	public readonly legendItems = [
+		DayTypeEnum.Incomplete,
+		DayTypeEnum.OverWork,
+		DayTypeEnum.Vacation,
+		DayTypeEnum.DayOff,
+		DayTypeEnum.Holiday,
+	];
 
 	public onSelectDay(date: Date): void {
 		this.selectDay.emit(date);
