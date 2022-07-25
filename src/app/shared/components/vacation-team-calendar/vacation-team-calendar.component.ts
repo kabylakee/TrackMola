@@ -24,11 +24,7 @@ export class VacationTeamCalendarComponent implements OnInit {
 	public weeks: IVacationWeek[] = [];
 	public initialOffset = 34;
 	public standardOffset = 20;
-	public readonly legendItems = [
-		DayTypeEnum.Vacation,
-		DayTypeEnum.DayOff,
-		'Unapproved' as DayTypeEnum,
-	];
+	public readonly legendItems = [DayTypeEnum.Vacation, DayTypeEnum.DayOff, DayTypeEnum.Unapproved];
 
 	private selectedMonth = this.date.getMonth();
 	private selectedYear = this.date.getFullYear();

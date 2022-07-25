@@ -23,7 +23,7 @@
 			height: $marker-size;
 			border-radius: var(--offset-xxs);
 		}
-		.unworked {
+		.incomplete {
 			background-color: rgba-color(unfinished, $color-opacity);
 		}
 		.overwork {

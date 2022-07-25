@@ -1,7 +1,8 @@
 export enum DayTypeEnum {
-	Unworked = 'Unworked',
+	Incomplete = 'Incomplete',
 	OverWork = 'Overwork',
 	DayOff = 'Day-off',
 	Vacation = 'Vacation',
 	Holiday = 'Holiday',
+	Unapproved = 'Unapproved',
 }
