@@ -1,10 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {VacationRequestFormComponent} from '../vacation-request-form/vacation-request-form.component';
 import {DepartmentEnum} from 'src/app/entities/enums/department.enum';
+import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 
 @Component({
 	selector: 'app-vacation-header',
@@ -13,10 +15,13 @@ import {DepartmentEnum} from 'src/app/entities/enums/department.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationHeaderComponent {
-	@Output() changeDate = new EventEmitter<Date>();
-	@Output() changeFilters = new EventEmitter<Object>();
+	@Input() form: IVacation;
 
-	public filters = {department: '', project: ''};
+	@Output() changeDate = new EventEmitter<Date>();
+	@Output() changeFilters = new EventEmitter<IVacationFilter>();
+	@Output() sendRequest = new EventEmitter<IVacation>();
+
+	public filters: IVacationFilter = {project: '', department: ''};
 	public departments = Object.values(DepartmentEnum);
 	public projects: IProject[] = PROJECT_MOCK;
 	public currentProject: IProject = PROJECT_MOCK[0];

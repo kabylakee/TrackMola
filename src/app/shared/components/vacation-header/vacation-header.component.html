@@ -28,7 +28,7 @@
       </div>
     </div>
 
-      <button mat-flat-button color="primary" (click)="dialogOpen()">Vacation request</button>
+    <button mat-flat-button color="primary" (click)="dialogOpen()" (sendRequest)="sendRequest.emit(form)">Vacation request</button>
     </div>
     
     

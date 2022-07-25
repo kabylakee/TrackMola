@@ -1,3 +1,3 @@
-<app-header [pageTitle]="title" (changeFilters)="onChangeFilters($event)"></app-header>
+<app-header [pageTitle]="title" ></app-header>
 <app-vacation-header (changeDate)="onChangeDate($event)" (changeFilters)="onChangeFilters($event)"></app-vacation-header>
 <app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters"></app-vacation-team-calendar>

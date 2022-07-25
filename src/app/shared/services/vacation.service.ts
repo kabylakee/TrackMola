@@ -8,11 +8,14 @@ import {LocalStorageService} from './localStorage.service';
 @Injectable({providedIn: 'root'})
 export class VacationService {
 	public vacations: Observable<IVacation[]>;
-
 	public vacations$: BehaviorSubject<IVacation[]> = new BehaviorSubject<IVacation[]>([]);
 	public isDisabledOptionBtn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
-	constructor(private localStorageService: LocalStorageService) {}
+	public VACATIONS_DATA_KEY: string = 'VACATIONS_DATA_KEY';
+
+	constructor(private localStorageService: LocalStorageService) {
+		this.checkData();
+	}
 
 	public getMonthVacations(
 		dateFrom: Date = new Date(0),
@@ -22,7 +25,7 @@ export class VacationService {
 			department: 'Select all',
 		},
 	): Observable<IVacation[]> {
-		const arr = VACATION.filter((vacation) => {
+		const arr = this.vacations$.value.filter((vacation) => {
 			return (
 				((vacation.dateFrom.getFullYear() === dateFrom.getFullYear() &&
 					vacation.dateFrom.getMonth() === dateFrom.getMonth()) ||
@@ -30,13 +33,33 @@ export class VacationService {
 						vacation.dateFrom.getMonth() === dateFrom.getMonth() - 1) ||
 					(vacation.dateFrom.getFullYear() === dateFrom.getFullYear() &&
 						vacation.dateFrom.getMonth() === dateFrom.getMonth() + 1)) &&
-				// vacation.dateFrom >= dateFrom &&
-				// vacation.dateTo < dateTo &&
 				(vacation.employee.department === filter.department ||
 					filter.department === 'Select all') &&
 				vacation.employee.projects.find((project) => project.title === filter.project)
 			);
 		});
 		return of(arr);
+	}
+
+	public checkData(): void {
+		const localStorageData = this.localStorageService.getData(this.VACATIONS_DATA_KEY);
+		if (!localStorageData) {
+			this.localStorageService.setData(this.VACATIONS_DATA_KEY, VACATION);
+			this.vacations$.next(VACATION);
+		} else {
+			this.mapData(localStorageData as IVacation[]);
+			this.vacations$.next(localStorageData as IVacation[]);
+		}
+	}
+
+	private mapData(data: IVacation[]): void {
+		data.forEach((vacation) => {
+			vacation.dateFrom = new Date(vacation.dateFrom);
+			vacation.dateTo = new Date(vacation.dateTo);
+		});
+	}
+
+	public saveVacation(data: IVacation) {
+		this.vacations$.next(this.vacations$.value.concat(data));
 	}
 }

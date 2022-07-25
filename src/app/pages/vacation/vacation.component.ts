@@ -4,6 +4,7 @@ import {VacationService} from 'src/app/shared/services/vacation.service';
 import {takeWhile} from 'rxjs';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
+import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
 
 @Component({
 	selector: 'app-vacation',
@@ -13,16 +14,14 @@ import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 })
 export class VacationComponent implements OnInit {
 	@Input() changeDate: Date;
+	@Input() sendRequest: IVacation;
 
 	public selectedDate: Date = new Date();
 	public readonly title =
 		RouterPaths.Vacation.charAt(0).toUpperCase() + RouterPaths.Vacation.slice(1);
 	public isSub = true;
 	public vacations: IVacation[] = [];
-	public filters = {
-		project: PROJECT_MOCK[0].title,
-		department: 'Select all',
-	};
+	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
 
 	constructor(private vacationService: VacationService) {}
 
@@ -34,7 +33,7 @@ export class VacationComponent implements OnInit {
 		this.selectedDate = event;
 		this.getMonthVacations();
 	}
-	public onChangeFilters(event: any): void {
+	public onChangeFilters(event: IVacationFilter): void {
 		this.filters = event;
 		this.getMonthVacations();
 	}

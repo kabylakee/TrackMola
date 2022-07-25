@@ -4,6 +4,7 @@ import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
+import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
 import {IVacationWeek} from 'src/app/entities/interfaces/vacation-week.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
@@ -17,7 +18,7 @@ import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 	@Input() date: Date = new Date();
 	@Input() dataSource: IVacation[];
-	@Input() filters = {
+	@Input() filters: IVacationFilter = {
 		project: PROJECT_MOCK[0].title,
 		department: 'Select all',
 	};

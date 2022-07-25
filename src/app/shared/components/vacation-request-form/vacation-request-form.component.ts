@@ -7,6 +7,10 @@ import {
 	Validators,
 } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
+import {VacationService} from '../../services/vacation.service';
 
 @Component({
 	selector: 'app-vacation-request-form',
@@ -23,10 +27,11 @@ export class VacationRequestFormComponent {
 	public totalDays = 25;
 	public daysUsed = 14;
 	public daysNumber = true;
-
+	private formToImport: IVacation;
 	constructor(
 		private dialogRef: MatDialogRef<VacationRequestFormComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
+		private vacationService: VacationService,
 	) {
 		this.requestForm = new FormGroup(
 			{
@@ -93,7 +98,16 @@ export class VacationRequestFormComponent {
 			return;
 		}
 
-		this.sendRequest.emit(this.requestForm);
+		this.formToImport = {
+			dateFrom: this.requestForm.controls.dateFrom.value,
+			dateTo: this.requestForm.controls.dateTo.value,
+			paid: this.requestForm.controls.paid.value,
+			comments: this.requestForm.controls.comments.value,
+			status: VacationRequest.Unapproved,
+			employee: EMPLOYEE_MOCK[0],
+		};
+		this.vacationService.saveVacation(this.formToImport);
+		this.sendRequest.emit(this.formToImport);
 		this.dialogRef.close();
 	}
 }
