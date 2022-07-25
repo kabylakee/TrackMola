@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {COLOR_CONSTANTS} from 'src/app/entities/constants/color.constants';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
@@ -78,19 +79,22 @@ export class VacationTeamCalendarComponent implements OnInit {
 	}
 
 	public getBorder(date: Date, week: IVacationWeek, vacation: IVacation): string {
-		let borderColor = vacation.paid ? 'rgba(88, 174, 223, 1)' : 'rgba(125, 214, 165, 1)';
-		if (vacation.status === VacationRequest.Unapproved) borderColor = 'rgba(201, 203, 214, 1)';
+		let borderColor = vacation.paid
+			? COLOR_CONSTANTS[DayTypeEnum.Holiday].standard
+			: COLOR_CONSTANTS[DayTypeEnum.DayOff].standard;
+		if (vacation.status === VacationRequest.Unapproved) {
+			borderColor = COLOR_CONSTANTS[DayTypeEnum.Unapproved].standard;
+		}
 		if (week.dates.some((day) => +day === +date)) return `2px solid ${borderColor}`;
 		return 'none';
 	}
 
 	public getBackgroundColor(vacation: IVacation): string {
-		const vacationColor = 'rgba(88, 174, 223, 0.2)';
-		const dayOffColor = 'rgba(125, 214, 165, 0.2)';
-		const unapprovedColor = 'rgba(201, 203, 214, 0.2)';
 		if (vacation.status === VacationRequest.Approved) {
-			return vacation.paid ? vacationColor : dayOffColor;
+			return vacation.paid
+				? COLOR_CONSTANTS[DayTypeEnum.Holiday].transparent
+				: COLOR_CONSTANTS[DayTypeEnum.DayOff].transparent;
 		}
-		return unapprovedColor;
+		return COLOR_CONSTANTS[DayTypeEnum.Unapproved].transparent;
 	}
 }
