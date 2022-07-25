@@ -13,15 +13,15 @@ import {Department} from 'src/app/entities/enums/department.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationHeaderComponent {
-	@Output() filters = {month: '', department: '', project: ''};
 	@Output() changeDate = new EventEmitter<Date>();
+	@Output() changeFilters = new EventEmitter<Object>();
 
+	public filters = {department: '', project: ''};
 	public departments = Object.values(Department);
 	public projects: IProject[] = PROJECT_MOCK;
 	public currentProject: IProject = PROJECT_MOCK[0];
 	public currentDepartment: Department = Department.FE;
 	public periodRange: Period = Period.Month;
-	public calendarDate: Date;
 
 	constructor(public dialog: MatDialog) {}
 
@@ -51,5 +51,6 @@ export class VacationHeaderComponent {
 			}
 		});
 		this.filters.department = this.currentDepartment;
+		this.changeFilters.emit(this.filters);
 	}
 }

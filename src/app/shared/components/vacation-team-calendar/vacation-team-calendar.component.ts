@@ -4,6 +4,7 @@ import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
 import {IVacationWeek} from 'src/app/entities/interfaces/vacation-week.interface';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 
 @Component({
@@ -14,6 +15,7 @@ import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 })
 export class VacationTeamCalendarComponent implements OnInit {
 	@Input() date: Date = new Date();
+	@Input() dataSource: IVacation[];
 
 	public readonly weekDay = Object.values(WeekDayEnum);
 	public weekCount = MonthTasksHelper.getWeek(
@@ -30,16 +32,16 @@ export class VacationTeamCalendarComponent implements OnInit {
 	private paddingDaysStart =
 		this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 	private sundayIndex = 7;
-	private readonly vacations = VACATION.filter(
-		(vacation) =>
-			vacation.status === VacationRequest.Approved &&
-			((vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
-				vacation.dateFrom.getMonth() === this.date.getMonth()) ||
-				(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
-					vacation.dateFrom.getMonth() === this.date.getMonth() - 1) ||
-				(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
-					vacation.dateFrom.getMonth() === this.date.getMonth() + 1)),
-	);
+	// private readonly vacations = VACATION.filter(
+	// 	(vacation) =>
+	// 		vacation.status === VacationRequest.Approved &&
+	// 		((vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+	// 			vacation.dateFrom.getMonth() === this.date.getMonth()) ||
+	// 			(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+	// 				vacation.dateFrom.getMonth() === this.date.getMonth() - 1) ||
+	// 			(vacation.dateFrom.getFullYear() === this.date.getFullYear() &&
+	// 				vacation.dateFrom.getMonth() === this.date.getMonth() + 1)),
+	// );
 
 	public ngOnInit(): void {
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
@@ -55,7 +57,7 @@ export class VacationTeamCalendarComponent implements OnInit {
 
 		this.weeks.forEach((week) => {
 			week.dates.forEach((day) => {
-				this.vacations.forEach((vacation) => {
+				this.dataSource.forEach((vacation) => {
 					if (+day >= +vacation.dateFrom && +day < +vacation.dateTo) {
 						if (!week.vacationInfo.includes(vacation)) week.vacationInfo.push(vacation);
 					}

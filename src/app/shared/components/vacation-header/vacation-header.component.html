@@ -1,7 +1,7 @@
 <div> </div>
 <div class="container">
   <div class="inline-block">
-    <app-date-picker (changeDate)="changeDate.emit($event)" [calendarDate]="calendarDate"
+    <app-date-picker (changeDate)="changeDate.emit($event)"
     [periodRange]="periodRange" class="inline-block"></app-date-picker>
     <div class="select">
       <mat-form-field class="project-teams" appearance="fill">
@@ -16,8 +16,11 @@
       <div class="select">
         <mat-form-field class="project-teams" appearance="fill">
           <mat-select [value]="currentDepartment" (valueChange)="selectDepartment($event)">
+            <mat-option>
+              <span>Select all</span>
+            </mat-option>
             <mat-option [value]="department" *ngFor="let department of departments">
-              <span> {{department}}</span>
+              <span>{{department}}</span>
             </mat-option>
           </mat-select>
           <mat-icon matSuffix class="arrow">expand_more</mat-icon>
