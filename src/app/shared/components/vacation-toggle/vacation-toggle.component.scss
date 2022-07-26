@@ -1,0 +1,34 @@
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
+
+$height: 40px;
+:host {
+	::ng-deep .mat-button-toggle-label-content {
+		line-height: 24px;
+	}
+
+	.mat-button-toggle {
+		height: $height;
+		margin-right: var(--offset);
+		padding: var(--offset-xs) var(--offset-s);
+		color: var(--light-black);
+		font-weight: 500;
+		border: none;
+
+		&-checked {
+			color: var(--accent-300);
+			background-color: inherit;
+			border-bottom: 2px solid var(--accent-300);
+		}
+		&-group {
+			padding-top: var(--offset-l);
+			border: none;
+		}
+		&-button {
+			height: $height;
+		}
+		.right-margin {
+			margin-right: var(--offset-s);
+		}
+	}
+}

@@ -5,6 +5,8 @@ import {takeWhile} from 'rxjs';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
+import {IVacationTab} from 'src/app/entities/interfaces/vacation-tab.interface';
+import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 
 @Component({
 	selector: 'app-vacation',
@@ -22,6 +24,7 @@ export class VacationComponent implements OnInit {
 	public isSub = true;
 	public vacations: IVacation[] = [];
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
+	public vacationTab: IVacationTab = VACATION_TABS[1];
 
 	constructor(private vacationService: VacationService) {}
 
@@ -41,6 +44,10 @@ export class VacationComponent implements OnInit {
 	public onSendRequest(event: IVacation) {
 		this.vacationService.saveVacation(event);
 		this.getMonthVacations();
+	}
+
+	public onChangeTab(event: IVacationTab) {
+		this.vacationTab = event;
 	}
 
 	private getMonthVacations(): void {

@@ -7,6 +7,8 @@ import {VacationRequestFormComponent} from '../vacation-request-form/vacation-re
 import {DepartmentEnum} from 'src/app/entities/enums/department.enum';
 import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
+import {IVacationTab} from 'src/app/entities/interfaces/vacation-tab.interface';
+import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 
 @Component({
 	selector: 'app-vacation-header',
@@ -18,6 +20,7 @@ export class VacationHeaderComponent {
 	@Output() changeDate = new EventEmitter<Date>();
 	@Output() changeFilters = new EventEmitter<IVacationFilter>();
 	@Output() vacationRequest = new EventEmitter<IVacation>();
+	@Output() tabSelected = new EventEmitter<IVacationTab>();
 
 	public filters: IVacationFilter = {project: '', department: ''};
 	public departments = Object.values(DepartmentEnum);
@@ -25,6 +28,7 @@ export class VacationHeaderComponent {
 	public currentProject: IProject = PROJECT_MOCK[0];
 	public currentDepartment = 'Select all';
 	public periodRange: Period = Period.Month;
+	public tab: IVacationTab = VACATION_TABS[1];
 
 	constructor(public dialog: MatDialog) {
 		this.filters.department = this.currentDepartment;
@@ -66,5 +70,10 @@ export class VacationHeaderComponent {
 		}
 		this.filters.department = this.currentDepartment;
 		this.changeFilters.emit(this.filters);
+	}
+
+	public changeTab(event: IVacationTab) {
+		this.tab = event;
+		this.tabSelected.emit(event);
 	}
 }
