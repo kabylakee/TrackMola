@@ -72,7 +72,7 @@ export class VacationHeaderComponent {
 		this.changeFilters.emit(this.filters);
 	}
 
-	public changeTab(event: IVacationTab) {
+	public changeTab(event: IVacationTab): void {
 		this.tab = event;
 		this.tabSelected.emit(event);
 	}

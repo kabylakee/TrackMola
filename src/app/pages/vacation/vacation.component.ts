@@ -41,12 +41,12 @@ export class VacationComponent implements OnInit {
 		this.getMonthVacations();
 	}
 
-	public onSendRequest(event: IVacation) {
+	public onSendRequest(event: IVacation): void {
 		this.vacationService.saveVacation(event);
 		this.getMonthVacations();
 	}
 
-	public onChangeTab(event: IVacationTab) {
+	public onChangeTab(event: IVacationTab): void {
 		this.vacationTab = event;
 	}
 
