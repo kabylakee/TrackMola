@@ -1,10 +1,12 @@
 @import 'mixins/common-mixin';
 @import 'mixins/colors-mixin';
 
-$height: 40px;
+$line-height: 1.5rem;
+$height: 2.5rem;
 :host {
-	::ng-deep .mat-button-toggle-label-content {
-		line-height: 24px;
+	::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+		line-height: $line-height;
+		padding: 0;
 	}
 
 	.mat-button-toggle {
