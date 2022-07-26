@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
@@ -15,11 +15,9 @@ import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationHeaderComponent {
-	@Input() form: IVacation;
-
 	@Output() changeDate = new EventEmitter<Date>();
 	@Output() changeFilters = new EventEmitter<IVacationFilter>();
-	@Output() sendRequest = new EventEmitter<IVacation>();
+	@Output() vacationRequest = new EventEmitter<IVacation>();
 
 	public filters: IVacationFilter = {project: '', department: ''};
 	public departments = Object.values(DepartmentEnum);
@@ -34,12 +32,15 @@ export class VacationHeaderComponent {
 	}
 
 	public dialogOpen(): void {
-		this.dialog.open(VacationRequestFormComponent, {
+		const dialogRef = this.dialog.open(VacationRequestFormComponent, {
 			position: {
 				top: 'calc(50vh - 10.875 * var(--offset))',
 				left: 'calc(50vw - 14.125 * var(--offset))',
 			},
 			data: {},
+		});
+		dialogRef.afterClosed().subscribe((data) => {
+			this.vacationRequest.emit(data);
 		});
 	}
 

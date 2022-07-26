@@ -38,6 +38,11 @@ export class VacationComponent implements OnInit {
 		this.getMonthVacations();
 	}
 
+	public onSendRequest(event: IVacation) {
+		this.vacationService.saveVacation(event);
+		this.getMonthVacations();
+	}
+
 	private getMonthVacations(): void {
 		this.vacationService
 			.getMonthVacations(

@@ -7,7 +7,6 @@ import {LocalStorageService} from './localStorage.service';
 
 @Injectable({providedIn: 'root'})
 export class VacationService {
-	public vacations: Observable<IVacation[]>;
 	public vacations$: BehaviorSubject<IVacation[]> = new BehaviorSubject<IVacation[]>([]);
 	public isDisabledOptionBtn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
@@ -19,7 +18,6 @@ export class VacationService {
 
 	public getMonthVacations(
 		dateFrom: Date = new Date(0),
-		//dateTo: Date = new Date(),
 		filter = {
 			project: PROJECT_MOCK[0].title,
 			department: 'Select all',
@@ -61,5 +59,7 @@ export class VacationService {
 
 	public saveVacation(data: IVacation) {
 		this.vacations$.next(this.vacations$.value.concat(data));
+		const arr = this.vacations$.value;
+		this.localStorageService.setData(this.VACATIONS_DATA_KEY, arr);
 	}
 }

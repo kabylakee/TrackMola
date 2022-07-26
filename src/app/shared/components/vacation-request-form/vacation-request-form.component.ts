@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {
 	AbstractControl,
 	FormControl,
@@ -10,7 +10,6 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
-import {VacationService} from '../../services/vacation.service';
 
 @Component({
 	selector: 'app-vacation-request-form',
@@ -19,8 +18,6 @@ import {VacationService} from '../../services/vacation.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationRequestFormComponent {
-	@Output() sendRequest = new EventEmitter();
-
 	public requestForm: FormGroup;
 	public message: string;
 
@@ -31,7 +28,6 @@ export class VacationRequestFormComponent {
 	constructor(
 		private dialogRef: MatDialogRef<VacationRequestFormComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
-		private vacationService: VacationService,
 	) {
 		this.requestForm = new FormGroup(
 			{
@@ -106,8 +102,6 @@ export class VacationRequestFormComponent {
 			status: VacationRequest.Unapproved,
 			employee: EMPLOYEE_MOCK[0],
 		};
-		this.vacationService.saveVacation(this.formToImport);
-		this.sendRequest.emit(this.formToImport);
-		this.dialogRef.close();
+		this.dialogRef.close(this.formToImport);
 	}
 }

@@ -1,3 +1,6 @@
 <app-header [pageTitle]="title" ></app-header>
-<app-vacation-header (changeDate)="onChangeDate($event)" (changeFilters)="onChangeFilters($event)"></app-vacation-header>
-<app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters"></app-vacation-team-calendar>
+<app-vacation-header (changeDate)="onChangeDate($event)"
+(changeFilters)="onChangeFilters($event)"
+(vacationRequest)="onSendRequest($event)"></app-vacation-header>
+<app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters">
+</app-vacation-team-calendar>
