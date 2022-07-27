@@ -3,6 +3,9 @@ export enum DayTypeEnum {
 	OverWork = 'Overwork',
 	DayOff = 'Day-off',
 	Vacation = 'Vacation',
-	Holiday = 'Holiday',
 	Unapproved = 'Unapproved',
+	Holiday = 'Holiday',
+	Weekend = 'Weekend',
+	WorkDay = 'Work day',
+	HalfDay = 'Half-day',
 }

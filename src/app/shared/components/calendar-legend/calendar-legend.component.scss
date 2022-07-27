@@ -26,13 +26,16 @@
 		.incomplete {
 			background-color: rgba-color(unfinished, $color-opacity);
 		}
-		.overwork {
+		.overwork,
+		.half-day {
 			background-color: rgba-color(overwork, $color-opacity);
 		}
-		.day-off {
+		.day-off,
+		.weekend {
 			background-color: rgba-color(day-off, $color-opacity);
 		}
-		.vacation {
+		.vacation,
+		.work {
 			background-color: rgba-color(vacation, $color-opacity);
 		}
 		.holiday {
