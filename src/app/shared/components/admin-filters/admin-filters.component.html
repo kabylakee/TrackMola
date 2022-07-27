@@ -1,0 +1,28 @@
+<app-page-tabs
+	[tab]="tabChange"
+	[config]="tabsConfig"
+	(changeTabValue)="changeTabValue($event)"
+></app-page-tabs>
+<div [ngSwitch]="tabChange">
+	<div class="calendar-filters" *ngSwitchCase="tabs.Calendar">
+		<app-date-picker [calendarDate]="calendarDate" [periodRange]="periodRange"></app-date-picker>
+		<app-toggle-button [period]="countrySelection" [config]="toggleConfig"></app-toggle-button>
+		<button mat-flat-button color="secondary" class="mat-button" (click)="openDialog()">
+			<mat-icon class="material-icons-outlined icon mat-button-icon">calendar_today</mat-icon>
+			<span class="mat-button-text">Set schedule</span>
+		</button>
+	</div>
+	<div class="users-filters" *ngSwitchCase="tabs.Users">
+		<app-input-search></app-input-search>
+		<div class="select">
+			<mat-form-field class="project-teams" appearance="fill">
+				<mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
+					<mat-option [value]="project.title" *ngFor="let project of projects">
+						<app-project-component projectName="{{ project.title }}"></app-project-component>
+					</mat-option>
+				</mat-select>
+				<mat-icon matSuffix class="arrow">expand_more</mat-icon>
+			</mat-form-field>
+		</div>
+	</div>
+</div>

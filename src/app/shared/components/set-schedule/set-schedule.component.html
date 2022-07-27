@@ -1,0 +1,39 @@
+<div mat-dialag-title class="dialog-title">
+	<span class="title">Set production calendar</span>
+	<mat-dialog-actions class="dialog-actions">
+		<mat-icon class="material-icons-outlined icon" mat-dialog-close>close</mat-icon>
+	</mat-dialog-actions>
+</div>
+<mat-dialog-content class="dialog-content">
+	<div class="selected-days">
+		<mat-icon class="material-icons-outlined icon">error</mat-icon>
+		<span>Selected days: 01.06-09.06</span>
+	</div>
+	<form [formGroup]="formGroup">
+		<mat-radio-group
+			aria-labelledby="radio-group-label"
+			class="radio-group"
+			formControlName="holidays"
+		>
+			<mat-radio-button class="radio-button" color="primary" *ngFor="let day of days">
+				{{ day }}
+			</mat-radio-button>
+		</mat-radio-group>
+		<div class="form-input">
+			<mat-label class="label">Holiday name</mat-label>
+			<mat-form-field class="form-field" appearance="fill">
+				<input matInput maxlength="25" placeholder="Enter name" />
+			</mat-form-field>
+		</div>
+		<div class="form-input">
+			<mat-label class="label">Time for half-day</mat-label>
+			<mat-form-field class="form-field" appearance="fill">
+				<input matInput maxlength="25" placeholder="Enter time" />
+			</mat-form-field>
+		</div>
+	</form>
+  <mat-dialog-actions class="dialog-actions">
+    <button mat-flat-button color="primary" class="mat-button" mat-dialog-close>Save</button>
+  </mat-dialog-actions>
+</mat-dialog-content>
+

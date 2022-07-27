@@ -1,0 +1,7 @@
+<app-header [pageTitle]="title"></app-header>
+<app-admin-filters (tabsValue)="changeTabsValue($event)"></app-admin-filters>
+<div class="administration-content" [ngSwitch]="tab">
+  <div class="users-table" *ngSwitchCase="tabs.Users">
+<app-users-table [columns]="columns" [dataSource]="users"></app-users-table>
+  </div>
+</div>

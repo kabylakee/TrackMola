@@ -1,0 +1,10 @@
+<mat-button-toggle-group name="pageType" aria-label="Page Type">
+  <mat-button-toggle
+    *ngFor="let element of config; index as counterButton"
+    [checked]="element.mode === tab"
+    (change)="changeTabValue.emit(element.mode)"
+    [value]="element.mode">
+    <mat-icon class="material-icons-outlined">{{element.icon}}</mat-icon>
+    {{element.title}}
+  </mat-button-toggle>
+</mat-button-toggle-group>
