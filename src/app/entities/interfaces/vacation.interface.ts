@@ -4,8 +4,8 @@ import {IEmployee} from './employee.interface';
 export interface IVacation {
 	dateFrom: Date;
 	dateTo: Date;
-	dateFromFormat: string;
-	dateToFormat: string;
+	dateFromFormat?: string;
+	dateToFormat?: string;
 	comments?: string;
 	paid: boolean;
 	status: VacationRequest;
