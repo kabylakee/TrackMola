@@ -28,7 +28,7 @@ export class VacationComponent implements OnInit {
 
 	constructor(private vacationService: VacationService) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.getMonthVacations();
 	}
 
@@ -60,7 +60,7 @@ export class VacationComponent implements OnInit {
 			.subscribe((vacations) => (this.vacations = vacations));
 	}
 
-	ngOnDestroy(): void {
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 }
