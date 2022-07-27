@@ -14,7 +14,7 @@ export class AdminCalendarItemComponent {
 
 	@Output() selectDay = new EventEmitter<Date>();
 
-	public DayTypeEnum = DayTypeEnum;
+	public readonly DayTypeEnum = DayTypeEnum;
 
 	public checked = false;
 

@@ -22,7 +22,7 @@ import {HolidayService} from '../../services/holiday.service';
 export class AdminCalendarComponent implements OnInit {
 	@Input() date: Date = new Date();
 
-	@Output() dayClicked = new EventEmitter();
+	@Output() dayClicked = new EventEmitter<Set<Date>>();
 
 	public readonly weekDay = Object.values(WeekDayEnum);
 	public readonly weekCount = MonthTasksHelper.getWeek(
@@ -36,12 +36,13 @@ export class AdminCalendarComponent implements OnInit {
 	];
 	public days: IAdminCalendarItem[] = [];
 
-	private selectedMonth = this.date.getMonth();
-	private selectedYear = this.date.getFullYear();
-	private firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
-	private paddingDaysStart =
-		this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
-	private sundayIndex = 7;
+	private readonly selectedMonth = this.date.getMonth();
+	private readonly selectedYear = this.date.getFullYear();
+	private readonly firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
+	private readonly sundayIndex = 6;
+	private readonly paddingDaysStart =
+		this.firstDayOfMonth.getDay() === 0 ? this.sundayIndex : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
+	private readonly weekDayCount = 7;
 	private selectedDays = new Set<Date>();
 	private holidays: IHoliday[] = [];
 
@@ -49,7 +50,7 @@ export class AdminCalendarComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.holidayService.getHolidays(this.date).subscribe((holidays) => (this.holidays = holidays));
-		for (let i = 0; i < this.weekCount * this.sundayIndex; i++) {
+		for (let i = 0; i < this.weekCount * this.weekDayCount; i++) {
 			this.days.push({
 				date: new Date(this.selectedYear, this.selectedMonth, i - this.paddingDaysStart + 1),
 				disabled: !(
@@ -71,7 +72,7 @@ export class AdminCalendarComponent implements OnInit {
 		}
 	}
 
-	public onSelectDay(day: Date) {
+	public onSelectDay(day: Date): void {
 		if (this.selectedDays.has(day)) this.selectedDays.delete(day);
 		else this.selectedDays.add(day);
 		this.dayClicked.emit(this.selectedDays);
