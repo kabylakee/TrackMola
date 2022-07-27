@@ -5,8 +5,8 @@ $line-height: 1.5rem;
 $height: 2.5rem;
 :host {
 	::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
-		line-height: $line-height;
 		padding: 0;
+		line-height: $line-height;
 	}
 
 	.mat-button-toggle {

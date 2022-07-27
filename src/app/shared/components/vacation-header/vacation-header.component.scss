@@ -1,5 +1,8 @@
 @import 'mixins/common-mixin';
+
 :host {
+	$select-height: 2.25rem;
+
 	.container {
 		display: flex;
 		justify-content: space-between;
@@ -35,7 +38,7 @@
 		.select {
 			@include flex-center;
 			display: inline-flex;
-			height: 36px;
+			height: $select-height;
 			margin-left: var(--offset);
 			padding: var(--offset-xxs) var(--offset-s) !important;
 			border: 1px solid var(--accent-100);
