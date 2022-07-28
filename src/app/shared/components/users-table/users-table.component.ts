@@ -29,9 +29,9 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	public readonly columnType = UsersColumnType;
 	public filteredDataSource: IEmployee[] = [];
 	public readonly projects: IProject[] = PROJECT_MOCK;
-	public readonly department = DepartmentEnum;
-	public readonly office = CountryEnum;
-	public readonly role = Role;
+	public readonly departments = Object.keys(DepartmentEnum);
+	public readonly offices = Object.keys(CountryEnum);
+	public readonly roles = Object.values(Role);
 	public displayedColumns: string[] = [];
 
 	public ngOnInit(): void {

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DayTypeEnum} from '../../../entities/enums/day-type.enum';
+import {HolidayTypeEnum} from '../../../entities/enums/holiday-type.enum';
 
 @Component({
 	selector: 'app-set-schedule',
@@ -12,8 +12,9 @@ import {DayTypeEnum} from '../../../entities/enums/day-type.enum';
 export class SetScheduleComponent {
 	@Output() submitForm = new EventEmitter();
 
-	public days = DayTypeEnum;
+	public days = Object.values(HolidayTypeEnum);
 	public formGroup: FormGroup = new FormGroup({});
+	// public isChecked = false;
 
 	constructor(
 		private dialogRef: MatDialogRef<SetScheduleComponent>,

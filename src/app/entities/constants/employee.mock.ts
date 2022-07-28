@@ -26,7 +26,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 	{
 		userName: 'Marilyn Dokidis',
 		projects: [PROJECT_MOCK[2], PROJECT_MOCK[3]],
-		role: Role.MANAGER,
+		role: Role.CTO,
 		image: 'assets/image/human.jpg',
 		email: 'mdokidis@datamola.com',
 		department: DepartmentEnum.DWH,

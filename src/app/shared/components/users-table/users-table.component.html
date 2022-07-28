@@ -26,10 +26,7 @@
 				<div *ngSwitchCase="columnType.ROLE">
           <mat-form-field appearance="fill">
             <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="role.ADMIN">{{ role.ADMIN }}</mat-option>
-              <mat-option [value]="role.MANAGER">{{ role.MANAGER }}</mat-option>
-              <mat-option [value]="role.EMPLOYEE">{{ role.EMPLOYEE }}</mat-option>
-              <mat-option [value]="role.CTO">{{ role.CTO }}</mat-option>
+              <mat-option [value]="role" *ngFor="let role of roles">{{role}}</mat-option>
             </mat-select>
           </mat-form-field>
 				</div>
@@ -37,11 +34,7 @@
 				<div *ngSwitchCase="columnType.DEPARTMENT">
           <mat-form-field appearance="fill">
             <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="department.FE">{{ department.FE }}</mat-option>
-              <mat-option [value]="department.BE">{{ department.BE }}</mat-option>
-              <mat-option [value]="department.Design">{{ department.Design }}</mat-option>
-              <mat-option [value]="department.DWH">{{ department.DWH }}</mat-option>
-              <mat-option [value]="department.QA">{{ department.QA }}</mat-option>
+              <mat-option [value]="department" *ngFor="let department of departments">{{department}}</mat-option>
             </mat-select>
           </mat-form-field>
 				</div>
@@ -67,12 +60,7 @@
 				<div *ngSwitchCase="columnType.OFFICE">
           <mat-form-field appearance="fill">
             <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="office.Belarus">{{ office.Belarus }}</mat-option>
-              <mat-option [value]="office.Poland">{{ office.Poland }}</mat-option>
-              <mat-option [value]="office.Russia">{{ office.Russia }}</mat-option>
-              <mat-option [value]="office.Ukraine">{{ office.Ukraine }}</mat-option>
-              <mat-option [value]="office.USA">{{ office.USA }}</mat-option>
-              <mat-option [value]="office.Cypris">{{ office.Cypris }}</mat-option>
+              <mat-option [value]="office" *ngFor="let office of offices">{{ office }}</mat-option>
             </mat-select>
           </mat-form-field>
 				</div>

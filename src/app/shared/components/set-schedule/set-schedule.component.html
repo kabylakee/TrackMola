@@ -15,18 +15,9 @@
 			class="radio-group"
       formControlName="radioValue"
 		>
-			<mat-radio-button class="radio-button" color="primary" [value]="days.Holiday">
-				{{days.Holiday}}
+			<mat-radio-button class="radio-button" color="primary" [value]="day" *ngFor="let day of days">
+				{{day}}
 			</mat-radio-button>
-      <mat-radio-button class="radio-button" color="primary" [value]="days.Weekend">
-        {{days.Weekend}}
-      </mat-radio-button>
-      <mat-radio-button class="radio-button" color="primary" [value]="days.WorkDay">
-        {{days.WorkDay}}
-      </mat-radio-button>
-      <mat-radio-button class="radio-button" color="primary" [value]="days.HalfDay">
-        {{days.HalfDay}}
-      </mat-radio-button>
 		</mat-radio-group>
 		<div class="form-input">
 			<mat-label class="label">Holiday name</mat-label>
