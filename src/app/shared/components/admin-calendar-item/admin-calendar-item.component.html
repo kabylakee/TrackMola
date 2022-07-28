@@ -1,0 +1,24 @@
+<div
+	class="item"
+	[ngClass]="{
+		disabled: disabled,
+		weekend: day.info?.dayType === DayTypeEnum.Weekend,
+		holiday: day.info?.dayType === DayTypeEnum.Holiday,
+		'work-day': day.info?.dayType === DayTypeEnum.WorkDay,
+		'half-day': day.info?.dayType === DayTypeEnum.HalfDay
+	}"
+	[class.checked]="checked"
+	(click)="onSelectDay()"
+>
+	<div class="item-header">{{ day.date | date: 'd MMMM' }}</div>
+	<div class="item-content">
+		<div class="holiday-info" *ngIf="day.info; else check">
+			{{ day.info.dayType }}
+			<span *ngIf="day.info.workingHours">: {{ day.info.workingHours }}h</span>
+		</div>
+		<div *ngIf="day.info?.holidayName" class="holiday-name">{{ day.info?.holidayName }}</div>
+		<ng-template #check>
+			<mat-icon class="check" [class.checked]="checked">check</mat-icon>
+		</ng-template>
+	</div>
+</div>
