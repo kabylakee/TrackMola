@@ -13,7 +13,7 @@
 		</button>
 	</div>
 	<div class="users-filters" *ngSwitchCase="tabs.Users">
-		<app-input-search></app-input-search>
+		<app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
 		<div class="select">
 			<mat-form-field class="project-teams" appearance="fill">
 				<mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">

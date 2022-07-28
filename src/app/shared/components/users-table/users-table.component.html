@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="filteredDataSource">
 	<ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
 		<th mat-header-cell *matHeaderCellDef>
 			<div [ngSwitch]="column.type" [ngClass]="column.cls">

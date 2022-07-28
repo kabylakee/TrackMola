@@ -9,31 +9,40 @@
 		<mat-icon class="material-icons-outlined icon">error</mat-icon>
 		<span>Selected days: 01.06-09.06</span>
 	</div>
-	<form [formGroup]="formGroup">
+	<form [formGroup]="formGroup" (ngSubmit)="submit()">
 		<mat-radio-group
 			aria-labelledby="radio-group-label"
 			class="radio-group"
-			formControlName="holidays"
+      formControlName="radioValue"
 		>
-			<mat-radio-button class="radio-button" color="primary" *ngFor="let day of days">
-				{{ day }}
+			<mat-radio-button class="radio-button" color="primary" [value]="days.Holiday">
+				{{days.Holiday}}
 			</mat-radio-button>
+      <mat-radio-button class="radio-button" color="primary" [value]="days.Weekend">
+        {{days.Weekend}}
+      </mat-radio-button>
+      <mat-radio-button class="radio-button" color="primary" [value]="days.WorkDay">
+        {{days.WorkDay}}
+      </mat-radio-button>
+      <mat-radio-button class="radio-button" color="primary" [value]="days.HalfDay">
+        {{days.HalfDay}}
+      </mat-radio-button>
 		</mat-radio-group>
 		<div class="form-input">
 			<mat-label class="label">Holiday name</mat-label>
 			<mat-form-field class="form-field" appearance="fill">
-				<input matInput maxlength="25" placeholder="Enter name" />
+				<input matInput maxlength="25" placeholder="Enter name" formControlName="holidayName"/>
 			</mat-form-field>
 		</div>
 		<div class="form-input">
 			<mat-label class="label">Time for half-day</mat-label>
 			<mat-form-field class="form-field" appearance="fill">
-				<input matInput maxlength="25" placeholder="Enter time" />
+				<input matInput maxlength="25" placeholder="Enter time" formControlName="halfdayTime"/>
 			</mat-form-field>
 		</div>
 	</form>
   <mat-dialog-actions class="dialog-actions">
-    <button mat-flat-button color="primary" class="mat-button" mat-dialog-close>Save</button>
+    <button mat-flat-button color="primary" class="mat-button" (click)="submit()">Save</button>
   </mat-dialog-actions>
 </mat-dialog-content>
 

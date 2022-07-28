@@ -17,6 +17,7 @@ export class AdministrationComponent implements OnInit {
 	public columns: ITableColumn[] = [];
 	public tabs = AdminTabsTitle;
 	public tab: AdminTabsTitle = AdminTabsTitle.Calendar;
+	public searchValue = '';
 
 	constructor(private usersService: UsersService) {}
 
@@ -35,4 +36,8 @@ export class AdministrationComponent implements OnInit {
 
 	public readonly title =
 		RouterPaths.Administration.charAt(0).toUpperCase() + RouterPaths.Administration.slice(1);
+
+	public onSearchValueChange(event: string): void {
+		this.searchValue = event;
+	}
 }

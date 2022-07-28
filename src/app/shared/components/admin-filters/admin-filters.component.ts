@@ -18,6 +18,7 @@ import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
 })
 export class AdminFiltersComponent {
 	@Output() tabsValue = new EventEmitter<AdminTabsTitle>();
+	@Output() searchValueChange = new EventEmitter<string>();
 
 	public readonly toggleConfig: IViewPeriod<CountryEnum>[] = COUNTRY_TOGGLE;
 	public readonly tabsConfig: IViewPeriod<AdminTabsTitle>[] = ADMIN_TABS;

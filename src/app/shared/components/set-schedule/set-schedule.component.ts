@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DayTypeEnum} from '../../../entities/enums/day-type.enum';
 
 @Component({
 	selector: 'app-set-schedule',
@@ -9,11 +10,24 @@ import {FormGroup} from '@angular/forms';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SetScheduleComponent {
-	public days: string[] = ['Holiday', 'Weekend', 'Work day', 'Half-day'];
-	public formGroup: FormGroup;
+	@Output() submitForm = new EventEmitter();
+
+	public days = DayTypeEnum;
+	public formGroup: FormGroup = new FormGroup({});
 
 	constructor(
 		private dialogRef: MatDialogRef<SetScheduleComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
-	) {}
+		private fb: FormBuilder,
+	) {
+		this.formGroup = fb.group({
+			radioValue: ['', [Validators.required]],
+			holidayName: '',
+			halfdayTime: '',
+		});
+	}
+
+	public submit(): void {
+		this.submitForm.emit(this.formGroup);
+	}
 }
