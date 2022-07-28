@@ -1,3 +1,7 @@
-<app-header [pageTitle]="title"></app-header>
-<button mat-flat-button color="primary" (click)="dialogOpen()">Vacation request</button>
-<app-vacation-team-calendar></app-vacation-team-calendar>
+<app-header [pageTitle]="title" ></app-header>
+<app-vacation-header (changeDate)="onChangeDate($event)"
+(changeFilters)="onChangeFilters($event)"
+(vacationRequest)="onSendRequest($event)"
+(tabSelected)="onChangeTab($event)"></app-vacation-header>
+<app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
+</app-vacation-team-calendar>
