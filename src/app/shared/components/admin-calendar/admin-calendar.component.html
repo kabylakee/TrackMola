@@ -1,0 +1,12 @@
+<div class="component-wrapper">
+	<div class="grid-wrapper">
+		<div class="header" *ngFor="let day of weekDay">{{ day }}</div>
+		<app-admin-calendar-item
+			*ngFor="let day of days"
+			[day]="day"
+			[disabled]="day.disabled"
+			(selectDay)="onSelectDay($event)"
+		></app-admin-calendar-item>
+	</div>
+	<app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>
+</div>

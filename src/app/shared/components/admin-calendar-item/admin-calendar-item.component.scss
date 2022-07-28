@@ -1,0 +1,147 @@
+@import 'mixins/common-mixin';
+
+:host {
+	$calendar-item-height: 7rem;
+	$common-transition: 0.2;
+	$hover-transition: 0.3;
+	$checked-transition: 0.4;
+	$work-day: rgb(88, 174, 223);
+	$weekend: rgb(125, 214, 165);
+	$holiday: rgb(65, 94, 182);
+	$half-day: rgb(241, 186, 102);
+
+	.item {
+		display: flex;
+		flex-direction: column;
+		height: $calendar-item-height;
+		color: var(--light-black);
+		font-weight: 500;
+		line-height: var(--font-size);
+		outline: 1px solid var(--light-gray);
+		cursor: pointer;
+		transition: var(--transition-xxs);
+
+		&-header {
+			padding: var(--offset-xs) 0;
+			text-align: center;
+			background-color: var(--accent-50);
+		}
+
+		&-content {
+			flex-grow: 1;
+			@include flex-center;
+			flex-direction: column;
+			gap: var(--offset-xxs);
+
+			.check {
+				opacity: 0;
+				@include icon-size(--font-size-xl);
+				transition: var(--transition-xxs);
+
+				&.checked {
+					opacity: 1;
+					color: var(--accent-200);
+				}
+			}
+
+			&:hover .check {
+				opacity: 1;
+				color: var(--light-gray);
+
+				&.checked {
+					opacity: 1;
+					color: var(--accent-200);
+				}
+			}
+		}
+
+		&.weekend {
+			&:hover .item-header {
+				background-color: rgba($weekend, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid $weekend;
+				.item-header {
+					background-color: rgba($weekend, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba($weekend, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: $weekend;
+			}
+		}
+
+		&.holiday {
+			&:hover .item-header {
+				background-color: rgba($holiday, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid $holiday;
+				.item-header {
+					background-color: rgba($holiday, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba($holiday, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: $holiday;
+				.holiday-name {
+					color: var(--light-black);
+				}
+			}
+		}
+
+		&.work-day {
+			&:hover .item-header {
+				background-color: rgba($work-day, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid $work-day;
+				.item-header {
+					background-color: rgba($work-day, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba($work-day, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: $work-day;
+			}
+		}
+
+		&.half-day {
+			&:hover .item-header {
+				background-color: rgba($half-day, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid $half-day;
+				.item-header {
+					background-color: rgba($half-day, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba($half-day, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: $half-day;
+			}
+		}
+
+		&.disabled {
+			color: var(--gray);
+			.item-header {
+				background-color: var(--accent-50);
+			}
+			.item-content {
+				display: none;
+			}
+		}
+	}
+}
