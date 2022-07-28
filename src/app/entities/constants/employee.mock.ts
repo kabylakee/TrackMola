@@ -20,7 +20,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
 		email: 'evetros@datamola.com',
-    department: DepartmentEnum.Design,
+		department: DepartmentEnum.Design,
 		office: CountryEnum.Cypris,
 	},
 	{
