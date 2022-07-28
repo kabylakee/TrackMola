@@ -1,7 +1,12 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {VacationRequestFormComponent} from 'src/app/shared/components/vacation-request-form/vacation-request-form.component';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {VacationService} from 'src/app/shared/services/vacation.service';
+import {takeWhile} from 'rxjs';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
+import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
+import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
+import {IVacationTab} from 'src/app/entities/interfaces/vacation-tab.interface';
+import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 
 @Component({
 	selector: 'app-vacation',
@@ -9,19 +14,53 @@ import {VacationRequestFormComponent} from 'src/app/shared/components/vacation-r
 	styleUrls: ['./vacation.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationComponent {
+export class VacationComponent implements OnInit {
+	@Input() changeDate: Date;
+	@Input() sendRequest: IVacation;
+
+	public selectedDate: Date = new Date();
 	public readonly title =
 		RouterPaths.Vacation.charAt(0).toUpperCase() + RouterPaths.Vacation.slice(1);
+	public isSub = true;
+	public vacations: IVacation[] = [];
+	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
+	public vacationTab: IVacationTab = VACATION_TABS[1];
 
-	constructor(public dialog: MatDialog) {}
+	constructor(private vacationService: VacationService) {}
 
-	public dialogOpen(): void {
-		this.dialog.open(VacationRequestFormComponent, {
-			position: {
-				top: 'calc(50vh - 10.875 * var(--offset))',
-				left: 'calc(50vw - 14.125 * var(--offset))',
-			},
-			data: {},
-		});
+	public ngOnInit(): void {
+		this.getMonthVacations();
+	}
+
+	public onChangeDate(event: Date): void {
+		this.selectedDate = event;
+		this.getMonthVacations();
+	}
+	public onChangeFilters(event: IVacationFilter): void {
+		this.filters = event;
+		this.getMonthVacations();
+	}
+
+	public onSendRequest(event: IVacation): void {
+		this.vacationService.saveVacation(event);
+		this.getMonthVacations();
+	}
+
+	public onChangeTab(event: IVacationTab): void {
+		this.vacationTab = event;
+	}
+
+	private getMonthVacations(): void {
+		this.vacationService
+			.getMonthVacations(
+				new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 1),
+				this.filters,
+			)
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((vacations) => (this.vacations = vacations));
+	}
+
+	public ngOnDestroy(): void {
+		this.isSub = false;
 	}
 }

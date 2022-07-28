@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Inject, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {
 	AbstractControl,
 	FormControl,
@@ -7,6 +7,9 @@ import {
 	Validators,
 } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
+import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 
 @Component({
 	selector: 'app-vacation-request-form',
@@ -15,15 +18,13 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationRequestFormComponent {
-	@Output() sendRequest = new EventEmitter();
-
 	public requestForm: FormGroup;
 	public message: string;
 
 	public totalDays = 25;
 	public daysUsed = 14;
 	public daysNumber = true;
-
+	private formToImport: IVacation;
 	constructor(
 		private dialogRef: MatDialogRef<VacationRequestFormComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: object,
@@ -93,7 +94,14 @@ export class VacationRequestFormComponent {
 			return;
 		}
 
-		this.sendRequest.emit(this.requestForm);
-		this.dialogRef.close();
+		this.formToImport = {
+			dateFrom: this.requestForm.controls.dateFrom.value,
+			dateTo: this.requestForm.controls.dateTo.value,
+			paid: this.requestForm.controls.paid.value,
+			comments: this.requestForm.controls.comments.value,
+			status: VacationRequest.Unapproved,
+			employee: EMPLOYEE_MOCK[0],
+		};
+		this.dialogRef.close(this.formToImport);
 	}
 }

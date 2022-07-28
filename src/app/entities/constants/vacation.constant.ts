@@ -6,6 +6,15 @@ import {EMPLOYEE_MOCK} from './employee.mock';
 export const DATE_FORMAT = 'DD.MM.YYYY';
 export const VACATION: IVacation[] = [
 	{
+		dateFrom: new Date(2022, 5, 29),
+		dateTo: new Date(2022, 6, 3),
+		dateFromFormat: moment(new Date(2022, 7, 12)).format(DATE_FORMAT),
+		dateToFormat: moment(new Date(2022, 7, 25)).format(DATE_FORMAT),
+		status: VacationRequest.Unapproved,
+		paid: true,
+		employee: EMPLOYEE_MOCK[3],
+	},
+	{
 		dateFrom: new Date(2022, 6, 12),
 		dateTo: new Date(2022, 6, 26),
 		dateFromFormat: moment(new Date(2022, 7, 12)).format(DATE_FORMAT),

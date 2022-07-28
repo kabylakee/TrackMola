@@ -2,13 +2,11 @@
 
 :host {
 	$marker-size: 1rem;
-	$wrapper-size: 28.5rem;
 	$color-opacity: 0.5;
 
 	.legends-wrapper {
-		display: flex;
+		display: inline-flex;
 		gap: var(--offset);
-		width: $wrapper-size;
 		padding: var(--offset-s);
 		color: var(--light-black);
 		font-size: var(--font-size-xs);
@@ -25,7 +23,7 @@
 			height: $marker-size;
 			border-radius: var(--offset-xxs);
 		}
-		.unworked {
+		.incomplete {
 			background-color: rgba-color(unfinished, $color-opacity);
 		}
 		.overwork {
@@ -39,6 +37,9 @@
 		}
 		.holiday {
 			background-color: rgba-color(holiday, $color-opacity);
+		}
+		.unapproved {
+			background-color: rgba-color(light-gray, $color-opacity);
 		}
 	}
 }

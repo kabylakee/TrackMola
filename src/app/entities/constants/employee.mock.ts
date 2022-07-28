@@ -17,19 +17,19 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 	{
 		userName: 'Emery Vetrovs',
 		projects: [PROJECT_MOCK[0]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
 		email: 'evetros@datamola.com',
-		department: DepartmentEnum.FE,
+    department: DepartmentEnum.Design,
 		office: CountryEnum.Cypris,
 	},
 	{
 		userName: 'Marilyn Dokidis',
 		projects: [PROJECT_MOCK[2], PROJECT_MOCK[3]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
 		email: 'mdokidis@datamola.com',
-		department: DepartmentEnum.FE,
+		department: DepartmentEnum.DWH,
 		office: CountryEnum.USA,
 	},
 	{
@@ -47,7 +47,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
 		email: 'wgeorge@datamola.com',
-		department: DepartmentEnum.FE,
+		department: DepartmentEnum.QA,
 		office: CountryEnum.Belarus,
 	},
 	{
@@ -56,7 +56,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
 		email: 'wgeorge@datamola.com',
-		department: DepartmentEnum.FE,
+		department: DepartmentEnum.BE,
 		office: CountryEnum.Poland,
 	},
 	{
@@ -71,7 +71,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 	{
 		userName: 'Emery Vetrovs',
 		projects: [PROJECT_MOCK[1]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
 		email: 'evtros@datamola.com',
 		department: DepartmentEnum.FE,
@@ -80,7 +80,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 	{
 		userName: 'Marilyn Dokidis',
 		projects: [PROJECT_MOCK[2]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
 		email: 'mdokidis@datamola.com',
 		department: DepartmentEnum.FE,

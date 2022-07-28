@@ -77,6 +77,16 @@ $content-item-height: 25.25rem;
 			border: 1px solid var(--red);
 		}
 
+		.label {
+			color: var(--light-black);
+			font-weight: 500;
+			font-size: var(--font-size-xs);
+			&.last {
+				font-weight: 400;
+				font-size: var(--font-size-s);
+			}
+		}
+
 		.mat-dialog-content {
 			overflow: hidden;
 			.mat-checkbox {
@@ -180,15 +190,6 @@ $content-item-height: 25.25rem;
 
 	.invisible {
 		display: none;
-	}
-	::ng-deep .label {
-		color: var(--light-black);
-		font-weight: 500;
-		font-size: var(--font-size-xs);
-		&.last {
-			font-weight: 400;
-			font-size: var(--font-size-s);
-		}
 	}
 
 	.days-left {
