@@ -1,0 +1,17 @@
+<!-- <div class="calendar-block">
+  <div class="calendar-header">{{calendarMonth}}</div>
+  <div class="calendar-body">
+    <div class="calendar-body-container">
+      <div class="calendar-days-label">
+        <span *ngFor="let day of calendarDays">{{day}}</span>
+      </div>
+      <div class="calendar-days-content">
+        <div class="days-number" *ngFor="let dayss of arrDays">{{dayss}}</div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="calendar-grid">
+  <div class="calendar-header" *ngFor="let weekDay of weekDays">{{weekDay}}</div>
+  <div class="calendar-body" *ngFor="let date of dates" [ngClass]="{disabledColor:!date.disabled}">{{date.date.getDate()}}</div>
+</div>

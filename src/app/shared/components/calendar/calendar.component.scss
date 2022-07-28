@@ -1,0 +1,52 @@
+@import 'mixins/common-mixin';
+
+.calendar-block {
+	background-color: red;
+	height: 201px;
+	width: 266px;
+	margin: 1px;
+}
+
+.calendar-header {
+	@include flex-center;
+	height: 33px;
+	background-color: var(--accent-50);
+}
+
+.calendar-body {
+	display: flex;
+	justify-content: center;
+}
+
+.calendar-body-container {
+	width: 208px;
+}
+
+.calendar-days-label {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	background-color: green;
+}
+
+.calendar-days-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.days-number {
+	width: 20px;
+	height: 20px;
+}
+
+.calendar-grid {
+	padding: 0.5rem;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+.disabledColor {
+	color: gray;
+}

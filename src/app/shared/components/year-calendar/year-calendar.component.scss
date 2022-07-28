@@ -1,0 +1,29 @@
+@import 'mixins/common-mixin';
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.month-name {
+	@include flex-center;
+	padding: 8px 0;
+	background-color: var(--accent-50);
+}
+
+::ng-deep {
+	mat-calendar {
+		display: flex;
+		width: 266px;
+	}
+	mat-calendar-header {
+		display: none !important;
+	}
+}
+
+.calendar-block {
+	background-color: red;
+	width: 266px;
+	height: 201px;
+	margin: 1px;
+}
