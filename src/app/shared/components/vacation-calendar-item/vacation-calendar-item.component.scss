@@ -1,0 +1,22 @@
+:host {
+	.item-wrapper {
+		display: flex;
+		height: 100%;
+		color: var(--light-black);
+		font-weight: 500;
+		line-height: var(--font-size);
+		border: 1px solid var(--light-gray);
+		.date {
+			flex: 1;
+			border-right: 1px solid var(--light-gray);
+			&:last-of-type {
+				border: none;
+			}
+			&-header {
+				padding: var(--offset-xs) 0;
+				text-align: center;
+				background-color: var(--accent-50);
+			}
+		}
+	}
+}

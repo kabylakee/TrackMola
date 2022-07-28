@@ -1,7 +1,10 @@
-<app-header [pageTitle]="title"></app-header>
+<app-header [pageTitle]="title" ></app-header>
 <div class="container">
-    <!-- <div class="vacation-team"></div>
-    <div class="vacation-request"></div>
-    <div class="vacation-history"></div> -->
-    <app-year-calendar></app-year-calendar>
+  <app-year-calendar></app-year-calendar>
 </div>
+<app-vacation-header (changeDate)="onChangeDate($event)"
+(changeFilters)="onChangeFilters($event)"
+(vacationRequest)="onSendRequest($event)"
+(tabSelected)="onChangeTab($event)"></app-vacation-header>
+<app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
+</app-vacation-team-calendar>

@@ -1,3 +1,4 @@
+import {DepartmentEnum} from '../enums/department.enum';
 import {Role} from '../enums/role.enum';
 import {IEmployee} from '../interfaces/employee.interface';
 import {PROJECT_MOCK} from './project.mock';
@@ -9,20 +10,23 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.ADMIN,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Emery',
 		secondName: 'Vetrovs',
 		projects: [PROJECT_MOCK[0]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.Design,
 	},
 	{
 		firstName: 'Marilyn',
 		secondName: 'Dokidis',
 		projects: [PROJECT_MOCK[0]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.DWH,
 	},
 	{
 		firstName: 'Martin',
@@ -30,6 +34,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.BE,
 	},
 	{
 		firstName: 'Wilson',
@@ -37,6 +42,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.QA,
 	},
 	{
 		firstName: 'Workman',
@@ -44,6 +50,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Disarae',
@@ -51,20 +58,23 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.ADMIN,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Emery',
 		secondName: 'Vetrovs',
 		projects: [PROJECT_MOCK[0]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Marilyn',
 		secondName: 'Dokidis',
 		projects: [PROJECT_MOCK[0]],
-		role: Role.MANGER,
+		role: Role.MANAGER,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Martin',
@@ -72,6 +82,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Wilson',
@@ -79,6 +90,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 	{
 		firstName: 'Workman',
@@ -86,5 +98,6 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
 		image: 'assets/image/human.jpg',
+		department: DepartmentEnum.FE,
 	},
 ];
