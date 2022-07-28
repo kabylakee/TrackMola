@@ -10,11 +10,10 @@ import {HolidayTypeEnum} from '../../../entities/enums/holiday-type.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SetScheduleComponent {
-	@Output() submitForm = new EventEmitter();
+	@Output() submitForm = new EventEmitter<FormGroup>();
 
 	public days = Object.values(HolidayTypeEnum);
 	public formGroup: FormGroup = new FormGroup({});
-	// public isChecked = false;
 
 	constructor(
 		private dialogRef: MatDialogRef<SetScheduleComponent>,
