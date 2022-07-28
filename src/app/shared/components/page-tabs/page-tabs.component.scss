@@ -1,0 +1,53 @@
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
+
+$tab-height: 2.5rem;
+
+:host {
+	.mat-button-toggle {
+		@include flex-center;
+		height: $tab-height;
+		margin-top: var(--offset);
+		margin-right: var(--offset);
+		padding: var(--offset-xs) var(--offset-s) !important;
+		color: var(--light-black);
+		font-weight: 500;
+		border: none;
+
+		&-group-appearance-standard {
+			border: none;
+		}
+
+		&-checked {
+			color: var(--accent-300);
+			background-color: inherit;
+			border-bottom: 2px solid var(--accent-300);
+		}
+
+		&:hover {
+			background-color: transparent !important;
+		}
+
+		.mat-icon {
+			margin-right: var(--offset-s);
+		}
+	}
+}
+
+::ng-deep {
+	.mat-button-toggle-appearance-standard {
+		&:not(.mat-button-toggle-disabled) {
+			&:hover {
+				.mat-button-toggle-focus-overlay {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.mat-button-toggle-appearance-standard,
+	.mat-button-toggle-label-content {
+		padding: 0 !important;
+		line-height: 0 !important;
+	}
+}
