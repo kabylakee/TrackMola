@@ -46,9 +46,7 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 		this.selectedYear = this.date.getFullYear();
 		this.firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 		this.paddingDaysStart =
-			this.firstDayOfMonth.getDay() === 0
-				? this.sundayIndex - 1
-				: this.firstDayOfMonth.getDay() - 1; // amount of days from last month
+			this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
 			const week: IVacationWeek = {dates: [], vacationInfo: []};
@@ -77,9 +75,7 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 		this.selectedYear = this.date.getFullYear();
 		this.firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 		this.paddingDaysStart =
-			this.firstDayOfMonth.getDay() === 0
-				? this.sundayIndex - 1
-				: this.firstDayOfMonth.getDay() - 1; // amount of days from last month
+			this.firstDayOfMonth.getDay() === 0 ? 6 : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 		this.filteredByDepartment = this.filters.department !== 'Select all';
 
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
