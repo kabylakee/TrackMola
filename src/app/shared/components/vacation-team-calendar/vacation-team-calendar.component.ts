@@ -35,9 +35,9 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 	private selectedYear: number;
 	private firstDayOfMonth: Date;
 	private paddingDaysStart: number; // amount of days from last month
-	private sundayIndex = 7;
+	private weekDayCount = 7;
 	private sundayGetDay = 0;
-	private sundayNewIndex = 6;
+	private sundayIndex = 6;
 
 	public ngOnInit(): void {
 		this.weekCount = MonthTasksHelper.getWeek(
@@ -49,12 +49,12 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 		this.firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 		this.paddingDaysStart =
 			this.firstDayOfMonth.getDay() === this.sundayGetDay
-				? this.sundayNewIndex
+				? this.sundayIndex
 				: this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
 			const week: IVacationWeek = {dates: [], vacationInfo: []};
-			for (let j = 0; j < this.sundayIndex; j++) {
+			for (let j = 0; j < this.weekDayCount; j++) {
 				week.dates.push(
 					new Date(this.selectedYear, this.selectedMonth, dayCounter - this.paddingDaysStart + 1),
 				);
@@ -80,13 +80,13 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 		this.firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 		this.paddingDaysStart =
 			this.firstDayOfMonth.getDay() === this.sundayGetDay
-				? this.sundayNewIndex
+				? this.sundayIndex
 				: this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 		this.filteredByDepartment = this.filters.department !== 'Select all';
 
 		for (let i = 0, dayCounter = 0; i < this.weekCount; i++) {
 			const week: IVacationWeek = {dates: [], vacationInfo: []};
-			for (let j = 0; j < this.sundayIndex; j++) {
+			for (let j = 0; j < this.weekDayCount; j++) {
 				week.dates.push(
 					new Date(this.selectedYear, this.selectedMonth, dayCounter - this.paddingDaysStart + 1),
 				);
@@ -113,13 +113,13 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 	}
 
 	public getLeftOffset(dateFrom: Date, week: IVacationWeek): string {
-		const day = dateFrom.getDay() === 0 ? this.sundayIndex : dateFrom.getDay();
+		const day = dateFrom.getDay() === 0 ? this.weekDayCount : dateFrom.getDay();
 		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${day - 1})`;
 		return '0';
 	}
 
 	public getRightOffset(dateFrom: Date, week: IVacationWeek): string {
-		const day = dateFrom.getDay() === 0 ? this.sundayIndex : dateFrom.getDay();
+		const day = dateFrom.getDay() === 0 ? this.weekDayCount : dateFrom.getDay();
 		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${7 - day + 1})`;
 		return '0px';
 	}
