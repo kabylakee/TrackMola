@@ -19,3 +19,15 @@ export interface IReportData {
 	date: string;
 	tasks: ITask[];
 }
+
+export interface IRequest {
+	checked: boolean;
+	name: string;
+	project: IProject;
+	period: string;
+	paid: boolean;
+	approved: boolean;
+	notes: string;
+}
+
+export type TableDataType = ITask | IRequest;
