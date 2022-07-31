@@ -1,0 +1,10 @@
+<mat-button-toggle-group color="primary" name="vacationsType" aria-label="Vacations Type">
+    <mat-button-toggle
+      *ngFor="let element of tabs; index as counterButton"
+      [checked]="element.title === tab.title"
+      (change)="changeSelectedValue.emit(element)"
+      [value]="element">
+      <mat-icon class="material-icons-outlined right-margin">{{element.icon}}</mat-icon>
+      {{element.title}}
+    </mat-button-toggle>
+</mat-button-toggle-group>

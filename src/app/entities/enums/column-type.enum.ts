@@ -8,3 +8,13 @@ export enum ColumnType {
 	LINK = 'Link',
 	OPTIONS = 'Options',
 }
+
+export enum UsersColumnType {
+	USER = 'User',
+	EMAIL = 'Email',
+	ROLE = 'Role',
+	DEPARTMENT = 'Department',
+	PROJECT = 'Project',
+	OFFICE = 'Office',
+	OPTIONS = 'Options',
+}

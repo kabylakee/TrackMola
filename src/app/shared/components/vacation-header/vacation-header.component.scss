@@ -1,0 +1,71 @@
+@import 'mixins/common-mixin';
+
+:host {
+	$select-height: 2.25rem;
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		margin-top: var(--offset);
+	}
+	.mat-flat-button {
+		padding: var(--offset-s) var(--offset-m);
+		color: var(--white);
+	}
+
+	.inline-block {
+		display: inline-block;
+	}
+	::ng-deep {
+		.project-teams .mat-form-field {
+			&-wrapper {
+				padding: 0;
+			}
+			&-flex {
+				padding: 0 !important;
+				background: none !important;
+				border-radius: var(--border-radius-xs) !important;
+			}
+			&-infix {
+				padding: 0 !important;
+				border: none;
+			}
+			&-underline {
+				display: none;
+			}
+		}
+
+		.select {
+			@include flex-center;
+			display: inline-flex;
+			height: $select-height;
+			margin-left: var(--offset);
+			padding: var(--offset-xxs) var(--offset-s) !important;
+			border: 1px solid var(--accent-100);
+			border-radius: var(--border-radius-xs);
+		}
+
+		.mat-form-field {
+			position: relative;
+			width: 9.5rem;
+			.arrow {
+				position: absolute;
+				top: calc(-1 * var(--offset));
+				right: 0;
+				color: var(--light-black);
+			}
+		}
+
+		.mat-select {
+			&-arrow {
+				display: none !important;
+			}
+			&-arrow-wrapper {
+				display: none !important;
+			}
+			&-value {
+				color: inherit;
+			}
+		}
+	}
+}
