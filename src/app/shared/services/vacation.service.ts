@@ -58,8 +58,10 @@ export class VacationService {
 	}
 
 	public saveVacation(data: IVacation): void {
-		this.vacations$.next(this.vacations$.value.concat(data));
-		const arr = this.vacations$.value;
-		this.localStorageService.setData(this.VACATIONS_DATA_KEY, arr);
+		if (data) {
+			this.vacations$.next(this.vacations$.value.concat(data));
+			const arr = this.vacations$.value;
+			this.localStorageService.setData(this.VACATIONS_DATA_KEY, arr);
+		}
 	}
 }
