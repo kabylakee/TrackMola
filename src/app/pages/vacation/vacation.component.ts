@@ -1,5 +1,5 @@
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {VacationService} from 'src/app/shared/services/vacation.service';
 import {takeWhile} from 'rxjs';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
@@ -14,7 +14,7 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 	styleUrls: ['./vacation.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationComponent implements OnInit {
+export class VacationComponent implements OnInit, OnDestroy {
 	@Input() changeDate: Date;
 	@Input() sendRequest: IVacation;
 
