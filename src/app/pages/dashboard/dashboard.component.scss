@@ -4,13 +4,17 @@
 	$mat-card-min-width: 100%;
 	$button-min-width: 7.4rem;
 	$button-min-height: 2.25rem;
+	$line-height: 2rem;
 	app-notification ::ng-deep {
 		&.mat-card {
 			position: static;
 			min-width: $mat-card-min-width;
 			padding: var(--offset-m);
+			margin-top: 0;
+			border-radius: var(--border-radius-xs);
 			&-title {
 				margin-bottom: var(--offset);
+				line-height: $line-height;
 			}
 			&-actions {
 				margin-bottom: 0;
@@ -21,6 +25,9 @@
 						gap: var(--offset-s) !important;
 					}
 				}
+			}
+			app-no-data {
+				padding: 0;
 			}
 		}
 		& .notification {

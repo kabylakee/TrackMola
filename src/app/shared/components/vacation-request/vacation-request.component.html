@@ -4,7 +4,8 @@
 		<ng-container *ngFor="let vacation of vacations; index as i">
 			<div class="vacation">
 				{{ vacation.dateFromFormat }}-{{ vacation.dateToFormat }} ({{
-					vacation.dateTo.getDate() - vacation.dateFrom.getDate()
+					(vacation.dateTo.getTime() - vacation.dateFrom.getTime()) /
+					(1000 * 3600 * 24)
 				}}
 				days)
 				<div class="confirmation">

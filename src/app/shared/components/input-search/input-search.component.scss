@@ -8,14 +8,14 @@
 	width: $search-area-width;
 	height: $search-area-height;
 	padding: var(--offset-xs) var(--offset-s);
-	border: 1px solid var(--accent-500);
+	border: 1px solid var(--accent-300);
 	border-radius: var(--offset-xs);
 
 	.search-icon {
 		width: calc($search-area-height * 0.6);
 		height: calc($search-area-height * 0.6);
 		margin-right: var(--offset-xxs);
-		color: var(--accent-500);
+		color: var(--accent-300);
 	}
 
 	.search-input {

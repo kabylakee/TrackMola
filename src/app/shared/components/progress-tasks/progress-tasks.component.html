@@ -16,5 +16,8 @@
         <app-project-component projectName="{{task.project.title}}"></app-project-component>
       </div>
     </div>
+    <div class="no-data-container">
+      <app-no-data *ngIf="!tasks.length"></app-no-data>
+    </div>
   </div>
 </div>
