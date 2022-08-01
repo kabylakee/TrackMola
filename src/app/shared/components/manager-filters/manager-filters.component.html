@@ -3,9 +3,9 @@
 	<app-input-search></app-input-search>
 </div>
 <div class="right">
-	<button mat-flat-button color="secondary">Approve</button>
-	<button mat-flat-button color="secondary">Notify</button>
-	<button mat-flat-button color="secondary">
+	<button mat-flat-button color="secondary" (click)="onApproveClick()">Approve</button>
+	<button mat-flat-button color="secondary" (click)="onNotifyClick()">Notify</button>
+	<button mat-flat-button color="secondary" (click)="onExportClick()">
 		<mat-icon class="material-icons-outlined">file_upload</mat-icon>
 		Export
 	</button>
