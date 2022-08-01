@@ -5,3 +5,4 @@
 (tabSelected)="onChangeTab($event)"></app-vacation-header>
 <app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
 </app-vacation-team-calendar>
+<app-reports-table [dataSource]="requests" [columns]="columns" [hidden]="vacationTab.title!=='Requests'"></app-reports-table>

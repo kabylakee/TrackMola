@@ -14,7 +14,7 @@ import {ColumnType} from 'src/app/entities/enums/column-type.enum';
 import {Status} from 'src/app/entities/enums/status.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
-import {ITask, TableDataType} from 'src/app/entities/interfaces/task.interface';
+import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {MatDialog} from '@angular/material/dialog';
 import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
@@ -29,6 +29,7 @@ import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
+import {TableDataType} from 'src/app/entities/types/table-data.type';
 
 @Component({
 	selector: 'app-reports-table',
