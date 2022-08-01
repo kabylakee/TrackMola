@@ -8,14 +8,14 @@ import {Period} from 'src/app/entities/enums/period.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerFiltersComponent {
-	@Output() openExportWindow = new EventEmitter<void>();
+	@Output() export = new EventEmitter<void>();
 	@Output() approve = new EventEmitter<void>();
 	@Output() notify = new EventEmitter<void>();
 
 	public readonly periodRange: Period = Period.Month;
 
 	public onExportClick(): void {
-		this.openExportWindow.emit();
+		this.export.emit();
 	}
 
 	public onApproveClick(): void {
