@@ -24,7 +24,7 @@ $content-height: 6rem;
 			gap: var(--offset-s);
 			max-height: $content-height;
 			padding-right: var(--offset-xs);
-			overflow-y: scroll;
+			overflow-y: auto;
 
 			.vacation {
 				display: flex;

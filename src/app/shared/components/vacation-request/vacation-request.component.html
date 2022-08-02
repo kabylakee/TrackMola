@@ -5,7 +5,7 @@
 			<div class="vacation">
 				{{ vacation.dateFromFormat }}-{{ vacation.dateToFormat }} ({{
 					(vacation.dateTo.getTime() - vacation.dateFrom.getTime()) /
-					(1000 * 3600 * 24)
+					dayInMiliseconds
 				}}
 				days)
 				<div class="confirmation">
