@@ -1,0 +1,69 @@
+@import 'mixins/colors-mixin';
+@import 'mixins/common-mixin';
+
+:host {
+	$input-width: 17rem;
+	$role-width: 7rem;
+	$project-width: 9rem;
+	$office-width: 5.5rem;
+
+	.email-column,
+	.users-column {
+		display: flex;
+		min-width: $input-width;
+
+		.email-column .mat-form-field {
+			color: var(--dark-gray);
+		}
+	}
+
+	.role-column,
+	.department-column {
+		width: $role-width;
+	}
+
+	.project-column {
+		width: $project-width;
+		.mat-select {
+			padding: var(--offset-xxs) calc(0.375 * var(--offset));
+			color: var(--accent-300);
+			font-weight: 500;
+			font-size: var(--font-size-xs);
+			border-radius: var(--border-radius-xs);
+		}
+	}
+
+	.office-column {
+		display: flex;
+		justify-content: center;
+		width: $office-width;
+	}
+
+	.options-column {
+		@include flex-center;
+
+		.mat-icon {
+			color: var(--dark-gray);
+			@include icon-size(--icon-size-m);
+
+			&:hover {
+				color: var(--light-black);
+			}
+		}
+	}
+}
+
+::ng-deep {
+	.mat-select {
+		&-arrow-wrapper {
+			display: none !important;
+		}
+		&-value {
+			color: inherit;
+		}
+	}
+	.mat-pseudo-checkbox {
+		border: 1px solid var(--light-gray) !important;
+		border-radius: var(--border-radius-xxs) !important;
+	}
+}
