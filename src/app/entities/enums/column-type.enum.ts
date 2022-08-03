@@ -7,6 +7,9 @@ export enum ColumnType {
 	STATUS = 'Status',
 	LINK = 'Link',
 	OPTIONS = 'Options',
+	APPROVE = 'Approve',
+	DECLINE = 'Decline',
+	VIEW = 'View',
 }
 
 export enum UsersColumnType {

@@ -49,6 +49,16 @@
 									<input matInput formControlName="overtime"/>
 								</mat-form-field>
 							</ng-container>
+							<ng-container *ngIf="column.field === 'notes'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="notes"/>
+								</mat-form-field>
+							</ng-container>
+							<ng-container *ngIf="column.field === 'period'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="period"/>
+								</mat-form-field>
+							</ng-container>
 						</div>
 
 						<div *ngSwitchCase="columnType.PROJECT">
@@ -93,6 +103,34 @@
 									{{ element.asanaLink || element.bitbucketLink ? 'link' : 'add_link' }}
 								</mat-icon>
 							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.APPROVE">
+							<button mat-icon-button aria-label="Approve">
+								<mat-icon aria-hidden="false" class="material-icons-outlined approve">
+									check_circle
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.DECLINE">
+							<button mat-icon-button aria-label="Decline">
+								<mat-icon aria-hidden="false" class="material-icons-outlined decline">
+									cancel
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.VIEW">
+							<button mat-icon-button aria-label="View">
+								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
+									visibility
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.TEXT">
+							<span>{{ element['' + column.field] }}</span>
 						</div>
 
 						<div *ngSwitchCase="columnType.OPTIONS">

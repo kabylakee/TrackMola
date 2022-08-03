@@ -13,4 +13,7 @@ export enum ClsType {
 	PaidColumn = 'paid-column',
 	LinkColumn = 'link-column',
 	ViewColumn = 'view-column',
+	ApproveColumn = 'approve-column',
+	NotesColumn = 'notes-column',
+	NameColumn = 'name-column',
 }
