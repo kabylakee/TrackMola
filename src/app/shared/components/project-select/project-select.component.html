@@ -1,0 +1,18 @@
+<mat-form-field class="project-teams" appearance="fill">
+	<mat-select
+		[value]="currentProject.title"
+		(valueChange)="selectProject($event)"
+		[ngStyle]="getColor()"
+	>
+		<mat-option
+			[value]="project.title"
+			*ngFor="let project of projects | slice: 0:projects.length - 1"
+		>
+			<app-project-component
+				projectName="{{ project.title }}"
+				projectColor="{{ project.color }}"
+			></app-project-component>
+		</mat-option>
+	</mat-select>
+	<mat-icon matSuffix class="arrow">expand_more</mat-icon>
+</mat-form-field>

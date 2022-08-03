@@ -1,0 +1,184 @@
+@import 'mixins/common-mixin';
+
+$wrapper-width: calc(10rem - 1px);
+$buttons-height: 2.5rem;
+$cto-select-width: 16.25rem;
+
+:host {
+	.mat-dialog-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: var(--offset-l);
+		margin: 0;
+		padding-bottom: var(--offset-s);
+
+		.title {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			font-weight: 500;
+			font-size: var(--font-size-s);
+		}
+
+		.mat-dialog-actions {
+			display: flex;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+
+			.mat-icon {
+				@include icon-size(--font-size);
+			}
+		}
+	}
+
+	.mat-dialog-content {
+		overflow: visible;
+
+		.dialog-content-item {
+			.label {
+				color: var(--light-black);
+				font-weight: 600;
+				font-size: var(--font-size-s);
+			}
+
+			.mat-form-field-appearance-fill {
+				&-wrapper {
+					.mat-form-field-flex {
+						background: white;
+					}
+				}
+			}
+		}
+	}
+
+	.mat-flat-button {
+		padding: calc(var(--offset-xs) + var(--offset-xxxs)) var(--offset-m);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
+		border-radius: var(--border-radius-xs);
+		transition: var(--transition-xxs);
+
+		&.mat-secondary {
+			color: var(--accent-300);
+			border: 1px solid var(--accent-300);
+
+			&:hover {
+				color: var(--accent-500);
+				border-color: var(--accent-500);
+			}
+		}
+
+		&.mat-primary {
+			&:hover {
+				background-color: var(--accent-500);
+			}
+
+			border: 1px solid var(--accent-300);
+		}
+	}
+
+	.mat-dialog-actions {
+		justify-content: flex-end;
+		min-height: 0;
+		margin-top: var(--offset-m);
+		margin-bottom: 0px;
+		padding: 0;
+	}
+}
+
+::ng-deep {
+	.mat-dialog-container {
+		box-shadow: none;
+	}
+	app-export-form {
+		.mat-form-field {
+			height: calc(var(--offset-s) * 3);
+			margin: 0 var(--offset-s);
+
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				@include flex-center;
+				width: $wrapper-width;
+				height: $buttons-height;
+				padding: 0;
+				font-size: var(--font-size-xs);
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				.mat-input-element {
+					color: var(--accent-300);
+					font-weight: 500;
+					font-size: var(--font-size-xs);
+				}
+			}
+
+			&-underline {
+				display: none;
+			}
+
+			&-appearance-fill {
+				.mat-form-field-flex {
+					display: flex;
+					align-items: center;
+					max-height: calc(2.25 * var(--offset));
+					padding: 0 var(--offset-s);
+					background-color: var(--white);
+					border: 1px solid var(--accent-300);
+					border-radius: var(--border-radius-xs);
+				}
+			}
+
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
+				.mat-icon {
+					color: var(--accent-300);
+				}
+			}
+		}
+		.mat-form-field.cto-select {
+			width: $cto-select-width !important;
+			margin-top: var(--offset-m);
+			.mat-form-field-wrapper {
+				width: $cto-select-width !important;
+				padding: 0;
+			}
+		}
+
+		.mat-select {
+			&-panel {
+				width: 14rem !important;
+			}
+			&-arrow {
+				display: none !important;
+			}
+			&-arrow-wrapper {
+				display: none !important;
+			}
+			&-value {
+				display: flex;
+				color: inherit;
+				font-size: var(--offset-s);
+				&-text {
+					display: block;
+					padding: var(--offset-xxs);
+					border-radius: var(--border-radius-xs);
+				}
+			}
+		}
+	}
+
+	.mat-select-panel {
+		width: 14rem;
+	}
+}
