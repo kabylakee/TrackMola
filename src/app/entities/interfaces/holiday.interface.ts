@@ -3,7 +3,7 @@ import {CountryEnum} from '../enums/country.enum';
 
 export interface IHoliday {
 	dayType: DayTypeEnum;
-	date: Date | Set<Date>;
+	date: Date;
 	holidayName?: string;
 	workingHours?: number;
 	country: CountryEnum;

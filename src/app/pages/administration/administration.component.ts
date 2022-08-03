@@ -29,7 +29,7 @@ export class AdministrationComponent implements OnInit {
 	public changedDate: Date = new Date();
 	public holiday: IHoliday;
 	public country: CountryEnum = CountryEnum.Belarus;
-	public clickedDays: Set<Date>;
+	public clickedDay: Set<Date>;
 	public readonly title =
 		RouterPaths.Administration.charAt(0).toUpperCase() + RouterPaths.Administration.slice(1);
 
@@ -52,6 +52,11 @@ export class AdministrationComponent implements OnInit {
 		this.searchValue = event;
 	}
 
+	public onSetSchedule(event: IHoliday): void {
+		this.holiday = {...event, date: this.changeDate, country: this.country};
+		this.holidayService.createHoliday(this.holiday);
+	}
+
 	public onAdminButtonAction(action: AdminButtonsEnum): void {
 		this.adminButtonAction = action;
 	}
@@ -68,12 +73,7 @@ export class AdministrationComponent implements OnInit {
 		this.country = country;
 	}
 
-	public onSetSchedule(event: IHoliday): void {
-		this.holiday = {...event, date: this.clickedDays, country: this.country};
-		this.holidayService.createHoliday(this.holiday);
-	}
-
 	public onClickedDays(event: Set<Date>): void {
-		this.clickedDays = event;
+		this.clickedDay = event;
 	}
 }

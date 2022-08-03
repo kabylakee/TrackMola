@@ -19,8 +19,8 @@ export class HolidayService {
 	public getHolidays(country: CountryEnum, date: Date = new Date(0)): Observable<IHoliday[]> {
 		const arr = this.holidays$.value.filter((holiday) => {
 			return (
-				(holiday.date as Date).getFullYear() === date.getFullYear() &&
-				(holiday.date as Date).getMonth() === date.getMonth() &&
+				holiday.date.getFullYear() === date.getFullYear() &&
+				holiday.date.getMonth() === date.getMonth() &&
 				holiday.country === country
 			);
 		});

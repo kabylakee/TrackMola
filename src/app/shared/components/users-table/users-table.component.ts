@@ -103,6 +103,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		});
 		if (userIndex !== -1) {
 			this.dataSource.splice(userIndex, 1);
+			this.filteredDataSource = [...this.dataSource];
 			this.cd.detectChanges();
 		}
 	}
