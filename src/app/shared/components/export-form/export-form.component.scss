@@ -72,10 +72,10 @@ $cto-select-width: 16.25rem;
 	}
 	.mat-dialog-actions {
 		justify-content: flex-end;
-		padding: 0;
-		margin-top: var(--offset-m);
 		min-height: 0;
+		margin-top: var(--offset-m);
 		margin-bottom: 0px;
+		padding: 0;
 	}
 }
 
@@ -137,8 +137,8 @@ $cto-select-width: 16.25rem;
 			width: $cto-select-width !important;
 			margin-top: var(--offset-m);
 			.mat-form-field-wrapper {
-				padding: 0;
 				width: $cto-select-width !important;
+				padding: 0;
 			}
 		}
 
