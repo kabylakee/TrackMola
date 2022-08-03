@@ -30,6 +30,11 @@ const routes: Routes = [
 		loadChildren: () => import('./pages/finance/finance.module').then((m) => m.FinanceModule),
 	},
 	{
+		path: RouterPaths.Management,
+		loadChildren: () =>
+			import('./pages/management/management.module').then((m) => m.ManagementModule),
+	},
+	{
 		path: RouterPaths.Administration,
 		loadChildren: () =>
 			import('./pages/administration/administration.module').then((m) => m.AdministrationModule),

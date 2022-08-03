@@ -62,6 +62,10 @@
 						color: var(--light-black);
 					}
 				}
+
+				&.active .menu-item-icon {
+					color: var(--accent-300);
+				}
 			}
 		}
 
