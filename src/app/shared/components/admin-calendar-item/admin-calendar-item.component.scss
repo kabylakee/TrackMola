@@ -1,14 +1,11 @@
 @import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
 
 :host {
 	$calendar-item-height: 7rem;
 	$common-transition: 0.2;
 	$hover-transition: 0.3;
 	$checked-transition: 0.4;
-	$work-day: rgb(88, 174, 223);
-	$weekend: rgb(125, 214, 165);
-	$holiday: rgb(65, 94, 182);
-	$half-day: rgb(241, 186, 102);
 
 	.item {
 		display: flex;
@@ -28,68 +25,68 @@
 		}
 
 		&-content {
-			flex-direction: column;
 			flex-grow: 1;
-			gap: var(--offset-xxs);
 			@include flex-center;
+			flex-direction: column;
+			gap: var(--offset-xxs);
 
 			.check {
 				opacity: 0;
-				transition: var(--transition-xxs);
 				@include icon-size(--font-size-xl);
+				transition: var(--transition-xxs);
 
 				&.checked {
-					color: var(--accent-200);
 					opacity: 1;
+					color: var(--accent-200);
 				}
 			}
 
 			&:hover .check {
-				color: var(--light-gray);
 				opacity: 1;
+				color: var(--light-gray);
 
 				&.checked {
-					color: var(--accent-200);
 					opacity: 1;
+					color: var(--accent-200);
 				}
 			}
 		}
 
 		&.weekend {
 			&:hover .item-header {
-				background-color: rgba($weekend, $hover-transition);
+				background-color: rgba-color(weekend, $hover-transition);
 			}
 			&.checked {
-				border: 1px solid $weekend;
+				border: 1px solid var(--weekend);
 				.item-header {
-					background-color: rgba($weekend, $checked-transition);
+					background-color: rgba-color(weekend, $checked-transition);
 				}
 			}
 			.item-header {
-				background-color: rgba($weekend, $common-transition);
+				background-color: rgba-color(weekend, $common-transition);
 				transition: var(--transition-xxs);
 			}
 			.item-content {
-				color: $weekend;
+				color: var(--weekend);
 			}
 		}
 
 		&.holiday {
 			&:hover .item-header {
-				background-color: rgba($holiday, $hover-transition);
+				background-color: rgba-color(holiday, $hover-transition);
 			}
 			&.checked {
-				border: 1px solid $holiday;
+				border: 1px solid var(--holiday);
 				.item-header {
-					background-color: rgba($holiday, $checked-transition);
+					background-color: rgba-color(holiday, $checked-transition);
 				}
 			}
 			.item-header {
-				background-color: rgba($holiday, $common-transition);
+				background-color: rgba-color(holiday, $common-transition);
 				transition: var(--transition-xxs);
 			}
 			.item-content {
-				color: $holiday;
+				color: var(--holiday);
 				.holiday-name {
 					color: var(--light-black);
 				}
@@ -98,39 +95,39 @@
 
 		&.work-day {
 			&:hover .item-header {
-				background-color: rgba($work-day, $hover-transition);
+				background-color: rgba-color(work-day, $hover-transition);
 			}
 			&.checked {
-				border: 1px solid $work-day;
+				border: 1px solid var(--work-day);
 				.item-header {
-					background-color: rgba($work-day, $checked-transition);
+					background-color: rgba-color(work-day, $checked-transition);
 				}
 			}
 			.item-header {
-				background-color: rgba($work-day, $common-transition);
+				background-color: rgba-color(work-day, $common-transition);
 				transition: var(--transition-xxs);
 			}
 			.item-content {
-				color: $work-day;
+				color: var(--work-day);
 			}
 		}
 
 		&.half-day {
 			&:hover .item-header {
-				background-color: rgba($half-day, $hover-transition);
+				background-color: rgba-color(half-day, $hover-transition);
 			}
 			&.checked {
-				border: 1px solid $half-day;
+				border: 1px solid var(--half-day);
 				.item-header {
-					background-color: rgba($half-day, $checked-transition);
+					background-color: rgba-color(half-day, $checked-transition);
 				}
 			}
 			.item-header {
-				background-color: rgba($half-day, $common-transition);
+				background-color: rgba-color(half-day, $common-transition);
 				transition: var(--transition-xxs);
 			}
 			.item-content {
-				color: $half-day;
+				color: var(--half-day);
 			}
 		}
 
