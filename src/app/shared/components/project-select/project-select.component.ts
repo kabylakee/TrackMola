@@ -15,11 +15,7 @@ export class ProjectSelectComponent {
 	public currentProject: IProject = PROJECT_MOCK[0];
 
 	public selectProject(value: Event): void {
-		this.projects.forEach((project) => {
-			if (project.title === `${value}`) {
-				this.currentProject = project;
-			}
-		});
+		this.currentProject = this.projects.find((project) => project.title === `${value}`)!;
 		this.changeProject.emit(this.currentProject.title);
 	}
 

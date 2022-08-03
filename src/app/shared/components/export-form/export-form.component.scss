@@ -12,6 +12,7 @@ $cto-select-width: 16.25rem;
 		height: var(--offset-l);
 		margin: 0;
 		padding-bottom: var(--offset-s);
+
 		.title {
 			display: flex;
 			align-items: center;
@@ -19,24 +20,29 @@ $cto-select-width: 16.25rem;
 			font-weight: 500;
 			font-size: var(--font-size-s);
 		}
+
 		.mat-dialog-actions {
 			display: flex;
 			align-items: center;
 			margin: 0;
 			padding: 0;
+
 			.mat-icon {
 				@include icon-size(--font-size);
 			}
 		}
 	}
+
 	.mat-dialog-content {
 		overflow: visible;
+
 		.dialog-content-item {
 			.label {
 				color: var(--light-black);
 				font-weight: 600;
 				font-size: var(--font-size-s);
 			}
+
 			.mat-form-field-appearance-fill {
 				&-wrapper {
 					.mat-form-field-flex {
@@ -46,6 +52,7 @@ $cto-select-width: 16.25rem;
 			}
 		}
 	}
+
 	.mat-flat-button {
 		padding: calc(var(--offset-xs) + var(--offset-xxxs)) var(--offset-m);
 		font-weight: 600;
@@ -57,6 +64,7 @@ $cto-select-width: 16.25rem;
 		&.mat-secondary {
 			color: var(--accent-300);
 			border: 1px solid var(--accent-300);
+
 			&:hover {
 				color: var(--accent-500);
 				border-color: var(--accent-500);
@@ -67,9 +75,11 @@ $cto-select-width: 16.25rem;
 			&:hover {
 				background-color: var(--accent-500);
 			}
+
 			border: 1px solid var(--accent-300);
 		}
 	}
+
 	.mat-dialog-actions {
 		justify-content: flex-end;
 		min-height: 0;

@@ -16,7 +16,6 @@ export class ManagementComponent {
 	constructor(public dialog: MatDialog) {}
 
 	public openExportWindow(): void {
-		// const dialogRef =
 		this.dialog.open(ExportFormComponent, {
 			position: {
 				top: 'calc(50vh - 7.5 * var(--offset))',

@@ -30,10 +30,6 @@ export class ExportFormComponent {
 	}
 
 	public selectCTO(value: Event): void {
-		this.allCTO.forEach((cto) => {
-			if (cto.userName === `${value}`) {
-				this.currentCTO = cto;
-			}
-		});
+		this.currentCTO = this.allCTO.find((cto) => cto.userName === `${value}`)!;
 	}
 }
