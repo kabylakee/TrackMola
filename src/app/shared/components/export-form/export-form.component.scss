@@ -5,6 +5,7 @@ $buttons-height: 2.44rem;
 
 :host {
 	.mat-dialog-title {
+		height: var(--offset-l);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -20,6 +21,7 @@ $buttons-height: 2.44rem;
 		.mat-dialog-actions {
 			display: flex;
 			align-items: center;
+			justify-content: flex-end;
 			margin: 0;
 			padding: 0;
 			.mat-icon {
@@ -42,6 +44,30 @@ $buttons-height: 2.44rem;
 					}
 				}
 			}
+		}
+	}
+	.mat-flat-button {
+		padding: calc(var(--offset-xs) + var(--offset-xxxs)) var(--offset-m);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
+		border-radius: var(--border-radius-xs);
+		transition: var(--transition-xxs);
+
+		&.mat-secondary {
+			color: var(--accent-300);
+			border: 1px solid var(--accent-300);
+			&:hover {
+				color: var(--accent-500);
+				border-color: var(--accent-500);
+			}
+		}
+
+		&.mat-primary {
+			&:hover {
+				background-color: var(--accent-500);
+			}
+			border: 1px solid var(--accent-300);
 		}
 	}
 }
@@ -91,13 +117,13 @@ $buttons-height: 2.44rem;
 					border: 1px solid var(--accent-300);
 					border-radius: var(--border-radius-xs);
 				}
-				.mat-form-field-infix {
-					padding-bottom: var(--offset);
-				}
 			}
 
 			&-suffix {
 				padding-top: calc(var(--offset) * 0.2);
+				.mat-icon {
+					color: var(--accent-300);
+				}
 			}
 		}
 	}

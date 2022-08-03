@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
 	declarations: [ManagementComponent, ExportFormComponent],
@@ -26,6 +27,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 		MatFormFieldModule,
 		MatInputModule,
 		MatDatepickerModule,
+		MatButtonModule,
 	],
 })
 export class ManagementModule {}
