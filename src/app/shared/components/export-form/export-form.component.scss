@@ -5,10 +5,10 @@ $buttons-height: 2.44rem;
 
 :host {
 	.mat-dialog-title {
-		height: var(--offset-l);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		height: var(--offset-l);
 		margin: 0;
 		padding-bottom: var(--offset-s);
 		.title {

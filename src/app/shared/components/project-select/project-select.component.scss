@@ -46,9 +46,9 @@
 			display: none !important;
 		}
 		&-value {
+			display: flex;
 			color: inherit;
 			font-size: var(--offset-s);
-			display: flex;
 			&-text {
 				display: block;
 				padding: var(--offset-xxs);
