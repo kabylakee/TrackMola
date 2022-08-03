@@ -1,5 +1,6 @@
 @import 'mixins/common-mixin';
 
+$content-height: 6rem;
 :host {
 	.mat-card {
 		width: 100%;
@@ -21,6 +22,9 @@
 			display: flex;
 			flex-direction: column;
 			gap: var(--offset-s);
+			max-height: $content-height;
+			padding-right: var(--offset-xs);
+			overflow-y: auto;
 
 			.vacation {
 				display: flex;
