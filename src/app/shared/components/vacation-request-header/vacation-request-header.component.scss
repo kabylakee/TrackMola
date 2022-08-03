@@ -2,20 +2,18 @@
 
 :host {
 	$select-height: 2.25rem;
-
-	.container {
-		display: flex;
-		justify-content: space-between;
-		margin-top: var(--offset-m);
-	}
-	.mat-flat-button {
-		padding: var(--offset-s) var(--offset-m);
-		color: var(--white);
+    
+    .container {
+        margin: var(--offset-m) 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
 	}
 
-	.inline-block {
-		display: inline-block;
-	}
+    .inner-container {
+        display: inline-flex;
+        gap: var(--offset);
+    }
 
 	::ng-deep {
 		.project-teams .mat-form-field {
@@ -40,7 +38,6 @@
 			@include flex-center;
 			display: inline-flex;
 			height: $select-height;
-			margin-left: var(--offset);
 			padding: var(--offset-xxs) var(--offset-s) !important;
 			border: 1px solid var(--accent-100);
 			border-radius: var(--border-radius-xs);
@@ -56,7 +53,7 @@
 				color: var(--light-black);
 			}
 		}
-
+ 
 		.mat-select {
 			&-arrow {
 				display: none !important;

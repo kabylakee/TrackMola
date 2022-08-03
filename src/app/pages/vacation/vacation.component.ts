@@ -57,6 +57,7 @@ export class VacationComponent implements OnInit, OnDestroy {
 
 	public onChangeTab(event: IVacationTab): void {
 		this.vacationTab = event;
+		this.selectedDate = new Date();
 	}
 
 	private getMonthVacations(): void {
