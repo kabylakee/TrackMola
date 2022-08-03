@@ -6,6 +6,7 @@ export enum RouterPaths {
 	Statistic = 'statistic',
 	Finance = 'finance',
 	Administration = 'administration',
+	Management = 'management',
 }
 
 export enum NavigationIcons {
@@ -16,4 +17,5 @@ export enum NavigationIcons {
 	Statistic = 'stacked_line_chart',
 	Finance = 'attach_money',
 	Administration = 'admin_panel_settings',
+	Management = 'folder_shared',
 }
