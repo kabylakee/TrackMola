@@ -25,29 +25,29 @@
 		}
 
 		&-content {
-			flex-grow: 1;
-			@include flex-center;
 			flex-direction: column;
+			flex-grow: 1;
 			gap: var(--offset-xxs);
+			@include flex-center;
 
 			.check {
 				opacity: 0;
-				@include icon-size(--font-size-xl);
 				transition: var(--transition-xxs);
+				@include icon-size(--font-size-xl);
 
 				&.checked {
-					opacity: 1;
 					color: var(--accent-200);
+					opacity: 1;
 				}
 			}
 
 			&:hover .check {
-				opacity: 1;
 				color: var(--light-gray);
+				opacity: 1;
 
 				&.checked {
-					opacity: 1;
 					color: var(--accent-200);
+					opacity: 1;
 				}
 			}
 		}
