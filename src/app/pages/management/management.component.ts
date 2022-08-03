@@ -19,8 +19,8 @@ export class ManagementComponent {
 		// const dialogRef =
 		this.dialog.open(ExportFormComponent, {
 			position: {
-				top: 'calc(50vh)',
-				left: 'calc(50vw)',
+				top: 'calc(50vh - 7.5 * var(--offset))',
+				left: 'calc(50vw - 14 * var(--offset))',
 			},
 			data: {},
 		});

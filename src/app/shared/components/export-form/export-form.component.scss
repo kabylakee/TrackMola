@@ -80,6 +80,9 @@ $cto-select-width: 16.25rem;
 }
 
 ::ng-deep {
+	.mat-dialog-container {
+		box-shadow: none;
+	}
 	app-export-form {
 		.mat-form-field {
 			height: calc(var(--offset-s) * 3);
