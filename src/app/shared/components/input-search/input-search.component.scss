@@ -11,7 +11,7 @@
 	width: $search-area-width;
 	height: $search-area-height;
 	padding: var(--offset-xs) var(--offset-s);
-	border: 1px solid  rgba-color(accent-300, 0.65);
+	border: 1px solid rgba-color(accent-300, 0.65);
 	border-radius: var(--offset-xs);
 
 	.search-icon {
@@ -31,7 +31,7 @@
 	.search-clear-icon {
 		width: calc($search-area-height * 0.5);
 		height: calc($search-area-height * 0.5);
-		color:  rgba-color(accent-300, 0.65);
+		color: rgba-color(accent-300, 0.65);
 		font-size: var(--font-size-m);
 		cursor: pointer;
 
