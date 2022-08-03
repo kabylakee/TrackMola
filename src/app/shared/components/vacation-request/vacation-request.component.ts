@@ -12,4 +12,5 @@ import {VacationRequest} from '../../../entities/enums/vacation-request.enum';
 export class VacationRequestComponent {
 	public readonly vacations: IVacation[] = VACATION;
 	public readonly VacationRequest = VacationRequest;
+	public readonly dayInMiliseconds = 3600 * 24 * 1000;
 }

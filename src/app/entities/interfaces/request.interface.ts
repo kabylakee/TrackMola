@@ -1,6 +1,6 @@
 import {IProject} from './project.interface';
 
-export interface IRequest {
+export interface IVacationRequest {
 	checked: boolean;
 	name: string;
 	project: IProject;
