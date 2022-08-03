@@ -66,7 +66,8 @@
 				</div>
 
 				<div *ngSwitchCase="columnType.OPTIONS">
-					<button mat-icon-button aria-label="Options" class="delete-user">
+					<button mat-icon-button aria-label="Options" class="delete-user"
+                  (click)="onDeleteBtn(element)">
 						<mat-icon class="material-icons-outlined">delete</mat-icon>
 					</button>
 				</div>

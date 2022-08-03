@@ -3,8 +3,10 @@ import {
 	Component,
 	EventEmitter,
 	Input,
+	OnChanges,
 	OnInit,
 	Output,
+	SimpleChanges,
 } from '@angular/core';
 import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 import {WeekDayEnum} from 'src/app/entities/enums/week-day.enum';
@@ -12,6 +14,7 @@ import {IAdminCalendarItem} from 'src/app/entities/interfaces/admin-calendar-ite
 import {IHoliday} from 'src/app/entities/interfaces/holiday.interface';
 import {MonthTasksHelper} from '../../helpers/month-tasks.helper';
 import {HolidayService} from '../../services/holiday.service';
+import {CountryEnum} from '../../../entities/enums/country.enum';
 
 @Component({
 	selector: 'app-admin-calendar',
@@ -19,13 +22,15 @@ import {HolidayService} from '../../services/holiday.service';
 	styleUrls: ['./admin-calendar.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminCalendarComponent implements OnInit {
+export class AdminCalendarComponent implements OnInit, OnChanges {
 	@Input() date: Date = new Date();
+	@Input() country: CountryEnum;
+	@Input() holiday: IHoliday;
 
 	@Output() dayClicked = new EventEmitter<Set<Date>>();
 
 	public readonly weekDay = Object.values(WeekDayEnum);
-	public readonly weekCount = MonthTasksHelper.getWeek(
+	public weekCount = MonthTasksHelper.getWeek(
 		new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0),
 	);
 	public readonly legendItems = [
@@ -36,11 +41,11 @@ export class AdminCalendarComponent implements OnInit {
 	];
 	public days: IAdminCalendarItem[] = [];
 
-	private readonly selectedMonth = this.date.getMonth();
-	private readonly selectedYear = this.date.getFullYear();
-	private readonly firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
+	private selectedMonth = this.date.getMonth();
+	private selectedYear = this.date.getFullYear();
+	private firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
 	private readonly sundayIndex = 6;
-	private readonly paddingDaysStart =
+	private paddingDaysStart =
 		this.firstDayOfMonth.getDay() === 0 ? this.sundayIndex : this.firstDayOfMonth.getDay() - 1; // amount of days from last month
 	private readonly weekDayCount = 7;
 	private selectedDays = new Set<Date>();
@@ -49,7 +54,36 @@ export class AdminCalendarComponent implements OnInit {
 	constructor(private holidayService: HolidayService) {}
 
 	public ngOnInit(): void {
-		this.holidayService.getHolidays(this.date).subscribe((holidays) => (this.holidays = holidays));
+		this.daysCalc();
+	}
+
+	public ngOnChanges(changes: SimpleChanges): void {
+		if (changes.date?.currentValue) {
+			this.weekCount = MonthTasksHelper.getWeek(
+				new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0),
+			);
+			this.selectedMonth = this.date.getMonth();
+			this.selectedYear = this.date.getFullYear();
+			this.firstDayOfMonth = new Date(this.selectedYear, this.selectedMonth, 1);
+			this.paddingDaysStart =
+				this.firstDayOfMonth.getDay() === 0 ? this.sundayIndex : this.firstDayOfMonth.getDay() - 1;
+			this.selectedDays = new Set<Date>();
+			this.holidays = [];
+			this.daysCalc();
+		}
+		if (changes.country?.currentValue) {
+			this.daysCalc();
+		}
+		// if (changes.holiday?.currentValue) {
+		// 	this.onCreateHoliday(this.holiday);
+		// }
+	}
+
+	public daysCalc(): void {
+		this.holidayService
+			.getHolidays(this.country, this.date)
+			.subscribe((holidays) => (this.holidays = holidays));
+		this.days = [];
 		for (let i = 0; i < this.weekCount * this.weekDayCount; i++) {
 			this.days.push({
 				date: new Date(this.selectedYear, this.selectedMonth, i - this.paddingDaysStart + 1),
@@ -77,4 +111,9 @@ export class AdminCalendarComponent implements OnInit {
 		else this.selectedDays.add(day);
 		this.dayClicked.emit(this.selectedDays);
 	}
+
+	// public onCreateHoliday(holiday: IHoliday): void {
+	// 	const newHoliday = {...holiday, date: this.date, country: this.country};
+	// 	this.holidayService.createHoliday(newHoliday);
+	// }
 }

@@ -12,4 +12,5 @@ export interface IEmployee {
 	email: string;
 	department: DepartmentEnum;
 	office: CountryEnum;
+	isNew?: boolean;
 }
