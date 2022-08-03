@@ -74,9 +74,6 @@ export class AdminCalendarComponent implements OnInit, OnChanges {
 		if (changes.country?.currentValue) {
 			this.daysCalc();
 		}
-		// if (changes.holiday?.currentValue) {
-		// 	this.onCreateHoliday(this.holiday);
-		// }
 	}
 
 	public daysCalc(): void {
@@ -111,9 +108,4 @@ export class AdminCalendarComponent implements OnInit, OnChanges {
 		else this.selectedDays.add(day);
 		this.dayClicked.emit(this.selectedDays);
 	}
-
-	// public onCreateHoliday(holiday: IHoliday): void {
-	// 	const newHoliday = {...holiday, date: this.date, country: this.country};
-	// 	this.holidayService.createHoliday(newHoliday);
-	// }
 }
