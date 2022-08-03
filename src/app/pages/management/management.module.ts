@@ -7,6 +7,10 @@ import {ManagerFiltersModule} from 'src/app/shared/components/manager-filters/ma
 import {MatDialogModule} from '@angular/material/dialog';
 import {ExportFormComponent} from 'src/app/shared/components/export-form/export-form.component';
 import {MatIconModule} from '@angular/material/icon';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
 	declarations: [ManagementComponent, ExportFormComponent],
@@ -17,6 +21,11 @@ import {MatIconModule} from '@angular/material/icon';
 		ManagerFiltersModule,
 		MatDialogModule,
 		MatIconModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatDatepickerModule,
 	],
 })
 export class ManagementModule {}

@@ -1,5 +1,8 @@
 @import 'mixins/common-mixin';
 
+$wrapper-width: calc(10rem - 1px);
+$buttons-height: 2.44rem;
+
 :host {
 	.mat-dialog-title {
 		display: flex;
@@ -21,6 +24,80 @@
 			padding: 0;
 			.mat-icon {
 				@include icon-size(--font-size);
+			}
+		}
+	}
+	.mat-dialog-content {
+		overflow: visible;
+		.dialog-content-item {
+			.label {
+				color: var(--light-black);
+				font-weight: 600;
+				font-size: var(--font-size-s);
+			}
+			.mat-form-field-appearance-fill {
+				&-wrapper {
+					.mat-form-field-flex {
+						background: white;
+					}
+				}
+			}
+		}
+	}
+}
+
+::ng-deep {
+	app-export-form {
+		.mat-form-field {
+			height: calc(var(--offset-s) * 3);
+			margin: 0 var(--offset-s);
+
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				background: none;
+				border-radius: var(--border-radius-xs);
+			}
+			&-wrapper {
+				@include flex-center;
+				width: $wrapper-width;
+				height: $buttons-height;
+				padding: 0;
+				font-size: var(--font-size-xs);
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				.mat-input-element {
+					color: var(--accent-300);
+					font-weight: 500;
+					font-size: var(--font-size-xs);
+				}
+			}
+
+			&-underline {
+				display: none;
+			}
+
+			&-appearance-fill {
+				.mat-form-field-flex {
+					display: flex;
+					align-items: center;
+					max-height: calc(2.25 * var(--offset));
+					padding: 0 var(--offset-s);
+					background-color: var(--white);
+					border: 1px solid var(--accent-300);
+					border-radius: var(--border-radius-xs);
+				}
+				.mat-form-field-infix {
+					padding-bottom: var(--offset);
+				}
+			}
+
+			&-suffix {
+				padding-top: calc(var(--offset) * 0.2);
 			}
 		}
 	}

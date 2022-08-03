@@ -1,6 +1,49 @@
 <div mat-dialog-title>
-	<h2 class="title">Vacation request</h2>
+	<h2 class="title">Export report</h2>
 	<mat-dialog-actions>
 		<mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
 	</mat-dialog-actions>
 </div>
+<mat-dialog-content class="mat-typography">
+	<form validate>
+		<div class="dialog-content-item">
+			<mat-label class="label">From</mat-label>
+			<mat-form-field class="example-full-width" appearance="fill" color="secondary">
+				<input
+					matInput
+					[matDatepicker]="picker1"
+					placeholder="Choose a date"
+					formControlName="dateFrom"
+				/>
+				<mat-datepicker-toggle matSuffix [for]="picker1">
+					<mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+						calendar_today
+					</mat-icon>
+				</mat-datepicker-toggle>
+				<mat-datepicker #picker1></mat-datepicker>
+			</mat-form-field>
+			<mat-label class="label">To</mat-label>
+			<mat-form-field class="example-full-width" appearance="fill">
+				<input
+					matInput
+					[matDatepicker]="picker2"
+					placeholder="Choose a date"
+					formControlName="dateTo"
+				/>
+				<mat-datepicker-toggle matSuffix [for]="picker2">
+					<mat-icon matDatepickerToggleIcon class="material-icons-outlined">
+						calendar_today
+					</mat-icon>
+				</mat-datepicker-toggle>
+				<mat-datepicker #picker2></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<mat-dialog-actions>
+			<!-- <label class="error" [hidden]="requestForm.valid && daysNumber">{{ message }}</label> -->
+			<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>
+				Cancel
+			</button>
+			<button mat-flat-button class="action-button" color="primary">Export</button>
+		</mat-dialog-actions>
+	</form>
+</mat-dialog-content>
