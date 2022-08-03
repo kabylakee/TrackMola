@@ -33,6 +33,15 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.USA,
 	},
 	{
+		userName: 'Dokidis Marilyn',
+		projects: [PROJECT_MOCK[0], PROJECT_MOCK[1]],
+		role: Role.CTO,
+		image: 'assets/image/human.jpg',
+		email: 'mdokidis@datamola.com',
+		department: DepartmentEnum.DWH,
+		office: CountryEnum.USA,
+	},
+	{
 		userName: 'Martin Botosh',
 		projects: [PROJECT_MOCK[1]],
 		role: Role.EMPLOYEE,

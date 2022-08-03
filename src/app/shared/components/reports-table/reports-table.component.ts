@@ -29,6 +29,7 @@ import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
+import {TableDataType} from 'src/app/entities/types/table-data.type';
 
 @Component({
 	selector: 'app-reports-table',
@@ -37,7 +38,7 @@ import {OptionsTitle} from '../../../entities/enums/options.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
-	@Input() public dataSource: ITask[] = [];
+	@Input() public dataSource: TableDataType[] = [];
 	@Input() public columns: ITableColumn[] = [];
 	@Input() public day: Date;
 	@Input() public value: string = '';
@@ -50,7 +51,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
-	public filterDataSource: ITask[] = [];
+	public filterDataSource: TableDataType[] = [];
 	public allChecked: boolean = false;
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
@@ -85,7 +86,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.tableForm.get('rows') as FormArray).controls = [];
 			const rowCtrl = this.tableForm.get('rows') as FormArray;
 			this.dataSource.forEach((row, index) => {
-				rowCtrl.push(this.setRowsFormArray(row, index));
+				rowCtrl.push(this.setRowsFormArray(row as ITask, index));
 			});
 			merge(
 				...(this.tableForm.get('rows') as FormArray).controls.map(
@@ -113,13 +114,13 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.actionHanding && this.actionHanding) {
 			this.taskService.ChangeActionBtn(
 				this.actionHanding,
-				this.filterDataSource.filter((tasks) => tasks.checked),
+				this.filterDataSource.filter((tasks) => tasks.checked) as ITask[],
 			);
 		}
 		if (changes.optionSelected && this.optionSelected) {
 			this.taskService.ChangeActionBtn(
 				this.actionHanding,
-				this.filterDataSource.filter((tasks) => tasks.checked),
+				this.filterDataSource.filter((tasks) => tasks.checked) as ITask[],
 			);
 		}
 		if (changes.dataSource?.currentValue) {
@@ -166,8 +167,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			return;
 		}
 		if (button === ReportsButtonEnum.Save) {
-			const filterArr = this.filterDataSource.filter((task) => task.newRow);
-			this.taskService.saveTask(filterArr);
+			const filterArr = this.filterDataSource.filter((task) => (task as ITask).newRow);
+			this.taskService.saveTask(filterArr as ITask[]);
 			return;
 		}
 		// if (button === ReportsButtonEnum.Submit) {
@@ -225,8 +226,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
 		updateTime =
-			this.dataSource[rowIndex].time !== +newData.time ||
-			this.dataSource[rowIndex].overtime !== +newData.overtime;
+			(this.dataSource[rowIndex] as ITask).time !== +newData.time ||
+			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
 			title: newData.title,
@@ -244,7 +245,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public getSum(fields: HoursKeys[]): void {
 		fields.forEach((field) => {
 			this.sumTime[field] = this.dataSource.reduce((acc, curr) => {
-				return acc + curr[field];
+				return acc + (curr as ITask)[field];
 			}, 0);
 		});
 		this.outChangeTime.emit(this.sumTime);
@@ -257,7 +258,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public searchTaskField(): void {
 		this.filterDataSource = this.dataSource.filter((item) => {
-			return item.title.toLowerCase().includes(this.value.toLowerCase());
+			return (item as ITask).title.toLowerCase().includes(this.value.toLowerCase());
 		});
 		if (this.value === '') {
 			this.filterDataSource = this.dataSource;

@@ -27,6 +27,11 @@ export const NAVIGATION_LINKS = [
 		icon: NavigationIcons.Finance,
 	},
 	{
+		path: RouterPaths.Management,
+		title: 'Management',
+		icon: NavigationIcons.Management,
+	},
+	{
 		path: RouterPaths.Administration,
 		title: 'Administration',
 		icon: NavigationIcons.Administration,
