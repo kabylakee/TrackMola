@@ -39,7 +39,15 @@
 			</mat-form-field>
 		</div>
 		<div class="dialog-content-item">
-			<!-- <mat-select></mat-select> -->
+			<mat-label class="label">CTO</mat-label>
+			<mat-form-field class="cto-select" appearance="fill">
+				<mat-select [value]="currentCTO.userName" (valueChange)="selectCTO($event)">
+					<mat-option [value]="cto.userName" *ngFor="let cto of allCTO"
+						>{{ cto.userName }}
+					</mat-option>
+				</mat-select>
+				<mat-icon matSuffix class="arrow">expand_more</mat-icon>
+			</mat-form-field>
 		</div>
 		<mat-dialog-actions>
 			<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>

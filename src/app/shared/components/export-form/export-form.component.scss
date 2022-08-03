@@ -1,7 +1,8 @@
 @import 'mixins/common-mixin';
 
 $wrapper-width: calc(10rem - 1px);
-$buttons-height: 2.44rem;
+$buttons-height: 2.5rem;
+$cto-select-width: 16.25rem;
 
 :host {
 	.mat-dialog-title {
@@ -21,7 +22,6 @@ $buttons-height: 2.44rem;
 		.mat-dialog-actions {
 			display: flex;
 			align-items: center;
-			justify-content: flex-end;
 			margin: 0;
 			padding: 0;
 			.mat-icon {
@@ -69,6 +69,13 @@ $buttons-height: 2.44rem;
 			}
 			border: 1px solid var(--accent-300);
 		}
+	}
+	.mat-dialog-actions {
+		justify-content: flex-end;
+		padding: 0;
+		margin-top: var(--offset-m);
+		min-height: 0;
+		margin-bottom: 0px;
 	}
 }
 
@@ -126,5 +133,39 @@ $buttons-height: 2.44rem;
 				}
 			}
 		}
+		.mat-form-field.cto-select {
+			width: $cto-select-width !important;
+			margin-top: var(--offset-m);
+			.mat-form-field-wrapper {
+				padding: 0;
+				width: $cto-select-width !important;
+			}
+		}
+
+		.mat-select {
+			&-panel {
+				width: 14rem !important;
+			}
+			&-arrow {
+				display: none !important;
+			}
+			&-arrow-wrapper {
+				display: none !important;
+			}
+			&-value {
+				display: flex;
+				color: inherit;
+				font-size: var(--offset-s);
+				&-text {
+					display: block;
+					padding: var(--offset-xxs);
+					border-radius: var(--border-radius-xs);
+				}
+			}
+		}
+	}
+
+	.mat-select-panel {
+		width: 14rem;
 	}
 }
