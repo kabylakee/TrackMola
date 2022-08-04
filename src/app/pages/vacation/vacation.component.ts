@@ -39,6 +39,17 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.getMonthVacations();
 
 		this.columns = REQUEST_TABLE_CONFIG;
+		this.requests = [
+			{
+				checked: false,
+				name: 'Dilan Brooks',
+				project: PROJECT_MOCK[0],
+				period: '12.07 - 13.07',
+				approved: false,
+				paid: true,
+				notes: '123',
+			},
+		];
 	}
 
 	public onChangeDate(event: Date): void {
