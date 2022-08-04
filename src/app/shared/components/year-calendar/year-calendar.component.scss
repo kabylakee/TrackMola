@@ -1,34 +1,33 @@
 @import 'mixins/common-mixin';
-:host{
-  .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-height: 100%;
-    overflow-y: auto;
-    border:1px solid var(--light-gray);
-  }
+:host {
+	.container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		max-height: 100%;
+		overflow-y: auto;
+		border: 1px solid var(--light-gray);
+	}
 
-  .month-name {
-    @include flex-center;
-    padding: 8px 0;
-    background-color: var(--accent-50);
-  }
+	.month-name {
+		@include flex-center;
+		padding: 8px 0;
+		background-color: var(--accent-50);
+	}
 
-  ::ng-deep {
-    mat-calendar {
-      display: flex;
-      width: 266px;
-    }
-    mat-calendar-header {
-      display: none !important;
-    }
-  }
+	::ng-deep {
+		mat-calendar {
+			display: flex;
+			width: 266px;
+		}
+		mat-calendar-header {
+			display: none !important;
+		}
+	}
 
-  .calendar-block {
-    width: 266px;
-    height: 201px;
-    margin: 1px;
-    background-color: red;
-  }
-
+	.calendar-block {
+		width: 266px;
+		height: 201px;
+		margin: 1px;
+		background-color: red;
+	}
 }

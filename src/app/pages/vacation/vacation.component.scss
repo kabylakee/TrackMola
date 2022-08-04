@@ -1,12 +1,12 @@
-:host{
-  app-year-calendar{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap:var(--offset);
-    height: calc(100% - 8rem);
-  }
-  .hidden{
-    display: none;
-  }
+:host {
+	app-year-calendar {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: var(--offset);
+		height: calc(100% - 8rem);
+	}
+	.hidden {
+		display: none;
+	}
 }
