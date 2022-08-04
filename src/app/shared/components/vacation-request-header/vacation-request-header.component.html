@@ -2,7 +2,7 @@
     <div class="inner-container">
         <!-- <app-date-picker (changeDate)="changeDate.emit($event)"
         [periodRange]="periodRange"></app-date-picker> -->
-        <app-input-search (searchValueChange)="searchValueChange($event)"></app-input-search>
+        <app-input-search (searchValueChange)="changeSearchValue.emit($event)"></app-input-search>
         <div class="select">
             <mat-form-field class="project-teams" appearance="fill">
                 <mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">

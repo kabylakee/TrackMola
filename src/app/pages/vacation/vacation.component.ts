@@ -10,6 +10,8 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
+import {IProject} from 'src/app/entities/interfaces/project.interface';
 
 @Component({
 	selector: 'app-vacation',
@@ -27,8 +29,8 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public isSub = true;
 	public vacations: IVacation[] = [];
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
-	public vacationTab: IVacationTab = VACATION_TABS[1];
-
+	public vacationTab: IVacationTab = VACATION_TABS[2];
+	public selectedProject: IProject;
 	// Request table
 	public requests: IVacationRequest[] = [];
 	public columns: ITableColumn[] = [];
@@ -37,8 +39,23 @@ export class VacationComponent implements OnInit, OnDestroy {
 
 	public ngOnInit(): void {
 		this.getMonthVacations();
-
+		this.requests = [];
 		this.columns = REQUEST_TABLE_CONFIG;
+		this.requests = this.vacations.map((vacation) => {
+			if (vacation.status === VacationRequest.Unapproved) {
+				const request: IVacationRequest = {
+					checked: false,
+					name: vacation.employee.userName,
+					project: vacation.employee.projects,
+					period: vacation.dateFrom + ' - ' + vacation.dateTo,
+					paid: vacation.paid,
+					approved: false,
+					notes: '',
+				};
+				return request;
+			}
+			return;
+		}) as IVacationRequest[];
 	}
 
 	public onChangeDate(event: Date): void {
@@ -58,6 +75,9 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public onChangeTab(event: IVacationTab): void {
 		this.vacationTab = event;
 		this.selectedDate = new Date();
+	}
+	public onChangeProject(event: IProject): void {
+		this.selectedProject = event;
 	}
 
 	private getMonthVacations(): void {

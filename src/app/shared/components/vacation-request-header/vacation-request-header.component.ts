@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
@@ -12,7 +12,9 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationRequestHeaderComponent {
-	@Output() changeDate = new EventEmitter<Date>();
+	// @Output() changeDate = new EventEmitter<Date>();
+	@Output() changeSearchValue = new EventEmitter<string>();
+	@Output() changeProject = new EventEmitter<IProject>();
 
 	public projects: IProject[] = PROJECT_MOCK;
 	public employees: IEmployee[] = EMPLOYEE_MOCK;
@@ -27,12 +29,6 @@ export class VacationRequestHeaderComponent {
 			}
 		});
 
-		// this.filters.project = this.currentProject.title;
-		// this.changeFilters.emit(this.filters);
+		this.changeProject.emit(this.currentProject);
 	}
-
-	// public searchValueChange(value: string): void {
-		// this.filters.project = this.currentProject.title;
-		// this.changeFilters.emit(this.filters);
-	// }
 }

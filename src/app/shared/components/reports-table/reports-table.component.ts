@@ -44,7 +44,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public value: string = '';
 	@Input() public actionHanding: IOptionInterface;
 	@Input() public reportButtonAction: ReportsButtonEnum;
-
+	@Input() public selectedProject: IProject = PROJECT_MOCK[0];
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
@@ -234,7 +234,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			time: +newData.time,
 			overtime: +newData.overtime,
 			project: newData.project,
-		};
+		} as TableDataType;
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
 		}
