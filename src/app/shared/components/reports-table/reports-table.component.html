@@ -36,27 +36,27 @@
 						<div *ngSwitchCase="columnType.INPUT">
 							<ng-container *ngIf="column.field === 'title'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput placeholder="New Task" formControlName="title"/>
+									<input matInput placeholder="New Task" formControlName="title" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'time'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="time"/>
+									<input matInput formControlName="time" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'overtime'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="overtime"/>
+									<input matInput formControlName="overtime" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'notes'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="notes"/>
+									<input matInput formControlName="notes" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'period'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="period"/>
+									<input matInput formControlName="period" />
 								</mat-form-field>
 							</ng-container>
 						</div>
@@ -65,7 +65,7 @@
 							<mat-form-field appearance="fill">
 								<mat-select
 									[value]="element['' + column.field].title"
-                  [compareWith]="compareProjectObjects"
+									[compareWith]="compareProjectObjects"
 									formControlName="project"
 									[ngStyle]="getColor(element['' + column.field].color)"
 								>
@@ -122,7 +122,7 @@
 						</div>
 
 						<div *ngSwitchCase="columnType.VIEW">
-							<button mat-icon-button aria-label="View">
+							<button mat-icon-button aria-label="View" (click)="viewReport()">
 								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
 									visibility
 								</mat-icon>
@@ -131,6 +131,13 @@
 
 						<div *ngSwitchCase="columnType.TEXT">
 							<span>{{ element['' + column.field] }}</span>
+						</div>
+
+						<div *ngSwitchCase="columnType.PROJECT_NAME">
+							<app-project-component
+								[projectName]="element['' + column.field].title"
+								[projectColor]="element['' + column.field].color"
+							></app-project-component>
 						</div>
 
 						<div *ngSwitchCase="columnType.OPTIONS">

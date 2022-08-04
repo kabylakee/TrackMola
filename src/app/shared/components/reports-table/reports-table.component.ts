@@ -30,6 +30,7 @@ import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
 import {TableDataType} from 'src/app/entities/types/table-data.type';
+import {ViewReportComponent} from '../view-report/view-report.component';
 
 @Component({
 	selector: 'app-reports-table',
@@ -230,10 +231,10 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-			title: newData.title,
-			time: +newData.time,
-			overtime: +newData.overtime,
-			project: newData.project,
+			// title: newData.title,
+			// time: +newData.time,
+			// overtime: +newData.overtime,
+			// project: newData.project,
 		};
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
@@ -271,6 +272,16 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public getColor(projectColor: string): {[k: string]: string} {
 		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
+	}
+
+	public viewReport(): void {
+		this.dialog.open(ViewReportComponent, {
+			position: {
+				top: 'calc(50vh - 7.5 * var(--offset))',
+				left: 'calc(50vw - 14 * var(--offset))',
+			},
+			data: {},
+		});
 	}
 
 	ngOnDestroy() {
