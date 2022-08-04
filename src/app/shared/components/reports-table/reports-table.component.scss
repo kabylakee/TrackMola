@@ -135,6 +135,7 @@
 	.view-column {
 		display: flex;
 		justify-content: center;
+		min-width: $notes-width;
 		.visibility {
 			color: var(--dark-gray);
 		}

@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {MANAGEMENT_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
+import {ReportStatus} from 'src/app/entities/enums/report-status.enum';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {Status} from 'src/app/entities/enums/status.enum';
 import {IManagementRequest} from 'src/app/entities/interfaces/request.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ExportFormComponent} from 'src/app/shared/components/export-form/export-form.component';
@@ -35,7 +35,7 @@ export class ManagementComponent implements OnInit {
 				expectedHours: 1,
 				paidOvertime: 0,
 				totalHours: 1,
-				status: Status.InProgress,
+				status: ReportStatus.Approved,
 			},
 		];
 	}

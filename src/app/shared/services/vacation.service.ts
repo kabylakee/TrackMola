@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
+import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
 
@@ -71,5 +72,21 @@ export class VacationService {
 			const arr = this.vacations$.value;
 			this.localStorageService.setData(this.VACATIONS_DATA_KEY, arr);
 		}
+	}
+
+	public removeVacation(data: IVacationRequest): void {
+		const indexOfVacation = this.vacations$.value.findIndex((vacation) => {
+			return (
+				vacation.employee.userName === data.name &&
+				vacation.dateFrom.getDate() +
+					'.' +
+					vacation.dateFrom.getMonth() +
+					' - ' +
+					vacation.dateTo ===
+					data.period
+			);
+		});
+
+		this.vacations$.value.splice(indexOfVacation, 1);
 	}
 }
