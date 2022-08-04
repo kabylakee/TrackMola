@@ -1,5 +1,5 @@
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {VacationService} from 'src/app/shared/services/vacation.service';
 import {takeWhile} from 'rxjs';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
@@ -7,6 +7,9 @@ import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {IVacationFilter} from 'src/app/entities/interfaces/vacation-filter.interface';
 import {IVacationTab} from 'src/app/entities/interfaces/vacation-tab.interface';
 import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
+import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
+import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
+import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
 
 @Component({
 	selector: 'app-vacation',
@@ -14,7 +17,7 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 	styleUrls: ['./vacation.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationComponent implements OnInit {
+export class VacationComponent implements OnInit, OnDestroy {
 	@Input() changeDate: Date;
 	@Input() sendRequest: IVacation;
 
@@ -26,10 +29,27 @@ export class VacationComponent implements OnInit {
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
 	public vacationTab: IVacationTab = VACATION_TABS[1];
 
+	// Request table
+	public requests: IVacationRequest[] = [];
+	public columns: ITableColumn[] = [];
+
 	constructor(private vacationService: VacationService) {}
 
 	public ngOnInit(): void {
 		this.getMonthVacations();
+
+		this.columns = REQUEST_TABLE_CONFIG;
+		this.requests = [
+			{
+				checked: false,
+				name: 'Dilan Brooks',
+				project: PROJECT_MOCK[0],
+				period: '12.07 - 13.07',
+				approved: false,
+				paid: true,
+				notes: '123',
+			},
+		];
 	}
 
 	public onChangeDate(event: Date): void {

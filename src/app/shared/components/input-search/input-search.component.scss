@@ -1,3 +1,6 @@
+@import 'mixins/colors-mixin';
+@import 'mixins/common-mixin';
+
 :host {
 	$search-area-width: 17rem;
 	$search-area-height: 2.375rem;
@@ -8,14 +11,14 @@
 	width: $search-area-width;
 	height: $search-area-height;
 	padding: var(--offset-xs) var(--offset-s);
-	border: 1px solid var(--accent-500);
+	border: 1px solid rgba-color(accent-300, 0.65);
 	border-radius: var(--offset-xs);
 
 	.search-icon {
 		width: calc($search-area-height * 0.6);
 		height: calc($search-area-height * 0.6);
 		margin-right: var(--offset-xxs);
-		color: var(--accent-500);
+		color: rgba-color(accent-300, 0.65);
 	}
 
 	.search-input {
@@ -28,7 +31,7 @@
 	.search-clear-icon {
 		width: calc($search-area-height * 0.5);
 		height: calc($search-area-height * 0.5);
-		color: var(--accent-300);
+		color: rgba-color(accent-300, 0.65);
 		font-size: var(--font-size-m);
 		cursor: pointer;
 

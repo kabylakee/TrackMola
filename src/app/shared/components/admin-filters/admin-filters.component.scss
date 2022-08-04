@@ -1,0 +1,73 @@
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
+
+:host {
+	$select-height: 2.375rem;
+
+	.calendar-filters,
+	.users-filters {
+		display: flex;
+		gap: var(--offset-m);
+		align-items: center;
+		margin: var(--offset-m) 0 var(--offset);
+
+		.mat-button {
+			margin-left: auto;
+		}
+
+		.select {
+			height: $select-height;
+			padding: calc(3 * var(--offset-xxxs)) var(--offset-s);
+			border: 1px solid var(--accent-100);
+			border-radius: var(--border-radius-xs);
+
+			.mat-select {
+				padding: calc(3.125 * var(--offset-xxxs)) 0;
+				color: var(--accent-300);
+				font-weight: 500;
+				font-size: var(--font-size-xs);
+			}
+		}
+	}
+}
+
+::ng-deep {
+	.project-teams .mat-form-field {
+		&-wrapper,
+		&-infix {
+			padding: 0 !important;
+			border: none;
+		}
+
+		&-flex {
+			padding: 0 !important;
+			background: none;
+		}
+
+		&-underline {
+			display: none;
+		}
+	}
+
+	.mat-form-field {
+		position: relative;
+
+		.arrow {
+			position: absolute;
+			top: calc(-1 * var(--offset));
+			right: 0;
+			color: var(--light-black);
+		}
+	}
+
+	.mat-select {
+		&-arrow,
+		&-arrow-wrapper {
+			display: none !important;
+		}
+
+		&-value {
+			color: inherit;
+		}
+	}
+}

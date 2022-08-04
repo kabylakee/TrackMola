@@ -1,6 +1,6 @@
 <form [formGroup]="tableForm">
 	<div class="day-table">
-		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8" multiTemplateDataRows>
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
 			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
 				<th mat-header-cell *matHeaderCellDef>
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
@@ -49,6 +49,16 @@
 									<input matInput formControlName="overtime"/>
 								</mat-form-field>
 							</ng-container>
+							<ng-container *ngIf="column.field === 'notes'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="notes"/>
+								</mat-form-field>
+							</ng-container>
+							<ng-container *ngIf="column.field === 'period'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="period"/>
+								</mat-form-field>
+							</ng-container>
 						</div>
 
 						<div *ngSwitchCase="columnType.PROJECT">
@@ -93,6 +103,34 @@
 									{{ element.asanaLink || element.bitbucketLink ? 'link' : 'add_link' }}
 								</mat-icon>
 							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.APPROVE">
+							<button mat-icon-button aria-label="Approve">
+								<mat-icon aria-hidden="false" class="material-icons-outlined approve">
+									check_circle
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.DECLINE">
+							<button mat-icon-button aria-label="Decline">
+								<mat-icon aria-hidden="false" class="material-icons-outlined decline">
+									cancel
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.VIEW">
+							<button mat-icon-button aria-label="View">
+								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
+									visibility
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.TEXT">
+							<span>{{ element['' + column.field] }}</span>
 						</div>
 
 						<div *ngSwitchCase="columnType.OPTIONS">
@@ -161,10 +199,6 @@
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
-			<tr
-				mat-row
-				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
-			></tr>
 
 			<tr class="mat-row" *matNoDataRow>
 				<td class="mat-cell" colspan="8">

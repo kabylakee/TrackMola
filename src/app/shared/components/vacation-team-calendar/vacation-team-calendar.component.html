@@ -11,6 +11,14 @@
 			<div
 				class="vacation"
 				*ngFor="let vacation of week.vacationInfo; index as i"
+				matTooltip="{{
+					vacation.employee.userName +
+						' (' +
+						dateFormatter(vacation.dateFrom) +
+						' - ' +
+						dateFormatter(vacation.dateTo) +
+						')'
+				}}"
 				[ngStyle]="{
 					top: initialOffset + i * standardOffset + 'px',
 					'background-color': getBackgroundColor(vacation),
@@ -20,7 +28,7 @@
 					'border-right': getBorder(vacation.dateTo, week, vacation)
 				}"
 			>
-				{{ vacation.employee.firstName + ' ' + vacation.employee.secondName }}
+				{{ vacation.employee.userName }}
 				<span class="department" *ngIf="!filteredByDepartment">
 					({{ vacation.employee.department }})
 				</span>

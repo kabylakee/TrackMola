@@ -1,10 +1,11 @@
-import {ColumnType} from '../enums/column-type.enum';
+import {ColumnType, UsersColumnType} from '../enums/column-type.enum';
+import {ClsType} from '../enums/cls-type.enum';
 
 export interface ITableColumn {
 	id: string;
-	cls: string;
+	cls: ClsType;
 	sortable?: boolean;
 	title?: string;
 	field?: string;
-	type: ColumnType;
+	type: ColumnType | UsersColumnType;
 }

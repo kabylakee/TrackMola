@@ -29,6 +29,16 @@ const routes: Routes = [
 		path: RouterPaths.Finance,
 		loadChildren: () => import('./pages/finance/finance.module').then((m) => m.FinanceModule),
 	},
+	{
+		path: RouterPaths.Management,
+		loadChildren: () =>
+			import('./pages/management/management.module').then((m) => m.ManagementModule),
+	},
+	{
+		path: RouterPaths.Administration,
+		loadChildren: () =>
+			import('./pages/administration/administration.module').then((m) => m.AdministrationModule),
+	},
 	{path: '**', redirectTo: 'dashboard'}, // route for 404 page in future
 ];
 

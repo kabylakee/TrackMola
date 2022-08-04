@@ -1,0 +1,144 @@
+@import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
+
+:host {
+	$calendar-item-height: 7rem;
+	$common-transition: 0.2;
+	$hover-transition: 0.3;
+	$checked-transition: 0.4;
+
+	.item {
+		display: flex;
+		flex-direction: column;
+		height: $calendar-item-height;
+		color: var(--light-black);
+		font-weight: 500;
+		line-height: var(--font-size);
+		outline: 1px solid var(--light-gray);
+		cursor: pointer;
+		transition: var(--transition-xxs);
+
+		&-header {
+			padding: var(--offset-xs) 0;
+			text-align: center;
+			background-color: var(--accent-50);
+		}
+
+		&-content {
+			flex-direction: column;
+			flex-grow: 1;
+			gap: var(--offset-xxs);
+			@include flex-center;
+
+			.check {
+				opacity: 0;
+				transition: var(--transition-xxs);
+				@include icon-size(--font-size-xl);
+
+				&.checked {
+					color: var(--accent-200);
+					opacity: 1;
+				}
+			}
+
+			&:hover .check {
+				color: var(--light-gray);
+				opacity: 1;
+
+				&.checked {
+					color: var(--accent-200);
+					opacity: 1;
+				}
+			}
+		}
+
+		&.weekend {
+			&:hover .item-header {
+				background-color: rgba-color(weekend, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid var(--weekend);
+				.item-header {
+					background-color: rgba-color(weekend, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba-color(weekend, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: var(--weekend);
+			}
+		}
+
+		&.holiday {
+			&:hover .item-header {
+				background-color: rgba-color(holiday, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid var(--holiday);
+				.item-header {
+					background-color: rgba-color(holiday, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba-color(holiday, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: var(--holiday);
+				.holiday-name {
+					color: var(--light-black);
+				}
+			}
+		}
+
+		&.work-day {
+			&:hover .item-header {
+				background-color: rgba-color(work-day, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid var(--work-day);
+				.item-header {
+					background-color: rgba-color(work-day, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba-color(work-day, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: var(--work-day);
+			}
+		}
+
+		&.half-day {
+			&:hover .item-header {
+				background-color: rgba-color(half-day, $hover-transition);
+			}
+			&.checked {
+				border: 1px solid var(--half-day);
+				.item-header {
+					background-color: rgba-color(half-day, $checked-transition);
+				}
+			}
+			.item-header {
+				background-color: rgba-color(half-day, $common-transition);
+				transition: var(--transition-xxs);
+			}
+			.item-content {
+				color: var(--half-day);
+			}
+		}
+
+		&.disabled {
+			color: var(--gray);
+			.item-header {
+				background-color: var(--accent-50);
+			}
+			.item-content {
+				display: none;
+			}
+		}
+	}
+}

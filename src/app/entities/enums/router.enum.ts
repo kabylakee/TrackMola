@@ -5,7 +5,8 @@ export enum RouterPaths {
 	Vacation = 'vacation',
 	Statistic = 'statistic',
 	Finance = 'finance',
-	Settings = 'settings',
+	Administration = 'administration',
+	Management = 'management',
 }
 
 export enum NavigationIcons {
@@ -15,5 +16,6 @@ export enum NavigationIcons {
 	Vacation = 'perm_contact_calendar',
 	Statistic = 'stacked_line_chart',
 	Finance = 'attach_money',
-	Settings = 'admin_panel_settings',
+	Administration = 'admin_panel_settings',
+	Management = 'folder_shared',
 }
