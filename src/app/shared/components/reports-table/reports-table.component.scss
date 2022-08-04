@@ -37,6 +37,7 @@
 	$input-width: 2rem;
 	$project-width: 5rem;
 	$status-width: 3rem;
+	$notes-width: 5rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
@@ -103,6 +104,31 @@
 			color: var(--dark-gray);
 		}
 	}
+
+	.notes-column {
+		display: flex;
+		justify-content: center;
+		.mat-input-element {
+			width: $notes-width;
+			text-align: center;
+		}
+	}
+
+	.approve-column {
+		display: flex;
+		justify-content: center;
+		.approve {
+			color: var(--accent-200);
+		}
+		.decline {
+			color: rgba-color(red, 0.3);
+		}
+	}
+
+	.name-column {
+		width: 10rem;
+	}
+
 	.no-data-container {
 		@include flex-center;
 		padding-top: var(--offset);

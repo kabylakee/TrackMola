@@ -10,7 +10,7 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
-import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
+// import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 
 @Component({
@@ -41,21 +41,33 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.getMonthVacations();
 		this.requests = [];
 		this.columns = REQUEST_TABLE_CONFIG;
-		this.requests = this.vacations.map((vacation) => {
-			if (vacation.status === VacationRequest.Unapproved) {
-				const request: IVacationRequest = {
-					checked: false,
-					name: vacation.employee.userName,
-					project: vacation.employee.projects,
-					period: vacation.dateFrom + ' - ' + vacation.dateTo,
-					paid: vacation.paid,
-					approved: false,
-					notes: '',
-				};
-				return request;
-			}
-			return;
-		}) as IVacationRequest[];
+		// this.requests = this.vacations.map((vacation) => {
+		// 	if (vacation.status === VacationRequest.Unapproved) {
+		// 		const request: IVacationRequest = {
+		// 			checked: false,
+		// 			name: vacation.employee.userName,
+		// 			project: vacation.employee.projects,
+		// 			period: vacation.dateFrom + ' - ' + vacation.dateTo,
+		// 			paid: vacation.paid,
+		// 			approved: false,
+		// 			notes: '',
+		// 		};
+		// 		return request;
+		// 	}
+		// 	return;
+		// }) as IVacationRequest[];
+
+		this.requests = [
+			{
+				checked: false,
+				name: 'Dilan Brooks',
+				project: PROJECT_MOCK[0],
+				period: '12.07 - 13.07',
+				approved: false,
+				paid: true,
+				notes: '123',
+			},
+		];
 	}
 
 	public onChangeDate(event: Date): void {
