@@ -1,10 +1,8 @@
 <app-header [pageTitle]="title" ></app-header>
-<div class="container">
-  <app-year-calendar></app-year-calendar>
-</div>
 <app-vacation-header (changeDate)="onChangeDate($event)"
 (changeFilters)="onChangeFilters($event)"
 (vacationRequest)="onSendRequest($event)"
 (tabSelected)="onChangeTab($event)"></app-vacation-header>
 <app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
 </app-vacation-team-calendar>
+<app-year-calendar [class.hidden]="vacationTab.title!=='Personal'"></app-year-calendar>

@@ -11,7 +11,17 @@
     </div>
   </div>
 </div> -->
+<div class="calendar-header">{{calendarMonth.monthName}}</div>
 <div class="calendar-grid">
-  <div class="calendar-header" *ngFor="let weekDay of weekDays">{{weekDay}}</div>
-  <div class="calendar-body" *ngFor="let date of dates" [ngClass]="{disabledColor:!date.disabled}">{{date.date.getDate()}}</div>
+  <div class="calendar-label" *ngFor="let weekDay of weekDays">{{weekDay}}</div>
+  <div class="calendar-body" *ngFor="let date of dates"
+  [ngClass]="{disabledColor:!date.disabled,
+     vacationColor: date.vacation,
+     dayOffColor: date.dayOff,
+     startVacation: date.startVacation,
+     endVacation: date.endVacation,
+     startVacationUnpaid: date.startVacationUnpaid,
+     endVacationUnpaid: date.endVacationUnpaid}">
+  {{date.date.getDate()}}
+</div>
 </div>

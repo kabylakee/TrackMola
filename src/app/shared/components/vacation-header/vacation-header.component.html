@@ -1,4 +1,4 @@
-<app-vacation-toggle 
+<app-vacation-toggle
 		[tab]="tab"
 		(changeSelectedValue)="changeTab($event)"
 ></app-vacation-toggle>
@@ -30,6 +30,15 @@
 					<mat-icon matSuffix class="arrow">expand_more</mat-icon>
 				</mat-form-field>
 			</div>
+		</div>
+		<button mat-flat-button color="primary" (click)="dialogOpen()">Vacation request</button>
+	</div>
+</div>
+<div  [hidden]="tab.title!=='Personal'">
+	<div class="container">
+		<div class="inline-block">
+			<app-date-picker (changeDate)="changeDate.emit($event)"
+			[periodRange]="periodRange" class="inline-block"></app-date-picker>
 		</div>
 		<button mat-flat-button color="primary" (click)="dialogOpen()">Vacation request</button>
 	</div>
