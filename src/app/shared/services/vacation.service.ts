@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
 
@@ -35,6 +36,13 @@ export class VacationService {
 					filter.department === 'Select all') &&
 				vacation.employee.projects.find((project) => project.title === filter.project)
 			);
+		});
+		return of(arr);
+	}
+
+	public getVacationRequests(): Observable<IVacation[]> {
+		const arr = this.vacations$.value.filter((vacation) => {
+			return vacation.status === VacationRequest.Unapproved;
 		});
 		return of(arr);
 	}

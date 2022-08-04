@@ -28,7 +28,6 @@ export class VacationRequestHeaderComponent {
 				this.currentProject = project;
 			}
 		});
-
 		this.changeProject.emit(this.currentProject);
 	}
 }

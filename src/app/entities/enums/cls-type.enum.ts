@@ -16,4 +16,5 @@ export enum ClsType {
 	ApproveColumn = 'approve-column',
 	NotesColumn = 'notes-column',
 	NameColumn = 'name-column',
+	PeriodColumn = 'period-column',
 }

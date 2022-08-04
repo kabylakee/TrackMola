@@ -92,8 +92,8 @@ export const REQUEST_TABLE_CONFIG: ITableColumn[] = [
 	},
 	{
 		id: '3',
-		type: ColumnType.INPUT,
-		cls: ClsType.TimeColumn,
+		type: ColumnType.TEXT,
+		cls: ClsType.PeriodColumn,
 		title: 'Period',
 		field: 'period',
 	},

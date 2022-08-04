@@ -6,6 +6,6 @@
 <app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
 </app-vacation-team-calendar>
 <app-vacation-request-header [hidden]="vacationTab.title!=='Requests'"
-(changeProject)="onChangeProject($event)"></app-vacation-request-header>
+(changeProject)="onChangeProject($event)" (changeSearchValue)="onChangeInput($event)"></app-vacation-request-header>
 <app-reports-table [dataSource]="requests" [columns]="columns"
 [hidden]="vacationTab.title!=='Requests'" [selectedProject]="selectedProject"></app-reports-table>

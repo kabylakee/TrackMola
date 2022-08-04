@@ -10,7 +10,6 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
-// import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 
 @Component({
@@ -29,9 +28,10 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public isSub = true;
 	public vacations: IVacation[] = [];
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
-	public vacationTab: IVacationTab = VACATION_TABS[2];
-	public selectedProject: IProject;
+	public vacationTab: IVacationTab = VACATION_TABS[1];
+	public selectedProject: IProject = PROJECT_MOCK[0];
 	// Request table
+	private vacationRequests: IVacation[];
 	public requests: IVacationRequest[] = [];
 	public columns: ITableColumn[] = [];
 
@@ -39,35 +39,36 @@ export class VacationComponent implements OnInit, OnDestroy {
 
 	public ngOnInit(): void {
 		this.getMonthVacations();
+		this.getVacationRequests();
 		this.requests = [];
 		this.columns = REQUEST_TABLE_CONFIG;
-		// this.requests = this.vacations.map((vacation) => {
-		// 	if (vacation.status === VacationRequest.Unapproved) {
-		// 		const request: IVacationRequest = {
-		// 			checked: false,
-		// 			name: vacation.employee.userName,
-		// 			project: vacation.employee.projects,
-		// 			period: vacation.dateFrom + ' - ' + vacation.dateTo,
-		// 			paid: vacation.paid,
-		// 			approved: false,
-		// 			notes: '',
-		// 		};
-		// 		return request;
-		// 	}
-		// 	return;
-		// }) as IVacationRequest[];
-
-		this.requests = [
-			{
-				checked: false,
-				name: 'Dilan Brooks',
-				project: PROJECT_MOCK[0],
-				period: '12.07 - 13.07',
-				approved: false,
-				paid: true,
-				notes: '123',
-			},
-		];
+		this.requests = this.vacationRequests
+			.filter((vacation) => {
+				return Boolean(
+					vacation.employee.projects.find(
+						(project) => project.title === this.selectedProject.title,
+					),
+				);
+			})
+			.map((vacation) => {
+				const request: IVacationRequest = {
+					checked: false,
+					name: vacation.employee.userName,
+					project: this.selectedProject,
+					period:
+						vacation.dateFrom.getDate() +
+						'.' +
+						vacation.dateFrom.getMonth() +
+						' - ' +
+						vacation.dateTo.getDate() +
+						'.' +
+						vacation.dateTo.getMonth(),
+					paid: vacation.paid,
+					approved: false,
+					notes: '',
+				};
+				return request;
+			}) as IVacationRequest[];
 	}
 
 	public onChangeDate(event: Date): void {
@@ -90,6 +91,46 @@ export class VacationComponent implements OnInit, OnDestroy {
 	}
 	public onChangeProject(event: IProject): void {
 		this.selectedProject = event;
+		if (this.vacationTab === VACATION_TABS[2]) {
+			this.requests = [];
+			this.columns = REQUEST_TABLE_CONFIG;
+			this.requests = this.vacationRequests
+				.filter((vacation) => {
+					return Boolean(
+						vacation.employee.projects.find(
+							(project) => project.title === this.selectedProject.title,
+						),
+					);
+				})
+				.map((vacation) => {
+					const request: IVacationRequest = {
+						checked: false,
+						name: vacation.employee.userName,
+						project: this.selectedProject,
+						period:
+							vacation.dateFrom.getDate() +
+							'.' +
+							vacation.dateFrom.getMonth() +
+							' - ' +
+							vacation.dateTo.getDate() +
+							'.' +
+							vacation.dateTo.getMonth(),
+						paid: vacation.paid,
+						approved: false,
+						notes: '',
+					};
+					return request;
+				}) as IVacationRequest[];
+		}
+	}
+
+	public onChangeInput(value: string): void {
+		if (value === '') {
+			return;
+		}
+		this.requests = this.requests.filter((vacation) => {
+			return Boolean(vacation.name.toLowerCase().includes(value.toLocaleLowerCase()));
+		});
 	}
 
 	private getMonthVacations(): void {
@@ -100,6 +141,13 @@ export class VacationComponent implements OnInit, OnDestroy {
 			)
 			.pipe(takeWhile(() => this.isSub))
 			.subscribe((vacations) => (this.vacations = vacations));
+	}
+
+	private getVacationRequests(): void {
+		this.vacationService
+			.getVacationRequests()
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((vacations) => (this.vacationRequests = vacations));
 	}
 
 	public ngOnDestroy(): void {

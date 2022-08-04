@@ -21,7 +21,7 @@ import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
@@ -30,6 +30,7 @@ import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
 import {TableDataType} from 'src/app/entities/types/table-data.type';
+import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
 
 @Component({
 	selector: 'app-reports-table',
@@ -100,14 +101,27 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	private setRowsFormArray(row: ITask, index: number) {
-		return this.formBuilder.group({
-			rowIndex: [index],
-			title: [row.title, Validators.required],
-			time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
-			overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
-			project: [row.project, Validators.required],
-		});
+	private setRowsFormArray(row: TableDataType, index: number) {
+		if ('time' in row) {
+			row = row as ITask;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				title: [row.title, Validators.required],
+				time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
+				overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
+				project: [row.project, Validators.required],
+			});
+		}
+		if ('period' in row) {
+			row = row as IVacationRequest;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				notes: [row.notes, new FormControl('')],
+				period: [row.period, new FormControl('')],
+				project: [row.project, Validators.required],
+			});
+		}
+		return;
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {

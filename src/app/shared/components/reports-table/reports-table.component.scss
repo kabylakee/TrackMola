@@ -105,6 +105,13 @@
 		}
 	}
 
+	.period-column {
+		display: flex;
+		justify-content: center;
+		width: $notes-width;
+		margin: 0;
+	}
+
 	.notes-column {
 		display: flex;
 		justify-content: center;
