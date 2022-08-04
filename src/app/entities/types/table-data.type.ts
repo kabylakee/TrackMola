@@ -1,4 +1,4 @@
-import {IVacationRequest} from '../interfaces/request.interface';
+import {IManagementRequest, IVacationRequest} from '../interfaces/request.interface';
 import {ITask} from '../interfaces/task.interface';
 
-export type TableDataType = ITask | IVacationRequest;
+export type TableDataType = ITask | IVacationRequest | IManagementRequest;

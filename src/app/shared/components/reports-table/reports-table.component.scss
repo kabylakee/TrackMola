@@ -125,6 +125,14 @@
 		}
 	}
 
+	.view-column {
+		display: flex;
+		justify-content: center;
+		.visibility {
+			color: var(--dark-gray);
+		}
+	}
+
 	.name-column {
 		width: 10rem;
 	}

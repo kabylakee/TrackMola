@@ -1,6 +1,6 @@
 <form [formGroup]="tableForm">
 	<div class="day-table">
-		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8" multiTemplateDataRows>
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
 			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
 				<th mat-header-cell *matHeaderCellDef>
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
@@ -121,6 +121,14 @@
 							</button>
 						</div>
 
+						<div *ngSwitchCase="columnType.VIEW">
+							<button mat-icon-button aria-label="View">
+								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
+									visibility
+								</mat-icon>
+							</button>
+						</div>
+
 						<div *ngSwitchCase="columnType.TEXT">
 							<span>{{ element['' + column.field] }}</span>
 						</div>
@@ -191,10 +199,6 @@
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
-			<tr
-				mat-row
-				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
-			></tr>
 
 			<tr class="mat-row" *matNoDataRow>
 				<td class="mat-cell" colspan="8">

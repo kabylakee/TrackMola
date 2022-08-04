@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {ReportsTableModule} from 'src/app/shared/components/reports-table/reports-table.module';
 
 @NgModule({
 	declarations: [ManagementComponent, ExportFormComponent],
@@ -30,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
 		MatDatepickerModule,
 		MatButtonModule,
 		MatSelectModule,
+		ReportsTableModule,
 	],
 })
 export class ManagementModule {}

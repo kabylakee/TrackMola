@@ -154,6 +154,7 @@ export class TaskService {
 	public saveTask(taskData: ITask[]) {
 		taskData.forEach((task) => (task.newRow = false));
 		this.tasks$.next(this.tasks$.value.concat(taskData));
+		this.localStorageService.setData(this.REPORTS_DATA_KEY, this.tasks$.value);
 	}
 
 	public getTaskFromTo(from: Date, to: Date): Observable<ITask[]> {

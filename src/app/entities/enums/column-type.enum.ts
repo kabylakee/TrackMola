@@ -9,6 +9,7 @@ export enum ColumnType {
 	OPTIONS = 'Options',
 	APPROVE = 'Approve',
 	DECLINE = 'Decline',
+	VIEW = 'View',
 }
 
 export enum UsersColumnType {
