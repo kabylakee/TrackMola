@@ -6,6 +6,7 @@
 	(changeDate)="onChangeDate($event)"
 	(toggleCountry)="onToggleCountry($event)"
 	(setWeekendSchedule)="onSetSchedule($event)"
+  [clickedDay] = "clickedDay"
 ></app-admin-filters>
 <div class="administration-content" [ngSwitch]="tab">
 	<div class="users-table" *ngSwitchCase="tabs.Users">

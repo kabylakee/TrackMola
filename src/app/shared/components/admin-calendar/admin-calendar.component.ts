@@ -74,6 +74,10 @@ export class AdminCalendarComponent implements OnInit, OnChanges {
 		if (changes.country?.currentValue) {
 			this.daysCalc();
 		}
+		if (changes.holiday) {
+			this.daysCalc();
+			this.selectedDays.clear();
+		}
 	}
 
 	public daysCalc(): void {

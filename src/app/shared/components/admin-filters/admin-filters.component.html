@@ -14,7 +14,12 @@
 			[config]="toggleConfig"
 			(changeSelectedValue)="changeCountry($event)"
 		></app-toggle-button>
-		<button mat-flat-button color="secondary" class="mat-button" (click)="openDialog()">
+		<button
+			mat-flat-button
+			color="secondary"
+			class="mat-button"
+			(click)="openDialog()"
+		>
 			<mat-icon class="material-icons-outlined icon mat-button-icon">calendar_today</mat-icon>
 			<span class="mat-button-text">Set schedule</span>
 		</button>
@@ -24,8 +29,8 @@
 		<div class="select">
 			<mat-form-field class="project-teams" appearance="fill">
 				<mat-select [value]="currentProject" (valueChange)="selectProject($event)">
-					<mat-option [value]="'Select All'">
-						<span>Select All</span>
+					<mat-option [value]="SELECT_ALL">
+						<span>{{SELECT_ALL}}</span>
 					</mat-option>
 					<mat-option [value]="project.title" *ngFor="let project of projects">
 						<app-project-component projectName="{{ project.title }}"></app-project-component>

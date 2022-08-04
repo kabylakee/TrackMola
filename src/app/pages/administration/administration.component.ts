@@ -9,6 +9,7 @@ import {AdminButtonsEnum} from '../../entities/enums/admin-buttons.enum';
 import {IHoliday} from '../../entities/interfaces/holiday.interface';
 import {CountryEnum} from '../../entities/enums/country.enum';
 import {HolidayService} from '../../shared/services/holiday.service';
+import {SELECT_ALL} from 'src/app/entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-administration',
@@ -25,7 +26,7 @@ export class AdministrationComponent implements OnInit {
 	public tab: AdminTabsTitle = AdminTabsTitle.Calendar;
 	public searchValue = '';
 	public adminButtonAction: AdminButtonsEnum;
-	public selectedProject = 'Select All';
+	public selectedProject = SELECT_ALL;
 	public changedDate: Date = new Date();
 	public holiday: IHoliday;
 	public country: CountryEnum = CountryEnum.Belarus;
@@ -53,8 +54,14 @@ export class AdministrationComponent implements OnInit {
 	}
 
 	public onSetSchedule(event: IHoliday): void {
-		this.holiday = {...event, date: this.changeDate, country: this.country};
-		this.holidayService.createHoliday(this.holiday);
+		let holidayDays: IHoliday[] = [];
+		if (this.clickedDay) {
+			this.clickedDay.forEach((value) => {
+				this.holiday = {...event, date: value, country: this.country};
+				holidayDays.push(this.holiday);
+			});
+		}
+		this.holidayService.createHoliday(holidayDays);
 	}
 
 	public onAdminButtonAction(action: AdminButtonsEnum): void {

@@ -7,7 +7,7 @@
 <mat-dialog-content class="dialog-content">
 	<div class="selected-days">
 		<mat-icon class="material-icons-outlined icon">error</mat-icon>
-		<span>Selected days: 01.06-09.06</span>
+		<span>Selected days: {{firstSetValue}}-{{lastSetValue}}</span>
 	</div>
 	<form [formGroup]="formGroup">
 		<mat-radio-group

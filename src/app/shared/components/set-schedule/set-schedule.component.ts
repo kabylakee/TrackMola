@@ -4,6 +4,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HolidayTypeEnum} from '../../../entities/enums/holiday-type.enum';
 import {IHoliday} from '../../../entities/interfaces/holiday.interface';
 import {CountryEnum} from '../../../entities/enums/country.enum';
+import {DATE_FORMAT} from '../../../entities/constants/vacation.constant';
+import * as moment from 'moment';
 
 @Component({
 	selector: 'app-set-schedule',
@@ -17,10 +19,13 @@ export class SetScheduleComponent {
 	public days = Object.values(HolidayTypeEnum);
 	public formGroup: FormGroup;
 	public submittedForm: IHoliday;
+	public setDays = this.data.values();
+	public firstSetValue = moment(this.setDays.next().value).format(DATE_FORMAT);
+	public lastSetValue = moment([...this.data].pop()).format(DATE_FORMAT);
 
 	constructor(
 		private dialogRef: MatDialogRef<SetScheduleComponent>,
-		@Inject(MAT_DIALOG_DATA) public data: object,
+		@Inject(MAT_DIALOG_DATA) public data: Set<Date>,
 	) {
 		this.formGroup = new FormGroup({
 			radioValue: new FormControl('', [Validators.required]),

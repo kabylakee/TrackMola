@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {IViewPeriod} from '../../../entities/interfaces/view-period.interface';
 import {CountryEnum} from '../../../entities/enums/country.enum';
 import {COUNTRY_TOGGLE} from '../../../entities/constants/country.constants';
@@ -19,6 +19,8 @@ import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminFiltersComponent {
+	@Input() clickedDay: Set<Date>;
+
 	@Output() tabsValue = new EventEmitter<AdminTabsTitle>();
 	@Output() searchValueChange = new EventEmitter<string>();
 	@Output() changeProject = new EventEmitter<string>();
@@ -29,11 +31,12 @@ export class AdminFiltersComponent {
 	public readonly toggleConfig: IViewPeriod<CountryEnum>[] = COUNTRY_TOGGLE;
 	public readonly tabsConfig: IViewPeriod<AdminTabsTitle>[] = ADMIN_TABS;
 	public readonly tabs = AdminTabsTitle;
+	public readonly SELECT_ALL = 'Select All';
 	public tabChange: AdminTabsTitle = AdminTabsTitle.Calendar;
 	public countrySelection: CountryEnum = CountryEnum.Belarus;
 	public periodRange: Period = Period.Month;
 	public projects: IProject[] = PROJECT_MOCK;
-	public currentProject = 'Select All';
+	public currentProject = SELECT_ALL;
 
 	constructor(public dialog: MatDialog) {}
 
@@ -43,7 +46,7 @@ export class AdminFiltersComponent {
 				top: 'calc(50vh - 15.35 * var(--offset))',
 				left: 'calc(50vw - 6.5 * var(--offset))',
 			},
-			data: {},
+			data: this.clickedDay,
 		});
 		dialogRef.afterClosed().subscribe((data) => {
 			this.setWeekendSchedule.emit(data);
@@ -56,15 +59,10 @@ export class AdminFiltersComponent {
 	}
 
 	public selectProject(value: Event): void {
-		if (value + '' === SELECT_ALL) {
-			this.currentProject = value + '';
-		} else {
-			this.projects.forEach((project) => {
-				if (project.title === `${value}`) {
-					this.currentProject = project.title;
-				}
-			});
-		}
+		this.currentProject =
+			value + '' === SELECT_ALL
+				? value + ''
+				: this.projects.find((project) => project.title === `${value}`)!.title;
 		this.changeProject.emit(this.currentProject);
 	}
 

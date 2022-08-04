@@ -44,9 +44,11 @@ export class HolidayService {
 		});
 	}
 
-	public createHoliday(data: IHoliday): void {
-		this.holidays$.next(this.holidays$.value.concat(data));
-		const arr = this.holidays$.value;
-		this.localStorageService.setData(this.HOLIDAYS_KEY_DATA, arr);
+	public createHoliday(data: IHoliday[] | void): void {
+		if (data) {
+			this.holidays$.next(this.holidays$.value.concat(data));
+			const arr = this.holidays$.value;
+			this.localStorageService.setData(this.HOLIDAYS_KEY_DATA, arr);
+		}
 	}
 }
