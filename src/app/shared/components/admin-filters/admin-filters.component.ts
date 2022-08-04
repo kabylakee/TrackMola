@@ -10,6 +10,7 @@ import {AdminTabsTitle} from '../../../entities/enums/tabs.enum';
 import {IProject} from '../../../entities/interfaces/project.interface';
 import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
 import {IHoliday} from '../../../entities/interfaces/holiday.interface';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-admin-filters',
@@ -55,7 +56,7 @@ export class AdminFiltersComponent {
 	}
 
 	public selectProject(value: Event): void {
-		if (value + '' === 'Select All') {
+		if (value + '' === SELECT_ALL) {
 			this.currentProject = value + '';
 		} else {
 			this.projects.forEach((project) => {

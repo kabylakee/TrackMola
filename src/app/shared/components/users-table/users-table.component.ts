@@ -17,6 +17,7 @@ import {DepartmentEnum} from '../../../entities/enums/department.enum';
 import {Role} from '../../../entities/enums/role.enum';
 import {AdminButtonsEnum} from '../../../entities/enums/admin-buttons.enum';
 import {UsersService} from '../../services/users.service';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-users-table',
@@ -114,7 +115,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 				return project.title === this.selectedProject;
 			});
 		});
-		if (this.selectedProject === 'Select All') {
+		if (this.selectedProject === SELECT_ALL) {
 			this.filteredDataSource = this.dataSource;
 		}
 	}
