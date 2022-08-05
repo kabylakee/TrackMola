@@ -270,10 +270,6 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-			// title: newData.title,
-			// time: +newData.time,
-			// overtime: +newData.overtime,
-			// project: newData.project,
 		};
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
