@@ -1,4 +1,4 @@
-import {Status} from '../enums/status.enum';
+import {ReportStatus} from '../enums/report-status.enum';
 import {IProject} from './project.interface';
 
 export interface IVacationRequest {
@@ -18,6 +18,6 @@ export interface IManagementRequest {
 	expectedHours: number;
 	totalHours: number;
 	paidOvertime: number;
-	status: Status;
+	status: ReportStatus;
 	approved: boolean;
 }

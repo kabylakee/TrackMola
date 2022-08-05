@@ -21,7 +21,7 @@ import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
@@ -30,6 +30,10 @@ import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
 import {TableDataType} from 'src/app/entities/types/table-data.type';
+import {ViewReportComponent} from '../view-report/view-report.component';
+import {ReportStatus} from 'src/app/entities/enums/report-status.enum';
+import {VacationService} from '../../services/vacation.service';
+import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/request.interface';
 
 @Component({
 	selector: 'app-reports-table',
@@ -68,6 +72,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		private formBuilder: FormBuilder,
 		private taskService: TaskService,
 		private cd: ChangeDetectorRef,
+		private vacationService: VacationService,
 	) {}
 
 	public ngOnInit(): void {
@@ -100,14 +105,33 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	private setRowsFormArray(row: ITask, index: number) {
-		return this.formBuilder.group({
-			rowIndex: [index],
-			title: [row.title, Validators.required],
-			time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
-			overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
-			project: [row.project, Validators.required],
-		});
+	private setRowsFormArray(row: TableDataType, index: number) {
+		if ('time' in row) {
+			row = row as ITask;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				title: [row.title, Validators.required],
+				time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
+				overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
+				project: [row.project, Validators.required],
+			});
+		}
+		if ('period' in row) {
+			row = row as IVacationRequest;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				notes: [row.notes, new FormControl('')],
+				period: [row.period, new FormControl('')],
+				project: [row.project, Validators.required],
+			});
+		}
+		if ('paidOvertime' in row) {
+			row = row as IManagementRequest;
+			return this.formBuilder.group({
+				rowIndex: [index],
+			});
+		}
+		return;
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {
@@ -224,16 +248,28 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		this.taskService.setDisabledOptionBtn(!someChecked);
 	}
 
+	public approve(element: TableDataType): void {
+		if ('paidOvertime' in element) {
+			element.status = ReportStatus.Approved;
+		} else if ('period' in element) {
+			element.approved = true;
+		}
+	}
+
+	public decline(element: TableDataType): void {
+		if ('paidOvertime' in element) {
+			element.status = ReportStatus.Declined;
+		} else if ('period' in element) {
+			this.vacationService.removeVacation(element);
+		}
+	}
+
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
 		updateTime =
 			(this.dataSource[rowIndex] as ITask).time !== +newData.time ||
 			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-			title: newData.title,
-			time: +newData.time,
-			overtime: +newData.overtime,
-			project: newData.project,
 		};
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
@@ -271,6 +307,16 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public getColor(projectColor: string): {[k: string]: string} {
 		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
+	}
+
+	public viewReport(): void {
+		this.dialog.open(ViewReportComponent, {
+			position: {
+				top: 'calc(50vh - 7.5 * var(--offset))',
+				left: 'calc(50vw - 14 * var(--offset))',
+			},
+			data: {},
+		});
 	}
 
 	ngOnDestroy() {

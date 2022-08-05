@@ -16,9 +16,10 @@ import {LinkDialogComponent} from '../link-dialog/link-dialog.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import {ProjectModule} from '../project/projects.module';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {ViewReportComponent} from '../view-report/view-report.component';
 
 @NgModule({
-	declarations: [ReportsTableComponent, LinkDialogComponent],
+	declarations: [ReportsTableComponent, LinkDialogComponent, ViewReportComponent],
 	imports: [
 		CommonModule,
 		MatTableModule,

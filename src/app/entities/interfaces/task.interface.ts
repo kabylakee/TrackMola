@@ -1,4 +1,5 @@
 import {Status} from '../enums/status.enum';
+import {IEmployee} from './employee.interface';
 import {IProject} from './project.interface';
 
 export interface ITask {
@@ -13,6 +14,7 @@ export interface ITask {
 	asanaLink: string;
 	bitbucketLink: string;
 	newRow?: boolean;
+	employee?: IEmployee;
 }
 
 export interface IReportData {

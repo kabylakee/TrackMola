@@ -10,6 +10,7 @@ export enum ColumnType {
 	APPROVE = 'Approve',
 	DECLINE = 'Decline',
 	VIEW = 'View',
+	PROJECT_NAME = 'Project name',
 }
 
 export enum UsersColumnType {
