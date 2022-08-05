@@ -1,0 +1,21 @@
+:host {
+	.admin-buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-top: var(--offset);
+		.mat-flat-button {
+			&.mat-primary {
+				padding: var(--offset-s) var(--offset-m);
+			}
+		}
+		.notifier {
+			display: flex;
+			align-items: center;
+			margin-right: var(--offset-s);
+			color: var(--red);
+			&.invisible {
+				display: none;
+			}
+		}
+	}
+}
