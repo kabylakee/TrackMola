@@ -75,8 +75,8 @@ export class AdminCalendarComponent implements OnInit, OnChanges {
 			this.daysCalc();
 		}
 		if (changes.holiday) {
-			this.daysCalc();
 			this.selectedDays.clear();
+			this.daysCalc();
 		}
 	}
 

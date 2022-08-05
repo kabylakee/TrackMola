@@ -4,6 +4,7 @@ import {DepartmentEnum} from '../enums/department.enum';
 import {CountryEnum} from '../enums/country.enum';
 
 export interface IEmployee {
+	id: number;
 	userName: string;
 	projects: IProject[];
 	role?: Role;

@@ -55,7 +55,7 @@ export class AdministrationComponent implements OnInit {
 
 	public onSetSchedule(event: IHoliday): void {
 		let holidayDays: IHoliday[] = [];
-		if (this.clickedDay) {
+		if (this.clickedDay && event) {
 			this.clickedDay.forEach((value) => {
 				this.holiday = {...event, date: value, country: this.country};
 				holidayDays.push(this.holiday);

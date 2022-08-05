@@ -61,6 +61,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		if (btn === AdminButtonsEnum.AddUser) {
 			const defaultProject: IProject = PROJECT_MOCK[0];
 			const newUser: IEmployee = {
+				id: this.dataSource[this.dataSource.length - 1].id + 1,
 				userName: '',
 				projects: [defaultProject],
 				role: Role.EMPLOYEE,
