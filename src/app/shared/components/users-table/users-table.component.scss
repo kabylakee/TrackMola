@@ -7,6 +7,18 @@
 	$project-width: 9rem;
 	$office-width: 5.5rem;
 
+	$window-margin: 2rem;
+	$page-offset: 3rem;
+	$button-height: 3rem;
+	$header-height: 3rem;
+
+	.users-table {
+		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
+		max-height: calc(100vh - $components-size);
+		overflow: auto;
+	}
+
 	.email-column,
 	.users-column {
 		display: flex;
@@ -50,6 +62,11 @@
 				color: var(--light-black);
 			}
 		}
+	}
+	.no-data-container {
+		@include flex-center;
+		padding-top: var(--offset);
+		padding-bottom: var(--offset);
 	}
 }
 

@@ -1,30 +1,31 @@
-<app-header [pageTitle]="title"></app-header>
-<app-admin-filters
-	(tabsValue)="changeTabsValue($event)"
-	(searchValueChange)="onSearchValueChange($event)"
-	(changeProject)="onChangeProject($event)"
-	(changeDate)="onChangeDate($event)"
-	(toggleCountry)="onToggleCountry($event)"
-	(setWeekendSchedule)="onSetSchedule($event)"
-  [clickedDay] = "clickedDay"
-></app-admin-filters>
-<div class="administration-content" [ngSwitch]="tab">
-	<div class="users-table" *ngSwitchCase="tabs.Users">
-		<app-users-table
-			[columns]="columns"
-			[dataSource]="users"
-			[searchValue]="searchValue"
-			[adminButtonAction]="adminButtonAction"
-			[selectedProject]="selectedProject"
-		></app-users-table>
-		<app-admin-buttons (adminButtonAction)="onAdminButtonAction($event)"></app-admin-buttons>
-	</div>
-	<div class="users-table" *ngSwitchCase="tabs.Calendar">
-		<app-admin-calendar
-			[date]="changedDate"
-			[country]="country"
-			[holiday]="holiday"
-			(dayClicked)="onClickedDays($event)"
-		></app-admin-calendar>
+<div class="administration">
+	<app-header [pageTitle]="title"></app-header>
+	<app-admin-filters
+		(tabsValue)="changeTabsValue($event)"
+		(searchValueChange)="onSearchValueChange($event)"
+		(changeProject)="onChangeProject($event)"
+		(changeDate)="onChangeDate($event)"
+		(toggleCountry)="onToggleCountry($event)"
+		(setWeekendSchedule)="onSetSchedule($event)"
+		[clickedDay]="clickedDay"
+	></app-admin-filters>
+	<div class="administration-content" [ngSwitch]="tab">
+		<div class="administration-table" *ngSwitchCase="tabs.Users">
+			<app-users-table
+				[columns]="columns"
+				[dataSource]="users"
+				[searchValue]="searchValue"
+				[adminButtonAction]="adminButtonAction"
+				[selectedProject]="selectedProject"
+			></app-users-table>
+			<app-admin-buttons (adminButtonAction)="onAdminButtonAction($event)"></app-admin-buttons>
+		</div>
+			<app-admin-calendar
+        *ngSwitchCase="tabs.Calendar"
+				[date]="changedDate"
+				[country]="country"
+				[holiday]="holiday"
+				(dayClicked)="onClickedDays($event)"
+			></app-admin-calendar>
 	</div>
 </div>
