@@ -4,3 +4,12 @@
 		<mat-icon aria-hidden="false" mat-dialog-close>close</mat-icon>
 	</mat-dialog-actions>
 </div>
+
+<mat-dialog-content class="mat-typography">
+	<app-reports-table [dataSource]="tasks" [columns]="columns"></app-reports-table>
+		
+	<mat-dialog-actions>
+		<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Decline</button>
+		<button mat-flat-button class="action-button" color="primary" mat-dialog-close>Approve</button>
+	</mat-dialog-actions>
+</mat-dialog-content>
