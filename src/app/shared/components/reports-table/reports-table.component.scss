@@ -38,6 +38,7 @@
 	$project-width: 5rem;
 	$status-width: 3rem;
 	$notes-width: 5rem;
+	$tasks-width: 25rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
@@ -136,6 +137,11 @@
 
 	.name-column {
 		width: 10rem;
+	}
+
+	.task-column {
+		min-width: max-content;
+		width: $tasks-width;
 	}
 
 	.no-data-container {

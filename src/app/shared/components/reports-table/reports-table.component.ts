@@ -318,15 +318,16 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
 	}
 
-	public viewReport(): void {
+	public viewReport(element: IManagementRequest): void {
 		this.dialog.open(ViewReportComponent, {
 			position: {
 				top: 'calc(50vh - 7.5 * var(--offset))',
-				left: 'calc(50vw - 14 * var(--offset))',
+				left: 'calc(10vw)',
 			},
 			data: {
-				dataSource: this.dataSource,
+				dataSource: element,
 			},
+			width: 'calc(80vw)',
 		});
 	}
 
