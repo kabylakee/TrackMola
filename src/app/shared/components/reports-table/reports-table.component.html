@@ -106,7 +106,7 @@
 						</div>
 
 						<div *ngSwitchCase="columnType.APPROVE">
-							<button mat-icon-button aria-label="Approve">
+							<button mat-icon-button aria-label="Approve" (click)="approve(element)">
 								<mat-icon aria-hidden="false" class="material-icons-outlined approve">
 									check_circle
 								</mat-icon>
@@ -114,7 +114,7 @@
 						</div>
 
 						<div *ngSwitchCase="columnType.DECLINE">
-							<button mat-icon-button aria-label="Decline">
+							<button mat-icon-button aria-label="Decline" (click)="decline(element)">
 								<mat-icon aria-hidden="false" class="material-icons-outlined decline">
 									cancel
 								</mat-icon>
