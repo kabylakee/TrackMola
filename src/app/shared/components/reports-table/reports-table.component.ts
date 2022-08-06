@@ -1,5 +1,4 @@
 import {
-	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	EventEmitter,
@@ -39,7 +38,7 @@ import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	// changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: TableDataType[] = [];
@@ -52,6 +51,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
+	// @Output() public checkedRows = new EventEmitter<IManagementRequest>();
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
@@ -60,6 +60,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
 	private isSub = true;
+	private checkedRows = new Set<TableDataType>();
 
 	public readonly columnType = ColumnType;
 	public readonly projects: IProject[] = PROJECT_MOCK;
@@ -163,6 +164,12 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
+	public approvedSelected(): void {
+		this.dataSource
+			.filter((request) => request.checked)
+			.forEach((request) => this.approve(request));
+	}
+
 	public reportButtonHanding(button: ReportsButtonEnum): void {
 		if (button === ReportsButtonEnum.AddTask) {
 			const defaultProject: IProject = PROJECT_MOCK[0];
@@ -247,6 +254,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		const someChecked = this.filterDataSource.some((task) => task.checked);
 		this.taskService.setDisabledOptionBtn(!someChecked);
 	}
+
+	public approveAllChecked() {}
 
 	public approve(element: TableDataType): void {
 		if ('paidOvertime' in element) {

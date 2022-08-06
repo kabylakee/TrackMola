@@ -244,7 +244,7 @@ export class MonthTasksHelper {
 		return Math.ceil((dateNumber - dayNumber) / 7) + 1;
 	}
 
-	private static getFirstDayOfWeek(week: number, date: Date): Date {
+	public static getFirstDayOfWeek(week: number, date: Date): Date {
 		const dateYear = date.getFullYear();
 		const dateMonth = date.getMonth();
 		const firstDayOfMonth = new Date(dateYear, dateMonth, 1);

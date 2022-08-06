@@ -12,6 +12,7 @@ export interface IVacationRequest {
 }
 
 export interface IManagementRequest {
+	weekFirstDay: Date;
 	checked: boolean;
 	name: string;
 	project: IProject;
