@@ -51,7 +51,7 @@ export class AdminFiltersComponent implements OnChanges {
 
 	ngOnChanges(changes: SimpleChanges) {
 		if (changes.clickedDay.currentValue && this.clickedDay) {
-			this.isDisabled = false;
+			this.isDisabled = !this.clickedDay?.size;
 		}
 	}
 

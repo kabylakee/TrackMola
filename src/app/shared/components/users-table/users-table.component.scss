@@ -1,6 +1,8 @@
 @import 'mixins/colors-mixin';
 @import 'mixins/common-mixin';
 
+$office-select-height: 11rem;
+
 :host {
 	$input-width: 17rem;
 	$role-width: 7rem;
@@ -89,5 +91,9 @@
 	.mat-pseudo-checkbox {
 		border: 1px solid var(--light-gray) !important;
 		border-radius: var(--border-radius-xxs) !important;
+	}
+
+	.office-panel-class {
+		max-height: $office-select-height !important;
 	}
 }

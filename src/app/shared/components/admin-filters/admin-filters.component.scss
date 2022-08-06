@@ -3,6 +3,7 @@
 
 :host {
 	$select-height: 2.375rem;
+  $button-width: 8.5rem;
 
 	.calendar-filters,
 	.users-filters {
@@ -13,6 +14,7 @@
 
 		.mat-button {
 			margin-left: auto;
+      width: $button-width;
 		}
 
 		.select {

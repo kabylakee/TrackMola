@@ -81,6 +81,6 @@ export class AdministrationComponent implements OnInit {
 	}
 
 	public onClickedDays(event: Set<Date>): void {
-		this.clickedDay = event;
+		this.clickedDay = new Set(event);
 	}
 }
