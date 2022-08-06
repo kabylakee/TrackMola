@@ -52,6 +52,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
+	@Output() public action = new EventEmitter<boolean>();
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
@@ -253,6 +254,33 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			element.status = ReportStatus.Approved;
 		} else if ('period' in element) {
 			element.approved = true;
+			this.vacationService.updateVacation(element);
+			this.action.emit(true);
+			// this.vacationService
+			// 	.getVacationRequests()
+			// 	.pipe(takeWhile(() => this.isSub))
+			// 	.subscribe(
+			// 		(vacations) =>
+			// 			(this.filterDataSource = vacations.map((vacation) => {
+			// 				const request: IVacationRequest = {
+			// 					checked: false,
+			// 					name: vacation.employee.userName,
+			// 					project: this.selectedProject,
+			// 					period:
+			// 						vacation.dateFrom.getDate() +
+			// 						'.' +
+			// 						vacation.dateFrom.getMonth() +
+			// 						' - ' +
+			// 						vacation.dateTo.getDate() +
+			// 						'.' +
+			// 						vacation.dateTo.getMonth(),
+			// 					paid: vacation.paid,
+			// 					approved: false,
+			// 					notes: '',
+			// 				};
+			// 				return request;
+			// 			}) as IVacationRequest[]),
+			// 	);
 		}
 	}
 
@@ -261,6 +289,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			element.status = ReportStatus.Declined;
 		} else if ('period' in element) {
 			this.vacationService.removeVacation(element);
+			this.action.emit(true);
 		}
 	}
 
@@ -270,12 +299,12 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-		// 	title: newData.title,
-		// 	time: +newData.time,
-		// 	overtime: +newData.overtime,
-		// 	project: newData.project,
-		// } as TableDataType;
-		
+			// 	title: newData.title,
+			// 	time: +newData.time,
+			// 	overtime: +newData.overtime,
+			// 	project: newData.project,
+			// } as TableDataType;
+
 			// title: newData.title,
 			// time: +newData.time,
 			// overtime: +newData.overtime,

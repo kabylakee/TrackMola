@@ -7,5 +7,5 @@
 </app-vacation-team-calendar>
 <app-vacation-request-header [hidden]="vacationTab.title!=='Requests'"
 (changeProject)="onChangeProject($event)" (changeSearchValue)="onChangeInput($event)"></app-vacation-request-header>
-<app-reports-table [dataSource]="requests" [columns]="columns"
-[hidden]="vacationTab.title!=='Requests'" [selectedProject]="selectedProject"></app-reports-table>
+<app-reports-table [dataSource]="vacationRequests" [columns]="columns"
+[hidden]="vacationTab.title!=='Requests'" [selectedProject]="selectedProject" (action)="onStatusChanged()"></app-reports-table>
