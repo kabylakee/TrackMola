@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	EventEmitter,
@@ -38,7 +39,7 @@ import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	// changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: TableDataType[] = [];
@@ -319,7 +320,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	}
 
 	public viewReport(element: IManagementRequest): void {
-		this.dialog.open(ViewReportComponent, {
+		const dialogRef = this.dialog.open(ViewReportComponent, {
 			position: {
 				top: 'calc(50vh - 7.5 * var(--offset))',
 				left: 'calc(10vw)',
@@ -328,6 +329,10 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 				dataSource: element,
 			},
 			width: 'calc(80vw)',
+		});
+
+		dialogRef.afterClosed().subscribe((result: boolean) => {
+			return result ? this.approve(element) : this.decline(element);
 		});
 	}
 

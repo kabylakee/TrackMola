@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MODAL_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
-import {ViewDialogData} from 'src/app/entities/interfaces/request.interface';
+import {DEFAULT_TIME} from 'src/app/entities/constants/hours.constants';
+import {IHours} from 'src/app/entities/interfaces/hours.interface';
+import {IManagementRequest, ViewDialogData} from 'src/app/entities/interfaces/request.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ITask} from 'src/app/entities/interfaces/task.interface';
 import {TaskService} from '../../services/task.service';
@@ -13,8 +15,13 @@ import {TaskService} from '../../services/task.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewReportComponent {
+	// Table data
+	private dataSourse: IManagementRequest;
 	public columns: ITableColumn[];
 	public tasks: ITask[];
+
+	// Cards
+	public sumTime: IHours;
 
 	constructor(
 		private dialogRef: MatDialogRef<ViewReportComponent>,
@@ -27,9 +34,10 @@ export class ViewReportComponent {
 			data.dataSource.project.title,
 			data.dataSource.weekFirstDay,
 		);
+		this.getSum();
 	}
 
-	getTasks(name: string, project: string, dateFrom: Date): ITask[] {
+	private getTasks(name: string, project: string, dateFrom: Date): ITask[] {
 		const daysInWeek = 7;
 		const dateTo = new Date(
 			dateFrom.getFullYear(),
@@ -48,5 +56,12 @@ export class ViewReportComponent {
 		);
 
 		return result;
+	}
+
+	private getSum(): void {
+		let sum: IHours = DEFAULT_TIME;
+		sum.time = this.tasks.reduce((acc, curr) => acc + curr.time, 0);
+		sum.overtime = this.tasks.reduce((acc, curr) => acc + curr.overtime, 0);
+		this.sumTime = sum;
 	}
 }

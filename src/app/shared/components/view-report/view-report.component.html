@@ -6,10 +6,12 @@
 </div>
 
 <mat-dialog-content class="mat-typography">
+	<app-hours-card [sumTime]="sumTime"></app-hours-card>
+	<div class="offset"></div>
 	<app-reports-table [dataSource]="tasks" [columns]="columns"></app-reports-table>
 </mat-dialog-content>
 
 <mat-dialog-actions class="footer">
-	<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Decline</button>
-	<button mat-flat-button class="action-button" color="primary" mat-dialog-close>Approve</button>
+	<button mat-flat-button class="action-button" color="secondary" [mat-dialog-close]="false">Decline</button>
+	<button mat-flat-button class="action-button" color="primary" [mat-dialog-close]="true">Approve</button>
 </mat-dialog-actions>
