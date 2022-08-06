@@ -6,6 +6,7 @@
 		flex-flow: column;
 		width: 100%;
 		height: 100%;
+
 		&-content {
 			position: relative;
 			display: flex;
@@ -20,6 +21,7 @@
 			flex-flow: column;
 			justify-content: space-between;
 			height: calc(100% - (var(--offset) + $button-height));
+			margin-top: var(--offset);
 		}
 		app-admin-buttons {
 			position: absolute;

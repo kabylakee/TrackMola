@@ -19,10 +19,21 @@
 			color="secondary"
 			class="mat-button"
 			(click)="openDialog()"
+      *ngIf="!isDisabled"
 		>
 			<mat-icon class="material-icons-outlined icon mat-button-icon">calendar_today</mat-icon>
 			<span class="mat-button-text">Set schedule</span>
 		</button>
+    <button
+      mat-flat-button
+      color="secondary"
+      class="mat-button"
+      *ngIf="isDisabled"
+      [disabled]="isDisabled"
+    >
+      <mat-icon class="material-icons-outlined icon mat-button-icon">arrow_downward</mat-icon>
+      <span class="mat-button-text">Select days</span>
+    </button>
 	</div>
 	<div class="users-filters" *ngSwitchCase="tabs.Users">
 		<app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
@@ -33,7 +44,10 @@
 						<span>{{SELECT_ALL}}</span>
 					</mat-option>
 					<mat-option [value]="project.title" *ngFor="let project of projects">
-						<app-project-component projectName="{{ project.title }}"></app-project-component>
+            <app-project-component
+              projectName="{{ project.title }}"
+              projectColor="{{ project.color }}"
+            ></app-project-component>
 					</mat-option>
 				</mat-select>
 				<mat-icon matSuffix class="arrow">expand_more</mat-icon>

@@ -23,10 +23,10 @@
 	.users-column {
 		display: flex;
 		min-width: $input-width;
+	}
 
-		.email-column .mat-form-field {
-			color: var(--dark-gray);
-		}
+	.email-column .mat-form-field {
+		color: var(--dark-gray);
 	}
 
 	.role-column,
@@ -37,11 +37,18 @@
 	.project-column {
 		width: $project-width;
 		.mat-select {
-			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			color: var(--accent-300);
-			font-weight: 500;
-			font-size: var(--font-size-xs);
-			border-radius: var(--border-radius-xs);
+			max-width: $project-width;
+
+			.project-item {
+				padding: var(--offset-xxs) calc(0.375 * var(--offset));
+				span {
+					padding: var(--offset-xxs) calc(0.375 * var(--offset));
+					margin-right: var(--offset-xxs);
+					font-weight: 500;
+					font-size: var(--font-size-xs);
+					border-radius: var(--border-radius-xs);
+				}
+			}
 		}
 	}
 

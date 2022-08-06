@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	OnChanges,
+	Output,
+	SimpleChanges,
+} from '@angular/core';
 import {IViewPeriod} from '../../../entities/interfaces/view-period.interface';
 import {CountryEnum} from '../../../entities/enums/country.enum';
 import {COUNTRY_TOGGLE} from '../../../entities/constants/country.constants';
@@ -18,7 +26,7 @@ import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 	styleUrls: ['./admin-filters.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminFiltersComponent {
+export class AdminFiltersComponent implements OnChanges {
 	@Input() clickedDay: Set<Date>;
 
 	@Output() tabsValue = new EventEmitter<AdminTabsTitle>();
@@ -37,8 +45,15 @@ export class AdminFiltersComponent {
 	public periodRange: Period = Period.Month;
 	public projects: IProject[] = PROJECT_MOCK;
 	public currentProject = SELECT_ALL;
+	public isDisabled = true;
 
 	constructor(public dialog: MatDialog) {}
+
+	ngOnChanges(changes: SimpleChanges) {
+		if (changes.clickedDay.currentValue && this.clickedDay) {
+			this.isDisabled = false;
+		}
+	}
 
 	public openDialog(): void {
 		const dialogRef = this.dialog.open(SetScheduleComponent, {

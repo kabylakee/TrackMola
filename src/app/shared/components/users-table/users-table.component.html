@@ -13,7 +13,13 @@
 				<div [ngSwitch]="column.type" [ngClass]="column.cls">
 					<div *ngSwitchCase="columnType.USER">
 						<mat-form-field class="example-full-width" appearance="fill">
-							<input matInput placeholder="Name Surname" [value]="element['' + column.field]" />
+							<input
+								matInput
+								placeholder="Name Surname"
+								[value]="element['' + column.field]"
+                [ngModel]="element['' + column.field]"
+								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
+							/>
 						</mat-form-field>
 					</div>
 
@@ -23,13 +29,18 @@
 								matInput
 								placeholder="example@datamola.com"
 								[value]="element['' + column.field]"
+                [ngModel]="element['' + column.field]"
+								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
 							/>
 						</mat-form-field>
 					</div>
 
 					<div *ngSwitchCase="columnType.ROLE">
 						<mat-form-field appearance="fill">
-							<mat-select [value]="element['' + column.field]">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+							>
 								<mat-option [value]="role" *ngFor="let role of roles">{{ role }}</mat-option>
 							</mat-select>
 						</mat-form-field>
@@ -37,7 +48,10 @@
 
 					<div *ngSwitchCase="columnType.DEPARTMENT">
 						<mat-form-field appearance="fill">
-							<mat-select [value]="element['' + column.field]">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+							>
 								<mat-option [value]="department" *ngFor="let department of departments">{{
 									department
 								}}</mat-option>
@@ -51,8 +65,17 @@
 								[value]="element['' + column.field]"
 								[compareWith]="compareProjectObjects"
 								[ngStyle]="getColor(element['' + column.field].color)"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+								[matTooltip]="getProjectTooltip(element['' + column.field])"
+								matTooltipClass="tooltip-down"
+								placeholder="Select projects"
 								multiple
 							>
+                <mat-select-trigger>
+                  <div class="project-item">
+                    <span *ngFor="let proj of element['' + column.field]" [ngStyle]="getColor(proj.color)">{{proj.title}}</span>
+                  </div>
+                </mat-select-trigger>
 								<mat-option [value]="project" *ngFor="let project of projects">
 									<app-project-component
 										[projectName]="project.title"
@@ -65,7 +88,10 @@
 
 					<div *ngSwitchCase="columnType.OFFICE">
 						<mat-form-field appearance="fill">
-							<mat-select [value]="element['' + column.field]">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+							>
 								<mat-option [value]="office" *ngFor="let office of offices">{{
 									office
 								}}</mat-option>
