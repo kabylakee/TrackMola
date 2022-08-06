@@ -280,7 +280,9 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 				top: 'calc(50vh - 7.5 * var(--offset))',
 				left: 'calc(50vw - 14 * var(--offset))',
 			},
-			data: {},
+			data: {
+				dataSource: this.dataSource,
+			},
 		});
 	}
 

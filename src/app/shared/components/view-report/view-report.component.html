@@ -7,9 +7,9 @@
 
 <mat-dialog-content class="mat-typography">
 	<app-reports-table [dataSource]="tasks" [columns]="columns"></app-reports-table>
-		
-	<mat-dialog-actions>
-		<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Decline</button>
-		<button mat-flat-button class="action-button" color="primary" mat-dialog-close>Approve</button>
-	</mat-dialog-actions>
 </mat-dialog-content>
+
+<mat-dialog-actions class="footer">
+	<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>Decline</button>
+	<button mat-flat-button class="action-button" color="primary" mat-dialog-close>Approve</button>
+</mat-dialog-actions>
