@@ -4,9 +4,9 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		max-height: 100%;
+		margin-bottom: 1rem;
 		overflow-y: auto;
 		border: 1px solid var(--light-gray);
-		margin-bottom: 1rem;
 	}
 
 	.month-name {
