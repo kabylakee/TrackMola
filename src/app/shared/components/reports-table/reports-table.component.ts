@@ -163,13 +163,13 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.value) {
 			this.searchTaskField();
 		}
-		if (changes.reportButtonAction && changes.reportButtonAction.currentValue) {
+		if (changes.reportButtonAction?.currentValue) {
 			this.reportButtonHanding(this.reportButtonAction);
 		}
 		if (changes.searchValue) {
 			this.searchUserName();
 		}
-		if (changes.selectProject && this.selectProject) {
+		if (changes.selectProject?.currentValue) {
 			this.changeSelectedProject();
 		}
 	}
