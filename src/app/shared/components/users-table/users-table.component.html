@@ -17,7 +17,7 @@
 								matInput
 								placeholder="Name Surname"
 								[value]="element['' + column.field]"
-                [ngModel]="element['' + column.field]"
+								[ngModel]="element['' + column.field]"
 								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
 							/>
 						</mat-form-field>
@@ -29,7 +29,7 @@
 								matInput
 								placeholder="example@datamola.com"
 								[value]="element['' + column.field]"
-                [ngModel]="element['' + column.field]"
+								[ngModel]="element['' + column.field]"
 								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
 							/>
 						</mat-form-field>
@@ -71,11 +71,15 @@
 								placeholder="Select projects"
 								multiple
 							>
-                <mat-select-trigger>
-                  <div class="project-item">
-                    <span *ngFor="let proj of element['' + column.field]" [ngStyle]="getColor(proj.color)">{{proj.title}}</span>
-                  </div>
-                </mat-select-trigger>
+								<mat-select-trigger>
+									<div class="project-item">
+										<span
+											*ngFor="let proj of element['' + column.field]"
+											[ngStyle]="getColor(proj.color)"
+											>{{ proj.title }}</span
+										>
+									</div>
+								</mat-select-trigger>
 								<mat-option [value]="project" *ngFor="let project of projects">
 									<app-project-component
 										[projectName]="project.title"
@@ -91,8 +95,8 @@
 							<mat-select
 								[value]="element['' + column.field]"
 								(selectionChange)="changeFieldValue($event, element.id, column)"
-                [disableOptionCentering]="true"
-                panelClass="office-panel-class"
+								[disableOptionCentering]="true"
+								panelClass="office-panel-class"
 							>
 								<mat-option [value]="office" *ngFor="let office of offices">{{
 									office
