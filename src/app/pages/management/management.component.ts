@@ -8,6 +8,7 @@ import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ExportFormComponent} from 'src/app/shared/components/export-form/export-form.component';
 import {MonthTasksHelper} from 'src/app/shared/helpers/month-tasks.helper';
 import {ManagementRequestsService} from 'src/app/shared/services/management-requests.service';
+import {SELECT_ALL} from '../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-management',
@@ -17,6 +18,8 @@ import {ManagementRequestsService} from 'src/app/shared/services/management-requ
 })
 export class ManagementComponent implements OnInit, OnDestroy {
 	public date: Date = new Date();
+	public searchValue = '';
+	public selectProject = SELECT_ALL;
 
 	public readonly title =
 		RouterPaths.Management.charAt(0).toUpperCase() + RouterPaths.Management.slice(1);
@@ -62,5 +65,13 @@ export class ManagementComponent implements OnInit, OnDestroy {
 			.getRequests(this.weekFirstDay)
 			.pipe(takeWhile(() => this.isSub))
 			.subscribe((requests) => (this.requests = requests));
+	}
+
+	public onSearchValueChange(event: string): void {
+		this.searchValue = event;
+	}
+
+	public onChangeProject(event: string): void {
+		this.selectProject = event;
 	}
 }
