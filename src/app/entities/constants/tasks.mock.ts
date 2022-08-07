@@ -1,5 +1,6 @@
 import {Status} from '../enums/status.enum';
 import {ITask} from '../interfaces/task.interface';
+import {EMPLOYEE_MOCK} from './employee.mock';
 import {PROJECT_MOCK} from './project.mock';
 
 export const TASKS_MOCK: ITask[] = [
@@ -14,6 +15,20 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
+	},
+	{
+		date: new Date(2022, 5, 30),
+		checked: false,
+		title: 'Feature day table components second project',
+		project: PROJECT_MOCK[1],
+		status: Status.Done,
+		time: 4,
+		overtime: 0,
+		paid: false,
+		asanaLink: '',
+		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 4),
@@ -26,6 +41,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 4),
@@ -38,6 +54,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 4),
@@ -50,6 +67,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[1],
 	},
 	{
 		date: new Date(2022, 6, 5),
@@ -62,6 +80,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[2],
 	},
 	{
 		date: new Date(2022, 6, 15),
@@ -74,6 +93,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[3],
 	},
 	{
 		date: new Date(2022, 6, 15),
@@ -86,6 +106,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 5, 30),
@@ -98,6 +119,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[1],
 	},
 	{
 		date: new Date(2022, 5, 29),
@@ -110,6 +132,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[2],
 	},
 	{
 		date: new Date(2022, 5, 29),
@@ -122,6 +145,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[3],
 	},
 	{
 		date: new Date(2022, 6, 14),
@@ -134,6 +158,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 6),
@@ -146,6 +171,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[1],
 	},
 	{
 		date: new Date(2022, 6, 6),
@@ -158,6 +184,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: false,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[2],
 	},
 	{
 		date: new Date(2022, 6, 7),
@@ -170,6 +197,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[3],
 	},
 	{
 		date: new Date(2022, 6, 8),
@@ -182,6 +210,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 11),
@@ -194,6 +223,7 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 	{
 		date: new Date(2022, 6, 12),
@@ -206,5 +236,6 @@ export const TASKS_MOCK: ITask[] = [
 		paid: true,
 		asanaLink: '',
 		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
 	},
 ];
