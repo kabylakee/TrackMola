@@ -18,7 +18,7 @@ export class YearCalendarComponent implements OnChanges {
 	}
 	getCount(number: number) {
 		this.counter = number;
-    //TODO create counter
+		//TODO create counter
 	}
 	public calendars: IYearCalendar[] = YEARCALENDAR;
 	public legendItems: DayTypeEnum[] = [DayTypeEnum.Vacation, DayTypeEnum.DayOff];
