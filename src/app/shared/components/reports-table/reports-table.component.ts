@@ -256,8 +256,6 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		this.taskService.setDisabledOptionBtn(!someChecked);
 	}
 
-	public approveAllChecked() {}
-
 	public approve(element: TableDataType): void {
 		if ('paidOvertime' in element) {
 			element.status = ReportStatus.Approved;

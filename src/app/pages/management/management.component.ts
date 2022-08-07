@@ -52,7 +52,7 @@ export class ManagementComponent implements OnInit, OnDestroy {
 		});
 	}
 
-	ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 }

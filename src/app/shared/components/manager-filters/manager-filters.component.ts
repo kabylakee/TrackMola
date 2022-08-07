@@ -27,7 +27,7 @@ export class ManagerFiltersComponent {
 		this.notify.emit();
 	}
 
-	public onChangeDate(date: Date) {
+	public onChangeDate(date: Date): void {
 		this.changeDate.emit(date);
 	}
 }

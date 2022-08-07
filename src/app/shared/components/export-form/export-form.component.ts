@@ -4,7 +4,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {Role} from 'src/app/entities/enums/role.enum';
 import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
-import {IManagementRequest} from 'src/app/entities/interfaces/request.interface';
+import {IExcelData} from 'src/app/entities/interfaces/excel-data.interface';
 import {ExcelService} from '../../services/excel.service';
 import {ManagementRequestsService} from '../../services/management-requests.service';
 
@@ -23,7 +23,8 @@ export class ExportFormComponent {
 	);
 	public currentCTO: IEmployee = this.allCTO[0];
 
-	private exportData: IManagementRequest[];
+	private exportData: IExcelData[];
+	private readonly exportConfig = ['Project', 'N.Surname', 'Expected hours', 'hours'];
 
 	constructor(
 		private excelService: ExcelService,
@@ -57,6 +58,25 @@ export class ExportFormComponent {
 			this.message = 'Date is invalid';
 			return;
 		}
+		this.requestsService
+			.getExportRequests(
+				this.exportForm.controls.dateFrom.value,
+				this.exportForm.controls.dateTo.value,
+				this.exportForm.controls.ctoName.value,
+			)
+			.subscribe(
+				(requests) =>
+					(this.exportData = requests.map((request) => {
+						return {
+							project: request.project.title,
+							surname: request.name,
+							workingHours: request.expectedHours + '',
+							hours: request.totalHours + '',
+						};
+					})),
+			);
+
+		this.excelService.exportAsExcelFile(this.exportConfig, this.exportData, 'newFile', 'newSheet');
 	}
 
 	private formValidator(control: AbstractControl): ValidationErrors | null {
