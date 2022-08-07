@@ -47,6 +47,7 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.selectedDate = event;
 		this.getMonthVacations();
 	}
+
 	public onChangeFilters(event: IVacationFilter): void {
 		this.filters = event;
 		this.getMonthVacations();
@@ -60,7 +61,6 @@ export class VacationComponent implements OnInit, OnDestroy {
 
 	public onChangeTab(event: IVacationTab): void {
 		this.vacationTab = event;
-		this.selectedDate = new Date();
 	}
 
 	public onChangeProject(event: IProject): void {
@@ -73,16 +73,25 @@ export class VacationComponent implements OnInit, OnDestroy {
 
 	public onChangeInput(value: string): void {
 		if (value === '') {
+			this.vacationRequests = this.requests;
 			return;
 		}
 		this.vacationRequests = this.requests.filter((vacation) => {
 			return Boolean(vacation.name.toLowerCase().includes(value.toLocaleLowerCase()));
 		});
 	}
-	public onStatusChanged() {
+
+	public onStatusChanged(): void {
 		this.getMonthVacations();
 		this.getVacationRequests();
 	}
+
+	public approveAllSelected(): void {
+		this.vacationService.approveAll(this.vacationRequests.filter((request) => request.checked));
+		this.getMonthVacations();
+		this.getVacationRequests();
+	}
+
 	private getMonthVacations(): void {
 		this.vacationService
 			.getMonthVacations(
@@ -97,11 +106,11 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.vacationService
 			.getVacationRequests(this.selectedProject)
 			.pipe(takeWhile(() => this.isSub))
-			.subscribe((vacations) => (this.requests = [...vacations]));
+			.subscribe((vacations) => (this.requests = vacations));
 		this.vacationService
 			.getVacationRequests(this.selectedProject)
 			.pipe(takeWhile(() => this.isSub))
-			.subscribe((vacations) => (this.vacationRequests = [...vacations]));
+			.subscribe((vacations) => (this.vacationRequests = vacations));
 	}
 
 	public ngOnDestroy(): void {

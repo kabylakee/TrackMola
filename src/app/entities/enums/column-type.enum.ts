@@ -11,6 +11,8 @@ export enum ColumnType {
 	DECLINE = 'Decline',
 	VIEW = 'View',
 	PROJECT_NAME = 'Project name',
+	CHECK_DISABLED = 'Check disabled',
+	COMMENTS = 'Comments',
 }
 
 export enum UsersColumnType {

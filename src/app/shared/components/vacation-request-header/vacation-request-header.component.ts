@@ -15,6 +15,7 @@ export class VacationRequestHeaderComponent {
 	// @Output() changeDate = new EventEmitter<Date>();
 	@Output() changeSearchValue = new EventEmitter<string>();
 	@Output() changeProject = new EventEmitter<IProject>();
+	@Output() approveAll = new EventEmitter();
 
 	public projects: IProject[] = PROJECT_MOCK;
 	public employees: IEmployee[] = EMPLOYEE_MOCK;
@@ -22,7 +23,7 @@ export class VacationRequestHeaderComponent {
 	public periodRange: Period = Period.Month;
 	public searchEmployee: IEmployee;
 
-	public selectProject(value: Event): void {
+	public selectProject(value: string): void {
 		this.projects.forEach((project) => {
 			if (project.title === `${value}`) {
 				this.currentProject = project;

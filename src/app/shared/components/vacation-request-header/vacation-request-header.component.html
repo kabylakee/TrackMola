@@ -3,18 +3,9 @@
         <!-- <app-date-picker (changeDate)="changeDate.emit($event)"
         [periodRange]="periodRange"></app-date-picker> -->
         <app-input-search (searchValueChange)="changeSearchValue.emit($event)"></app-input-search>
-        <div class="select">
-            <mat-form-field class="project-teams" appearance="fill">
-                <mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
-                    <mat-option [value]="project.title" *ngFor="let project of projects | slice:0:projects.length-1">
-                        <app-project-component projectName="{{project.title}}"></app-project-component>
-                    </mat-option>
-                </mat-select>
-                <mat-icon matSuffix class="arrow">expand_more</mat-icon>
-            </mat-form-field>
-        </div>
+       <app-project-select (changeProject)="selectProject($event)"></app-project-select>
     </div>
-    <button mat-flat-button color="secondary" class="mat-button">
+    <button mat-flat-button color="secondary" class="mat-button" (click)="approveAll.emit()">
         <span class="mat-button-text">Approve all</span>
     </button>
 </div>

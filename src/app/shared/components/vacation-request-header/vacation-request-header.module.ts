@@ -10,6 +10,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {InputSearchModule} from '../input-search/input-search.module';
+import {ProjectSelectModule} from '../project-select/project-select.module';
 
 @NgModule({
 	declarations: [VacationRequestHeaderComponent],
@@ -24,6 +25,7 @@ import {InputSearchModule} from '../input-search/input-search.module';
 		MatNativeDateModule,
 		MatFormFieldModule,
 		InputSearchModule,
+		ProjectSelectModule,
 	],
 	exports: [VacationRequestHeaderComponent],
 })

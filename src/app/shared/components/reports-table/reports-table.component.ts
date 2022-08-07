@@ -52,7 +52,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
-	@Output() public action = new EventEmitter<boolean>();
+	@Output() public action = new EventEmitter();
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
@@ -255,32 +255,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		} else if ('period' in element) {
 			element.approved = true;
 			this.vacationService.updateVacation(element);
-			this.action.emit(true);
-			// this.vacationService
-			// 	.getVacationRequests()
-			// 	.pipe(takeWhile(() => this.isSub))
-			// 	.subscribe(
-			// 		(vacations) =>
-			// 			(this.filterDataSource = vacations.map((vacation) => {
-			// 				const request: IVacationRequest = {
-			// 					checked: false,
-			// 					name: vacation.employee.userName,
-			// 					project: this.selectedProject,
-			// 					period:
-			// 						vacation.dateFrom.getDate() +
-			// 						'.' +
-			// 						vacation.dateFrom.getMonth() +
-			// 						' - ' +
-			// 						vacation.dateTo.getDate() +
-			// 						'.' +
-			// 						vacation.dateTo.getMonth(),
-			// 					paid: vacation.paid,
-			// 					approved: false,
-			// 					notes: '',
-			// 				};
-			// 				return request;
-			// 			}) as IVacationRequest[]),
-			// 	);
+			this.action.emit();
 		}
 	}
 
@@ -289,7 +264,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			element.status = ReportStatus.Declined;
 		} else if ('period' in element) {
 			this.vacationService.removeVacation(element);
-			this.action.emit(true);
+			this.action.emit();
 		}
 	}
 

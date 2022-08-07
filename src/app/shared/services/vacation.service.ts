@@ -49,7 +49,6 @@ export class VacationService {
 		const arr = this.vacationRequests$.value.filter((vacation) => {
 			return vacation.project.title === project.title;
 		});
-
 		return of(arr);
 	}
 
@@ -77,14 +76,14 @@ export class VacationService {
 						period:
 							vacation.dateFrom.getDate() +
 							'.' +
-							vacation.dateFrom.getMonth() +
+							(vacation.dateFrom.getMonth() + 1) +
 							' - ' +
 							vacation.dateTo.getDate() +
 							'.' +
-							vacation.dateTo.getMonth(),
+							(vacation.dateTo.getMonth() + 1),
 						paid: vacation.paid,
 						approved: false,
-						notes: '',
+						notes: vacation.comments ?? '',
 					};
 					arr.push(request);
 				});
@@ -114,14 +113,14 @@ export class VacationService {
 					period:
 						vacation.dateFrom.getDate() +
 						'.' +
-						vacation.dateFrom.getMonth() +
+						(vacation.dateFrom.getMonth() + 1) +
 						' - ' +
 						vacation.dateTo.getDate() +
 						'.' +
-						vacation.dateTo.getMonth(),
+						(vacation.dateTo.getMonth() + 1),
 					paid: vacation.paid,
 					approved: false,
-					notes: '',
+					notes: vacation.comments ?? '',
 				};
 				this.vacationRequests$.next(this.vacationRequests$.value.concat(request));
 			});
@@ -134,11 +133,11 @@ export class VacationService {
 				vacation.employee.userName === data.name &&
 				vacation.dateFrom.getDate() +
 					'.' +
-					vacation.dateFrom.getMonth() +
+					(vacation.dateFrom.getMonth() + 1) +
 					' - ' +
 					vacation.dateTo.getDate() +
 					'.' +
-					vacation.dateTo.getMonth() ===
+					(vacation.dateTo.getMonth() + 1) ===
 					data.period
 			);
 		});
@@ -159,11 +158,11 @@ export class VacationService {
 				vacation.employee.userName === data.name &&
 				vacation.dateFrom.getDate() +
 					'.' +
-					vacation.dateFrom.getMonth() +
+					(vacation.dateFrom.getMonth() + 1) +
 					' - ' +
 					vacation.dateTo.getDate() +
 					'.' +
-					vacation.dateTo.getMonth() ===
+					(vacation.dateTo.getMonth() + 1) ===
 					data.period
 			);
 		});
@@ -175,5 +174,11 @@ export class VacationService {
 			}),
 		);
 		this.localStorageService.setData(this.VACATIONS_DATA_KEY, this.vacations$.value);
+	}
+
+	public approveAll(data: IVacationRequest[]): void {
+		data.forEach((request) => {
+			this.updateVacation(request);
+		});
 	}
 }

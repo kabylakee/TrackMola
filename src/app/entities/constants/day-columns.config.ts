@@ -85,7 +85,7 @@ export const REQUEST_TABLE_CONFIG: ITableColumn[] = [
 	},
 	{
 		id: '2',
-		type: ColumnType.PROJECT,
+		type: ColumnType.PROJECT_NAME,
 		cls: ClsType.ProjectColumn,
 		title: 'Project',
 		field: 'project',
@@ -99,7 +99,7 @@ export const REQUEST_TABLE_CONFIG: ITableColumn[] = [
 	},
 	{
 		id: '4',
-		type: ColumnType.CHECK,
+		type: ColumnType.CHECK_DISABLED,
 		cls: ClsType.PaidColumn,
 		title: 'Paid',
 		field: 'paid',
@@ -120,7 +120,7 @@ export const REQUEST_TABLE_CONFIG: ITableColumn[] = [
 	},
 	{
 		id: '7',
-		type: ColumnType.INPUT,
+		type: ColumnType.COMMENTS,
 		cls: ClsType.NotesColumn,
 		title: 'Notes',
 		field: 'notes',

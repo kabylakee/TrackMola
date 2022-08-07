@@ -32,6 +32,9 @@
 						<div *ngSwitchCase="columnType.CHECK">
 							<mat-checkbox [checked]="element.paid" color="primary"></mat-checkbox>
 						</div>
+						<div *ngSwitchCase="columnType.CHECK_DISABLED">
+							<mat-checkbox [checked]="element.paid" color="primary" disabled></mat-checkbox>
+						</div>
 
 						<div *ngSwitchCase="columnType.INPUT">
 							<ng-container *ngIf="column.field === 'title'">
@@ -49,18 +52,15 @@
 									<input matInput formControlName="overtime" />
 								</mat-form-field>
 							</ng-container>
-							<ng-container *ngIf="column.field === 'notes'">
-								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="notes" />
-								</mat-form-field>
-							</ng-container>
 							<ng-container *ngIf="column.field === 'period'">
 								<mat-form-field class="example-full-width" appearance="fill">
 									<input matInput formControlName="period" />
 								</mat-form-field>
 							</ng-container>
 						</div>
-
+						<div *ngSwitchCase="columnType.COMMENTS">
+							<div class="text" title="{{element['' + column.field]}}">{{ element['' + column.field] }}</div>
+						</div>
 						<div *ngSwitchCase="columnType.PROJECT">
 							<mat-form-field appearance="fill">
 								<mat-select
