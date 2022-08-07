@@ -133,6 +133,10 @@
 							<span>{{ element['' + column.field] }}</span>
 						</div>
 
+						<div *ngSwitchCase="columnType.PERCENT">
+							<span>{{ element['' + column.field] / sumTime.time | percent }}</span>
+						</div>
+
 						<div *ngSwitchCase="columnType.PROJECT_NAME">
 							<app-project-component
 								[projectName]="element['' + column.field].title"

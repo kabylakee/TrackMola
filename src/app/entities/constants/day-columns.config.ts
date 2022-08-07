@@ -217,7 +217,7 @@ export const MODAL_TABLE_CONFIG: ITableColumn[] = [
 	},
 	{
 		id: '2',
-		type: ColumnType.TEXT,
+		type: ColumnType.PERCENT,
 		cls: ClsType.TimeColumn,
 		title: 'Percent',
 		field: 'time',
