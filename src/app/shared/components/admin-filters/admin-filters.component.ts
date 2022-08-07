@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {IViewPeriod} from '../../../entities/interfaces/view-period.interface';
 import {CountryEnum} from '../../../entities/enums/country.enum';
 import {COUNTRY_TOGGLE} from '../../../entities/constants/country.constants';
@@ -9,6 +9,8 @@ import {SetScheduleComponent} from '../set-schedule/set-schedule.component';
 import {AdminTabsTitle} from '../../../entities/enums/tabs.enum';
 import {IProject} from '../../../entities/interfaces/project.interface';
 import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
+import {IHoliday} from '../../../entities/interfaces/holiday.interface';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-admin-filters',
@@ -17,28 +19,37 @@ import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminFiltersComponent {
+	@Input() clickedDay: Set<Date>;
+
 	@Output() tabsValue = new EventEmitter<AdminTabsTitle>();
 	@Output() searchValueChange = new EventEmitter<string>();
+	@Output() changeProject = new EventEmitter<string>();
+	@Output() changeDate = new EventEmitter<Date>();
+	@Output() toggleCountry = new EventEmitter<CountryEnum>();
+	@Output() setWeekendSchedule = new EventEmitter<IHoliday>();
 
 	public readonly toggleConfig: IViewPeriod<CountryEnum>[] = COUNTRY_TOGGLE;
 	public readonly tabsConfig: IViewPeriod<AdminTabsTitle>[] = ADMIN_TABS;
 	public readonly tabs = AdminTabsTitle;
+	public readonly SELECT_ALL = 'Select All';
 	public tabChange: AdminTabsTitle = AdminTabsTitle.Calendar;
 	public countrySelection: CountryEnum = CountryEnum.Belarus;
-	public calendarDate: Date;
 	public periodRange: Period = Period.Month;
 	public projects: IProject[] = PROJECT_MOCK;
-	public currentProject: IProject = PROJECT_MOCK[0];
+	public currentProject = SELECT_ALL;
 
 	constructor(public dialog: MatDialog) {}
 
-	public openDialog() {
-		this.dialog.open(SetScheduleComponent, {
+	public openDialog(): void {
+		const dialogRef = this.dialog.open(SetScheduleComponent, {
 			position: {
 				top: 'calc(50vh - 15.35 * var(--offset))',
 				left: 'calc(50vw - 6.5 * var(--offset))',
 			},
-			data: {},
+			data: this.clickedDay,
+		});
+		dialogRef.afterClosed().subscribe((data) => {
+			this.setWeekendSchedule.emit(data);
 		});
 	}
 
@@ -48,10 +59,15 @@ export class AdminFiltersComponent {
 	}
 
 	public selectProject(value: Event): void {
-		this.projects.forEach((project) => {
-			if (project.title === `${value}`) {
-				this.currentProject = project;
-			}
-		});
+		this.currentProject =
+			value + '' === SELECT_ALL
+				? value + ''
+				: this.projects.find((project) => project.title === `${value}`)!.title;
+		this.changeProject.emit(this.currentProject);
+	}
+
+	public changeCountry(element: CountryEnum): void {
+		this.countrySelection = element;
+		this.toggleCountry.emit(element);
 	}
 }

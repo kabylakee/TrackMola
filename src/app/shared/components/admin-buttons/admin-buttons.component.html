@@ -1,0 +1,10 @@
+<div class="admin-buttons">
+	<button mat-flat-button color="secondary" (click)="onAdminButtonAction(AdminButtonsEnum.AddUser)">
+		<mat-icon>add</mat-icon>
+		{{ AdminButtonsEnum.AddUser }}
+	</button>
+	<span class="notifier" [class.invisible]="!notifierMassage">{{ notifierMassage }}</span>
+	<button mat-flat-button color="primary" (click)="onAdminButtonAction(AdminButtonsEnum.Save)">
+		{{ AdminButtonsEnum.Save }}
+	</button>
+</div>

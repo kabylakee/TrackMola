@@ -10,63 +10,83 @@
 
 		<td *matCellDef="let element">
 			<div [ngSwitch]="column.type" [ngClass]="column.cls">
-
 				<div *ngSwitchCase="columnType.USER">
 					<mat-form-field class="example-full-width" appearance="fill">
-						<input matInput placeholder="Name Surname" [value]="element['' + column.field]" />
+						<input
+							matInput
+							placeholder="Name Surname"
+							[value]="element['' + column.field]"
+						/>
 					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.EMAIL">
 					<mat-form-field class="example-full-width" appearance="fill">
-						<input matInput placeholder="example@datamola.com" [value]="element['' + column.field]" />
+						<input
+							matInput
+							placeholder="example@datamola.com"
+							[value]="element['' + column.field]"
+						/>
 					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.ROLE">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="role" *ngFor="let role of roles">{{role}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[value]="element['' + column.field]"
+						>
+							<mat-option [value]="role" *ngFor="let role of roles">{{ role }}</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.DEPARTMENT">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="department" *ngFor="let department of departments">{{department}}</mat-option>
-            </mat-select>
-          </mat-form-field>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[value]="element['' + column.field]"
+						>
+							<mat-option [value]="department" *ngFor="let department of departments">{{
+								department
+							}}</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.PROJECT">
-          <mat-form-field appearance="fill">
-            <mat-select
-              [value]="element[''+column.field]"
-              [compareWith]="compareProjectObjects"
-              [ngStyle]="getColor(element['' + column.field].color)"
-              multiple
-            >
-              <mat-option [value]="project" *ngFor="let project of projects">
-                <app-project-component
-                  [projectName]="project.title"
-                  [projectColor]="project.color"
-                ></app-project-component>
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[value]="element['' + column.field]"
+							[compareWith]="compareProjectObjects"
+							[ngStyle]="getColor(element['' + column.field].color)"
+							multiple
+						>
+							<mat-option [value]="project" *ngFor="let project of projects">
+								<app-project-component
+									[projectName]="project.title"
+									[projectColor]="project.color"
+								></app-project-component>
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.OFFICE">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="office" *ngFor="let office of offices">{{ office }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+					<mat-form-field appearance="fill">
+						<mat-select
+							[value]="element['' + column.field]"
+						>
+							<mat-option [value]="office" *ngFor="let office of offices">{{ office }}</mat-option>
+						</mat-select>
+					</mat-form-field>
 				</div>
 
 				<div *ngSwitchCase="columnType.OPTIONS">
-					<button mat-icon-button aria-label="Options" class="delete-user">
+					<button
+						mat-icon-button
+						aria-label="Options"
+						class="delete-user"
+						(click)="onDeleteBtn(element)"
+					>
 						<mat-icon class="material-icons-outlined">delete</mat-icon>
 					</button>
 				</div>
