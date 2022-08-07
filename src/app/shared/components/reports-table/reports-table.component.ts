@@ -374,7 +374,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 
