@@ -49,9 +49,11 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public actionHanding: IOptionInterface;
 	@Input() public reportButtonAction: ReportsButtonEnum;
 
+	@Input() public selectedProject: IProject = PROJECT_MOCK[0];
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
+	@Output() public action = new EventEmitter();
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
@@ -261,6 +263,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			element.status = ReportStatus.Approved;
 		} else if ('period' in element) {
 			element.approved = true;
+			this.vacationService.updateVacation(element);
+			this.action.emit();
 		}
 	}
 
@@ -269,6 +273,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			element.status = ReportStatus.Declined;
 		} else if ('period' in element) {
 			this.vacationService.removeVacation(element);
+			this.action.emit();
 		}
 	}
 

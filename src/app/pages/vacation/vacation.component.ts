@@ -10,6 +10,7 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {IProject} from 'src/app/entities/interfaces/project.interface';
 
 @Component({
 	selector: 'app-vacation',
@@ -28,34 +29,25 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public vacations: IVacation[] = [];
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
 	public vacationTab: IVacationTab = VACATION_TABS[1];
-
+	public selectedProject: IProject = PROJECT_MOCK[0];
 	// Request table
-	public requests: IVacationRequest[] = [];
+	public vacationRequests: IVacationRequest[];
+	private requests: IVacationRequest[] = [];
 	public columns: ITableColumn[] = [];
 
 	constructor(private vacationService: VacationService) {}
 
 	public ngOnInit(): void {
 		this.getMonthVacations();
-
+		this.getVacationRequests();
 		this.columns = REQUEST_TABLE_CONFIG;
-		this.requests = [
-			{
-				checked: false,
-				name: 'Dilan Brooks',
-				project: PROJECT_MOCK[0],
-				period: '12.07 - 13.07',
-				approved: false,
-				paid: true,
-				notes: '123',
-			},
-		];
 	}
 
 	public onChangeDate(event: Date): void {
 		this.selectedDate = event;
 		this.getMonthVacations();
 	}
+
 	public onChangeFilters(event: IVacationFilter): void {
 		this.filters = event;
 		this.getMonthVacations();
@@ -64,10 +56,40 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public onSendRequest(event: IVacation): void {
 		this.vacationService.saveVacation(event);
 		this.getMonthVacations();
+		this.getVacationRequests();
 	}
 
 	public onChangeTab(event: IVacationTab): void {
 		this.vacationTab = event;
+	}
+
+	public onChangeProject(event: IProject): void {
+		this.selectedProject = event;
+		if (this.vacationTab === VACATION_TABS[2]) {
+			this.columns = REQUEST_TABLE_CONFIG;
+			this.getVacationRequests();
+		}
+	}
+
+	public onChangeInput(value: string): void {
+		if (value === '') {
+			this.vacationRequests = this.requests;
+			return;
+		}
+		this.vacationRequests = this.requests.filter((vacation) => {
+			return Boolean(vacation.name.toLowerCase().includes(value.toLocaleLowerCase()));
+		});
+	}
+
+	public onStatusChanged(): void {
+		this.getMonthVacations();
+		this.getVacationRequests();
+	}
+
+	public approveAllSelected(): void {
+		this.vacationService.approveAll(this.vacationRequests.filter((request) => request.checked));
+		this.getMonthVacations();
+		this.getVacationRequests();
 	}
 
 	private getMonthVacations(): void {
@@ -78,6 +100,13 @@ export class VacationComponent implements OnInit, OnDestroy {
 			)
 			.pipe(takeWhile(() => this.isSub))
 			.subscribe((vacations) => (this.vacations = vacations));
+	}
+
+	private getVacationRequests(): void {
+		this.vacationService
+			.getVacationRequests(this.selectedProject)
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((vacations) => (this.requests = this.vacationRequests = vacations));
 	}
 
 	public ngOnDestroy(): void {
