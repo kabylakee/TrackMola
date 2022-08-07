@@ -40,6 +40,7 @@
 	$notes-width: 10rem;
 	$period-width: 6rem;
 	$name-width: 8rem;
+	$tasks-width: 25rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
@@ -148,6 +149,11 @@
 
 	.name-column {
 		width: $name-width;
+	}
+
+	.task-column {
+		width: $tasks-width;
+		min-width: max-content;
 	}
 
 	.no-data-container {

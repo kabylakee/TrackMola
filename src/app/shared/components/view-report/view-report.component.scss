@@ -1,6 +1,8 @@
 @import 'mixins/common-mixin';
 
 :host {
+	overflow: none;
+
 	.mat-dialog-title {
 		display: flex;
 		align-items: center;
@@ -25,7 +27,49 @@
 
 			.mat-icon {
 				@include icon-size(--font-size);
+				cursor: pointer;
 			}
 		}
+	}
+
+	.mat-dialog-content {
+		overflow-y: auto;
+	}
+
+	.mat-dialog-actions.footer {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+	}
+
+	.mat-flat-button {
+		padding: calc(var(--offset-xs) + var(--offset-xxxs)) var(--offset-m);
+		font-weight: 600;
+		font-size: var(--font-size-xs);
+		line-height: var(--font-size);
+		border-radius: var(--border-radius-xs);
+		transition: var(--transition-xxs);
+
+		&.mat-secondary {
+			color: var(--accent-300);
+			border: 1px solid var(--accent-300);
+
+			&:hover {
+				color: var(--accent-500);
+				border-color: var(--accent-500);
+			}
+		}
+
+		&.mat-primary {
+			&:hover {
+				background-color: var(--accent-500);
+			}
+
+			border: 1px solid var(--accent-300);
+		}
+	}
+
+	.offset {
+		height: var(--offset);
 	}
 }

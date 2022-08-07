@@ -1,6 +1,7 @@
 $row-height: 2.5rem;
 
-app-root {
+app-root,
+mat-dialog-container {
 	.mat-table {
 		width: 100%;
 		overflow: hidden;

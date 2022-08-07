@@ -13,6 +13,7 @@ export enum ColumnType {
 	PROJECT_NAME = 'Project name',
 	CHECK_DISABLED = 'Check disabled',
 	COMMENTS = 'Comments',
+	PERCENT = 'Percent',
 }
 
 export enum UsersColumnType {

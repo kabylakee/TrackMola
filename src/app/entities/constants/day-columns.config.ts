@@ -199,3 +199,48 @@ export const MANAGEMENT_TABLE_CONFIG: ITableColumn[] = [
 		field: 'view',
 	},
 ];
+
+export const MODAL_TABLE_CONFIG: ITableColumn[] = [
+	{
+		id: '0',
+		type: ColumnType.TEXT,
+		cls: ClsType.TaskColumn,
+		title: 'Task',
+		field: 'title',
+	},
+	{
+		id: '1',
+		type: ColumnType.PROJECT_NAME,
+		cls: ClsType.ProjectColumn,
+		title: 'Project',
+		field: 'project',
+	},
+	{
+		id: '2',
+		type: ColumnType.PERCENT,
+		cls: ClsType.TimeColumn,
+		title: 'Percent',
+		field: 'time',
+	},
+	{
+		id: '3',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Total time (h)',
+		field: 'time',
+	},
+	{
+		id: '4',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Paid overtime (h)',
+		field: 'overtime',
+	},
+	{
+		id: '5',
+		type: ColumnType.LINK,
+		cls: ClsType.LinkColumn,
+		title: 'Task links',
+		field: 'asanaLink',
+	},
+];
