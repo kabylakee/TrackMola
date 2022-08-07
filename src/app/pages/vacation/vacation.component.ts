@@ -106,11 +106,7 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.vacationService
 			.getVacationRequests(this.selectedProject)
 			.pipe(takeWhile(() => this.isSub))
-			.subscribe((vacations) => (this.requests = vacations));
-		this.vacationService
-			.getVacationRequests(this.selectedProject)
-			.pipe(takeWhile(() => this.isSub))
-			.subscribe((vacations) => (this.vacationRequests = vacations));
+			.subscribe((vacations) => (this.requests = this.vacationRequests = vacations));
 	}
 
 	public ngOnDestroy(): void {

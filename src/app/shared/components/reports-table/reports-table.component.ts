@@ -48,6 +48,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public value: string = '';
 	@Input() public actionHanding: IOptionInterface;
 	@Input() public reportButtonAction: ReportsButtonEnum;
+
 	@Input() public selectedProject: IProject = PROJECT_MOCK[0];
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
