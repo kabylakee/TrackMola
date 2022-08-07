@@ -11,6 +11,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {UsersTableComponent} from './users-table.component';
 import {CdkTableModule} from '@angular/cdk/table';
 import {ProjectModule} from '../project/projects.module';
+import {NoDataModule} from '../no-data/no-data.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
 	declarations: [UsersTableComponent],
@@ -25,6 +27,8 @@ import {ProjectModule} from '../project/projects.module';
 		CdkTableModule,
 		MatSelectModule,
 		ProjectModule,
+		NoDataModule,
+		MatTooltipModule,
 	],
 	exports: [UsersTableComponent],
 })

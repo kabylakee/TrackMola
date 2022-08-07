@@ -1,0 +1,32 @@
+:host {
+	$button-height: 3rem;
+
+	.administration {
+		display: flex;
+		flex-flow: column;
+		width: 100%;
+		height: 100%;
+
+		&-content {
+			position: relative;
+			display: flex;
+			flex-flow: column;
+			flex-grow: 1;
+			width: 100%;
+			height: 100%;
+			overflow-y: hidden;
+		}
+		&-table {
+			display: flex;
+			flex-flow: column;
+			justify-content: space-between;
+			height: calc(100% - (var(--offset) + $button-height));
+			margin-top: var(--offset);
+		}
+		app-admin-buttons {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}
+	}
+}
