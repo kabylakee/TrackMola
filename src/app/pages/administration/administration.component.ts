@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
 import {ITableColumn} from '../../entities/interfaces/table-column.interface';
 import {IEmployee} from '../../entities/interfaces/employee.interface';
@@ -10,6 +10,7 @@ import {IHoliday} from '../../entities/interfaces/holiday.interface';
 import {CountryEnum} from '../../entities/enums/country.enum';
 import {HolidayService} from '../../shared/services/holiday.service';
 import {SELECT_ALL} from 'src/app/entities/constants/formats.constants';
+import {takeWhile} from 'rxjs';
 
 @Component({
 	selector: 'app-administration',
@@ -17,7 +18,7 @@ import {SELECT_ALL} from 'src/app/entities/constants/formats.constants';
 	styleUrls: ['./administration.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdministrationComponent implements OnInit {
+export class AdministrationComponent implements OnInit, OnDestroy {
 	@Input() changeDate: Date;
 
 	public users: IEmployee[] = [];
@@ -34,6 +35,8 @@ export class AdministrationComponent implements OnInit {
 	public readonly title =
 		RouterPaths.Administration.charAt(0).toUpperCase() + RouterPaths.Administration.slice(1);
 
+	private isSub = true;
+
 	constructor(private usersService: UsersService, private holidayService: HolidayService) {}
 
 	public ngOnInit(): void {
@@ -42,7 +45,10 @@ export class AdministrationComponent implements OnInit {
 	}
 
 	private getUsers(): void {
-		this.usersService.getUsers().subscribe((users) => (this.users = users));
+		this.usersService
+			.getUsers()
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((users) => (this.users = users));
 	}
 
 	public changeTabsValue(tabsValue: AdminTabsTitle): void {
@@ -82,5 +88,9 @@ export class AdministrationComponent implements OnInit {
 
 	public onClickedDays(event: Set<Date>): void {
 		this.clickedDay = new Set(event);
+	}
+
+	ngOnDestroy() {
+		this.isSub = false;
 	}
 }
