@@ -1,3 +1,6 @@
 <app-header [pageTitle]="title"></app-header>
-<app-manager-filters (export)="openExportWindow()"></app-manager-filters>
-<app-reports-table [dataSource]="requests" [columns]="columns"></app-reports-table>
+<app-manager-filters
+	(export)="openExportWindow()"
+	(approve)="table.approvedSelected()"
+></app-manager-filters>
+<app-reports-table #table [dataSource]="requests" [columns]="columns"></app-reports-table>

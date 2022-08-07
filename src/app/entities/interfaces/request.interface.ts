@@ -12,6 +12,7 @@ export interface IVacationRequest {
 }
 
 export interface IManagementRequest {
+	weekFirstDay: Date;
 	checked: boolean;
 	name: string;
 	project: IProject;
@@ -20,4 +21,8 @@ export interface IManagementRequest {
 	paidOvertime: number;
 	status: ReportStatus;
 	approved: boolean;
+}
+
+export interface ViewDialogData {
+	dataSource: IManagementRequest;
 }

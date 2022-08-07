@@ -122,7 +122,7 @@
 						</div>
 
 						<div *ngSwitchCase="columnType.VIEW">
-							<button mat-icon-button aria-label="View" (click)="viewReport()">
+							<button mat-icon-button aria-label="View" (click)="viewReport(element)">
 								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
 									visibility
 								</mat-icon>
@@ -131,6 +131,10 @@
 
 						<div *ngSwitchCase="columnType.TEXT">
 							<span>{{ element['' + column.field] }}</span>
+						</div>
+
+						<div *ngSwitchCase="columnType.PERCENT">
+							<span>{{ element['' + column.field] / sumTime.time | percent }}</span>
 						</div>
 
 						<div *ngSwitchCase="columnType.PROJECT_NAME">

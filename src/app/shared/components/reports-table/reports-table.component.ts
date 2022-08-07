@@ -39,7 +39,7 @@ import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: TableDataType[] = [];
@@ -59,7 +59,9 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public allChecked: boolean = false;
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
+	public reportStatus = ReportStatus;
 	private isSub = true;
+	private checkedRows = new Set<TableDataType>();
 
 	public readonly columnType = ColumnType;
 	public readonly projects: IProject[] = PROJECT_MOCK;
@@ -161,6 +163,12 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.reportButtonAction && changes.reportButtonAction.currentValue) {
 			this.reportButtonHanding(this.reportButtonAction);
 		}
+	}
+
+	public approvedSelected(): void {
+		this.dataSource
+			.filter((request) => request.checked)
+			.forEach((request) => this.approve(request));
 	}
 
 	public reportButtonHanding(button: ReportsButtonEnum): void {
@@ -309,13 +317,31 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
 	}
 
-	public viewReport(): void {
-		this.dialog.open(ViewReportComponent, {
+	// Open Dialog by click VIEW button
+	public viewReport(element: IManagementRequest): void {
+		const dialogRef = this.dialog.open(ViewReportComponent, {
 			position: {
 				top: 'calc(50vh - 7.5 * var(--offset))',
-				left: 'calc(50vw - 14 * var(--offset))',
+				left: 'calc(10vw)',
 			},
-			data: {},
+			data: {
+				dataSource: element,
+			},
+			width: 'calc(80vw)',
+		});
+
+		dialogRef.afterClosed().subscribe((result: ReportStatus) => {
+			switch (result) {
+				case this.reportStatus.Approved:
+					this.approve(element); // Approve button
+					break;
+				case this.reportStatus.Declined:
+					this.decline(element); // Decline button
+					break;
+				default:
+					break; // Cross button
+			}
+			this.cd.detectChanges(); // Reload status state at management table after close dialog
 		});
 	}
 
