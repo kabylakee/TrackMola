@@ -49,7 +49,7 @@ export class AdminFiltersComponent implements OnChanges {
 
 	constructor(public dialog: MatDialog) {}
 
-	ngOnChanges(changes: SimpleChanges) {
+	public ngOnChanges(changes: SimpleChanges): void {
 		if (changes.clickedDay.currentValue && this.clickedDay) {
 			this.isDisabled = !this.clickedDay?.size;
 		}

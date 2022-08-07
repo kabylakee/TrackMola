@@ -125,7 +125,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		}
 	}
 
-	public changeFieldValue(event: MatSelectChange, id: number, column: ITableColumn) {
+	public changeFieldValue(event: MatSelectChange, id: number, column: ITableColumn): void {
 		const changedUser = this.dataSource.find((user) => user.id === id);
 		if (changedUser) {
 			// @ts-ignore
@@ -133,7 +133,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		}
 	}
 
-	public changeFieldValueInput(event: Event, id: number, column: ITableColumn) {
+	public changeFieldValueInput(event: Event, id: number, column: ITableColumn): void {
 		const changedUser = this.dataSource.find((user) => user.id === id);
 		if (changedUser) {
 			// @ts-ignore
