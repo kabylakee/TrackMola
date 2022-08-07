@@ -15,9 +15,11 @@ import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
 import {CountryEnum} from '../../../entities/enums/country.enum';
 import {DepartmentEnum} from '../../../entities/enums/department.enum';
 import {Role} from '../../../entities/enums/role.enum';
-import {AdminButtonsEnum} from '../../../entities/enums/admin-buttons.enum';
+import {AdminButtonsEnum} from 'src/app/entities/enums/admin-buttons.enum';
 import {UsersService} from '../../services/users.service';
 import {SELECT_ALL} from '../../../entities/constants/formats.constants';
+import {Size} from '../../../entities/enums/size.enum';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
 	selector: 'app-users-table',
@@ -39,8 +41,10 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	public readonly offices = Object.keys(CountryEnum);
 	public readonly roles = Object.values(Role);
 	public displayedColumns: string[] = [];
+	public readonly size = Size;
 
 	constructor(private cd: ChangeDetectorRef, private usersService: UsersService) {}
+
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((column) => column.id);
 	}
@@ -119,5 +123,25 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		if (this.selectedProject === SELECT_ALL) {
 			this.filteredDataSource = this.dataSource;
 		}
+	}
+
+	public changeFieldValue(event: MatSelectChange, id: number, column: ITableColumn): void {
+		const changedUser = this.dataSource.find((user) => user.id === id);
+		if (changedUser) {
+			// @ts-ignore
+			changedUser[column.field] = event.value;
+		}
+	}
+
+	public changeFieldValueInput(event: Event, id: number, column: ITableColumn): void {
+		const changedUser = this.dataSource.find((user) => user.id === id);
+		if (changedUser) {
+			// @ts-ignore
+			changedUser[column.field] = event;
+		}
+	}
+
+	public getProjectTooltip(projects: IProject[]): string {
+		return projects.map((project) => project.title).join(', ');
 	}
 }
