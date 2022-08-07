@@ -41,7 +41,11 @@
 		<div class="dialog-content-item">
 			<mat-label class="label">CTO</mat-label>
 			<mat-form-field class="cto-select" appearance="fill">
-				<mat-select [value]="currentCTO.userName" (valueChange)="selectCTO($event)">
+				<mat-select
+					[value]="currentCTO.userName"
+					(valueChange)="selectCTO($event)"
+					formControlName="ctoName"
+				>
 					<mat-option [value]="cto.userName" *ngFor="let cto of allCTO"
 						>{{ cto.userName }}
 					</mat-option>
@@ -50,10 +54,13 @@
 			</mat-form-field>
 		</div>
 		<mat-dialog-actions>
+			<label class="error" [hidden]="exportForm.valid">{{ message }}</label>
 			<button mat-flat-button class="action-button" color="secondary" mat-dialog-close>
 				Cancel
 			</button>
-			<button mat-flat-button class="action-button" color="primary">Export</button>
+			<button mat-flat-button class="action-button" color="primary" (click)="onExport()">
+				Export
+			</button>
 		</mat-dialog-actions>
 	</form>
 </mat-dialog-content>

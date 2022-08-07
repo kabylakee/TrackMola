@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {ReportStatus} from 'src/app/entities/enums/report-status.enum';
 import {TimeRateEnum} from 'src/app/entities/enums/time-rate.enum';
 import {IManagementRequest} from 'src/app/entities/interfaces/request.interface';
@@ -52,15 +53,26 @@ export class ManagementRequestsService {
 		});
 	}
 
-	public getRequests(date: Date): Observable<IManagementRequest[]> {
+	public getRequests(weekFirstDay: Date): Observable<IManagementRequest[]> {
 		return (this.requests$ = of(
-			this.requests.filter((request) => +request.weekFirstDay === +date),
+			this.requests.filter((request) => +request.weekFirstDay === +weekFirstDay),
 		));
 	}
 
-	public approveAll(date: Date): void {
-		this.requests
-			.filter((request) => +request.weekFirstDay === +date)
-			.forEach((request) => (request.status = ReportStatus.Approved));
+	public getExportRequests(
+		dateFrom: Date,
+		dateTo: Date,
+		ctoName: string,
+	): Observable<IManagementRequest[]> {
+		dateFrom = MonthTasksHelper.getFirstDayOfWeek(MonthTasksHelper.getWeek(dateFrom), dateFrom);
+		const cto = EMPLOYEE_MOCK.find((employee) => employee.userName === ctoName)!;
+		return (this.requests$ = of(
+			this.requests.filter(
+				(request) =>
+					request.weekFirstDay >= dateFrom &&
+					request.weekFirstDay <= dateTo &&
+					cto.projects.find((project) => project.title === request.project.title),
+			),
+		));
 	}
 }
