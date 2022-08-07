@@ -22,3 +22,7 @@ export interface IManagementRequest {
 	status: ReportStatus;
 	approved: boolean;
 }
+
+export interface ViewDialogData {
+	dataSource: IManagementRequest;
+}
