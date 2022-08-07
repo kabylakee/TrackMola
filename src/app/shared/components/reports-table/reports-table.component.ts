@@ -34,6 +34,7 @@ import {ViewReportComponent} from '../view-report/view-report.component';
 import {ReportStatus} from 'src/app/entities/enums/report-status.enum';
 import {VacationService} from '../../services/vacation.service';
 import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-reports-table',
@@ -48,6 +49,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public value: string = '';
 	@Input() public actionHanding: IOptionInterface;
 	@Input() public reportButtonAction: ReportsButtonEnum;
+	@Input() public searchValue = '';
+	@Input() public selectProject = SELECT_ALL;
 
 	@Input() public selectedProject: IProject = PROJECT_MOCK[0];
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
@@ -162,8 +165,14 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.value) {
 			this.searchTaskField();
 		}
-		if (changes.reportButtonAction && changes.reportButtonAction.currentValue) {
+		if (changes.reportButtonAction?.currentValue) {
 			this.reportButtonHanding(this.reportButtonAction);
+		}
+		if (changes.searchValue) {
+			this.searchUserName();
+		}
+		if (changes.selectProject?.currentValue) {
+			this.changeSelectedProject();
 		}
 	}
 
@@ -350,7 +359,27 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		});
 	}
 
-	ngOnDestroy() {
+	public searchUserName(): void {
+		this.filterDataSource = this.dataSource.filter((item) => {
+			return (item as IManagementRequest).name
+				.toLowerCase()
+				.includes(this.searchValue.toLowerCase());
+		});
+		if (this.searchValue === '') {
+			this.filterDataSource = this.dataSource;
+		}
+	}
+
+	public changeSelectedProject(): void {
+		this.filterDataSource = this.dataSource.filter((item) => {
+			return item.project.title === this.selectProject;
+		});
+		if (this.selectProject === SELECT_ALL) {
+			this.filterDataSource = this.dataSource;
+		}
+	}
+
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 

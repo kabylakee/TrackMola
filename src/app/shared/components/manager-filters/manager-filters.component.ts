@@ -12,6 +12,8 @@ export class ManagerFiltersComponent {
 	@Output() approve = new EventEmitter<void>();
 	@Output() notify = new EventEmitter<void>();
 	@Output() changeDate = new EventEmitter<Date>();
+	@Output() searchValueChange = new EventEmitter<string>();
+	@Output() changeProject = new EventEmitter<string>();
 
 	public readonly periodRange: Period = Period.Week;
 
