@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {MANAGEMENT_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
@@ -16,7 +16,7 @@ import {ManagementRequestsService} from 'src/app/shared/services/management-requ
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagementComponent implements OnInit, OnDestroy {
-	@Input() date: Date = new Date(2022, 5, 30);
+	public date: Date = new Date();
 
 	public readonly title =
 		RouterPaths.Management.charAt(0).toUpperCase() + RouterPaths.Management.slice(1);
@@ -27,19 +27,15 @@ export class ManagementComponent implements OnInit, OnDestroy {
 
 	private isSub = true;
 
-	private readonly weekFirstDay = MonthTasksHelper.getFirstDayOfWeek(
-		MonthTasksHelper.getWeek(this.date),
-		this.date,
-	);
+	get weekFirstDay() {
+		return MonthTasksHelper.getFirstDayOfWeek(MonthTasksHelper.getWeek(this.date), this.date);
+	}
 
 	constructor(public dialog: MatDialog, private requestsService: ManagementRequestsService) {}
 
 	public ngOnInit(): void {
 		this.columns = MANAGEMENT_TABLE_CONFIG;
-		this.requestsService
-			.getRequests(this.weekFirstDay)
-			.pipe(takeWhile(() => this.isSub))
-			.subscribe((requests) => (this.requests = requests));
+		this.getWeekRequests();
 	}
 
 	public openExportWindow(): void {
@@ -52,7 +48,19 @@ export class ManagementComponent implements OnInit, OnDestroy {
 		});
 	}
 
+	public onDatepickerChange(event: Date) {
+		this.date = event;
+		this.getWeekRequests();
+	}
+
 	public ngOnDestroy(): void {
 		this.isSub = false;
+	}
+
+	private getWeekRequests(): void {
+		this.requestsService
+			.getRequests(this.weekFirstDay)
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((requests) => (this.requests = requests));
 	}
 }
