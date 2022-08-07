@@ -11,8 +11,9 @@ export class ManagerFiltersComponent {
 	@Output() export = new EventEmitter<void>();
 	@Output() approve = new EventEmitter<void>();
 	@Output() notify = new EventEmitter<void>();
+	@Output() changeDate = new EventEmitter<Date>();
 
-	public readonly periodRange: Period = Period.Month;
+	public readonly periodRange: Period = Period.Week;
 
 	public onExportClick(): void {
 		this.export.emit();
@@ -24,5 +25,9 @@ export class ManagerFiltersComponent {
 
 	public onNotifyClick(): void {
 		this.notify.emit();
+	}
+
+	public onChangeDate(date: Date) {
+		this.changeDate.emit(date);
 	}
 }

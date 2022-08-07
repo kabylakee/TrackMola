@@ -1,4 +1,5 @@
 import {
+	ChangeDetectionStrategy,
 	ChangeDetectorRef,
 	Component,
 	EventEmitter,
@@ -38,7 +39,7 @@ import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	// changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() public dataSource: TableDataType[] = [];

@@ -24,16 +24,6 @@ export class ExportFormComponent {
 	public currentCTO: IEmployee = this.allCTO[0];
 
 	private exportData: IManagementRequest[];
-	// private readonly exportConfig = [
-	// 	'weekFirstDay',
-	// 	'checked',
-	// 	'name',
-	// 	'project',
-	// 	'expectedHours',
-	// 	'totalHours',
-	// 	'paidOvertime',
-	// 	'status',
-	// ];
 
 	constructor(
 		private excelService: ExcelService,
@@ -67,15 +57,6 @@ export class ExportFormComponent {
 			this.message = 'Date is invalid';
 			return;
 		}
-		// this.requestsService
-		// 	.getExportRequests(
-		// 		this.exportForm.controls.dateFrom.value,
-		// 		this.exportForm.controls.dateTo.value,
-		// 		this.exportForm.controls.ctoName.value,
-		// 	)
-		// 	.subscribe((requests) => (this.exportData = requests));
-
-		// this.excelService.exportAsExcelFile(this.exportConfig, this.exportData, 'newFile', 'newSheet');
 	}
 
 	private formValidator(control: AbstractControl): ValidationErrors | null {
