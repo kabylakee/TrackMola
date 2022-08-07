@@ -1,12 +1,5 @@
 @import 'mixins/common-mixin';
 
-.calendar-block {
-	width: 266px;
-	height: 201px;
-	margin: 1px;
-	background-color: red;
-}
-
 .calendar-header {
 	@include flex-center;
 	height: 33px;
@@ -21,29 +14,6 @@
 .calendar-body {
 	display: flex;
 	justify-content: center;
-}
-
-.calendar-body-container {
-	width: 208px;
-}
-
-.calendar-days-label {
-	display: flex;
-	gap: 15px;
-	justify-content: center;
-	background-color: green;
-}
-
-.calendar-days-content {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
-}
-
-.days-number {
-	width: 20px;
-	height: 20px;
 }
 
 .calendar-grid {

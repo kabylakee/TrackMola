@@ -1,11 +1,7 @@
 <div class="container">
   <div *ngFor="let calendar of calendars" class="container-item">
-    <app-calendar [calendarMonth]="calendar" [currentYear]="datePickerDate.getFullYear()"></app-calendar>
+    <app-calendar (checkCounter)="getCount($event)" [calendarMonth]="calendar" [currentYear]="datePickerDate.getFullYear()"></app-calendar>
   </div>
 </div>
 <app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>
-
-<!-- <div class="calendar-grid">
-  <div class="calendar-header" *ngFor="let weekDay of weekDays">{{weekDay}}</div>
-  <div class="calendar-body" *ngFor="let date of dates">{{date.getDate()}}</div>
-</div> -->
+<!-- <div>{{counter}}</div> -->

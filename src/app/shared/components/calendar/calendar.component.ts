@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+} from '@angular/core';
 import {ICalendarDays} from 'src/app/entities/interfaces/calendar-days.interface';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
@@ -13,6 +20,7 @@ import {ICalendarMonth} from 'src/app/entities/interfaces/calendar-month.interfa
 export class CalendarComponent implements OnInit {
 	@Input() public calendarMonth: ICalendarMonth;
 	@Input() public currentYear: number;
+	@Output() public checkCounter = new EventEmitter<number>();
 
 	public weekDays: String[] = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 	public dates: ICalendarDays[] = [];
@@ -22,8 +30,15 @@ export class CalendarComponent implements OnInit {
 	ngOnInit(): void {
 		const currentDate = new Date(this.currentYear, this.calendarMonth.id, 1);
 		const sundayIndex = 6;
+		let count = 0;
 
 		const paddingDaysStart = currentDate.getDay() === 0 ? sundayIndex : currentDate.getDay() - 1;
+		for (let i = 0; i < this.vacations.length; i++) {
+			if (this.vacations[i].paid) {
+				count = count + 1;
+			}
+		}
+		this.checkCounter.emit(count);
 		for (let i = 0; i < this.dateCount; i++) {
 			this.dates.push({
 				date: new Date(this.currentYear, this.calendarMonth.id, i - paddingDaysStart + 1),
