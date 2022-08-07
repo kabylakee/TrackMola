@@ -7,6 +7,7 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
+import {PeriodHelper} from '../helpers/PeriodHelper.helper';
 
 @Injectable({providedIn: 'root'})
 export class VacationService {
@@ -73,14 +74,7 @@ export class VacationService {
 						checked: false,
 						name: vacation.employee.userName,
 						project: project,
-						period:
-							vacation.dateFrom.getDate() +
-							'.' +
-							(vacation.dateFrom.getMonth() + 1) +
-							' - ' +
-							vacation.dateTo.getDate() +
-							'.' +
-							(vacation.dateTo.getMonth() + 1),
+						period: PeriodHelper.transformDates(vacation.dateFrom, vacation.dateTo),
 						paid: vacation.paid,
 						approved: false,
 						notes: vacation.comments ?? '',
@@ -110,14 +104,7 @@ export class VacationService {
 					checked: false,
 					name: vacation.employee.userName,
 					project: project,
-					period:
-						vacation.dateFrom.getDate() +
-						'.' +
-						(vacation.dateFrom.getMonth() + 1) +
-						' - ' +
-						vacation.dateTo.getDate() +
-						'.' +
-						(vacation.dateTo.getMonth() + 1),
+					period: PeriodHelper.transformDates(vacation.dateFrom, vacation.dateTo),
 					paid: vacation.paid,
 					approved: false,
 					notes: vacation.comments ?? '',
@@ -131,14 +118,7 @@ export class VacationService {
 		const indexOfVacation = this.vacations$.value.findIndex((vacation) => {
 			return (
 				vacation.employee.userName === data.name &&
-				vacation.dateFrom.getDate() +
-					'.' +
-					(vacation.dateFrom.getMonth() + 1) +
-					' - ' +
-					vacation.dateTo.getDate() +
-					'.' +
-					(vacation.dateTo.getMonth() + 1) ===
-					data.period
+				PeriodHelper.transformDates(vacation.dateFrom, vacation.dateTo) === data.period
 			);
 		});
 		this.vacations$.value.splice(indexOfVacation, 1);
@@ -156,14 +136,7 @@ export class VacationService {
 		const indexOfVacation = this.vacations$.value.findIndex((vacation) => {
 			return (
 				vacation.employee.userName === data.name &&
-				vacation.dateFrom.getDate() +
-					'.' +
-					(vacation.dateFrom.getMonth() + 1) +
-					' - ' +
-					vacation.dateTo.getDate() +
-					'.' +
-					(vacation.dateTo.getMonth() + 1) ===
-					data.period
+				PeriodHelper.transformDates(vacation.dateFrom, vacation.dateTo) === data.period
 			);
 		});
 		this.vacations$.value[indexOfVacation].status = VacationRequest.Approved;

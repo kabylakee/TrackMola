@@ -38,6 +38,8 @@
 	$project-width: 5rem;
 	$status-width: 3rem;
 	$notes-width: 10rem;
+	$period-width: 6rem;
+	$name-width: 8rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
@@ -108,7 +110,7 @@
 	.period-column {
 		display: flex;
 		justify-content: center;
-		width: $project-width;
+		width: $period-width;
 		margin: 0;
 	}
 
@@ -145,7 +147,7 @@
 	}
 
 	.name-column {
-		width: 8rem;
+		width: $name-width;
 	}
 
 	.no-data-container {
