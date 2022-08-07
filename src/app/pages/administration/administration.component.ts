@@ -90,7 +90,7 @@ export class AdministrationComponent implements OnInit, OnDestroy {
 		this.clickedDay = new Set(event);
 	}
 
-	ngOnDestroy() {
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 }
