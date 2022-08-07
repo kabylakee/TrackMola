@@ -63,6 +63,11 @@ export class DatePickerComponent implements OnChanges, AfterViewInit {
 				this.pick.select(changedDate as moment.Moment);
 				break;
 			}
+			case this.period.Week: {
+				const changedDate = this.date.value?.add(increment, 'week');
+				this.pick.select(changedDate as moment.Moment);
+				break;
+			}
 		}
 	}
 

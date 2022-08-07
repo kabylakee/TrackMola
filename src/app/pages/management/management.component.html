@@ -2,5 +2,6 @@
 <app-manager-filters
 	(export)="openExportWindow()"
 	(approve)="table.approvedSelected()"
+	(changeDate)="onDatepickerChange($event)"
 ></app-manager-filters>
 <app-reports-table #table [dataSource]="requests" [columns]="columns"></app-reports-table>

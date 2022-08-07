@@ -1,5 +1,8 @@
 <div class="left">
-	<app-date-picker [periodRange]="periodRange"></app-date-picker>
+	<app-date-picker
+		[periodRange]="periodRange"
+		(changeDate)="onChangeDate($event)"
+	></app-date-picker>
 	<app-input-search></app-input-search>
 	<app-project-select></app-project-select>
 </div>
