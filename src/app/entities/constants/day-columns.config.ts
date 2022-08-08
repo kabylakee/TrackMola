@@ -204,7 +204,7 @@ export const MODAL_TABLE_CONFIG: ITableColumn[] = [
 	{
 		id: '0',
 		type: ColumnType.TEXT,
-		cls: ClsType.TaskColumn,
+		cls: ClsType.ModalTaskColumn,
 		title: 'Task',
 		field: 'title',
 	},
@@ -242,5 +242,71 @@ export const MODAL_TABLE_CONFIG: ITableColumn[] = [
 		cls: ClsType.LinkColumn,
 		title: 'Task links',
 		field: 'asanaLink',
+	},
+];
+
+export const FINANCE_TABLE_CONFIG: ITableColumn[] = [
+	{
+		id: '0',
+		type: ColumnType.EMPLOYEE,
+		cls: ClsType.EmployeeColumn,
+		title: 'Employee',
+		field: 'employee',
+	},
+	{
+		id: '1',
+		type: ColumnType.TEXT,
+		cls: ClsType.DepartmentColumn,
+		title: 'Department',
+		field: 'department',
+	},
+	{
+		id: '2',
+		type: ColumnType.TEXT,
+		cls: ClsType.DepartmentColumn,
+		title: 'Rate ($/h)',
+		field: 'rate',
+	},
+	{
+		id: '3',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Percent',
+		field: 'percent',
+	},
+	{
+		id: '4',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Time',
+		field: 'time',
+	},
+	{
+		id: '5',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Total time',
+		field: 'totalTime',
+	},
+	{
+		id: '6',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Date start',
+		field: 'dateStart',
+	},
+	{
+		id: '7',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Gross salary',
+		field: 'grossSalary',
+	},
+	{
+		id: '8',
+		type: ColumnType.TEXT,
+		cls: ClsType.TimeColumn,
+		title: 'Salary review',
+		field: 'salaryReview',
 	},
 ];

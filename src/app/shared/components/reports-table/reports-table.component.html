@@ -133,6 +133,13 @@
 							<span>{{ element['' + column.field] }}</span>
 						</div>
 
+						<div *ngSwitchCase="columnType.EMPLOYEE" class="employee-container">
+							<div class="image">
+								<img src="{{ element['' + column.field].image }}" alt="{{ element['' + column.field].userName }}">
+							</div>
+							<div>{{ element['' + column.field].userName }}</div>
+						</div>
+
 						<div *ngSwitchCase="columnType.PERCENT">
 							<span>{{ element['' + column.field] / sumTime.time | percent }}</span>
 						</div>

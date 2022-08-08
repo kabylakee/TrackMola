@@ -12,6 +12,7 @@ export enum ColumnType {
 	VIEW = 'View',
 	PROJECT_NAME = 'Project name',
 	PERCENT = 'Percent',
+	EMPLOYEE = 'Employee',
 }
 
 export enum UsersColumnType {

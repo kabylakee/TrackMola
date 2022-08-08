@@ -39,11 +39,13 @@
 	$status-width: 3rem;
 	$notes-width: 5rem;
 	$tasks-width: 25rem;
+	$employee-width: 12rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
 	$button-height: 3rem;
 	$header-height: 3rem;
+	$image-size: 2rem;
 
 	.day-table {
 		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
@@ -139,9 +141,29 @@
 		width: 10rem;
 	}
 
-	.task-column {
+	.modal-task-column {
 		width: $tasks-width;
 		min-width: max-content;
+	}
+
+	.employee-column {
+		width: $employee-width;
+
+		.employee-container {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			.image {
+				@include flex-center;
+				padding-right: var(--offset-s);
+	
+				img {
+					width: $image-size;
+					border-radius: var(--border-radius-xs)
+				}
+			}
+		}
 	}
 
 	.no-data-container {

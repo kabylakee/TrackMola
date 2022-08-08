@@ -8,6 +8,7 @@ export enum ClsType {
 	OptionsColumn = 'options-column',
 	CheckAllColumn = 'check-all-column',
 	TaskColumn = 'task-column',
+	ModalTaskColumn = 'modal-task-column',
 	StatusColumn = 'status-column',
 	TimeColumn = 'time-column',
 	PaidColumn = 'paid-column',
@@ -16,4 +17,5 @@ export enum ClsType {
 	ApproveColumn = 'approve-column',
 	NotesColumn = 'notes-column',
 	NameColumn = 'name-column',
+	EmployeeColumn = 'employee-column',
 }
