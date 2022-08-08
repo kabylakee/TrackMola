@@ -5,6 +5,7 @@ import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {Role} from 'src/app/entities/enums/role.enum';
 import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
 import {IExcelData} from 'src/app/entities/interfaces/excel-data.interface';
+import {DateTransformHelper} from '../../helpers/date-transform.helper';
 import {ExcelService} from '../../services/excel.service';
 import {ManagementRequestsService} from '../../services/management-requests.service';
 
@@ -24,7 +25,14 @@ export class ExportFormComponent {
 	public currentCTO: IEmployee = this.allCTO[0];
 
 	private exportData: IExcelData[];
-	private readonly exportConfig = ['Project', 'N.Surname', 'Expected hours', 'hours'];
+	private readonly exportConfig = [
+		'Date',
+		'Project',
+		'N.Surname',
+		'Percent',
+		'Expected hours',
+		'hours',
+	];
 
 	constructor(
 		private excelService: ExcelService,
@@ -58,6 +66,7 @@ export class ExportFormComponent {
 			this.message = 'Date is invalid';
 			return;
 		}
+
 		this.requestsService
 			.getExportRequests(
 				this.exportForm.controls.dateFrom.value,
@@ -68,15 +77,26 @@ export class ExportFormComponent {
 				(requests) =>
 					(this.exportData = requests.map((request) => {
 						return {
+							date: `Week of ${DateTransformHelper.weeklyReportFormat(
+								this.exportForm.controls.dateFrom.value,
+							)}`,
 							project: request.project.title,
 							surname: request.name,
+							percent: `${(request.totalHours / request.expectedHours) * 100}%`,
 							workingHours: request.expectedHours + '',
 							hours: request.totalHours + '',
 						};
 					})),
 			);
 
-		this.excelService.exportAsExcelFile(this.exportConfig, this.exportData, 'newFile', 'newSheet');
+		this.excelService.exportAsExcelFile(
+			this.exportConfig,
+			this.exportData,
+			'WeeklyReport',
+			`Summary week of ${DateTransformHelper.weeklyReportFormat(
+				this.exportForm.controls.dateFrom.value,
+			)}`,
+		);
 	}
 
 	private formValidator(control: AbstractControl): ValidationErrors | null {
