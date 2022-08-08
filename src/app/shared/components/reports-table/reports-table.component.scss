@@ -38,7 +38,7 @@
 	$project-width: 5rem;
 	$status-width: 3rem;
 	$notes-width: 10rem;
-	$period-width: 6rem;
+	$period-width: 9rem;
 	$name-width: 8rem;
 	$tasks-width: 25rem;
 
@@ -120,7 +120,8 @@
 		justify-content: center;
 		width: 100%;
 		.text {
-			max-width: 25rem;
+			max-width: 24rem;
+			min-width: 24rem;
 			max-height: 1.5rem;
 			overflow-y: hidden;
 			word-wrap: break-word;
@@ -132,9 +133,15 @@
 		justify-content: center;
 		.approve {
 			color: var(--accent-200);
+			&:hover {
+				color: var(--accent-300);
+			}
 		}
 		.decline {
 			color: rgba-color(red, 0.3);
+			&:hover {
+				color: rgba-color(red, 0.6);
+			}
 		}
 	}
 
@@ -160,5 +167,6 @@
 		@include flex-center;
 		padding-top: var(--offset);
 		padding-bottom: var(--offset);
+		width: 100%;
 	}
 }

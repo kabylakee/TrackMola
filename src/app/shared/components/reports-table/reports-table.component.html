@@ -212,10 +212,10 @@
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
 
 			<tr class="mat-row" *matNoDataRow>
-				<td class="mat-cell" colspan="8">
-					<div class="no-data-container">
-						<app-no-data [size]="size.S"></app-no-data>
-					</div>
+				<td class="mat-cell" colspan="10" style="table-layout: fixed;">
+				<div class="no-data-container">
+					<app-no-data [size]="size.S"></app-no-data>
+				</div>
 				</td>
 			</tr>
 		</table>
