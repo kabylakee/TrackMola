@@ -157,10 +157,10 @@
 			.image {
 				@include flex-center;
 				padding-right: var(--offset-s);
-	
+
 				img {
 					width: $image-size;
-					border-radius: var(--border-radius-xs)
+					border-radius: var(--border-radius-xs);
 				}
 			}
 		}

@@ -256,14 +256,14 @@ export const FINANCE_TABLE_CONFIG: ITableColumn[] = [
 	{
 		id: '1',
 		type: ColumnType.TEXT,
-		cls: ClsType.DepartmentColumn,
+		cls: ClsType.TimeColumn,
 		title: 'Department',
 		field: 'department',
 	},
 	{
 		id: '2',
 		type: ColumnType.TEXT,
-		cls: ClsType.DepartmentColumn,
+		cls: ClsType.TimeColumn,
 		title: 'Rate ($/h)',
 		field: 'rate',
 	},
