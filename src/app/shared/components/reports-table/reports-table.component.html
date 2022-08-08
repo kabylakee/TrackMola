@@ -135,7 +135,7 @@
 
 						<div *ngSwitchCase="columnType.EMPLOYEE" class="employee-container">
 							<div class="image">
-								<img src="{{ element['' + column.field].image }}" alt="{{ element['' + column.field].userName }}">
+								<img class="img" src="{{ element[''+column.field].image }}" alt="{{ element[''+column.field].userName }}">
 							</div>
 							<div>{{ element['' + column.field].userName }}</div>
 						</div>

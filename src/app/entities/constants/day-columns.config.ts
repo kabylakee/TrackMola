@@ -271,21 +271,21 @@ export const FINANCE_TABLE_CONFIG: ITableColumn[] = [
 		id: '3',
 		type: ColumnType.TEXT,
 		cls: ClsType.TimeColumn,
-		title: 'Percent',
+		title: 'Percent (%)',
 		field: 'percent',
 	},
 	{
 		id: '4',
 		type: ColumnType.TEXT,
 		cls: ClsType.TimeColumn,
-		title: 'Time',
+		title: 'Time (h)',
 		field: 'time',
 	},
 	{
 		id: '5',
 		type: ColumnType.TEXT,
 		cls: ClsType.TimeColumn,
-		title: 'Total time',
+		title: 'Total time (h)',
 		field: 'totalTime',
 	},
 	{
@@ -299,7 +299,7 @@ export const FINANCE_TABLE_CONFIG: ITableColumn[] = [
 		id: '7',
 		type: ColumnType.TEXT,
 		cls: ClsType.TimeColumn,
-		title: 'Gross salary',
+		title: 'Gross salary ($)',
 		field: 'grossSalary',
 	},
 	{

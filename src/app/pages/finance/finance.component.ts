@@ -14,29 +14,24 @@ import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 })
 export class FinanceComponent {
 	// Finance table
-	public finances: IFinance[] = [];
-	public columns: ITableColumn[] = [];
+	public finances: IFinance[] = [
+		{
+			checked: false,
+			dateStart: '12.12.12',
+			department: DepartmentEnum.FE,
+			employee: EMPLOYEE_MOCK[0],
+			grossSalary: '1000',
+			percent: '50',
+			rate: '10',
+			salaryReview: '12.12.12',
+			time: '4',
+			totalTime: '8',
+		},
+	];
+	public columns: ITableColumn[] = FINANCE_TABLE_CONFIG;
 
 	public DepartmentEnum = DepartmentEnum;
 
 	public readonly title =
 		RouterPaths.Finance.charAt(0).toUpperCase() + RouterPaths.Finance.slice(1);
-
-	constructor() {
-		this.columns = FINANCE_TABLE_CONFIG;
-		this.finances = [
-			{
-				checked: false,
-				dateStart: '12.12.12',
-				department: DepartmentEnum.FE,
-				employee: EMPLOYEE_MOCK[0],
-				grossSalary: '1000',
-				percent: '50',
-				rate: '10',
-				salaryReview: '12.12.12',
-				time: '4',
-				totalTime: '8',
-			},
-		];
-	}
 }

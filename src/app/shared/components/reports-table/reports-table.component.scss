@@ -42,7 +42,7 @@
 	$period-width: 6rem;
 	$name-width: 8rem;
 	$tasks-width: 25rem;
-	$employee-width: 12rem;
+	$employee-width: 20rem;
 	$view-width: 10rem;
 
 	$window-margin: 2rem;
@@ -174,7 +174,7 @@
 				@include flex-center;
 				padding-right: var(--offset-s);
 
-				img {
+				.img {
 					width: $image-size;
 					border-radius: var(--border-radius-xs);
 				}
