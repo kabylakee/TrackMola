@@ -13,6 +13,8 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 })
 export class FinanceHeaderComponent {
 	@Output() changeDate = new EventEmitter<Date>();
+	@Output() changeSearch = new EventEmitter<string>();
+	@Output() changeProject = new EventEmitter<IProject>();
 
 	public projects: IProject[] = PROJECT_MOCK;
 	public employees: IEmployee[] = EMPLOYEE_MOCK;
@@ -20,19 +22,16 @@ export class FinanceHeaderComponent {
 	public periodRange: Period = Period.Month;
 	public searchEmployee: IEmployee;
 
-	public selectProject(value: Event): void {
+	public selectProject(value: string): void {
 		this.projects.forEach((project) => {
 			if (project.title === `${value}`) {
 				this.currentProject = project;
 			}
 		});
-
-		// this.filters.project = this.currentProject.title;
-		// this.changeFilters.emit(this.filters);
+		this.changeProject.emit(this.currentProject);
 	}
 
-	// public searchValueChange(value: string): void {
-		// this.filters.project = this.currentProject.title;
-		// this.changeFilters.emit(this.filters);
-	// }
+	public searchValueChange(value: string): void {
+		this.changeSearch.emit(value);
+	}
 }

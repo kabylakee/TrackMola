@@ -154,4 +154,16 @@ export class VacationService {
 			this.updateVacation(request);
 		});
 	}
+
+	public findVacation(vacation: IVacation): boolean {
+		return Boolean(
+			this.vacations$.value.find(
+				(item) =>
+					item.employee.userName === vacation.employee.userName &&
+					item.dateFrom.toDateString() === vacation.dateFrom.toDateString() &&
+					item.dateTo.toDateString() === vacation.dateTo.toDateString() &&
+					item.paid === vacation.paid,
+			),
+		);
+	}
 }

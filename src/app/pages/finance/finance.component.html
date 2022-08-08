@@ -1,2 +1,6 @@
 <app-header [pageTitle]="title"></app-header>
-<app-finance-header></app-finance-header>
+<app-finance-header (changeDate)="onChangeDate($event)"
+                    (changeSearch)="onChangeSearch($event)"
+                    (changeProject)="onChangeProject($event)">
+</app-finance-header>
+<app-reports-table #table [dataSource]="finances" [columns]="columns"></app-reports-table>

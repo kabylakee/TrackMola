@@ -73,6 +73,9 @@ export class UsersTableComponent implements OnInit, OnChanges {
 				department: DepartmentEnum.FE,
 				office: CountryEnum.Belarus,
 				isNew: true,
+				dateStart: new Date(),
+				rate: 10,
+				salaryReview: new Date(2022, 12, 10),
 			};
 			this.dataSource = [...this.dataSource, newUser];
 			this.filteredDataSource = this.dataSource;
