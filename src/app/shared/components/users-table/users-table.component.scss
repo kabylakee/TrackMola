@@ -29,11 +29,13 @@ $office-select-height: 11rem;
 
 	.email-column .mat-form-field {
 		color: var(--dark-gray);
+		font-size: var(--font-size-s);
 	}
 
 	.role-column,
 	.department-column {
 		width: $role-width;
+		font-size: var(--font-size-s);
 	}
 
 	.project-column {
