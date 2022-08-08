@@ -1,7 +1,10 @@
 <div class="left">
-	<app-date-picker [periodRange]="periodRange"></app-date-picker>
-	<app-input-search></app-input-search>
-	<app-project-select></app-project-select>
+	<app-date-picker
+		[periodRange]="periodRange"
+		(changeDate)="onChangeDate($event)"
+	></app-date-picker>
+	<app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
+	<app-project-select (changeProject)="changeProject.emit($event)"></app-project-select>
 </div>
 <div class="right">
 	<button mat-flat-button color="secondary" (click)="onApproveClick()">Approve</button>

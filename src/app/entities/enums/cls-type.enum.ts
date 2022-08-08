@@ -18,4 +18,5 @@ export enum ClsType {
 	NotesColumn = 'notes-column',
 	NameColumn = 'name-column',
 	EmployeeColumn = 'employee-column',
+	PeriodColumn = 'period-column',
 }
