@@ -1,12 +1,24 @@
 :host {
 	$header-height: 2.75rem;
+	$scroll-size: 0.5rem;
+
+	position: relative;
+	height: 100%;
 
 	.component-wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: var(--offset);
 		justify-content: space-between;
-		height: calc(100% - $header-height);
+		height: 100%;
+	}
+
+	.header-bg {
+		position: absolute;
+		z-index: 1;
+		width: calc(100% - $scroll-size);
+		height: $scroll-size;
+		background-color: white;
 	}
 
 	.grid-wrapper {

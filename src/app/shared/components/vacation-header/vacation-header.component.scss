@@ -1,12 +1,12 @@
 @import 'mixins/common-mixin';
 
 :host {
-	$select-height: 2.25rem;
+	$select-height: 2.5rem;
 
 	.container {
 		display: flex;
 		justify-content: space-between;
-		margin-top: var(--offset);
+		margin-top: var(--offset-m);
 	}
 	.mat-flat-button {
 		padding: var(--offset-s) var(--offset-m);
@@ -16,8 +16,13 @@
 	.inline-block {
 		display: inline-block;
 	}
+
+	app-project-select {
+		margin-left: var(--offset);
+	}
+
 	::ng-deep {
-		.project-teams .mat-form-field {
+		.select .department .mat-form-field {
 			&-wrapper {
 				padding: 0;
 			}

@@ -15,6 +15,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {VacationToggleModule} from '../vacation-toggle/vacation-toggle.module';
+import {ProjectSelectModule} from '../project-select/project-select.module';
 
 @NgModule({
 	declarations: [VacationHeaderComponent, VacationRequestFormComponent],
@@ -34,6 +35,7 @@ import {VacationToggleModule} from '../vacation-toggle/vacation-toggle.module';
 		MatInputModule,
 		MatCheckboxModule,
 		VacationToggleModule,
+		ProjectSelectModule,
 	],
 	exports: [VacationHeaderComponent],
 	entryComponents: [VacationRequestFormComponent],
