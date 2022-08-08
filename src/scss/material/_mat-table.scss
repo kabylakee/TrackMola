@@ -4,23 +4,30 @@ app-root,
 mat-dialog-container {
 	.mat-table {
 		width: 100%;
-		overflow: hidden;
+		overflow: auto;
 		border: 1px solid var(--light-gray);
+		border-top: none;
 		border-radius: var(--border-radius-xs);
+		z-index: 100;
 
 		.mat-header-row {
 			height: $row-height;
 			background: var(--accent-50);
+			position: sticky;
+			z-index: 100;
 
 			.mat-header-cell {
+				border-top: 1px solid var(--light-gray);
 				color: var(--black);
 				font-weight: 500;
 				font-size: var(--font-size-s);
 				&:first-of-type {
+					border-radius: var(--border-radius-xs) 0 0 0;
 					width: calc($row-height - 2 * var(--offset-s));
 					padding: 0 var(--offset-s);
 				}
 				&:last-of-type {
+					border-radius: 0 var(--border-radius-xs) 0 0;
 					padding: 0;
 				}
 			}
