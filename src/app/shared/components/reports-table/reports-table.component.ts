@@ -372,7 +372,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public changeSelectedProject(): void {
 		this.filterDataSource = this.dataSource.filter((item) => {
-			return item.project.title === this.selectProject;
+			return (item as ITask).project.title === this.selectProject;
 		});
 		if (this.selectProject === SELECT_ALL) {
 			this.filterDataSource = this.dataSource;
