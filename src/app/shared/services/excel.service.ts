@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Workbook} from 'exceljs';
 import * as fs from 'file-saver';
-import {IExcelData} from 'src/app/entities/interfaces/excel-data.interface';
+import {ExcelData} from 'src/app/entities/interfaces/excel-data.interface';
 
 const EXCEL_TYPE =
 	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -16,9 +16,9 @@ export class ExcelService {
 	private fontSize = 12;
 	private minCellLength = 20;
 
-	public exportAsExcelFile(
+	public exportManagement(
 		excelConfig: string[],
-		excelData: IExcelData[],
+		excelData: ExcelData[],
 		excelFileName: string,
 		sheetName: string,
 	) {
@@ -64,10 +64,10 @@ export class ExcelService {
 		}
 
 		// Add Data and Conditional Formating
-		data.forEach((row: IExcelData) => {
+		data.forEach((row: ExcelData) => {
 			const eachRow: string[] = [];
 			columnsArray.forEach((column: string) => {
-				eachRow.push(row[column as keyof IExcelData]!);
+				eachRow.push(row[column as keyof ExcelData]!);
 			});
 			worksheet.addRow(eachRow);
 		});

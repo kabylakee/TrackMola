@@ -1,4 +1,4 @@
-export interface IExcelData {
+export interface IManagementExcelData {
 	project?: string;
 	deliverables?: string;
 	resourse?: string;
@@ -7,3 +7,13 @@ export interface IExcelData {
 	workingHours?: string;
 	hours?: string;
 }
+
+export interface IFinanceExcelData {
+	name?: string;
+	role?: string;
+	rate?: string;
+	salaryWO?: string;
+	salaryW?: string;
+}
+
+export type ExcelData = IManagementExcelData | IFinanceExcelData;
