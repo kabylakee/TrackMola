@@ -120,7 +120,7 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 
 	public getRightOffset(dateFrom: Date, week: IVacationWeek): string {
 		const day = dateFrom.getDay() === 0 ? this.weekDayCount : dateFrom.getDay();
-		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${7 - day + 1})`;
+		if (week.dates.some((date) => +date === +dateFrom)) return `calc(100% / 7 * ${7 - day})`;
 		return '0px';
 	}
 
@@ -142,5 +142,9 @@ export class VacationTeamCalendarComponent implements OnInit, OnChanges {
 				: COLOR_CONSTANTS[DayTypeEnum.DayOff].transparent;
 		}
 		return COLOR_CONSTANTS[DayTypeEnum.Unapproved].transparent;
+	}
+
+	public dateFormatter(date: Date): string {
+		return date.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric'});
 	}
 }

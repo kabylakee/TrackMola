@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
@@ -11,7 +11,7 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 	styleUrls: ['./finance-header.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FinanceHeaderComponent implements OnInit {
+export class FinanceHeaderComponent {
 	@Output() changeDate = new EventEmitter<Date>();
 
 	public projects: IProject[] = PROJECT_MOCK;
@@ -19,7 +19,6 @@ export class FinanceHeaderComponent implements OnInit {
 	public currentProject: IProject = PROJECT_MOCK[0];
 	public periodRange: Period = Period.Month;
 	public searchEmployee: IEmployee;
-	ngOnInit(): void {}
 
 	public selectProject(value: Event): void {
 		this.projects.forEach((project) => {
@@ -32,8 +31,8 @@ export class FinanceHeaderComponent implements OnInit {
 		// this.changeFilters.emit(this.filters);
 	}
 
-	public searchValueChange(value: string): void {
+	// public searchValueChange(value: string): void {
 		// this.filters.project = this.currentProject.title;
 		// this.changeFilters.emit(this.filters);
-	}
+	// }
 }

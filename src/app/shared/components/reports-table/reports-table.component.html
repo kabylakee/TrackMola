@@ -1,6 +1,6 @@
 <form [formGroup]="tableForm">
 	<div class="day-table">
-		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8" multiTemplateDataRows>
+		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
 			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
 				<th mat-header-cell *matHeaderCellDef>
 					<div [ngSwitch]="column.type" [ngClass]="column.cls">
@@ -32,30 +32,40 @@
 						<div *ngSwitchCase="columnType.CHECK">
 							<mat-checkbox [checked]="element.paid" color="primary"></mat-checkbox>
 						</div>
+						<div *ngSwitchCase="columnType.CHECK_DISABLED">
+							<mat-checkbox [checked]="element.paid" color="primary" disabled></mat-checkbox>
+						</div>
 
 						<div *ngSwitchCase="columnType.INPUT">
 							<ng-container *ngIf="column.field === 'title'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput placeholder="New Task" formControlName="title"/>
+									<input matInput placeholder="New Task" formControlName="title" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'time'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="time"/>
+									<input matInput formControlName="time" />
 								</mat-form-field>
 							</ng-container>
 							<ng-container *ngIf="column.field === 'overtime'">
 								<mat-form-field class="example-full-width" appearance="fill">
-									<input matInput formControlName="overtime"/>
+									<input matInput formControlName="overtime" />
+								</mat-form-field>
+							</ng-container>
+							<ng-container *ngIf="column.field === 'period'">
+								<mat-form-field class="example-full-width" appearance="fill">
+									<input matInput formControlName="period" />
 								</mat-form-field>
 							</ng-container>
 						</div>
-
+						<div *ngSwitchCase="columnType.COMMENTS">
+							<div class="text" title="{{element['' + column.field]}}">{{ element['' + column.field] }}</div>
+						</div>
 						<div *ngSwitchCase="columnType.PROJECT">
 							<mat-form-field appearance="fill">
 								<mat-select
 									[value]="element['' + column.field].title"
-                  [compareWith]="compareProjectObjects"
+									[compareWith]="compareProjectObjects"
 									formControlName="project"
 									[ngStyle]="getColor(element['' + column.field].color)"
 								>
@@ -93,6 +103,45 @@
 									{{ element.asanaLink || element.bitbucketLink ? 'link' : 'add_link' }}
 								</mat-icon>
 							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.APPROVE">
+							<button mat-icon-button aria-label="Approve" (click)="approve(element)">
+								<mat-icon aria-hidden="false" class="material-icons-outlined approve">
+									check_circle
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.DECLINE">
+							<button mat-icon-button aria-label="Decline" (click)="decline(element)">
+								<mat-icon aria-hidden="false" class="material-icons-outlined decline">
+									cancel
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.VIEW">
+							<button mat-icon-button aria-label="View" (click)="viewReport(element)">
+								<mat-icon aria-hidden="false" class="material-icons-outlined visibility">
+									visibility
+								</mat-icon>
+							</button>
+						</div>
+
+						<div *ngSwitchCase="columnType.TEXT">
+							<span>{{ element['' + column.field] }}</span>
+						</div>
+
+						<div *ngSwitchCase="columnType.PERCENT">
+							<span>{{ element['' + column.field] / sumTime.time | percent }}</span>
+						</div>
+
+						<div *ngSwitchCase="columnType.PROJECT_NAME">
+							<app-project-component
+								[projectName]="element['' + column.field].title"
+								[projectColor]="element['' + column.field].color"
+							></app-project-component>
 						</div>
 
 						<div *ngSwitchCase="columnType.OPTIONS">
@@ -161,10 +210,6 @@
 
 			<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
-			<tr
-				mat-row
-				*matRowDef="let row; let rowIndex = index; columns: displayedColumns"
-			></tr>
 
 			<tr class="mat-row" *matNoDataRow>
 				<td class="mat-cell" colspan="8">

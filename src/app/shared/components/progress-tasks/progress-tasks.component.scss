@@ -1,4 +1,9 @@
+@import 'mixins/common-mixin';
+
 :host {
+	.no-data-container {
+		@include flex-center;
+	}
 	.container {
 		width: 100%;
 		padding: calc(1.5 * var(--offset));

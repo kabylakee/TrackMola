@@ -1,0 +1,15 @@
+:host {
+	display: flex;
+	justify-content: space-between;
+	margin: var(--offset-l) 0;
+
+	.left {
+		display: flex;
+		gap: var(--offset-m);
+	}
+
+	.right {
+		display: flex;
+		gap: var(--offset-s);
+	}
+}

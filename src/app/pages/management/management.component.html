@@ -1,0 +1,15 @@
+<app-header [pageTitle]="title"></app-header>
+<app-manager-filters
+	(export)="openExportWindow()"
+	(approve)="table.approvedSelected()"
+	(changeDate)="onDatepickerChange($event)"
+	(searchValueChange)="onSearchValueChange($event)"
+	(changeProject)="onChangeProject($event)"
+></app-manager-filters>
+<app-reports-table
+	#table
+	[dataSource]="requests"
+	[columns]="columns"
+	[searchValue]="searchValue"
+	[selectProject]="selectProject"
+></app-reports-table>

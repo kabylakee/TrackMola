@@ -11,6 +11,14 @@
 			<div
 				class="vacation"
 				*ngFor="let vacation of week.vacationInfo; index as i"
+				matTooltip="{{
+					vacation.employee.userName +
+						' (' +
+						dateFormatter(vacation.dateFrom) +
+						' - ' +
+						dateFormatter(vacation.dateTo) +
+						')'
+				}}"
 				[ngStyle]="{
 					top: initialOffset + i * standardOffset + 'px',
 					'background-color': getBackgroundColor(vacation),

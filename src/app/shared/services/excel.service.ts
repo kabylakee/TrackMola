@@ -67,7 +67,7 @@ export class ExcelService {
 		data.forEach((row: IExcelData) => {
 			const eachRow: string[] = [];
 			columnsArray.forEach((column: string) => {
-				eachRow.push(row[column as keyof IExcelData]);
+				eachRow.push(row[column as keyof IExcelData]!);
 			});
 			worksheet.addRow(eachRow);
 		});

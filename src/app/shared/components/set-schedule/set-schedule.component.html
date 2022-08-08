@@ -7,9 +7,9 @@
 <mat-dialog-content class="dialog-content">
 	<div class="selected-days">
 		<mat-icon class="material-icons-outlined icon">error</mat-icon>
-		<span>Selected days: 01.06-09.06</span>
+		<span>Selected days: {{firstSetValue}}-{{lastSetValue}}</span>
 	</div>
-	<form [formGroup]="formGroup" (ngSubmit)="submit()">
+	<form [formGroup]="formGroup">
 		<mat-radio-group
 			aria-labelledby="radio-group-label"
 			class="radio-group"
@@ -31,9 +31,9 @@
 				<input matInput maxlength="25" placeholder="Enter time" formControlName="halfdayTime"/>
 			</mat-form-field>
 		</div>
-	</form>
   <mat-dialog-actions class="dialog-actions">
-    <button mat-flat-button color="primary" class="mat-button" (click)="submit()">Save</button>
+    <button mat-flat-button color="primary" class="mat-button" (click)="onSubmitForm()">Save</button>
   </mat-dialog-actions>
+  </form>
 </mat-dialog-content>
 

@@ -21,7 +21,7 @@ import {HoursKeys, IHours} from '../../../entities/interfaces/hours.interface';
 import {DEFAULT_TIME} from '../../../entities/constants/hours.constants';
 import {OPTIONS_CONFIG} from 'src/app/entities/constants/options.constants';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {merge, takeWhile} from 'rxjs';
 import {TaskService} from '../../services/task.service';
 import {IOptionInterface} from '../../../entities/interfaces/option.interface';
@@ -29,32 +29,44 @@ import {ReportsButtonEnum} from '../../../entities/enums/reports-button.enum';
 import {NewTask} from '../../../entities/constants/new-task.class';
 import {Size} from 'src/app/entities/enums/size.enum';
 import {OptionsTitle} from '../../../entities/enums/options.enum';
+import {TableDataType} from 'src/app/entities/types/table-data.type';
+import {ViewReportComponent} from '../view-report/view-report.component';
+import {ReportStatus} from 'src/app/entities/enums/report-status.enum';
+import {VacationService} from '../../services/vacation.service';
+import {IManagementRequest, IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-reports-table',
 	templateUrl: './reports-table.component.html',
 	styleUrls: ['./reports-table.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
-	@Input() public dataSource: ITask[] = [];
+	@Input() public dataSource: TableDataType[] = [];
 	@Input() public columns: ITableColumn[] = [];
 	@Input() public day: Date;
 	@Input() public value: string = '';
 	@Input() public actionHanding: IOptionInterface;
 	@Input() public reportButtonAction: ReportsButtonEnum;
+	@Input() public searchValue = '';
+	@Input() public selectProject = SELECT_ALL;
 
+	@Input() public selectedProject: IProject = PROJECT_MOCK[0];
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
+	@Output() public action = new EventEmitter();
 
 	public OptionsTitle = OptionsTitle;
 	public tableForm: FormGroup;
-	public filterDataSource: ITask[] = [];
+	public filterDataSource: TableDataType[] = [];
 	public allChecked: boolean = false;
 	public sumTime: IHours = DEFAULT_TIME;
 	public displayedColumns: string[] = [];
+	public reportStatus = ReportStatus;
 	private isSub = true;
+	private checkedRows = new Set<TableDataType>();
 
 	public readonly columnType = ColumnType;
 	public readonly projects: IProject[] = PROJECT_MOCK;
@@ -67,6 +79,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		private formBuilder: FormBuilder,
 		private taskService: TaskService,
 		private cd: ChangeDetectorRef,
+		private vacationService: VacationService,
 	) {}
 
 	public ngOnInit(): void {
@@ -85,7 +98,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.tableForm.get('rows') as FormArray).controls = [];
 			const rowCtrl = this.tableForm.get('rows') as FormArray;
 			this.dataSource.forEach((row, index) => {
-				rowCtrl.push(this.setRowsFormArray(row, index));
+				rowCtrl.push(this.setRowsFormArray(row as ITask, index));
 			});
 			merge(
 				...(this.tableForm.get('rows') as FormArray).controls.map(
@@ -99,27 +112,46 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		}
 	}
 
-	private setRowsFormArray(row: ITask, index: number) {
-		return this.formBuilder.group({
-			rowIndex: [index],
-			title: [row.title, Validators.required],
-			time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
-			overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
-			project: [row.project, Validators.required],
-		});
+	private setRowsFormArray(row: TableDataType, index: number) {
+		if ('time' in row) {
+			row = row as ITask;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				title: [row.title, Validators.required],
+				time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
+				overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
+				project: [row.project, Validators.required],
+			});
+		}
+		if ('period' in row) {
+			row = row as IVacationRequest;
+			return this.formBuilder.group({
+				rowIndex: [index],
+				notes: [row.notes, new FormControl('')],
+				period: [row.period, new FormControl('')],
+				project: [row.project, Validators.required],
+			});
+		}
+		if ('paidOvertime' in row) {
+			row = row as IManagementRequest;
+			return this.formBuilder.group({
+				rowIndex: [index],
+			});
+		}
+		return;
 	}
 
 	public ngOnChanges(changes: SimpleChanges): void {
 		if (changes.actionHanding && this.actionHanding) {
 			this.taskService.ChangeActionBtn(
 				this.actionHanding,
-				this.filterDataSource.filter((tasks) => tasks.checked),
+				this.filterDataSource.filter((tasks) => tasks.checked) as ITask[],
 			);
 		}
 		if (changes.optionSelected && this.optionSelected) {
 			this.taskService.ChangeActionBtn(
 				this.actionHanding,
-				this.filterDataSource.filter((tasks) => tasks.checked),
+				this.filterDataSource.filter((tasks) => tasks.checked) as ITask[],
 			);
 		}
 		if (changes.dataSource?.currentValue) {
@@ -133,9 +165,21 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (changes.value) {
 			this.searchTaskField();
 		}
-		if (changes.reportButtonAction && changes.reportButtonAction.currentValue) {
+		if (changes.reportButtonAction?.currentValue) {
 			this.reportButtonHanding(this.reportButtonAction);
 		}
+		if (changes.searchValue) {
+			this.searchUserName();
+		}
+		if (changes.selectProject?.currentValue) {
+			this.changeSelectedProject();
+		}
+	}
+
+	public approvedSelected(): void {
+		this.dataSource
+			.filter((request) => request.checked)
+			.forEach((request) => this.approve(request));
 	}
 
 	public reportButtonHanding(button: ReportsButtonEnum): void {
@@ -166,8 +210,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			return;
 		}
 		if (button === ReportsButtonEnum.Save) {
-			const filterArr = this.filterDataSource.filter((task) => task.newRow);
-			this.taskService.saveTask(filterArr);
+			const filterArr = this.filterDataSource.filter((task) => (task as ITask).newRow);
+			this.taskService.saveTask(filterArr as ITask[]);
 			return;
 		}
 		// if (button === ReportsButtonEnum.Submit) {
@@ -223,16 +267,31 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		this.taskService.setDisabledOptionBtn(!someChecked);
 	}
 
+	public approve(element: TableDataType): void {
+		if ('paidOvertime' in element) {
+			element.status = ReportStatus.Approved;
+		} else if ('period' in element) {
+			element.approved = true;
+			this.vacationService.updateVacation(element);
+			this.action.emit();
+		}
+	}
+
+	public decline(element: TableDataType): void {
+		if ('paidOvertime' in element) {
+			element.status = ReportStatus.Declined;
+		} else if ('period' in element) {
+			this.vacationService.removeVacation(element);
+			this.action.emit();
+		}
+	}
+
 	public changeFieldValue(newData: ITask, rowIndex: number, updateTime: boolean = false): void {
 		updateTime =
-			this.dataSource[rowIndex].time !== +newData.time ||
-			this.dataSource[rowIndex].overtime !== +newData.overtime;
+			(this.dataSource[rowIndex] as ITask).time !== +newData.time ||
+			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-			title: newData.title,
-			time: +newData.time,
-			overtime: +newData.overtime,
-			project: newData.project,
 		};
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
@@ -244,7 +303,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	public getSum(fields: HoursKeys[]): void {
 		fields.forEach((field) => {
 			this.sumTime[field] = this.dataSource.reduce((acc, curr) => {
-				return acc + curr[field];
+				return acc + (curr as ITask)[field];
 			}, 0);
 		});
 		this.outChangeTime.emit(this.sumTime);
@@ -257,7 +316,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public searchTaskField(): void {
 		this.filterDataSource = this.dataSource.filter((item) => {
-			return item.title.toLowerCase().includes(this.value.toLowerCase());
+			return (item as ITask).title.toLowerCase().includes(this.value.toLowerCase());
 		});
 		if (this.value === '') {
 			this.filterDataSource = this.dataSource;
@@ -272,7 +331,55 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		return {color: `rgb(${projectColor})`, 'background-color': `rgba(${projectColor}, 0.2)`};
 	}
 
-	ngOnDestroy() {
+	// Open Dialog by click VIEW button
+	public viewReport(element: IManagementRequest): void {
+		const dialogRef = this.dialog.open(ViewReportComponent, {
+			position: {
+				top: 'calc(50vh - 7.5 * var(--offset))',
+				left: 'calc(10vw)',
+			},
+			data: {
+				dataSource: element,
+			},
+			width: 'calc(80vw)',
+		});
+
+		dialogRef.afterClosed().subscribe((result: ReportStatus) => {
+			switch (result) {
+				case this.reportStatus.Approved:
+					this.approve(element); // Approve button
+					break;
+				case this.reportStatus.Declined:
+					this.decline(element); // Decline button
+					break;
+				default:
+					break; // Cross button
+			}
+			this.cd.detectChanges(); // Reload status state at management table after close dialog
+		});
+	}
+
+	public searchUserName(): void {
+		this.filterDataSource = this.dataSource.filter((item) => {
+			return (item as IManagementRequest).name
+				.toLowerCase()
+				.includes(this.searchValue.toLowerCase());
+		});
+		if (this.searchValue === '') {
+			this.filterDataSource = this.dataSource;
+		}
+	}
+
+	public changeSelectedProject(): void {
+		this.filterDataSource = this.dataSource.filter((item) => {
+			return item.project.title === this.selectProject;
+		});
+		if (this.selectProject === SELECT_ALL) {
+			this.filterDataSource = this.dataSource;
+		}
+	}
+
+	public ngOnDestroy(): void {
 		this.isSub = false;
 	}
 

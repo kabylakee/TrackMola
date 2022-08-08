@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="inner-container">
+        <!-- <app-date-picker (changeDate)="changeDate.emit($event)"
+        [periodRange]="periodRange"></app-date-picker> -->
+        <app-input-search (searchValueChange)="changeSearchValue.emit($event)"></app-input-search>
+       <app-project-select (changeProject)="selectProject($event)"></app-project-select>
+    </div>
+    <button mat-flat-button color="secondary" class="mat-button" (click)="approveAll.emit()">
+        <span class="mat-button-text">Approve all</span>
+    </button>
+</div>

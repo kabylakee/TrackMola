@@ -6,6 +6,7 @@ import {CountryEnum} from '../enums/country.enum';
 
 export const EMPLOYEE_MOCK: IEmployee[] = [
 	{
+		id: 1,
 		userName: 'Disarae Workman',
 		projects: [PROJECT_MOCK[0], PROJECT_MOCK[1]],
 		role: Role.ADMIN,
@@ -15,6 +16,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Belarus,
 	},
 	{
+		id: 2,
 		userName: 'Emery Vetrovs',
 		projects: [PROJECT_MOCK[0]],
 		role: Role.MANAGER,
@@ -24,6 +26,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Cypris,
 	},
 	{
+		id: 3,
 		userName: 'Marilyn Dokidis',
 		projects: [PROJECT_MOCK[2], PROJECT_MOCK[3]],
 		role: Role.CTO,
@@ -33,6 +36,17 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.USA,
 	},
 	{
+		id: 4,
+		userName: 'Dokidis Marilyn',
+		projects: [PROJECT_MOCK[0], PROJECT_MOCK[1]],
+		role: Role.CTO,
+		image: 'assets/image/human.jpg',
+		email: 'mdokidis@datamola.com',
+		department: DepartmentEnum.DWH,
+		office: CountryEnum.USA,
+	},
+	{
+		id: 5,
 		userName: 'Martin Botosh',
 		projects: [PROJECT_MOCK[1]],
 		role: Role.EMPLOYEE,
@@ -42,6 +56,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Belarus,
 	},
 	{
+		id: 6,
 		userName: 'Wilson George',
 		projects: [PROJECT_MOCK[1], PROJECT_MOCK[3]],
 		role: Role.EMPLOYEE,
@@ -51,6 +66,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Belarus,
 	},
 	{
+		id: 7,
 		userName: 'Workman George',
 		projects: [PROJECT_MOCK[0]],
 		role: Role.EMPLOYEE,
@@ -60,6 +76,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Poland,
 	},
 	{
+		id: 8,
 		userName: 'Disarae Workman',
 		projects: [PROJECT_MOCK[0]],
 		role: Role.ADMIN,
@@ -69,6 +86,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Poland,
 	},
 	{
+		id: 9,
 		userName: 'Emery Vetrovs',
 		projects: [PROJECT_MOCK[1]],
 		role: Role.MANAGER,
@@ -78,6 +96,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Belarus,
 	},
 	{
+		id: 10,
 		userName: 'Marilyn Dokidis',
 		projects: [PROJECT_MOCK[2]],
 		role: Role.MANAGER,
@@ -87,6 +106,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Belarus,
 	},
 	{
+		id: 11,
 		userName: 'Martin Botosh',
 		projects: [PROJECT_MOCK[0], PROJECT_MOCK[1]],
 		role: Role.EMPLOYEE,
@@ -96,6 +116,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Russia,
 	},
 	{
+		id: 12,
 		userName: 'Wilson George',
 		projects: [PROJECT_MOCK[2]],
 		role: Role.EMPLOYEE,
@@ -105,6 +126,7 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 		office: CountryEnum.Russia,
 	},
 	{
+		id: 13,
 		userName: 'Workman George',
 		projects: [PROJECT_MOCK[3], PROJECT_MOCK[4]],
 		role: Role.EMPLOYEE,

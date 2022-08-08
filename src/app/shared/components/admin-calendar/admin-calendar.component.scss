@@ -1,17 +1,30 @@
 :host {
 	$header-height: 2.75rem;
+	$scroll-size: 0.5rem;
+
+	position: relative;
+	height: 100%;
 
 	.component-wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: var(--offset);
 		justify-content: space-between;
-		height: calc(100% - $header-height);
+		height: 100%;
+	}
+
+	.header-bg {
+		position: absolute;
+		z-index: 1;
+		width: calc(100% - $scroll-size);
+		height: $scroll-size;
+		background-color: white;
 	}
 
 	.grid-wrapper {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
+		gap: 1px;
 		align-items: start;
 		max-height: 100%;
 		margin-top: var(--offset);
@@ -19,7 +32,6 @@
 		border: 1px solid var(--light-gray);
 		border-top-left-radius: var(--border-radius-xs);
 		border-top-right-radius: var(--border-radius-xs);
-		gap: 1px;
 
 		.header {
 			position: sticky;
@@ -35,7 +47,7 @@
 				border-top-left-radius: var(--border-radius-xs);
 			}
 
-			&:nth-of-type(7) {
+			&:last-of-type {
 				border-top-right-radius: var(--border-radius-xs);
 			}
 		}
