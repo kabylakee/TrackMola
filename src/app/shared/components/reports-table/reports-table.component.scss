@@ -37,16 +37,19 @@
 	$input-width: 2rem;
 	$project-width: 5rem;
 	$status-width: 3rem;
-	$notes-width: 10rem;
+	$notes-min-width: 10rem;
+	$notes-max-width: 10rem;
 	$period-width: 6rem;
 	$name-width: 8rem;
 	$tasks-width: 25rem;
 	$employee-width: 12rem;
+	$view-width: 10rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
 	$button-height: 3rem;
 	$header-height: 3rem;
+	$notes-height: 1.5rem;
 	$image-size: 2rem;
 
 	.day-table {
@@ -122,8 +125,9 @@
 		justify-content: center;
 		width: 100%;
 		.text {
-			max-width: 25rem;
-			max-height: 1.5rem;
+			min-width: $notes-min-width;
+			max-width: $notes-max-width;
+			max-height: $notes-height;
 			overflow-y: hidden;
 			word-wrap: break-word;
 		}
@@ -143,7 +147,7 @@
 	.view-column {
 		display: flex;
 		justify-content: center;
-		min-width: $notes-width;
+		min-width: $view-width;
 		.visibility {
 			color: var(--dark-gray);
 		}
