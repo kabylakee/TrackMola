@@ -4,6 +4,7 @@ import {HOLIDAYS_MOCK} from 'src/app/entities/constants/holidays.constant';
 import {IHoliday} from 'src/app/entities/interfaces/holiday.interface';
 import {LocalStorageService} from './localStorage.service';
 import {CountryEnum} from '../../entities/enums/country.enum';
+import {DayTypeEnum} from 'src/app/entities/enums/day-type.enum';
 
 @Injectable({
 	providedIn: 'root',
@@ -50,5 +51,23 @@ export class HolidayService {
 			const arr = this.holidays$.value;
 			this.localStorageService.setData(this.HOLIDAYS_KEY_DATA, arr);
 		}
+	}
+
+	public disabledWeekend(date: Date): boolean {
+		return !!this.holidays$.value.find(
+			(holiday) =>
+				+holiday.date === +date &&
+				holiday.country === CountryEnum.Belarus &&
+				holiday.dayType === DayTypeEnum.Weekend,
+		);
+	}
+
+	public isHoliday(date: Date): boolean {
+		return !!this.holidays$.value.find(
+			(holiday) =>
+				+holiday.date === +date &&
+				holiday.country === CountryEnum.Belarus &&
+				holiday.dayType === DayTypeEnum.Holiday,
+		);
 	}
 }
