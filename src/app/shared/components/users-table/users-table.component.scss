@@ -34,8 +34,8 @@ $office-select-height: 11rem;
 
 	.role-column,
 	.department-column {
-		font-size: var(--font-size-s);
 		width: $role-width;
+		font-size: var(--font-size-s);
 	}
 
 	.project-column {
