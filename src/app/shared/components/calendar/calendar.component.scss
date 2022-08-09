@@ -1,4 +1,5 @@
 @import 'mixins/common-mixin';
+@import 'mixins/colors-mixin';
 
 :host {
 	$height-header: 2.1rem;
@@ -25,7 +26,7 @@
 		grid-template-columns: repeat(7, 1fr);
 		width: $calendar-width;
 		margin-left: $calendar-margin-left;
-		padding: 0.5rem;
+		padding: var(--offset-xs);
 	}
 
 	.disabledColor {
@@ -33,30 +34,30 @@
 	}
 
 	.vacationColor {
-		background-color: rgba(88, 174, 223, 0.2);
+		background-color: rgba-color(vacation, 0.2);
 	}
 
 	.dayOffColor {
-		background-color: rgba(125, 214, 165, 0.2);
+		background-color: rgba-color(day-off, 0.2);
 	}
 
 	.startVacation {
-		border-left: 1px solid #58aedf;
-		border-radius: 2px 0 0 2px;
+		border-left: 1px solid var(--vacation);
+		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
 	}
 
 	.endVacation {
-		border-right: 1px solid #58aedf;
-		border-radius: 0 2px 2px 0;
+		border-right: 1px solid var(--vacation);
+		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
 	}
 
 	.startVacationUnpaid {
-		border-left: 1px solid #7dd6a5;
-		border-radius: 2px 0 0 2px;
+		border-left: 1px solid var(--day-off);
+		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
 	}
 
 	.endVacationUnpaid {
-		border-right: 1px solid #7dd6a5;
-		border-radius: 0 2px 2px 0;
+		border-right: 1px solid var(--day-off);
+		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
 	}
 }
