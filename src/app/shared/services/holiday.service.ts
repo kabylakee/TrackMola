@@ -54,7 +54,7 @@ export class HolidayService {
 	}
 
 	public disabledWeekend(date: Date): boolean {
-		return !!this.holidays$.value.some(
+		return this.holidays$.value.some(
 			(holiday) =>
 				+holiday.date === +date &&
 				holiday.country === CountryEnum.Belarus &&
@@ -63,7 +63,7 @@ export class HolidayService {
 	}
 
 	public isHoliday(date: Date): boolean {
-		return !!this.holidays$.value.some(
+		return this.holidays$.value.some(
 			(holiday) =>
 				+holiday.date === +date &&
 				holiday.country === CountryEnum.Belarus &&
