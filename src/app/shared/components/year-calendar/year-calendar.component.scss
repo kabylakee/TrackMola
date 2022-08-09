@@ -4,15 +4,15 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		max-height: 100%;
-		margin-bottom: 1rem;
+		margin-bottom: var(--offset);
 		overflow-y: auto;
 		border: 1px solid var(--light-gray);
-		border-radius: 8px;
+		border-radius: var(--border-radius-xs);
 	}
 
 	.month-name {
 		@include flex-center;
-		padding: 8px 0;
+		padding: var(--offset-xs) 0;
 		background-color: var(--accent-50);
 	}
 
