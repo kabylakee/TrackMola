@@ -6,6 +6,7 @@
 	$vacation: rgb(88, 174, 223);
 	$day-off: rgb(125, 214, 165);
 	$common: rgb(221, 232, 245);
+	$holiday: rgb(65, 94, 182);
 	$common-transition: 0.2;
 	$hover-transition: 0.4;
 	$calendar-item-height: 7rem;
@@ -183,6 +184,24 @@
 			}
 			.info {
 				display: none;
+			}
+		}
+
+		&.holiday {
+			.date {
+				background-color: rgba($holiday, $common-transition);
+			}
+			&:hover {
+				border: 1px solid $holiday;
+				.date {
+					background-color: rgba($holiday, $hover-transition);
+					.hint {
+						opacity: 0;
+					}
+				}
+			}
+			.vacation-info {
+				color: $holiday;
 			}
 		}
 	}

@@ -13,8 +13,8 @@
 	<div class="item-header">{{ day.date | date: 'd MMMM' }}</div>
 	<div class="item-content">
 		<div class="holiday-info" *ngIf="day.info; else check">
-			{{ day.info.dayType }}
-			<span *ngIf="day.info.workingHours">: {{ day.info.workingHours }}h</span>
+			{{ day.info.dayType
+			}}<span *ngIf="day.info.workingHours">: {{ day.info.workingHours }}h</span>
 		</div>
 		<div *ngIf="day.info?.holidayName" class="holiday-name">{{ day.info?.holidayName }}</div>
 		<ng-template #check>

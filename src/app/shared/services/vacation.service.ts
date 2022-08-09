@@ -9,6 +9,9 @@ import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
 import {PeriodHelper} from '../helpers/PeriodHelper.helper';
+import {TaskService} from './task.service';
+import {ITask} from 'src/app/entities/interfaces/task.interface';
+import {Status} from 'src/app/entities/enums/status.enum';
 
 @Injectable({providedIn: 'root'})
 export class VacationService {
@@ -20,7 +23,7 @@ export class VacationService {
 
 	public VACATIONS_DATA_KEY: string = 'VACATIONS_DATA_KEY';
 
-	constructor(private localStorageService: LocalStorageService) {
+	constructor(private localStorageService: LocalStorageService, private taskService: TaskService) {
 		this.checkData();
 	}
 
@@ -161,6 +164,39 @@ export class VacationService {
 			}),
 		);
 		this.localStorageService.setData(this.VACATIONS_DATA_KEY, this.vacations$.value);
+
+		const tasks: ITask[] = [];
+		const dateFrom = new Date(
+			+(20 + data.period.split(' - ')[0].split('.')[2]),
+			+data.period.split(' - ')[0].split('.')[1] - 1,
+			+data.period.split(' - ')[0].split('.')[0],
+		);
+		const dateTo = new Date(
+			+(20 + data.period.split(' - ')[0].split('.')[2]),
+			+data.period.split(' - ')[1].split('.')[1] - 1,
+			+data.period.split(' - ')[1].split('.')[0],
+		);
+
+		for (
+			let i = dateFrom;
+			i <= dateTo;
+			i = new Date(i.getFullYear(), i.getMonth(), i.getDate() + 1)
+		) {
+			tasks.push({
+				date: i,
+				checked: false,
+				title: 'Vacation',
+				project: PROJECT_MOCK[4],
+				status: Status.Done,
+				time: 8,
+				overtime: 0,
+				paid: data.paid,
+				asanaLink: '',
+				bitbucketLink: '',
+			});
+		}
+
+		this.taskService.saveTask(tasks);
 	}
 
 	public approveAll(data: IVacationRequest[]): void {
