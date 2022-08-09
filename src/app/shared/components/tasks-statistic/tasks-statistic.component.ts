@@ -80,7 +80,6 @@ export class TasksStatisticComponent implements OnInit {
 						'var(--accent-200)',
 						'var(--accent-100)',
 						'var(--blue)',
-						'var(--accent-50)',
 					],
 					data: this.statisticTasks,
 					showInLegend: false,
