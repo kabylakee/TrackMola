@@ -7,6 +7,7 @@ import {
 	Output,
 } from '@angular/core';
 import {NotWorkingDay} from 'src/app/entities/enums/not-working-day.enum';
+import {NumberEnum} from 'src/app/entities/enums/number.enum';
 import {OrdinalNumberEnum} from 'src/app/entities/enums/ordinal-number.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
 import {HolidayService} from '../../services/holiday.service';
@@ -33,6 +34,7 @@ export class ReportsCalendarItemComponent implements OnInit {
 	}
 
 	public weekNumber = OrdinalNumberEnum;
+	public numbers = NumberEnum;
 
 	public get isPresent(): boolean {
 		const today = new Date();

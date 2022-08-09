@@ -14,12 +14,12 @@
 	<div class="date">
 		<span *ngIf="!dayInfo.isWeekInfo; else weekly">{{ dayInfo.date | date: 'd MMMM' }}</span>
 		<ng-template #weekly [ngSwitch]="getWeek(dayInfo.date)">
-			<span *ngSwitchCase="1">{{ weekNumber.First }}</span>
-			<span *ngSwitchCase="2">{{ weekNumber.Second }}</span>
-			<span *ngSwitchCase="3">{{ weekNumber.Third }}</span>
-			<span *ngSwitchCase="4">{{ weekNumber.Fourth }}</span>
-			<span *ngSwitchCase="5">{{ weekNumber.Fifth }}</span>
-			<span *ngSwitchCase="6">{{ weekNumber.Sixth }}</span>
+			<span *ngSwitchCase="numbers.First">{{ weekNumber.First }}</span>
+			<span *ngSwitchCase="numbers.Second">{{ weekNumber.Second }}</span>
+			<span *ngSwitchCase="numbers.Third">{{ weekNumber.Third }}</span>
+			<span *ngSwitchCase="numbers.Fourth">{{ weekNumber.Fourth }}</span>
+			<span *ngSwitchCase="numbers.Fifth">{{ weekNumber.Fifth }}</span>
+			<span *ngSwitchCase="numbers.Sixth">{{ weekNumber.Sixth }}</span>
 		</ng-template>
 		<mat-icon class="hint" *ngIf="!dayInfo.isVacation && !disabled">open_in_new</mat-icon>
 	</div>
