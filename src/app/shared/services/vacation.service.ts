@@ -156,14 +156,12 @@ export class VacationService {
 	}
 
 	public findVacation(vacation: IVacation): boolean {
-		return Boolean(
-			this.vacations$.value.find(
-				(item) =>
-					item.employee.userName === vacation.employee.userName &&
-					item.dateFrom.toDateString() === vacation.dateFrom.toDateString() &&
-					item.dateTo.toDateString() === vacation.dateTo.toDateString() &&
-					item.paid === vacation.paid,
-			),
+		return this.vacations$.value.some(
+			(item) =>
+				item.employee.userName === vacation.employee.userName &&
+				item.dateFrom.toDateString() === vacation.dateFrom.toDateString() &&
+				item.dateTo.toDateString() === vacation.dateTo.toDateString() &&
+				item.paid === vacation.paid,
 		);
 	}
 }

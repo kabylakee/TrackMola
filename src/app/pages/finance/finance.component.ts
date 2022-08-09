@@ -39,12 +39,12 @@ export class FinanceComponent {
 	}
 	public onChangeSearch(value: string): void {
 		this.searchValue = value;
-		if (value === '') {
+		if (!value) {
 			this.finances = this.copyFinances;
 			return;
 		}
 		this.finances = this.copyFinances.filter((item) => {
-			return Boolean(item.employee.userName.toLowerCase().includes(value.toLocaleLowerCase()));
+			return item.employee.userName.toLowerCase().includes(value.toLocaleLowerCase());
 		});
 	}
 
