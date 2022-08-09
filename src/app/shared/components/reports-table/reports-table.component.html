@@ -1,5 +1,6 @@
 <form [formGroup]="tableForm">
 	<div class="day-table">
+    <div class="header-bg"></div>
 		<table mat-table [dataSource]="filterDataSource" formArrayName="rows" class="mat-elevation-z8">
 			<ng-container *ngFor="let column of columns; let rowIndex = index" [matColumnDef]="column.id">
 				<th mat-header-cell *matHeaderCellDef>
