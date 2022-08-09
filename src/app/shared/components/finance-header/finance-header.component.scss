@@ -1,29 +1,30 @@
 @import 'mixins/common-mixin';
 
 :host {
-	$select-height: 2.5rem;
+	$select-height: 2.25rem;
+	$button-height: 2.5rem;
 
 	.container {
+		margin-top: var(--offset-l);
+		margin-bottom: var(--offset-m);
+	}
+
+	.inner-container {
 		display: flex;
+		margin-top: var(--offset);
+		gap: var(--offset);
 		justify-content: space-between;
-		margin-top: var(--offset-m);
-	}
-	.mat-flat-button {
-		padding: var(--offset-s) var(--offset-m);
-		color: var(--white);
-	}
-
-	.inline-block {
-		display: inline-block;
-	}
-
-	app-project-select {
-		margin-left: var(--offset);
-		height: 100%;
+		.left {
+			display: inline-flex;
+			gap: var(--offset);
+		}
+		.mat-flat-button {
+			height: $button-height;
+		}
 	}
 
 	::ng-deep {
-		.select .department .mat-form-field {
+		.project-teams .mat-form-field {
 			&-wrapper {
 				padding: 0;
 			}
@@ -45,7 +46,6 @@
 			@include flex-center;
 			display: inline-flex;
 			height: $select-height;
-			margin-left: var(--offset);
 			padding: var(--offset-xxs) var(--offset-s) !important;
 			border: 1px solid var(--accent-100);
 			border-radius: var(--border-radius-xs);
