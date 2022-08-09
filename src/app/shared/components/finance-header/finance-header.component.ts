@@ -23,16 +23,12 @@ export class FinanceHeaderComponent {
 	public searchEmployee: IEmployee;
 
 	public selectProject(value: string): void {
-		this.projects.forEach((project) => {
-			if (project.title === `${value}`) {
-				this.currentProject = project;
-			}
-		});
+		this.currentProject =
+			this.projects.find((project) => project.title === `${value}`) || PROJECT_MOCK[0];
 		this.changeProject.emit(this.currentProject);
 	}
 
 	public searchValueChange(value: string): void {
 		this.changeSearch.emit(value);
 	}
-	public export(): void {}
 }
