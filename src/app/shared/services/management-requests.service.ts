@@ -46,7 +46,7 @@ export class ManagementRequestsService {
 					expectedHours: TimeRateEnum.FullTime,
 					totalHours: task.time,
 					paidOvertime: task.paid ? task.overtime : 0,
-					status: ReportStatus.None,
+					status: ReportStatus.Unapproved,
 					approved: false,
 				});
 			}

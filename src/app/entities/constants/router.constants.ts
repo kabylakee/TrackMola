@@ -17,11 +17,6 @@ export const NAVIGATION_LINKS = [
 		icon: NavigationIcons.Vacation,
 	},
 	{
-		path: RouterPaths.Statistic,
-		title: 'Statistic',
-		icon: NavigationIcons.Statistic,
-	},
-	{
 		path: RouterPaths.Finance,
 		title: 'Finance',
 		icon: NavigationIcons.Finance,

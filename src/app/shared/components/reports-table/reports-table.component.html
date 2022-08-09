@@ -30,7 +30,7 @@
 						</div>
 
 						<div *ngSwitchCase="columnType.CHECK">
-							<mat-checkbox [checked]="element.paid" color="primary"></mat-checkbox>
+							<mat-checkbox [checked]="element.paid" color="primary" formControlName="paid"></mat-checkbox>
 						</div>
 						<div *ngSwitchCase="columnType.CHECK_DISABLED">
 							<mat-checkbox [checked]="element.paid" color="primary" disabled></mat-checkbox>
@@ -81,7 +81,7 @@
 
 						<div *ngSwitchCase="columnType.STATUS">
 							<mat-form-field appearance="fill">
-								<mat-select [value]="element['' + column.field]">
+								<mat-select [value]="element['' + column.field]" formControlName="status">
 									<mat-option [value]="status.Done">{{ status.Done }}</mat-option>
 									<mat-option [value]="status.InProgress">{{ status.InProgress }}</mat-option>
 									<mat-option [value]="status.OnHold">{{ status.OnHold }}</mat-option>
@@ -94,7 +94,7 @@
 								class="add-link"
 								mat-icon-button
 								aria-label="Add Link"
-								(click)="openDialog($event.clientX, $event.clientY, element)"
+								(click)="openDialog($event.clientX, $event.clientY, element, rowIndex)"
 							>
 								<mat-icon
 									aria-hidden="false"
@@ -212,7 +212,7 @@
 			<tr mat-row *matRowDef="let row; let rowIndex = index; columns: displayedColumns"></tr>
 
 			<tr class="mat-row" *matNoDataRow>
-				<td class="mat-cell" colspan="8">
+				<td class="mat-cell" colspan="10">
 					<div class="no-data-container">
 						<app-no-data [size]="size.S"></app-no-data>
 					</div>
