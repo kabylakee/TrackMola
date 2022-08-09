@@ -48,14 +48,6 @@ export class VacationService {
 	}
 
 	public getYearVacations(date: Date, employee: IEmployee): Observable<IVacation[]> {
-		// const arr = this.vacations$.value.filter((vacation) => {
-		// 	// console.log(vacation.dateFrom, date);
-
-		// 	return (
-		// 		vacation.dateFrom.getFullYear() === date.getFullYear() &&
-		// 		vacation.employee.email === employee.email
-		// 	);
-		// });
 		return this.vacations$.pipe(
 			map((vacations) =>
 				vacations.filter((vacation) => {
