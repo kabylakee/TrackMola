@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
 import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
 import {PeriodHelper} from '../helpers/PeriodHelper.helper';
@@ -44,6 +45,19 @@ export class VacationService {
 			);
 		});
 		return of(arr);
+	}
+
+	public getYearVacations(date: Date, employee: IEmployee): Observable<IVacation[]> {
+		return this.vacations$.pipe(
+			map((vacations) =>
+				vacations.filter((vacation) => {
+					return (
+						vacation.dateFrom.getFullYear() === date.getFullYear() &&
+						vacation.employee.email === employee.email
+					);
+				}),
+			),
+		);
 	}
 
 	public getVacationRequests(project: IProject): Observable<IVacationRequest[]> {
@@ -163,5 +177,9 @@ export class VacationService {
 				item.dateTo.toDateString() === vacation.dateTo.toDateString() &&
 				item.paid === vacation.paid,
 		);
+	}
+
+	public getVacations(): Observable<IVacation[]> {
+		return this.vacations$.asObservable();
 	}
 }

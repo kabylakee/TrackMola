@@ -1,0 +1,14 @@
+:host {
+	$height-calendar: 12rem;
+	app-year-calendar {
+		display: flex;
+		flex-direction: column;
+		gap: var(--offset);
+		justify-content: space-between;
+		height: calc(100% - $height-calendar);
+		margin-top: var(--offset);
+	}
+	.hidden {
+		display: none;
+	}
+}
