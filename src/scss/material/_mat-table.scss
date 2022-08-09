@@ -7,11 +7,11 @@ mat-dialog-container {
 		overflow: auto;
 
 		.mat-header-row {
+			position: sticky;
+			top: 0;
+			z-index: 10;
 			height: $row-height;
 			background: var(--accent-50);
-			position: sticky;
-			z-index: 10;
-			top: 0;
 
 			.mat-header-cell {
 				color: var(--black);

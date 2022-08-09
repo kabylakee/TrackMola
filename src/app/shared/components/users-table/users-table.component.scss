@@ -33,8 +33,8 @@ $office-select-height: 11rem;
 	.users-column {
 		display: flex;
 		min-width: $input-width;
-		font-size: var(--font-size-s);
 		font-weight: 500;
+		font-size: var(--font-size-s);
 	}
 
 	.email-column .mat-form-field {
@@ -44,8 +44,8 @@ $office-select-height: 11rem;
 	.role-column,
 	.department-column {
 		width: $role-width;
-		font-size: var(--font-size-s);
 		font-weight: 500;
+		font-size: var(--font-size-s);
 	}
 
 	.project-column {
