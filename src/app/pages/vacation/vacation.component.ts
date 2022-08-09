@@ -61,9 +61,11 @@ export class VacationComponent implements OnInit, OnDestroy {
 	}
 
 	public onSendRequest(event: IVacation): void {
-		this.vacationService.saveVacation(event);
-		this.getMonthVacations();
-		this.getVacationRequests();
+		if (event && !this.vacationService.findVacation(event)) {
+			this.vacationService.saveVacation(event);
+			this.getMonthVacations();
+			this.getVacationRequests();
+		}
 	}
 
 	public onChangeTab(event: IVacationTab): void {

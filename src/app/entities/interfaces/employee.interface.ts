@@ -14,4 +14,7 @@ export interface IEmployee {
 	department: DepartmentEnum;
 	office: CountryEnum;
 	isNew?: boolean;
+	dateStart: Date;
+	rate: number;
+	salaryReview: Date;
 }
