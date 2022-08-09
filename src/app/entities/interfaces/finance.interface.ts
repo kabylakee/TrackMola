@@ -5,11 +5,12 @@ export interface IFinance {
 	checked: boolean;
 	employee: IEmployee;
 	department: DepartmentEnum;
-	rate: string;
+	rate: number;
 	percent: string;
 	time: string;
 	totalTime: string;
 	dateStart: string;
 	grossSalary: string;
 	salaryReview: string;
+	date: Date;
 }
