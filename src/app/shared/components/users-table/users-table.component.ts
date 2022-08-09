@@ -1,9 +1,10 @@
 import {
 	ChangeDetectionStrategy,
+	ChangeDetectorRef,
 	Component,
-	OnInit,
 	Input,
 	OnChanges,
+	OnInit,
 	SimpleChanges,
 } from '@angular/core';
 import {UsersColumnType} from '../../../entities/enums/column-type.enum';
@@ -14,6 +15,11 @@ import {PROJECT_MOCK} from '../../../entities/constants/project.mock';
 import {CountryEnum} from '../../../entities/enums/country.enum';
 import {DepartmentEnum} from '../../../entities/enums/department.enum';
 import {Role} from '../../../entities/enums/role.enum';
+import {AdminButtonsEnum} from 'src/app/entities/enums/admin-buttons.enum';
+import {UsersService} from '../../services/users.service';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
+import {Size} from '../../../entities/enums/size.enum';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
 	selector: 'app-users-table',
@@ -25,6 +31,8 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	@Input() public dataSource: IEmployee[] = [];
 	@Input() public columns: ITableColumn[] = [];
 	@Input() public searchValue = '';
+	@Input() public adminButtonAction: AdminButtonsEnum;
+	@Input() public selectedProject: string;
 
 	public readonly columnType = UsersColumnType;
 	public filteredDataSource: IEmployee[] = [];
@@ -33,6 +41,9 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	public readonly offices = Object.keys(CountryEnum);
 	public readonly roles = Object.values(Role);
 	public displayedColumns: string[] = [];
+	public readonly size = Size;
+
+	constructor(private cd: ChangeDetectorRef, private usersService: UsersService) {}
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((column) => column.id);
@@ -41,6 +52,37 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	public ngOnChanges(changes: SimpleChanges): void {
 		if (changes.searchValue) {
 			this.searchUserName();
+		}
+		if (changes.adminButtonAction && changes.adminButtonAction.currentValue) {
+			this.handingAdminButtons(this.adminButtonAction);
+		}
+		if (changes.selectedProject && this.selectedProject) {
+			this.changeSelectedProject();
+		}
+	}
+
+	public handingAdminButtons(btn: AdminButtonsEnum): void {
+		if (btn === AdminButtonsEnum.AddUser) {
+			const defaultProject: IProject = PROJECT_MOCK[0];
+			const newUser: IEmployee = {
+				id: this.dataSource[this.dataSource.length - 1].id + 1,
+				userName: '',
+				projects: [defaultProject],
+				role: Role.EMPLOYEE,
+				email: '',
+				department: DepartmentEnum.FE,
+				office: CountryEnum.Belarus,
+				isNew: true,
+			};
+			this.dataSource = [...this.dataSource, newUser];
+			this.filteredDataSource = this.dataSource;
+			this.cd.detectChanges();
+			return;
+		}
+		if (btn === AdminButtonsEnum.Save) {
+			const filteredUsers = this.filteredDataSource.filter((user) => user.isNew);
+			this.usersService.saveState(filteredUsers);
+			return;
 		}
 	}
 
@@ -59,5 +101,47 @@ export class UsersTableComponent implements OnInit, OnChanges {
 		if (this.searchValue === '') {
 			this.filteredDataSource = this.dataSource;
 		}
+	}
+
+	public onDeleteBtn(element: IEmployee): void {
+		const userIndex = this.dataSource.findIndex((user) => {
+			return JSON.stringify(user) === JSON.stringify(element);
+		});
+		if (userIndex !== -1) {
+			this.dataSource.splice(userIndex, 1);
+			this.filteredDataSource = [...this.dataSource];
+			this.cd.detectChanges();
+		}
+	}
+
+	public changeSelectedProject(): void {
+		this.filteredDataSource = this.dataSource.filter((user) => {
+			return user.projects.find((project) => {
+				return project.title === this.selectedProject;
+			});
+		});
+		if (this.selectedProject === SELECT_ALL) {
+			this.filteredDataSource = this.dataSource;
+		}
+	}
+
+	public changeFieldValue(event: MatSelectChange, id: number, column: ITableColumn): void {
+		const changedUser = this.dataSource.find((user) => user.id === id);
+		if (changedUser) {
+			// @ts-ignore
+			changedUser[column.field] = event.value;
+		}
+	}
+
+	public changeFieldValueInput(event: Event, id: number, column: ITableColumn): void {
+		const changedUser = this.dataSource.find((user) => user.id === id);
+		if (changedUser) {
+			// @ts-ignore
+			changedUser[column.field] = event;
+		}
+	}
+
+	public getProjectTooltip(projects: IProject[]): string {
+		return projects.map((project) => project.title).join(', ');
 	}
 }

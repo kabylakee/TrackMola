@@ -1,12 +1,14 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {MANAGEMENT_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
-import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {Status} from 'src/app/entities/enums/status.enum';
+import {takeWhile} from 'rxjs';
 import {IManagementRequest} from 'src/app/entities/interfaces/request.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {ExportFormComponent} from 'src/app/shared/components/export-form/export-form.component';
+import {MonthTasksHelper} from 'src/app/shared/helpers/month-tasks.helper';
+import {ManagementRequestsService} from 'src/app/shared/services/management-requests.service';
+import {SELECT_ALL} from '../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-management',
@@ -14,7 +16,11 @@ import {ExportFormComponent} from 'src/app/shared/components/export-form/export-
 	styleUrls: ['./management.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManagementComponent implements OnInit {
+export class ManagementComponent implements OnInit, OnDestroy {
+	public date: Date = new Date();
+	public searchValue = '';
+	public selectProject = SELECT_ALL;
+
 	public readonly title =
 		RouterPaths.Management.charAt(0).toUpperCase() + RouterPaths.Management.slice(1);
 
@@ -22,22 +28,17 @@ export class ManagementComponent implements OnInit {
 	public requests: IManagementRequest[] = [];
 	public columns: ITableColumn[] = [];
 
-	constructor(public dialog: MatDialog) {}
+	private isSub = true;
+
+	get weekFirstDay() {
+		return MonthTasksHelper.getFirstDayOfWeek(MonthTasksHelper.getWeek(this.date), this.date);
+	}
+
+	constructor(public dialog: MatDialog, private requestsService: ManagementRequestsService) {}
 
 	public ngOnInit(): void {
 		this.columns = MANAGEMENT_TABLE_CONFIG;
-		this.requests = [
-			{
-				checked: false,
-				name: 'Dilan Brooks',
-				project: PROJECT_MOCK[0],
-				approved: false,
-				expectedHours: 1,
-				paidOvertime: 0,
-				totalHours: 1,
-				status: Status.InProgress,
-			},
-		];
+		this.getWeekRequests();
 	}
 
 	public openExportWindow(): void {
@@ -48,5 +49,29 @@ export class ManagementComponent implements OnInit {
 			},
 			data: {},
 		});
+	}
+
+	public onDatepickerChange(event: Date) {
+		this.date = event;
+		this.getWeekRequests();
+	}
+
+	public ngOnDestroy(): void {
+		this.isSub = false;
+	}
+
+	private getWeekRequests(): void {
+		this.requestsService
+			.getRequests(this.weekFirstDay)
+			.pipe(takeWhile(() => this.isSub))
+			.subscribe((requests) => (this.requests = requests));
+	}
+
+	public onSearchValueChange(event: string): void {
+		this.searchValue = event;
+	}
+
+	public onChangeProject(event: string): void {
+		this.selectProject = event;
 	}
 }

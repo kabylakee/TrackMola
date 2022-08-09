@@ -87,6 +87,11 @@ $cto-select-width: 16.25rem;
 		margin-bottom: 0px;
 		padding: 0;
 	}
+
+	.error {
+		margin-right: var(--offset-s);
+		color: var(--red);
+	}
 }
 
 ::ng-deep {

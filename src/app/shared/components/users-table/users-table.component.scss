@@ -1,35 +1,58 @@
 @import 'mixins/colors-mixin';
 @import 'mixins/common-mixin';
 
+$office-select-height: 11rem;
+
 :host {
 	$input-width: 17rem;
 	$role-width: 7rem;
 	$project-width: 9rem;
 	$office-width: 5.5rem;
 
+	$window-margin: 2rem;
+	$page-offset: 3rem;
+	$button-height: 3rem;
+	$header-height: 3rem;
+
+	.users-table {
+		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
+		max-height: calc(100vh - $components-size);
+		overflow: auto;
+	}
+
 	.email-column,
 	.users-column {
 		display: flex;
 		min-width: $input-width;
+	}
 
-		.email-column .mat-form-field {
-			color: var(--dark-gray);
-		}
+	.email-column .mat-form-field {
+		color: var(--dark-gray);
+		font-size: var(--font-size-s);
 	}
 
 	.role-column,
 	.department-column {
 		width: $role-width;
+		font-size: var(--font-size-s);
 	}
 
 	.project-column {
 		width: $project-width;
 		.mat-select {
-			padding: var(--offset-xxs) calc(0.375 * var(--offset));
-			color: var(--accent-300);
-			font-weight: 500;
-			font-size: var(--font-size-xs);
-			border-radius: var(--border-radius-xs);
+			max-width: $project-width;
+
+			.project-item {
+				padding: var(--offset-xxs) calc(0.375 * var(--offset));
+				span {
+					margin-right: var(--offset-xxs);
+					padding: var(--offset-xxs) calc(0.375 * var(--offset));
+					font-weight: 500;
+					font-size: var(--font-size-xs);
+					border-radius: var(--border-radius-xs);
+				}
+			}
 		}
 	}
 
@@ -51,6 +74,11 @@
 			}
 		}
 	}
+	.no-data-container {
+		@include flex-center;
+		padding-top: var(--offset);
+		padding-bottom: var(--offset);
+	}
 }
 
 ::ng-deep {
@@ -65,5 +93,9 @@
 	.mat-pseudo-checkbox {
 		border: 1px solid var(--light-gray) !important;
 		border-radius: var(--border-radius-xxs) !important;
+	}
+
+	.office-panel-class {
+		max-height: $office-select-height !important;
 	}
 }

@@ -1,81 +1,134 @@
-<table mat-table [dataSource]="filteredDataSource">
-	<ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
-		<th mat-header-cell *matHeaderCellDef>
-			<div [ngSwitch]="column.type" [ngClass]="column.cls">
-				<div *ngSwitchDefault>
-					{{ column.title }}
+<div class="users-table">
+	<table mat-table [dataSource]="filteredDataSource" class="mat-elevation-z8">
+		<ng-container *ngFor="let column of columns" [matColumnDef]="column.id">
+			<th mat-header-cell *matHeaderCellDef>
+				<div [ngSwitch]="column.type" [ngClass]="column.cls">
+					<div *ngSwitchDefault>
+						{{ column.title }}
+					</div>
 				</div>
-			</div>
-		</th>
+			</th>
 
-		<td *matCellDef="let element">
-			<div [ngSwitch]="column.type" [ngClass]="column.cls">
+			<td *matCellDef="let element">
+				<div [ngSwitch]="column.type" [ngClass]="column.cls">
+					<div *ngSwitchCase="columnType.USER">
+						<mat-form-field class="example-full-width" appearance="fill">
+							<input
+								matInput
+								placeholder="Name Surname"
+								[value]="element['' + column.field]"
+								[ngModel]="element['' + column.field]"
+								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
+							/>
+						</mat-form-field>
+					</div>
 
-				<div *ngSwitchCase="columnType.USER">
-					<mat-form-field class="example-full-width" appearance="fill">
-						<input matInput placeholder="Name Surname" [value]="element['' + column.field]" />
-					</mat-form-field>
+					<div *ngSwitchCase="columnType.EMAIL">
+						<mat-form-field class="example-full-width" appearance="fill">
+							<input
+								matInput
+								placeholder="example@datamola.com"
+								[value]="element['' + column.field]"
+								[ngModel]="element['' + column.field]"
+								(ngModelChange)="changeFieldValueInput($event, element.id, column)"
+							/>
+						</mat-form-field>
+					</div>
+
+					<div *ngSwitchCase="columnType.ROLE">
+						<mat-form-field appearance="fill">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+							>
+								<mat-option [value]="role" *ngFor="let role of roles">{{ role }}</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+
+					<div *ngSwitchCase="columnType.DEPARTMENT">
+						<mat-form-field appearance="fill">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+							>
+								<mat-option [value]="department" *ngFor="let department of departments">{{
+									department
+								}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+
+					<div *ngSwitchCase="columnType.PROJECT">
+						<mat-form-field appearance="fill">
+							<mat-select
+								[value]="element['' + column.field]"
+								[compareWith]="compareProjectObjects"
+								[ngStyle]="getColor(element['' + column.field].color)"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+								[matTooltip]="getProjectTooltip(element['' + column.field])"
+								matTooltipClass="tooltip-down"
+								placeholder="Select projects"
+								multiple
+							>
+								<mat-select-trigger>
+									<div class="project-item">
+										<span
+											*ngFor="let proj of element['' + column.field]"
+											[ngStyle]="getColor(proj.color)"
+											>{{ proj.title }}</span
+										>
+									</div>
+								</mat-select-trigger>
+								<mat-option [value]="project" *ngFor="let project of projects">
+									<app-project-component
+										[projectName]="project.title"
+										[projectColor]="project.color"
+									></app-project-component>
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+
+					<div *ngSwitchCase="columnType.OFFICE">
+						<mat-form-field appearance="fill">
+							<mat-select
+								[value]="element['' + column.field]"
+								(selectionChange)="changeFieldValue($event, element.id, column)"
+								[disableOptionCentering]="true"
+								panelClass="office-panel-class"
+							>
+								<mat-option [value]="office" *ngFor="let office of offices">{{
+									office
+								}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+
+					<div *ngSwitchCase="columnType.OPTIONS">
+						<button
+							mat-icon-button
+							aria-label="Options"
+							class="delete-user"
+							(click)="onDeleteBtn(element)"
+						>
+							<mat-icon class="material-icons-outlined">delete</mat-icon>
+						</button>
+					</div>
+
+					<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
 				</div>
+			</td>
+		</ng-container>
 
-				<div *ngSwitchCase="columnType.EMAIL">
-					<mat-form-field class="example-full-width" appearance="fill">
-						<input matInput placeholder="example@datamola.com" [value]="element['' + column.field]" />
-					</mat-form-field>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		<tr class="mat-row" *matNoDataRow>
+			<td class="mat-cell" colspan="8">
+				<div class="no-data-container">
+					<app-no-data [size]="size.S"></app-no-data>
 				</div>
-
-				<div *ngSwitchCase="columnType.ROLE">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="role" *ngFor="let role of roles">{{role}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-				</div>
-
-				<div *ngSwitchCase="columnType.DEPARTMENT">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="department" *ngFor="let department of departments">{{department}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-				</div>
-
-				<div *ngSwitchCase="columnType.PROJECT">
-          <mat-form-field appearance="fill">
-            <mat-select
-              [value]="element[''+column.field]"
-              [compareWith]="compareProjectObjects"
-              [ngStyle]="getColor(element['' + column.field].color)"
-              multiple
-            >
-              <mat-option [value]="project" *ngFor="let project of projects">
-                <app-project-component
-                  [projectName]="project.title"
-                  [projectColor]="project.color"
-                ></app-project-component>
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
-				</div>
-
-				<div *ngSwitchCase="columnType.OFFICE">
-          <mat-form-field appearance="fill">
-            <mat-select [value]="element['' + column.field]">
-              <mat-option [value]="office" *ngFor="let office of offices">{{ office }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-				</div>
-
-				<div *ngSwitchCase="columnType.OPTIONS">
-					<button mat-icon-button aria-label="Options" class="delete-user">
-						<mat-icon class="material-icons-outlined">delete</mat-icon>
-					</button>
-				</div>
-
-				<div *ngSwitchDefault>{{ element['' + column.field] }}</div>
-			</div>
-		</td>
-	</ng-container>
-
-	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-	<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -37,12 +37,20 @@
 	$input-width: 2rem;
 	$project-width: 5rem;
 	$status-width: 3rem;
-	$notes-width: 5rem;
+	$notes-min-width: 10rem;
+	$notes-max-width: 10rem;
+	$period-width: 6rem;
+	$name-width: 8rem;
+	$tasks-width: 25rem;
+	$employee-width: 20rem;
+	$view-width: 10rem;
 
 	$window-margin: 2rem;
 	$page-offset: 3rem;
 	$button-height: 3rem;
 	$header-height: 3rem;
+	$notes-height: 1.5rem;
+	$image-size: 2rem;
 
 	.day-table {
 		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
@@ -105,12 +113,23 @@
 		}
 	}
 
+	.period-column {
+		display: flex;
+		justify-content: center;
+		width: $period-width;
+		margin: 0;
+	}
+
 	.notes-column {
 		display: flex;
 		justify-content: center;
-		.mat-input-element {
-			width: $notes-width;
-			text-align: center;
+		width: 100%;
+		.text {
+			min-width: $notes-min-width;
+			max-width: $notes-max-width;
+			max-height: $notes-height;
+			overflow-y: hidden;
+			word-wrap: break-word;
 		}
 	}
 
@@ -128,13 +147,39 @@
 	.view-column {
 		display: flex;
 		justify-content: center;
+		min-width: $view-width;
 		.visibility {
 			color: var(--dark-gray);
 		}
 	}
 
 	.name-column {
-		width: 10rem;
+		width: $name-width;
+	}
+
+	.modal-task-column {
+		width: $tasks-width;
+		min-width: max-content;
+	}
+
+	.employee-column {
+		width: $employee-width;
+
+		.employee-container {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			.image {
+				@include flex-center;
+				padding-right: var(--offset-s);
+
+				.img {
+					width: $image-size;
+					border-radius: var(--border-radius-xs);
+				}
+			}
+		}
 	}
 
 	.no-data-container {

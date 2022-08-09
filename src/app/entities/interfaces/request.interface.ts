@@ -1,4 +1,4 @@
-import {Status} from '../enums/status.enum';
+import {ReportStatus} from '../enums/report-status.enum';
 import {IProject} from './project.interface';
 
 export interface IVacationRequest {
@@ -12,12 +12,17 @@ export interface IVacationRequest {
 }
 
 export interface IManagementRequest {
+	weekFirstDay: Date;
 	checked: boolean;
 	name: string;
 	project: IProject;
 	expectedHours: number;
 	totalHours: number;
 	paidOvertime: number;
-	status: Status;
+	status: ReportStatus;
 	approved: boolean;
+}
+
+export interface ViewDialogData {
+	dataSource: IManagementRequest;
 }

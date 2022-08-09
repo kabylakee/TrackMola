@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
+import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 
 @Component({
 	selector: 'app-project-select',
@@ -12,16 +13,21 @@ export class ProjectSelectComponent {
 	@Output() changeProject = new EventEmitter<string>();
 
 	public projects: IProject[] = PROJECT_MOCK;
-	public currentProject: IProject = PROJECT_MOCK[0];
+	public currentProject = SELECT_ALL;
+	public readonly SELECT_ALL = 'Select All';
 
 	public selectProject(value: Event): void {
-		this.currentProject = this.projects.find((project) => project.title === `${value}`)!;
-		this.changeProject.emit(this.currentProject.title);
+		this.currentProject =
+			value + '' === SELECT_ALL
+				? value + ''
+				: this.projects.find((project) => project.title === `${value}`)!.title;
+		this.changeProject.emit(this.currentProject);
 	}
 
 	public getColor(): {[k: string]: string} {
+		const projectColor = this.projects.find((project) => project.color);
 		return {
-			color: `rgb(${this.currentProject.color})`,
+			color: `rgb(${projectColor?.color})`,
 		};
 	}
 }

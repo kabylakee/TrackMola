@@ -5,20 +5,49 @@
 ></app-page-tabs>
 <div [ngSwitch]="tabChange">
 	<div class="calendar-filters" *ngSwitchCase="tabs.Calendar">
-		<app-date-picker [calendarDate]="calendarDate" [periodRange]="periodRange"></app-date-picker>
-		<app-toggle-button [period]="countrySelection" [config]="toggleConfig"></app-toggle-button>
-		<button mat-flat-button color="secondary" class="mat-button" (click)="openDialog()">
+		<app-date-picker
+			[periodRange]="periodRange"
+			(changeDate)="changeDate.emit($event)"
+		></app-date-picker>
+		<app-toggle-button
+			[period]="countrySelection"
+			[config]="toggleConfig"
+			(changeSelectedValue)="changeCountry($event)"
+		></app-toggle-button>
+		<button
+			mat-flat-button
+			color="secondary"
+			class="mat-button"
+			(click)="openDialog()"
+			*ngIf="!isDisabled"
+		>
 			<mat-icon class="material-icons-outlined icon mat-button-icon">calendar_today</mat-icon>
 			<span class="mat-button-text">Set schedule</span>
+		</button>
+		<button
+			mat-flat-button
+			color="secondary"
+			class="mat-button"
+			*ngIf="isDisabled"
+			[disabled]="isDisabled"
+		>
+			<mat-icon class="material-icons-outlined icon mat-button-icon">arrow_downward</mat-icon>
+			<span class="mat-button-text">Select days</span>
 		</button>
 	</div>
 	<div class="users-filters" *ngSwitchCase="tabs.Users">
 		<app-input-search (searchValueChange)="searchValueChange.emit($event)"></app-input-search>
 		<div class="select">
 			<mat-form-field class="project-teams" appearance="fill">
-				<mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
+				<mat-select [value]="currentProject" (valueChange)="selectProject($event)">
+					<mat-option [value]="SELECT_ALL">
+						<span>{{ SELECT_ALL }}</span>
+					</mat-option>
 					<mat-option [value]="project.title" *ngFor="let project of projects">
-						<app-project-component projectName="{{ project.title }}"></app-project-component>
+						<app-project-component
+							projectName="{{ project.title }}"
+							projectColor="{{ project.color }}"
+						></app-project-component>
 					</mat-option>
 				</mat-select>
 				<mat-icon matSuffix class="arrow">expand_more</mat-icon>

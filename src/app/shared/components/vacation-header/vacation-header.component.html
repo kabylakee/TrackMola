@@ -7,18 +7,9 @@
 		<div class="inline-block">
 			<app-date-picker (changeDate)="changeDate.emit($event)"
 			[periodRange]="periodRange" class="inline-block"></app-date-picker>
+			<app-project-select (changeProject)="selectProject($event)"></app-project-select>
 			<div class="select">
-				<mat-form-field class="project-teams" appearance="fill">
-					<mat-select [value]="currentProject.title" (valueChange)="selectProject($event)">
-						<mat-option [value]="project.title" *ngFor="let project of projects | slice:0:projects.length-1">
-							<app-project-component projectName="{{project.title}}"></app-project-component>
-						</mat-option>
-					</mat-select>
-					<mat-icon matSuffix class="arrow">expand_more</mat-icon>
-				</mat-form-field>
-			</div>
-			<div class="select">
-				<mat-form-field class="project-teams" appearance="fill">
+				<mat-form-field class="department" appearance="fill">
 					<mat-select [value]="currentDepartment" (valueChange)="selectDepartment($event)">
 						<mat-option [value]="'Select all'">
 							<span>Select all</span>

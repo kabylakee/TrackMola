@@ -49,7 +49,7 @@ export class VacationHeaderComponent {
 		});
 	}
 
-	public selectProject(value: Event): void {
+	public selectProject(value: string): void {
 		this.projects.forEach((project) => {
 			if (project.title === `${value}`) {
 				this.currentProject = project;

@@ -1,0 +1,17 @@
+@import 'mixins/common-mixin';
+
+:host {
+	$select-height: 2.25rem;
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		margin: var(--offset-m) 0;
+	}
+
+	.inner-container {
+		display: inline-flex;
+		gap: var(--offset);
+	}
+}
