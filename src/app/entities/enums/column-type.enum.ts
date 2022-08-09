@@ -14,6 +14,7 @@ export enum ColumnType {
 	CHECK_DISABLED = 'Check disabled',
 	COMMENTS = 'Comments',
 	PERCENT = 'Percent',
+	EMPLOYEE = 'Employee',
 }
 
 export enum UsersColumnType {
