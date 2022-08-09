@@ -34,4 +34,5 @@ export class FinanceHeaderComponent {
 	public searchValueChange(value: string): void {
 		this.changeSearch.emit(value);
 	}
+	public export(): void {}
 }

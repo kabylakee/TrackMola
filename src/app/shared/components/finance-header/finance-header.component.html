@@ -2,7 +2,13 @@
     <app-date-picker (changeDate)="changeDate.emit($event)"
     [periodRange]="periodRange"></app-date-picker>
     <div class="inner-container">
-        <app-project-select (changeProject)="selectProject($event)"></app-project-select>
-        <app-input-search (searchValueChange)="searchValueChange($event)"></app-input-search>
+        <div class="left">
+            <app-project-select (changeProject)="selectProject($event)"></app-project-select>
+            <app-input-search (searchValueChange)="searchValueChange($event)"></app-input-search>
+        </div>
+        <button mat-flat-button color="secondary" (click)="export()">
+    		<mat-icon class="material-icons-outlined">file_upload</mat-icon>
+                Export
+        </button>
     </div>
 </div>

@@ -98,11 +98,11 @@ export const EMPLOYEE_MOCK: IEmployee[] = [
 	},
 	{
 		id: 8,
-		userName: 'Disarae Workman',
+		userName: 'Disarae Salivan',
 		projects: [PROJECT_MOCK[0]],
 		role: Role.ADMIN,
 		image: 'assets/image/human.jpg',
-		email: 'dworkman@datamola.com',
+		email: 'dsalivan@datamola.com',
 		department: DepartmentEnum.FE,
 		office: CountryEnum.Poland,
 		rate: 20,

@@ -2,6 +2,7 @@
 
 :host {
 	$select-height: 2.25rem;
+	$button-height: 2.5rem;
     
     .container {
 		margin-top: var(--offset-l);
@@ -12,6 +13,16 @@
 		display: flex;
 		margin-top: var(--offset);
         gap: var(--offset);
+		justify-content: space-between;
+		.left {
+			display: inline-flex;
+			margin-top: var(--offset);
+	        gap: var(--offset);
+		}
+		.mat-flat-button {
+			margin-top: var(--offset);
+			height: $button-height;
+		}
 	}
 
 	::ng-deep {
