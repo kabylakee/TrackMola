@@ -1,7 +1,16 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+} from '@angular/core';
 import {NotWorkingDay} from 'src/app/entities/enums/not-working-day.enum';
+import {NumberEnum} from 'src/app/entities/enums/number.enum';
 import {OrdinalNumberEnum} from 'src/app/entities/enums/ordinal-number.enum';
 import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.interface';
+import {HolidayService} from '../../services/holiday.service';
 
 @Component({
 	selector: 'app-reports-calendar-item',
@@ -9,12 +18,23 @@ import {IReportsDayInfo} from 'src/app/entities/interfaces/reports-day-info.inte
 	styleUrls: ['./reports-calendar-item.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsCalendarItemComponent {
+export class ReportsCalendarItemComponent implements OnInit {
 	@Input() dayInfo: IReportsDayInfo;
 	@Input() disabled = false;
+
 	@Output() selectDay = new EventEmitter<Date>();
 
+	public isHoliday = false;
+
+	constructor(private holidaysService: HolidayService) {}
+
+	public ngOnInit(): void {
+		if (this.holidaysService.disabledWeekend(this.dayInfo.date)) this.disabled = true;
+		this.isHoliday = this.holidaysService.isHoliday(this.dayInfo.date);
+	}
+
 	public weekNumber = OrdinalNumberEnum;
+	public numbers = NumberEnum;
 
 	public get isPresent(): boolean {
 		const today = new Date();
