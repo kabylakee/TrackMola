@@ -1,13 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FINANCE_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
-import {FINANCE_EXCEL_COLUMNS} from 'src/app/entities/constants/excel-table.config';
 import {RouterPaths} from 'src/app/entities/enums/router.enum';
-import {IFinanceExcelData} from 'src/app/entities/interfaces/excel-data.interface';
 import {IFinance} from 'src/app/entities/interfaces/finance.interface';
 import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
-import {ExcelService} from 'src/app/shared/services/excel.service';
 import {FinanceService} from 'src/app/shared/services/finance.service';
 
 @Component({
@@ -26,12 +23,9 @@ export class FinanceComponent {
 	public columns: ITableColumn[] = FINANCE_TABLE_CONFIG;
 	public copyFinances: IFinance[];
 
-	constructor(private fs: FinanceService, private excelService: ExcelService) {
+	constructor(private fs: FinanceService) {
 		this.getTableData();
 	}
-	// Export table
-	private excelConfig: string[] = FINANCE_EXCEL_COLUMNS;
-	private excelData: IFinanceExcelData[] = [];
 
 	public readonly title =
 		RouterPaths.Finance.charAt(0).toUpperCase() + RouterPaths.Finance.slice(1);
@@ -59,24 +53,5 @@ export class FinanceComponent {
 		this.fs
 			.getFinances(this.selectedDate, this.selectedProject)
 			.subscribe((finances) => (this.finances = this.copyFinances = finances));
-	}
-
-	public onExportClick(): void {
-		this.finances.map((raw) => {
-			const newRaw: IFinanceExcelData = {
-				name: raw.employee.userName,
-				rate: `${raw.rate}`,
-				role: raw.employee.role,
-				salaryW: '',
-				salaryWO: `${+raw.rate * 168}`,
-			};
-			this.excelData.push(newRaw);
-		});
-		this.excelService.exportManagement(
-			this.excelConfig,
-			this.excelData,
-			'FinanceReport',
-			`Report for the customer`,
-		);
 	}
 }
