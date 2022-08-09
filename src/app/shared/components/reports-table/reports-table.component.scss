@@ -50,7 +50,7 @@
 	$header-height: 3rem;
 	$notes-height: 1.5rem;
 	$image-size: 2rem;
-  $scroll-size: 0.5rem;
+	$scroll-size: 0.5rem;
 
 	.day-table {
 		$offsets: calc($page-offset + var(--offset-m) + var(--offset));
@@ -58,13 +58,13 @@
 		max-height: calc(100vh - $components-size);
 		overflow: auto;
 
-    .header-bg {
-      position: absolute;
-      z-index: 1;
-      width: calc(100% - $scroll-size);
-      height: $scroll-size;
-      background-color: white;
-    }
+		.header-bg {
+			position: absolute;
+			z-index: 1;
+			width: calc(100% - $scroll-size);
+			height: $scroll-size;
+			background-color: white;
+		}
 	}
 
 	.project-column {
