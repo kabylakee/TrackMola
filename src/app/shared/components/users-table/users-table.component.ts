@@ -20,6 +20,11 @@ import {UsersService} from '../../services/users.service';
 import {SELECT_ALL} from '../../../entities/constants/formats.constants';
 import {Size} from '../../../entities/enums/size.enum';
 import {MatSelectChange} from '@angular/material/select';
+import {
+	MatSnackBar,
+	MatSnackBarHorizontalPosition,
+	MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-users-table',
@@ -43,7 +48,14 @@ export class UsersTableComponent implements OnInit, OnChanges {
 	public displayedColumns: string[] = [];
 	public readonly size = Size;
 
-	constructor(private cd: ChangeDetectorRef, private usersService: UsersService) {}
+	horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+	verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
+	constructor(
+		private cd: ChangeDetectorRef,
+		private usersService: UsersService,
+		private _snackBar: MatSnackBar,
+	) {}
 
 	public ngOnInit(): void {
 		this.displayedColumns = this.columns.map((column) => column.id);
@@ -83,6 +95,7 @@ export class UsersTableComponent implements OnInit, OnChanges {
 			return;
 		}
 		if (btn === AdminButtonsEnum.Save) {
+			this.openSnackBar('saved');
 			const filteredUsers = this.filteredDataSource.filter((user) => user.isNew);
 			this.usersService.saveState(filteredUsers);
 			return;
@@ -114,7 +127,17 @@ export class UsersTableComponent implements OnInit, OnChanges {
 			this.dataSource.splice(userIndex, 1);
 			this.filteredDataSource = [...this.dataSource];
 			this.cd.detectChanges();
+
+			this.openSnackBar(element.userName + ' removed');
 		}
+	}
+
+	private openSnackBar(massage: string): void {
+		this._snackBar.open(massage, '╳', {
+			verticalPosition: this.verticalPosition,
+			horizontalPosition: this.horizontalPosition,
+			duration: 3000,
+		});
 	}
 
 	public changeSelectedProject(): void {
