@@ -11,9 +11,9 @@
 
 	.inner-container {
 		display: flex;
-		margin-top: var(--offset);
 		gap: var(--offset);
 		justify-content: space-between;
+		margin-top: var(--offset);
 		.left {
 			display: inline-flex;
 			gap: var(--offset);

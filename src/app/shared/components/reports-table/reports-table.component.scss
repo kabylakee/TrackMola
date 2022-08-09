@@ -132,8 +132,8 @@
 		justify-content: center;
 		width: 100%;
 		.text {
-			max-width: $notes-width;
 			min-width: $notes-width;
+			max-width: $notes-width;
 			max-height: 1.5rem;
 			overflow-y: hidden;
 			word-wrap: break-word;
@@ -197,8 +197,8 @@
 
 	.no-data-container {
 		@include flex-center;
+		width: 100%;
 		padding-top: var(--offset);
 		padding-bottom: var(--offset);
-		width: 100%;
 	}
 }
