@@ -14,4 +14,13 @@ export class PeriodHelper {
 		period += '.' + (to.getFullYear() % 2000);
 		return period;
 	}
+	public static transpormDate(date: Date): string {
+		let returnDate = '';
+		if (date.getDate() < 10) returnDate += '0';
+		returnDate += date.getDate() + '.';
+		if (date.getMonth() + 1 < 10) returnDate += '0';
+		returnDate += date.getMonth() + 1 + '.';
+		returnDate += date.getFullYear() % 2000;
+		return returnDate;
+	}
 }
