@@ -7,10 +7,10 @@
 
 <mat-dialog-content class="mat-typography">
 	<form [formGroup]="requestForm" validate>
-  <!-- <div class="days-left">
+  	<div class="days-left">
 		<mat-icon class="mat-icon">error</mat-icon>
-		Vacation days left: {{daysUsed}}/{{totalDays}}
-	</div> -->
+		Vacation days left: {{totalDays-days}}/{{totalDays}}
+	</div>
 		<div class="dialog-content-item">
 			<mat-label class="label">From</mat-label>
 			<mat-form-field class="example-full-width" [class.invalid]="!requestForm.controls.dateFrom.valid"

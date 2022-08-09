@@ -20,13 +20,15 @@ import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 	changeDetection: ChangeDetectionStrategy.Default,
 })
 export class YearCalendarComponent {
+	@Input() public days: number;
 	@Input() datePickerDate: Date;
+
 	public vacations: IVacation[] = [];
 	public currentUser: IEmployee = EMPLOYEE_MOCK[0];
 
 	constructor(private vacationService: VacationService, private cd: ChangeDetectorRef) {}
 
-	public ngOnChanges(changes: SimpleChanges) {
+	public ngOnChanges(changes: SimpleChanges): void {
 		if (changes.datePickerDate?.currentValue || changes.counter?.currentValue) {
 			this.vacationService
 				.getYearVacations(new Date(this.datePickerDate.getFullYear().toString()), this.currentUser)

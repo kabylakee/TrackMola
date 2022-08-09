@@ -18,6 +18,7 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 })
 export class VacationHeaderComponent {
 	@Input() public periodRange: Period;
+	@Input() public days: number;
 
 	@Output() changeDate = new EventEmitter<Date>();
 	@Output() changeFilters = new EventEmitter<IVacationFilter>();
@@ -44,6 +45,7 @@ export class VacationHeaderComponent {
 			},
 			data: {},
 		});
+		dialogRef.componentInstance.days = this.days;
 		dialogRef.afterClosed().subscribe((data) => {
 			this.vacationRequest.emit(data);
 		});
