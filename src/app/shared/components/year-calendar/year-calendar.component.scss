@@ -1,0 +1,27 @@
+@import 'mixins/common-mixin';
+:host {
+	.container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		max-height: 100%;
+		margin-bottom: var(--offset);
+		overflow-y: auto;
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius-xs);
+	}
+
+	.month-name {
+		@include flex-center;
+		padding: var(--offset-xs) 0;
+		background-color: var(--accent-50);
+	}
+
+	.footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--light-black);
+		font-weight: 500;
+		font-size: var(--font-size-s);
+	}
+}

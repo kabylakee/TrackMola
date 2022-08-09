@@ -3,16 +3,13 @@ $row-height: 2.5rem;
 app-root,
 mat-dialog-container {
 	.mat-table {
-		z-index: 100;
 		width: 100%;
 		overflow: auto;
-		border: 1px solid var(--light-gray);
-		border-top: none;
-		border-radius: var(--border-radius-xs);
 
 		.mat-header-row {
 			position: sticky;
-			z-index: 100;
+			top: 0;
+			z-index: 10;
 			height: $row-height;
 			background: var(--accent-50);
 
@@ -20,15 +17,20 @@ mat-dialog-container {
 				color: var(--black);
 				font-weight: 500;
 				font-size: var(--font-size-s);
-				border-top: 1px solid var(--light-gray);
+				border: 1px solid var(--light-gray);
+				border-right-width: 0;
+				border-left-width: 0;
+
 				&:first-of-type {
 					width: calc($row-height - 2 * var(--offset-s));
 					padding: 0 var(--offset-s);
-					border-radius: var(--border-radius-xs) 0 0 0;
+					border-left-width: 1px !important;
+					border-top-left-radius: var(--border-radius-xs);
 				}
 				&:last-of-type {
 					padding: 0;
-					border-radius: 0 var(--border-radius-xs) 0 0;
+					border-right-width: 1px !important;
+					border-top-right-radius: var(--border-radius-xs);
 				}
 			}
 		}
@@ -41,11 +43,18 @@ mat-dialog-container {
 			&:not(:last-of-type) td {
 				border-bottom: 1px solid var(--light-gray);
 			}
+			&:last-of-type td {
+				border-bottom: 1px solid var(--light-gray);
+			}
 			td {
 				margin: 0;
 				padding: 0;
 				&:first-of-type {
 					padding: 0 var(--offset-s);
+					border-left: 1px solid var(--light-gray);
+				}
+				&:last-of-type {
+					border-right: 1px solid var(--light-gray);
 				}
 			}
 		}

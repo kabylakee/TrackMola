@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngFor="let calendar of calendars" class="container-item">
+    <app-calendar
+    [calendarMonth]="calendar"
+    [currentYear]="datePickerDate"
+    [vacations]="vacations"></app-calendar>
+  </div>
+</div>
+<div class="footer">
+  <app-calendar-legend [legendItems]="legendItems"></app-calendar-legend>
+  <!-- <div class="counter">Vacation Days: {{counter}}/25</div> -->
+  <!-- (checkCounter)="getCount($event)" -->
+</div>
