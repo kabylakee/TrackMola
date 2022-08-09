@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {VACATION} from 'src/app/entities/constants/vacation.constant';
+import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
 import {IVacation} from 'src/app/entities/interfaces/vacation.interface';
 import {LocalStorageService} from './localStorage.service';
 
@@ -39,6 +40,27 @@ export class VacationService {
 		return of(arr);
 	}
 
+	public getYearVacations(date: Date, employee: IEmployee): Observable<IVacation[]> {
+		// const arr = this.vacations$.value.filter((vacation) => {
+		// 	// console.log(vacation.dateFrom, date);
+
+		// 	return (
+		// 		vacation.dateFrom.getFullYear() === date.getFullYear() &&
+		// 		vacation.employee.email === employee.email
+		// 	);
+		// });
+		return this.vacations$.pipe(
+			map((vacations) =>
+				vacations.filter((vacation) => {
+					return (
+						vacation.dateFrom.getFullYear() === date.getFullYear() &&
+						vacation.employee.email === employee.email
+					);
+				}),
+			),
+		);
+	}
+
 	public checkData(): void {
 		const localStorageData = this.localStorageService.getData(this.VACATIONS_DATA_KEY);
 		if (!localStorageData) {
@@ -63,5 +85,9 @@ export class VacationService {
 			const arr = this.vacations$.value;
 			this.localStorageService.setData(this.VACATIONS_DATA_KEY, arr);
 		}
+	}
+
+	public getVacations(): Observable<IVacation[]> {
+		return this.vacations$.asObservable();
 	}
 }

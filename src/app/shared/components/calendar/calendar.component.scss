@@ -1,57 +1,59 @@
 @import 'mixins/common-mixin';
 
-.calendar-header {
-	@include flex-center;
-	height: 33px;
-	background-color: var(--accent-50);
-}
+:host {
+	.calendar-header {
+		@include flex-center;
+		height: 33px;
+		background-color: var(--accent-50);
+	}
 
-.calendar-label {
-	@include flex-center;
-	color: var(--accent-700);
-}
+	.calendar-label {
+		@include flex-center;
+		color: var(--accent-700);
+	}
 
-.calendar-body {
-	display: flex;
-	justify-content: center;
-}
+	.calendar-body {
+		display: flex;
+		justify-content: center;
+	}
 
-.calendar-grid {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	width: 208px;
-	margin-left: 49px;
-	padding: 0.5rem;
-}
+	.calendar-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		width: 208px;
+		margin-left: 49px;
+		padding: 0.5rem;
+	}
 
-.disabledColor {
-	color: var(--light-gray);
-}
+	.disabledColor {
+		color: var(--light-gray);
+	}
 
-.vacationColor {
-	background-color: rgba(88, 174, 223, 0.2);
-}
+	.vacationColor {
+		background-color: rgba(88, 174, 223, 0.2);
+	}
 
-.dayOffColor {
-	background-color: rgba(125, 214, 165, 0.2);
-}
+	.dayOffColor {
+		background-color: rgba(125, 214, 165, 0.2);
+	}
 
-.startVacation {
-	border-left: 1px solid #58aedf;
-	border-radius: 4px 0 0 4px;
-}
+	.startVacation {
+		border-left: 1px solid #58aedf;
+		border-radius: 2px 0 0 2px;
+	}
 
-.endVacation {
-	border-right: 1px solid #58aedf;
-	border-radius: 0 4px 4px 0;
-}
+	.endVacation {
+		border-right: 1px solid #58aedf;
+		border-radius: 0 2px 2px 0;
+	}
 
-.startVacationUnpaid {
-	border-left: 1px solid #7dd6a5;
-	border-radius: 4px 0 0 4px;
-}
+	.startVacationUnpaid {
+		border-left: 1px solid #7dd6a5;
+		border-radius: 2px 0 0 2px;
+	}
 
-.endVacationUnpaid {
-	border-right: 1px solid #7dd6a5;
-	border-radius: 0 4px 4px 0;
+	.endVacationUnpaid {
+		border-right: 1px solid #7dd6a5;
+		border-radius: 0 2px 2px 0;
+	}
 }

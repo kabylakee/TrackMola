@@ -7,11 +7,21 @@
 		margin-bottom: 1rem;
 		overflow-y: auto;
 		border: 1px solid var(--light-gray);
+		border-radius: 8px;
 	}
 
 	.month-name {
 		@include flex-center;
 		padding: 8px 0;
 		background-color: var(--accent-50);
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: var(--font-size-s);
+		font-weight: 500;
+		color: var(--light-black);
 	}
 }

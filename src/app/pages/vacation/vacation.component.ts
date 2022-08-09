@@ -10,6 +10,9 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 import {ITableColumn} from 'src/app/entities/interfaces/table-column.interface';
 import {REQUEST_TABLE_CONFIG} from 'src/app/entities/constants/day-columns.config';
 import {IVacationRequest} from 'src/app/entities/interfaces/request.interface';
+import {Period} from 'src/app/entities/enums/period.enum';
+import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
+import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
 
 @Component({
 	selector: 'app-vacation',
@@ -21,6 +24,10 @@ export class VacationComponent implements OnInit, OnDestroy {
 	@Input() changeDate: Date;
 	@Input() sendRequest: IVacation;
 
+	get periodRange(): Period {
+		return this.vacationTab.title === 'Personal' ? Period.Year : Period.Month;
+	}
+	public currentUser: IEmployee = EMPLOYEE_MOCK[0];
 	public selectedDate: Date = new Date();
 	public readonly title =
 		RouterPaths.Vacation.charAt(0).toUpperCase() + RouterPaths.Vacation.slice(1);
@@ -29,7 +36,6 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public filters: IVacationFilter = {project: PROJECT_MOCK[0].title, department: 'Select all'};
 	public vacationTab: IVacationTab = VACATION_TABS[1];
 
-	// Request table
 	public requests: IVacationRequest[] = [];
 	public columns: ITableColumn[] = [];
 

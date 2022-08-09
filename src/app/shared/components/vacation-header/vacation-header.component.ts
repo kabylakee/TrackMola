@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {PROJECT_MOCK} from 'src/app/entities/constants/project.mock';
 import {Period} from 'src/app/entities/enums/period.enum';
@@ -17,6 +17,8 @@ import {VACATION_TABS} from 'src/app/entities/constants/vacation-tab.constants';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationHeaderComponent {
+	@Input() public periodRange: Period;
+
 	@Output() changeDate = new EventEmitter<Date>();
 	@Output() changeFilters = new EventEmitter<IVacationFilter>();
 	@Output() vacationRequest = new EventEmitter<IVacation>();
@@ -27,7 +29,6 @@ export class VacationHeaderComponent {
 	public projects: IProject[] = PROJECT_MOCK;
 	public currentProject: IProject = PROJECT_MOCK[0];
 	public currentDepartment = 'Select all';
-	public periodRange: Period = Period.Month;
 	public tab: IVacationTab = VACATION_TABS[1];
 
 	constructor(public dialog: MatDialog) {
