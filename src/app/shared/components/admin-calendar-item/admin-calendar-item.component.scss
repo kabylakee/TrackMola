@@ -24,6 +24,10 @@
 			background-color: var(--accent-50);
 		}
 
+		&.checked {
+			border: 1px solid var(--accent-200);
+		}
+
 		&-content {
 			flex-direction: column;
 			flex-grow: 1;

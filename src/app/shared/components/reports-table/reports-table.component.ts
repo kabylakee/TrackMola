@@ -121,6 +121,10 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 				time: [row.time, [Validators.required, Validators.pattern('[0-9]+')]],
 				overtime: [row.overtime, [Validators.pattern('[0-9]+')]],
 				project: [row.project, Validators.required],
+				status: [row.status],
+				paid: [row.paid],
+				asanaLink: [row.asanaLink],
+				bitbucketLink: [row.bitbucketLink],
 			});
 		}
 		if ('period' in row) {
@@ -235,7 +239,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	}
 
 	// Open dialog window at bottom of your cursor
-	public openDialog(x: number, y: number, element: ITask) {
+	public openDialog(x: number, y: number, element: ITask, index: number) {
 		const dialogRef = this.dialog.open(LinkDialogComponent, {
 			position: {
 				top: `${y + 20}px`,
@@ -251,6 +255,9 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			if (result) {
 				element.asanaLink = result.asanaLink;
 				element.bitbucketLink = result.bitbucketLink;
+				const formGroup = (this.tableForm.get('rows') as FormArray).controls[index];
+				formGroup.get('asanaLink')?.patchValue(result.asanaLink);
+				formGroup.get('bitbucketLink')?.patchValue(result.bitbucketLink);
 				this.cd.detectChanges();
 			}
 		});
@@ -292,7 +299,15 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			(this.dataSource[rowIndex] as ITask).overtime !== +newData.overtime;
 		this.dataSource[rowIndex] = {
 			...this.dataSource[rowIndex],
-		};
+			title: newData.title,
+			time: +newData.time,
+			overtime: +newData.overtime,
+			project: newData.project,
+			status: newData.status,
+			paid: newData.paid,
+			asanaLink: newData.asanaLink,
+			bitbucketLink: newData.bitbucketLink,
+		} as ITask;
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
 		}
@@ -372,7 +387,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 
 	public changeSelectedProject(): void {
 		this.filterDataSource = this.dataSource.filter((item) => {
-			return item.project.title === this.selectProject;
+			return (item as ITask).project.title === this.selectProject;
 		});
 		if (this.selectProject === SELECT_ALL) {
 			this.filterDataSource = this.dataSource;

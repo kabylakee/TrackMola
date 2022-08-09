@@ -9,31 +9,44 @@ $office-select-height: 11rem;
 	$project-width: 9rem;
 	$office-width: 5.5rem;
 
-	$window-margin: 2rem;
 	$page-offset: 3rem;
 	$button-height: 3rem;
 	$header-height: 3rem;
+	$scroll-size: 0.5rem;
 
 	.users-table {
-		$offsets: calc($window-margin + $page-offset + var(--offset-m) + var(--offset));
+		$offsets: calc($page-offset + var(--offset-m) + var(--offset));
 		$components-size: calc((2 * $offsets) + (3 * $button-height) + $header-height);
 		max-height: calc(100vh - $components-size);
 		overflow: auto;
+
+		.header-bg {
+			position: absolute;
+			z-index: 1;
+			width: calc(100% - $scroll-size);
+			height: $scroll-size;
+			background-color: white;
+		}
 	}
 
 	.email-column,
 	.users-column {
 		display: flex;
 		min-width: $input-width;
+		font-weight: 500;
+		font-size: var(--font-size-s);
 	}
 
 	.email-column .mat-form-field {
 		color: var(--dark-gray);
+		font-size: var(--font-size-s);
 	}
 
 	.role-column,
 	.department-column {
 		width: $role-width;
+		font-weight: 500;
+		font-size: var(--font-size-s);
 	}
 
 	.project-column {
