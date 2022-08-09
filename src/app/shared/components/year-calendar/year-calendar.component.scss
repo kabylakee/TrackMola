@@ -18,10 +18,10 @@
 
 	.footer {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		font-size: var(--font-size-s);
-		font-weight: 500;
+		justify-content: space-between;
 		color: var(--light-black);
+		font-weight: 500;
+		font-size: var(--font-size-s);
 	}
 }
