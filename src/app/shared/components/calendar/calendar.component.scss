@@ -1,9 +1,12 @@
 @import 'mixins/common-mixin';
 
 :host {
+	$height-header: 2.1rem;
+	$calendar-margin-left: 3.1rem;
+	$calendar-width: 13rem;
 	.calendar-header {
 		@include flex-center;
-		height: 33px;
+		height: $height-header;
 		background-color: var(--accent-50);
 	}
 
@@ -20,8 +23,8 @@
 	.calendar-grid {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		width: 208px;
-		margin-left: 49px;
+		width: $calendar-width;
+		margin-left: $calendar-margin-left;
 		padding: 0.5rem;
 	}
 
