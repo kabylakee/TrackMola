@@ -26,6 +26,7 @@ export class FinanceComponent {
 	constructor(private fs: FinanceService) {
 		this.getTableData();
 	}
+
 	public readonly title =
 		RouterPaths.Finance.charAt(0).toUpperCase() + RouterPaths.Finance.slice(1);
 
