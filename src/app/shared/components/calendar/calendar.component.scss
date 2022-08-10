@@ -3,7 +3,7 @@
 
 :host {
 	$height-header: 2.1rem;
-	$calendar-margin-left: 3.1rem;
+	$calendar-margin-left: 4.5rem;
 	$calendar-width: 13rem;
 	.calendar-header {
 		@include flex-center;
@@ -58,6 +58,20 @@
 
 	.endVacationUnpaid {
 		border-right: 1px solid var(--day-off);
+		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
+	}
+
+	.unapprovedVacation {
+		background-color: rgba-color(light-gray, 0.2);
+	}
+
+	.startUnapprovedVacation {
+		border-left: 1px solid var(--light-gray);
+		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
+	}
+
+	.endUnapprovedVacation {
+		border-right: 1px solid var(--light-gray);
 		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
 	}
 }

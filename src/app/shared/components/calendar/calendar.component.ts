@@ -13,6 +13,7 @@ import {ICalendarMonth} from 'src/app/entities/interfaces/calendar-month.interfa
 import {VacationService} from '../../services/vacation.service';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 
 @Component({
 	selector: 'app-calendar',
@@ -59,6 +60,9 @@ export class CalendarComponent implements OnChanges {
 				endVacation: false,
 				startVacationUnpaid: false,
 				endVacationUnpaid: false,
+				unapprovedVacation: false,
+				startUnapprovedVacation: false,
+				endUnapprovedVacation: false,
 			});
 			for (let j = 0; j < this.vacations.length; j++) {
 				if (
@@ -66,21 +70,32 @@ export class CalendarComponent implements OnChanges {
 					this.dates[i].date <= this.vacations[j].dateTo &&
 					this.dates[i].disabled
 				) {
-					if (this.vacations[j].paid) {
-						this.dates[i].vacation = true;
-					} else this.dates[i].dayOff = true;
+					if (this.vacations[j].status === VacationRequest.Approved) {
+						if (this.vacations[j].paid) {
+							this.dates[i].vacation = true;
+						} else {
+							this.dates[i].dayOff = true;
+						}
+					}
+					// if (this.vacations[j].paid) {
+					// 	if (this.vacations[j].status === VacationRequest.Approved) {
+					// 		this.dates[i].vacation = true;
+					// 	} else {
+					// 		this.dates[i].unapprovedVacation = true;
+					// 	}
+					// } else this.dates[i].dayOff = true;
 				}
 				if (+this.dates[i].date === +this.vacations[j].dateFrom && this.dates[i].disabled) {
 					if (this.dates[i].vacation) {
 						this.dates[i].startVacation = true;
-					} else {
+					} else if (this.dates[i].dayOff) {
 						this.dates[i].startVacationUnpaid = true;
 					}
 				}
 				if (+this.dates[i].date === +this.vacations[j].dateTo && this.dates[i].disabled) {
 					if (this.dates[i].vacation) {
 						this.dates[i].endVacation = true;
-					} else {
+					} else if (this.dates[i].dayOff) {
 						this.dates[i].endVacationUnpaid = true;
 					}
 				}

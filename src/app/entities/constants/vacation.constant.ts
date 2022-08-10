@@ -64,7 +64,7 @@ export const VACATION: IVacation[] = [
 		dateTo: new Date(2022, 8, 30),
 		dateFromFormat: moment(new Date(2022, 8, 2)).format(DATE_FORMAT),
 		dateToFormat: moment(new Date(2022, 8, 30)).format(DATE_FORMAT),
-		status: VacationRequest.Unapproved,
+		status: VacationRequest.Approved,
 		paid: false,
 		employee: EMPLOYEE_MOCK[0],
 	},

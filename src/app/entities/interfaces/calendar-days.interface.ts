@@ -6,5 +6,8 @@ export interface ICalendarDays {
 	startVacation: boolean;
 	endVacation: boolean;
 	startVacationUnpaid: boolean;
+	startUnapprovedVacation: boolean;
+	endUnapprovedVacation: boolean;
 	endVacationUnpaid: boolean;
+	unapprovedVacation: boolean;
 }
