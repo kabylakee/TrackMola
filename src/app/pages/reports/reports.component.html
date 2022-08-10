@@ -21,11 +21,11 @@
 				[reportButtonAction]="reportButtonAction"
 				(outChangeTime)="updateSumTime($event)"
 				(disableSave)="disabledSave = $event"
-        (disableSubmit)="disableSubmit = $event"
+				(disableSubmit)="disableSubmit = $event"
 			></app-reports-table>
 			<app-reports-button
 				[disabledSave]="disabledSave"
-        [disableSubmit]="disableSubmit"
+				[disableSubmit]="disableSubmit"
 				(reportButtonAction)="onReportButtonAction($event)"
 			></app-reports-button>
 		</div>
