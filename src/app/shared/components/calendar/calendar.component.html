@@ -2,13 +2,13 @@
 <div class="calendar-grid">
   <div class="calendar-label" *ngFor="let weekDay of weekDays">{{weekDay}}</div>
   <div class="calendar-body" *ngFor="let date of dates"
-  [ngClass]="{disabledColor:!date.disabled,
-     vacationColor: date.vacation,
-     dayOffColor: date.dayOff,
-     startVacation: date.startVacation,
-     endVacation: date.endVacation,
-     startVacationUnpaid: date.startVacationUnpaid,
-     endVacationUnpaid: date.endVacationUnpaid}">
+  [ngClass]="{'disabled-сolor':!date.disabled,
+     'vacation-color': date.vacation,
+     'dayoff-color': date.dayOff,
+     'start-vacation': date.startVacation,
+     'end-vacation': date.endVacation,
+     'start-vacation-unpaid': date.startVacationUnpaid,
+     'end-vacation-unpaid': date.endVacationUnpaid}">
   {{date.date.getDate()}}
 </div>
 </div>

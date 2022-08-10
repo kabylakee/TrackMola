@@ -238,4 +238,17 @@ export const TASKS_MOCK: ITask[] = [
 		bitbucketLink: '',
 		employee: EMPLOYEE_MOCK[0],
 	},
+	{
+		date: new Date(2022, 7, 8),
+		checked: false,
+		title: 'Vacation',
+		project: PROJECT_MOCK[4],
+		status: Status.Done,
+		time: 8,
+		overtime: 0,
+		paid: true,
+		asanaLink: '',
+		bitbucketLink: '',
+		employee: EMPLOYEE_MOCK[0],
+	},
 ];

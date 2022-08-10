@@ -27,7 +27,7 @@ export class TasksStatisticComponent implements OnInit {
 		this.chart = new Chart({
 			chart: {
 				type: 'column',
-				height: 224,
+				height: 160,
 			},
 			title: {
 				text: '',
