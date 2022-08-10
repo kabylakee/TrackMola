@@ -221,9 +221,6 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 			this.disableSubmit.emit(false);
 			return;
 		}
-		if (button === ReportsButtonEnum.Submit) {
-			this.disableSubmit.emit(true);
-		}
 	}
 
 	// When you click subcheckbox update main checkbox
