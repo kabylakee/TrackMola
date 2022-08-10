@@ -29,49 +29,35 @@
 		padding: var(--offset-xs);
 	}
 
-	.disabledColor {
+	.disabled-сolor {
 		color: var(--light-gray);
 	}
 
-	.vacationColor {
+	.vacation-color {
 		background-color: rgba-color(vacation, 0.2);
 	}
 
-	.dayOffColor {
+	.dayoff-color {
 		background-color: rgba-color(day-off, 0.2);
 	}
 
-	.startVacation {
+	.start-vacation {
 		border-left: 1px solid var(--vacation);
 		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
 	}
 
-	.endVacation {
+	.end-vacation {
 		border-right: 1px solid var(--vacation);
 		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
 	}
 
-	.startVacationUnpaid {
+	.start-vacation-unpaid {
 		border-left: 1px solid var(--day-off);
 		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
 	}
 
-	.endVacationUnpaid {
+	.end-vacation-unpaid {
 		border-right: 1px solid var(--day-off);
-		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
-	}
-
-	.unapprovedVacation {
-		background-color: rgba-color(light-gray, 0.2);
-	}
-
-	.startUnapprovedVacation {
-		border-left: 1px solid var(--light-gray);
-		border-radius: calc(var(--border-radius) * 0.125) 0 0 calc(var(--border-radius) * 0.125);
-	}
-
-	.endUnapprovedVacation {
-		border-right: 1px solid var(--light-gray);
 		border-radius: 0 calc(var(--border-radius) * 0.125) calc(var(--border-radius) * 0.125) 0;
 	}
 }

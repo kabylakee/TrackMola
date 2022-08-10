@@ -60,9 +60,6 @@ export class CalendarComponent implements OnChanges {
 				endVacation: false,
 				startVacationUnpaid: false,
 				endVacationUnpaid: false,
-				unapprovedVacation: false,
-				startUnapprovedVacation: false,
-				endUnapprovedVacation: false,
 			});
 			for (let j = 0; j < this.vacations.length; j++) {
 				if (
