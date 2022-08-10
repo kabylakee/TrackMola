@@ -1,13 +1,15 @@
 <app-header [pageTitle]="title"></app-header>
 <app-vacation-header
 [periodRange]="periodRange"
+[days]="daysSelected"
 (changeDate)="onChangeDate($event)"
 (changeFilters)="onChangeFilters($event)"
 (vacationRequest)="onSendRequest($event)"
 (tabSelected)="onChangeTab($event)"></app-vacation-header>
 <app-vacation-team-calendar [date]="selectedDate" [dataSource]="vacations" [filters]="filters" [hidden]="vacationTab.title!=='My team'">
 </app-vacation-team-calendar>
-<app-year-calendar [datePickerDate]="selectedDate" [class.hidden]="vacationTab.title!=='Personal'"></app-year-calendar>
+<app-year-calendar [datePickerDate]="selectedDate" [days]="daysSelected"
+[class.hidden]="vacationTab.title!=='Personal'"></app-year-calendar>
 <app-vacation-request-header [hidden]="vacationTab.title!=='Requests'"
 (changeProject)="onChangeProject($event)" (changeSearchValue)="onChangeInput($event)"
 (approveAll)="approveAllSelected()"></app-vacation-request-header>

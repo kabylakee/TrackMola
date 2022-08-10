@@ -22,7 +22,7 @@ export class VacationRequestFormComponent {
 	public message: string;
 
 	public totalDays = 25;
-	public daysUsed = 14;
+	public days: number;
 	public daysNumber = true;
 	private formToImport: IVacation;
 	constructor(
@@ -80,7 +80,7 @@ export class VacationRequestFormComponent {
 				this.requestForm.controls.dateFrom.value.getTime()) /
 			(1000 * 3600 * 24);
 
-		if (this.requestForm.controls.paid.value && selectedDays > this.totalDays - this.daysUsed) {
+		if (this.requestForm.controls.paid.value && selectedDays > this.totalDays - this.days) {
 			this.message = 'Choose less days';
 			this.daysNumber = false;
 			return;

@@ -4,7 +4,7 @@
 		(valueChange)="selectProject($event)"
 		[ngStyle]="getColor()"
 	>
-    <mat-option [value]="SELECT_ALL">
+    <mat-option [value]="SELECT_ALL" *ngIf="isSelectAll">
       <span>{{ SELECT_ALL }}</span>
     </mat-option>
 		<mat-option

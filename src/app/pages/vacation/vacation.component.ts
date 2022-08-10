@@ -14,6 +14,7 @@ import {IProject} from 'src/app/entities/interfaces/project.interface';
 import {Period} from 'src/app/entities/enums/period.enum';
 import {EMPLOYEE_MOCK} from 'src/app/entities/constants/employee.mock';
 import {IEmployee} from 'src/app/entities/interfaces/employee.interface';
+import {VacationRequest} from 'src/app/entities/enums/vacation-request.enum';
 
 @Component({
 	selector: 'app-vacation',
@@ -41,6 +42,7 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public vacationRequests: IVacationRequest[];
 	private requests: IVacationRequest[] = [];
 	public columns: ITableColumn[] = [];
+	public daysSelected: number;
 
 	constructor(private vacationService: VacationService) {}
 
@@ -48,6 +50,16 @@ export class VacationComponent implements OnInit, OnDestroy {
 		this.getMonthVacations();
 		this.getVacationRequests();
 		this.columns = REQUEST_TABLE_CONFIG;
+		this.daysSelected = this.vacations.reduce(function (sum, current) {
+			if (
+				current.employee.id === 1 &&
+				current.status === VacationRequest.Approved &&
+				current.paid
+			) {
+				return sum + (current.dateTo.getTime() - current.dateFrom.getTime()) / (1000 * 3600 * 24);
+			}
+			return sum;
+		}, 0);
 	}
 
 	public onChangeDate(event: Date): void {
@@ -93,12 +105,32 @@ export class VacationComponent implements OnInit, OnDestroy {
 	public onStatusChanged(): void {
 		this.getMonthVacations();
 		this.getVacationRequests();
+		this.daysSelected = this.vacations.reduce(function (sum, current) {
+			if (
+				current.employee.id === 1 &&
+				current.status === VacationRequest.Approved &&
+				current.paid
+			) {
+				return sum + (current.dateTo.getTime() - current.dateFrom.getTime()) / (1000 * 3600 * 24);
+			}
+			return sum;
+		}, 0);
 	}
 
 	public approveAllSelected(): void {
 		this.vacationService.approveAll(this.vacationRequests.filter((request) => request.checked));
 		this.getMonthVacations();
 		this.getVacationRequests();
+		this.daysSelected = this.vacations.reduce(function (sum, current) {
+			if (
+				current.employee.id === 1 &&
+				current.status === VacationRequest.Approved &&
+				current.paid
+			) {
+				return sum + (current.dateTo.getTime() - current.dateFrom.getTime()) / (1000 * 3600 * 24);
+			}
+			return sum;
+		}, 0);
 	}
 
 	private getMonthVacations(): void {

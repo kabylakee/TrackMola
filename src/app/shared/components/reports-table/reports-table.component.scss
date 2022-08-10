@@ -37,9 +37,8 @@
 	$input-width: 2rem;
 	$project-width: 5rem;
 	$status-width: 3rem;
-	$notes-min-width: 10rem;
-	$notes-max-width: 10rem;
-	$period-width: 6rem;
+	$notes-width: 10rem;
+	$period-width: 9rem;
 	$name-width: 8rem;
 	$tasks-width: 25rem;
 	$employee-width: 20rem;
@@ -133,9 +132,9 @@
 		justify-content: center;
 		width: 100%;
 		.text {
-			min-width: $notes-min-width;
-			max-width: $notes-max-width;
-			max-height: $notes-height;
+			min-width: $notes-width;
+			max-width: $notes-width;
+			max-height: 1.5rem;
 			overflow-y: hidden;
 			word-wrap: break-word;
 		}
@@ -146,9 +145,15 @@
 		justify-content: center;
 		.approve {
 			color: var(--accent-200);
+			&:hover {
+				color: var(--accent-300);
+			}
 		}
 		.decline {
 			color: rgba-color(red, 0.3);
+			&:hover {
+				color: rgba-color(red, 0.6);
+			}
 		}
 	}
 
@@ -192,6 +197,7 @@
 
 	.no-data-container {
 		@include flex-center;
+		width: 100%;
 		padding-top: var(--offset);
 		padding-bottom: var(--offset);
 	}

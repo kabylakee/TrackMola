@@ -7,7 +7,7 @@
 		<div class="inline-block">
 			<app-date-picker (changeDate)="changeDate.emit($event)"
 			[periodRange]="periodRange" class="inline-block"></app-date-picker>
-			<app-project-select (changeProject)="selectProject($event)"></app-project-select>
+			<app-project-select (changeProject)="selectProject($event)" [isSelectAll]="false"></app-project-select>
 			<div class="select">
 				<mat-form-field class="department" appearance="fill">
 					<mat-select [value]="currentDepartment" (valueChange)="selectDepartment($event)">
