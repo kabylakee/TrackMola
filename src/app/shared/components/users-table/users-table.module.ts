@@ -13,6 +13,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {ProjectModule} from '../project/projects.module';
 import {NoDataModule} from '../no-data/no-data.module';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
 	declarations: [UsersTableComponent],
@@ -29,6 +30,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 		ProjectModule,
 		NoDataModule,
 		MatTooltipModule,
+		MatSnackBarModule,
 	],
 	exports: [UsersTableComponent],
 })
