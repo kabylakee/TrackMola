@@ -77,13 +77,6 @@ export class CalendarComponent implements OnChanges {
 							this.dates[i].dayOff = true;
 						}
 					}
-					// if (this.vacations[j].paid) {
-					// 	if (this.vacations[j].status === VacationRequest.Approved) {
-					// 		this.dates[i].vacation = true;
-					// 	} else {
-					// 		this.dates[i].unapprovedVacation = true;
-					// 	}
-					// } else this.dates[i].dayOff = true;
 				}
 				if (+this.dates[i].date === +this.vacations[j].dateFrom && this.dates[i].disabled) {
 					if (this.dates[i].vacation) {
