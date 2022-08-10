@@ -23,6 +23,8 @@
 			display: flex;
 			flex-flow: column;
 			overflow-y: auto;
+			max-height: 80%;
+			padding-right: var(--offset-xs);
 
 			&-item {
 				display: flex;
