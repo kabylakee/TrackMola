@@ -110,8 +110,7 @@ $mat-icon-line-height: 2.45rem;
 	}
 
 	.no-data {
-		display: flex;
-		justify-content: center;
+		@include flex-center;
 		padding: calc(var(--offset) * 0.2) 0 var(--offset) 0;
 	}
 }
