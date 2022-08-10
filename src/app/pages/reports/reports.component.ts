@@ -44,6 +44,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
 	public reportButtonAction: ReportsButtonEnum;
 	public day: Date = new Date();
 	public disabledSave = true;
+	public disableSubmit = true;
 
 	constructor(private taskService: TaskService) {}
 

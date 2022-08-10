@@ -5,7 +5,7 @@
   <div class="tasks">
     <div class="tasks-item" *ngFor="let task of tasks">
       <div class="tasks-title"
-           matTooltip="{{task.title}}" 
+           matTooltip="{{task.title}}"
            matTooltipClass="tooltip-down">
         {{task.title}}
       </div>
@@ -13,7 +13,10 @@
         <div class="tasks-hours">
           {{task.time}}h
         </div>
-        <app-project-component projectName="{{task.project.title}}"></app-project-component>
+        <app-project-component
+          projectName="{{ task.project.title }}"
+          projectColor="{{ task.project.color }}"
+        ></app-project-component>
       </div>
     </div>
     <div class="no-data-container">

@@ -56,6 +56,7 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 	@Output() public readonly outChangeTime = new EventEmitter<IHours>();
 	@Output() public optionSelected = new EventEmitter<string>();
 	@Output() public disableSave = new EventEmitter<boolean>();
+	@Output() public disableSubmit = new EventEmitter<boolean>();
 	@Output() public action = new EventEmitter();
 
 	public OptionsTitle = OptionsTitle;
@@ -216,11 +217,13 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (button === ReportsButtonEnum.Save) {
 			const filterArr = this.filterDataSource.filter((task) => (task as ITask).newRow);
 			this.taskService.saveTask(filterArr as ITask[]);
+			this.disableSave.emit(true);
+			this.disableSubmit.emit(false);
 			return;
 		}
-		// if (button === ReportsButtonEnum.Submit) {
-		//To DO Submit
-		// }
+		if (button === ReportsButtonEnum.Submit) {
+			this.disableSubmit.emit(true);
+		}
 	}
 
 	// When you click subcheckbox update main checkbox
@@ -311,7 +314,8 @@ export class ReportsTableComponent implements OnInit, OnChanges, OnDestroy {
 		if (updateTime) {
 			this.getSum(['time', 'overtime']);
 		}
-		// this.filterDataSource = [...this.dataSource];
+		this.disableSave.emit(false);
+		this.disableSubmit.emit(true);
 		this.cd.detectChanges();
 	}
 
