@@ -9,7 +9,7 @@ import {ReportsErrorEnum} from 'src/app/entities/enums/reports-error.enum';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsButtonComponent {
-	@Input() canSubmit = false;
+	@Input() disableSubmit = true;
 	@Input() notifierMassage: ReportsErrorEnum;
 	@Input() disabledSave = true;
 

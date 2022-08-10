@@ -21,7 +21,7 @@
 		<button
 			mat-flat-button
 			color="primary"
-			[class.mat-button-disabled]="!canSubmit"
+			[class.mat-button-disabled]="disableSubmit"
 			(click)="onReportButtonAction(ReportsButtonEnum.Submit)"
 		>
 			{{ ReportsButtonEnum.Submit }}
