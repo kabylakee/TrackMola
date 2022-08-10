@@ -22,9 +22,9 @@
 		.tasks {
 			display: flex;
 			flex-flow: column;
-			overflow-y: auto;
 			max-height: 80%;
 			padding-right: var(--offset-xs);
+			overflow-y: auto;
 
 			&-item {
 				display: flex;
