@@ -95,9 +95,9 @@ export class UsersTableComponent implements OnInit, OnChanges {
 			return;
 		}
 		if (btn === AdminButtonsEnum.Save) {
-			this.openSnackBar('saved');
 			const filteredUsers = this.filteredDataSource.filter((user) => user.isNew);
 			this.usersService.saveState(filteredUsers);
+			this.openSnackBar(filteredUsers[0].userName + ' saved');
 			return;
 		}
 	}
